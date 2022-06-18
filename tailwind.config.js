@@ -10,6 +10,9 @@ module.exports = {
       green: { 
         100: "#2EC866",
         900: "#1E1E1E"
+      },
+      black: {
+        100: "#120C26"
       }
     },
     extend: {
@@ -18,8 +21,17 @@ module.exports = {
       },
       borderWidth:{
         "1px": "1px"
+      },
+      screens: {
+        tiny: ""
       }
     },
+
   },
-  plugins: [],
+  plugins: [
+    function ({ addVariant }) {
+        addVariant('child', '& > *');
+        addVariant('child-hover', '& > *:hover');
+    }
+  ],
 };
