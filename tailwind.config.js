@@ -13,6 +13,7 @@ module.exports = {
       },
       black: {
         100: "#120C26"
+        
       }
     },
     extend: {

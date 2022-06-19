@@ -127,12 +127,16 @@ const Home: NextPage = () => {
   ));
 
   return (
-    <div className="h-full bg-green-900 py-10 px-10 md:px-24 text-white">
+    <div className="h-full bg-green-900 py-10 px-10 md:px-24 text-white overflow-y-hidden">
       <Head>
         <title>FreeMerch</title>
         <meta name="description" content="Get Free Merch" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {/* bg ellipses */}
+      <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#1C233D] right-0 top-4" />
+
       <Nav />
 
       <div className="text-start md:text-center xl:w-2/4 mx-auto mt-32 ">
@@ -150,6 +154,10 @@ const Home: NextPage = () => {
           <GreenButton className="mr-4">Contact</GreenButton>
           <GreenBorderButton>Learn More</GreenBorderButton>
         </div>
+      </div>
+
+      <div className="relative">
+        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4" />
       </div>
 
       {/* Categories */}
@@ -245,9 +253,10 @@ const Home: NextPage = () => {
       </div>
 
       {/* Contact Info */}
-      <div className="mt-32 mb-52 flex justify-center flex-wrap max-w-screen-xl mx-auto md:space-x-4">
+      <div className="relative mt-32 mb-52 flex justify-center flex-wrap max-w-screen-xl mx-auto md:space-x-4">
+        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4" />
         <div className="border-1px border-green-100 max-w-xl px-12 py-12 pb-6 rounded-xl max-h-min">
-          <div className="rounded-full w-12 h-12 bg-white flex justify-center items-center">
+          <div className="rounded-full w-12 h-12 bg-white flex justify-center items-center shadow-[0px_15px_25px_rgba(34,167,93,0.25)]">
             <TbCrown className="fill-green-900 w-6 h-6"/>
           </div>
           <h3 className="my-3 font-semibold text-4xl">Company</h3>
@@ -259,7 +268,7 @@ const Home: NextPage = () => {
         </div>
 
         <div className="border-1px border-green-100 max-w-xl px-12 py-12 pb-6 rounded-xl translate-y-20">
-          <div className="rounded-full w-12 h-12 bg-white flex justify-center items-center">
+          <div className="rounded-full w-12 h-12 bg-white flex justify-center items-center shadow-[0px_15px_25px_rgba(34,167,93,0.25)]">
             <TiStarFullOutline className="fill-green-900 w-6 h-6"/>
           </div>
           <h3 className="my-3 font-semibold text-4xl">Individual</h3>
@@ -327,7 +336,8 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className="mt-32  max-w-[1244px] mx-auto">
+      <div className="mt-32 relative max-w-[1244px] mx-auto">
+        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4 -translate-y-2/4" />
         <h4 className="text-2xl font-semibold">Communities</h4>
         <div className="mx-auto relative">
           <Splide aria-labelledby="Communities Slideshow" hasTrack={false} options={{pagination:false}}>
@@ -448,10 +458,11 @@ const Home: NextPage = () => {
           {faqs}
         </div>
       </div>
-      
-      {/* Footer */}
-      <Footer />
-
+      <div className="relative">
+        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(46,200,102,0.2)] left-0 -translate-x-2/4 -translate-y-2/4" />
+        {/* Footer */}
+        <Footer />
+      </div>
     </div>
   )
 }
