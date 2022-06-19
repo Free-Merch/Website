@@ -13,7 +13,7 @@ module.exports = {
       },
       black: {
         100: "#120C26"
-        
+
       }
     },
     extend: {
@@ -22,9 +22,6 @@ module.exports = {
       },
       borderWidth:{
         "1px": "1px"
-      },
-      screens: {
-        tiny: ""
       }
     },
 
