@@ -151,7 +151,7 @@ const Home: NextPage = () => {
         </p>
         
         <div className="flex w-full max-w-max justify-start md:justify-center flex-wrap md:mx-auto">
-          <GreenButton className="mr-4">Contact</GreenButton>
+          <GreenButton className="mr-4 mb-4">Contact</GreenButton>
           <GreenBorderButton>Learn More</GreenBorderButton>
         </div>
       </div>
