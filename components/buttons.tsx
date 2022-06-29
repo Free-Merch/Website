@@ -12,6 +12,9 @@ export const GreenButton = ({children, className}: IButton) =>
 
 
 export const GreenBorderButton = ({children, className}: IButton) => 
-  <button className={`bg-transparent border-green-100 border-1px text-white py-4 px-8 rounded-md ${className}`}>
+  <button className={`
+    bg-transparent border-green-100 border-1px text-grey-500
+   dark:text-white py-4 px-8 rounded-md ${className} mb-4
+  `}>
     {children}
   </button>
