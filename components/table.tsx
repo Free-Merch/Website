@@ -84,7 +84,7 @@ export const MobileTable = (data: TData) => {
   });
   
 
-  return <div className={`${className} mobile-table`}>
+  return <div className={`${className} mobile-table `}>
     <div className={`shadow-[0px_8px_16px_rgba(171,190,209,0.4)] dark:shadow-none dark:text-white dark:bg-blue-900`}>
       {headers}
     </div>

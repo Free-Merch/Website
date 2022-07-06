@@ -86,8 +86,8 @@ const Project = () => {
         <span className="flex text-blue-900 text-[19px] dark:text-white">
           <BsTwitter className="cursor-pointer"/>
           &nbsp;
-          <BiLinkAlt className="cursor-pointer"/>1
-          
+          <BiLinkAlt className="cursor-pointer"/>
+
         </span>
       </h2>
       <p className="text-grey-300 dark:text-grey-700 max-w-[569px] text-sm">
@@ -117,7 +117,7 @@ const Project = () => {
             headers={TableHeaders} rows={TableRows}
           />
         </div>
-        <MobileTable className="md:hidden" headers={TableHeaders} rows={TableRows}/>
+        <MobileTable className="md:hidden -mx-10 " headers={TableHeaders} rows={TableRows}/>
       </div>
 
       <div>
