@@ -107,6 +107,7 @@ const Home: NextPage = () => {
           cursor-pointer 
           relative
           flex
+          h-min
         `}
         onClick={() => handleSetFaq(index)}
       >
@@ -173,7 +174,7 @@ const Home: NextPage = () => {
           </p>
         </div>
 
-        <div className="child:m-4">
+        <div className="child:mr-4">
           <ProjectCard type="binance" />
           <ProjectCard type="mexc"/>
           <ProjectCard type="binance" />
