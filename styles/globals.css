@@ -22,3 +22,74 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.dark .bg-silver{
+  background: radial-gradient(98.48% 326.98% at 0% 3.35%, rgba(255, 255, 255, 0.038) 0%, rgba(102, 112, 133, 0.01) 100%);
+}
+
+.dark .border-com{
+  border-color: radial-gradient(98.16% 354.35% at 98.16% 96.62%, #2EC866 0%, rgba(118, 123, 241, 0) 100%, rgba(46, 200, 102, 0) 100%);
+}
+
+.Dropdown-control{
+  background-color: #F5F8FF !important;
+  border-radius: 5px !important;
+  color: #120C26 !important;
+  box-shadow:  0px 9px 16px rgba(171, 190, 209, 0.03) !important;
+  border: none !important;
+  cursor: pointer !important;
+  width: 150px;
+}
+.dark .Dropdown-control{
+  background-color: #1A192B !important;
+  color: #FFFFFF !important;
+}
+
+.Dropdown-menu{
+  border: none !important;
+}
+.dark .Dropdown-menu{
+  background-color: #1A192B !important;
+}
+
+.Dropdown-option{
+  color: #120C26 !important;
+}
+.dark .Dropdown-option{
+  color: #FFFFFF !important;
+}
+.dark .Dropdown-option.is-selected{
+  background-color: #120C26 !important;
+}
+.dark .Dropdown-option:hover{
+  background-color: #120C26 !important;
+}
+
+.Dropdown-control .arrow{
+    display: block;
+    margin-top: -ceil(2.5);
+    position: absolute;
+    right: 10px;
+    top: 11px;
+}
+.dark .Dropdown-control .arrow{
+  color: #FFFFFF;
+}
+
+.dark .radial-initiative{
+  background-image: radial-gradient(98.48% 326.98% at 0% 3.35%, rgba(255, 255, 255, 0.038) 0%, rgba(102, 112, 133, 0.01) 100%);
+}
+
+.dark .border-image-1{
+  border-image: linear-gradient(180deg, #6A42FE 0%, rgba(106, 66, 254, 0) 100%);
+}
+
+.mobile-table .override-weight{
+  font-weight: 500;
+  color: #120C26 !important;
+}
+
+.dark .mobile-table .override-weight{
+  font-weight: 500;
+  color: #FFFFFF !important;
+}
