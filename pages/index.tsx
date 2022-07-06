@@ -141,8 +141,13 @@ const Home: NextPage = () => {
           </p>
           
           <div className="flex w-full max-w-max justify-start flex-wrap">
-            <GreenButton className="mr-6 mb-4">Contact</GreenButton>
-            <button className="flex -translate-y-[10px] items-center"><Image src={Playbtn} alt="play"/> &nbsp; Learn More</button>
+            <GreenButton href="/contact-us" className="mr-6 mb-4">Contact</GreenButton>
+            <a href="#Learn-More" className="flex items-center -translate-y-[10px]">
+              <button className="flex items-center">
+                <Image src={Playbtn} alt="play"/> 
+                &nbsp; Learn More
+              </button>
+            </a>
           </div>
         </div>
         <div className="flex justify-end relative px-2 hero-small:mx-auto">
@@ -384,7 +389,7 @@ const Home: NextPage = () => {
       </div>
 
       {/* Learn More */}
-      <div className="mt-24 flex justify-center items-center flex-col">
+      <div className="mt-24 flex justify-center items-center flex-col" id="Learn-More">
         <h3 className="font-semibold mb-4 text-2xl text-center text-black dark:text-white">Learn More</h3>
         <div className="h-[360px] w-full max-w-[640px]">
           <ReactPlayer 
