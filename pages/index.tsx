@@ -198,25 +198,6 @@ const Home: NextPage = () => {
           </p>
             <WhiteButton className="mt-6">Contact</WhiteButton>
         </div>
-        
-        {/* Gallery */}
-        <div >
-          <h3 className="font-semibold text-4xl text-center text-blue-900 dark:text-white mb-10">Gallery</h3>
-          <div className="flex items-end mx-auto w-full space-x-1 justify-between max-w-screen-xl ">
-            <Splide aria-labelledby="Gallery" hasTrack={false} options={{pagination:false}} className="w-full">
-              <div className="relative md:static mt-20 md:mt-0 w-full">
-                <div className="splide__arrows absolute md:relative w-full md:w-20 md:ml-auto flex items-center justify-between h-full z-10 md:justify-end">
-                  <span className="splide__arrow splide__arrow--prev w-5 
-                      h-5 cursor-pointer absolute left-1">
-                    <BiChevronLeftCircle className="md:hidden" />
-                    <CgChevronLeftR className="hidden md:inline-block" />
-                  </span>
-                  <span className="splide__arrow splide__arrow--next w-5 
-                      h-5 cursor-pointer absolute right-1">
-                    <BiChevronRightCircle className="md:hidden"  />
-                    <CgChevronRightR className="hidden md:inline-block" />
-                  </span>
-                </div>
 
         <div className="dark:border-[0.2px] dark:border-white bg-grey-200 bg-silver max-w-xl px-12 py-12 pb-6 rounded-xl translate-y-20">
           <div className=" rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center shadow-[0px_15px_25px_rgba(34,167,93,0.25)]">
@@ -383,7 +364,6 @@ const Home: NextPage = () => {
             </div>
           </Splide>
         </div>
-
       </div>
 
       {/* Communties */}
