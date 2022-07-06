@@ -2,7 +2,7 @@ import { ProjectCard } from "../../components/cards/project-card";
 import Layout from "../../components/layout";
 import Dropdown, { Option } from 'react-dropdown';
 import 'react-dropdown/style.css';
-import {IoIosArrowDown, IoIosArrowUp} from "react-icons/IO"
+import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
 
 import { useState } from "react";
 
