@@ -385,10 +385,14 @@ const Home: NextPage = () => {
       {/* Learn More */}
       <div className="mt-24 flex justify-center items-center flex-col">
         <h3 className="font-semibold mb-4 text-2xl text-center text-black dark:text-white">Learn More</h3>
-        <ReactPlayer 
-          url='https://www.youtube.com/watch?v=JNCzoG1IzoY' 
-          controls
-        />
+        <div className="h-[360px] w-full max-w-[640px]">
+          <ReactPlayer 
+            url='https://www.youtube.com/watch?v=JNCzoG1IzoY' 
+            controls
+            width="100%"
+            height="100%"
+          />
+        </div>
       </div>
 
       {/* FAQs */}

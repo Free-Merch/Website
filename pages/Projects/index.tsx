@@ -29,9 +29,9 @@ const Projects = () => {
     </div>
 
     <div className="mt-7 mb-10 flex flex-wrap justify-center">
-      <div className="mr-7"><ProjectCard type="binance" /></div>
-      <div className="mr-7"><ProjectCard type="binance" /></div>
-      <div className="mr-7"><ProjectCard type="binance" /></div>
+      <div className="sm:mr-4 md:mr-7"><ProjectCard type="binance" /></div>
+      <div className="sm:mr-4 md:mr-7"><ProjectCard type="binance" /></div>
+      <div className="sm:mr-4 md:mr-7"><ProjectCard type="binance" /></div>
     </div>
 
   </div>

@@ -22,12 +22,12 @@ const AboutUs = () => {
     <br />
     <br />
 
-    <div className="flex flex-wrap justify-between items-center">
+    <div className="flex flex-col md:flex-row justify-between items-center">
       <div className="md:w-1/2">
         <Image src={Diamond} alt="diamond" />
       </div>
-      <div className="text-start md:w-1/2">
-        <h2 className="text-3xl font-semibold  text-start">Our Core Solution</h2>
+      <div className="text-center md:text-start  md:w-1/2">
+        <h2 className="text-3xl font-semibold  md:text-start">Our Core Solution</h2>
         &nbsp;
         <p>Get free crypto merchandise is a program directed at reaching out previously existing networks of Africans and crypto enthusiasts by creating easy, Non-complex crypto bounties for community members to get free crypto merchandise for sponsoring brands thereby creating value end to end.</p>
         &nbsp;
