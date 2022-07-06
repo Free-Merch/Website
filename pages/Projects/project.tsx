@@ -127,7 +127,7 @@ const Project = () => {
             headers={TableHeaders} rows={[TableRows[1]]}
           />
         </div>
-        <MobileTable className="md:hidden" headers={TableHeaders} rows={[TableRows[1]]}/>
+        <MobileTable className="md:hidden -mx-10" headers={TableHeaders} rows={[TableRows[1]]}/>
       </div>
 
       <div className="mt-40">
