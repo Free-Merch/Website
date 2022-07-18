@@ -3,10 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Logo from "../assets/pictures/logo.png";
-import Sun from "../assets/svgs/sun";
-import Moon from "../assets/svgs/moon";
 import useTheme from "../hooks/useTheme";
 import {HiOutlineMoon, HiSun} from "react-icons/hi";
+import {RiMoonFill} from "react-icons/ri";
 
 interface INav {
   openMobileNav: (_:boolean) => void
@@ -29,22 +28,26 @@ export const DesktopNav = (props: INav) => {
   const checkPath = "/" + pathname.split("/")[1].toLowerCase();
 
   const navLinks = links.map(({path, text}) => {
-    return <li className={`whitespace-nowrap  ${checkPath === path.toLowerCase() && "text-green-100"}`} key={uuid()}>
+    return <li className={`whitespace-nowrap hover:text-green-100 ${checkPath === path.toLowerCase() && "text-green-100"}`} key={uuid()}>
       <Link href={path}>{text}</Link>
       <div className={`border-b-1px ${checkPath === path.toLowerCase() ? "border-green-100 w-1/2" : "w-0"}`} />
     </li>
   })
 
   return <div className="flex justify-between items-center text-blue-400 dark:text-white bg-grey-100 dark:bg-blue-900 px-10 md:px-24 h-20">
-    <h3 className="mr-20 font-black flex items-center"> <Image src={Logo} alt="logo" layout="fixed" width={"21px"} height={"21px"}/> <span className="font-normal">Free</span>Merch</h3>
+    <h3 className="mr-12 lg:mr-20 font-black flex items-center"> <Image src={Logo} alt="logo" layout="fixed" width={"21px"} height={"21px"}/> <span className="font-normal">Free</span>Merch</h3>
     
     <div className="hidden md:flex justify-between w-full">
-      <ul className="mx-4 space-x-14 md:flex items-center">
+      <ul className="mx-4 space-x-10 lg:space-x-14 md:flex items-center">
         {navLinks}
       </ul>
       <div className="w-full flex justify-end items-center">
         <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="text-end cursor-pointer">
-          {theme === "dark" ? <Sun /> : <Moon />}
+          {theme === "dark" ?
+            <HiSun className={`rounded-full hover:text-green-100 text-grey-800}`} size={25}/> 
+            :
+            <RiMoonFill className={`rounded-full hover:text-green-100 text-blue-800 }`} size={25}/>
+          }
         </button>
       </div>
     </div>
@@ -53,10 +56,13 @@ export const DesktopNav = (props: INav) => {
       className={`
         flex flex-col relative md:hidden w-6 
         ${mobileNavOpen ? "items-end" : "items-end"} h-6 
-        justify-between child:transition-all`
+        justify-between child:transition-all
+        child:dark:bg-white
+        child:bg-blue-400
+        `
       } onClick={() => openMobileNav(!mobileNavOpen)}>
-      <div className={`rounded  border-2 border-blue-400 dark:border-white ${mobileNavOpen ? "w-full absolute -rotate-45 top-1/3" : "w-3/4"}`}></div>
-      <div className={`rounded w-full border-2 border-blue-400 dark:border-white ${mobileNavOpen && "hidden"}`}></div>
+      <div className={`rounded border-2 border-blue-400 dark:border-white ${mobileNavOpen ? "w-full absolute -rotate-45 top-1/3" : "w-3/4"}`}></div>
+      <div className={`rounded w-full border-2 border-blue-400 dark:border-white  ${mobileNavOpen && "hidden"}`}></div>
       <div className={`rounded border-2 border-blue-400 dark:border-white ${mobileNavOpen ? "w-full absolute rotate-45 bottom-2/4" : "static w-1/2"}`}></div>
     </button>
 
@@ -70,16 +76,16 @@ export const MobileNav = (props: {open:boolean}) => {
   const checkPath = "/" + pathname.split("/")[1].toLowerCase();
 
   const navLinks = links.map(({path, text}, index) => {
-    return <li className={`whitespace-nowrap  ${checkPath === path.toLowerCase() && "text-green-100"}`} key={index}>
+    return <li className={`whitespace-nowrap hover:text-green-100 ${checkPath === path.toLowerCase() && "text-green-100"}`} key={index}>
       <Link href={path}>{text}</Link>
     </li>
   })
 
-  return <div className={`px-7 h-full left-0 absolute z-50 w-full 
+  return <div className={`px-10 h-full left-0 fixed z-50 w-full 
     bg-grey-100 dark:bg-blue-900 dark:text-white text-base 
     font-medium transition-all ${!open && "-translate-x-full" }`
   }>
-    <ul className="space-y-2 ">
+    <ul className="space-y-4 text-base">
       {navLinks}
     </ul>
     <div className="flex justify-between mt-3 items-center">

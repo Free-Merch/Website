@@ -6,13 +6,14 @@ import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
 interface TData {
   headers : string[];
   rows: ReactNode[][];
-  className?: string
+  onClick: ()=> void
+  className?: string;
 }
 
 const upRows = [0, 1, 5, 6];
 
 export const MobileTable = (data: TData) => {
-  const {rows:_rows, className, headers: _headers} = data;
+  const {rows:_rows, className, headers: _headers, onClick: _onClick} = data;
   const [openRows, setOpenRows] = useState(Array(_rows.length).fill(false));
 
   const handleSetOpenRows = (index: number, open: boolean) => {
@@ -35,24 +36,29 @@ export const MobileTable = (data: TData) => {
       <div key={v4()} 
         className={`flex items-center h-[100px] bg-white border border-transparent 
           dark:bg-blue-400
-          ${(openRows[index1] || _rows.length-1 !== index1) && "border-b-grey-300" } `
+          ${(openRows[index1] || _rows.length-1 !== index1) && "border-image-1" } `
         }
       >
         {row.map((ele,index2) => {
           if(upRows.includes(index2)){
             return <div className="text-center w-1/2" key={index2}>
               <>
-                {index2 === 1 ? <span className="!font-medium">{ele} </span> : ele}
+                {index2 === 1 ? 
+                  <span className="!font-medium">{ele} </span> : 
+                  <span className="cursor-pointer" onClick={index2 === 0 ? _onClick : () => {}}>{ele}</span>
+                }
                 <br />
-                <span className="flex items-center text-[10px] justify-center w-full cursor-pointer"
+                <span className="flex items-center text-[13px] 
+                  justify-center w-full cursor-pointer "
                   onClick={() => {
                     handleSetOpenRows(index1, !openRows[index1])
                   }}
                 >
                   {index2 === 1 && 
-                    (openRows[index1] ? 
-                      <><RiArrowUpSFill className="inline text-lg" /> Less</> : 
-                      <><RiArrowDownSFill className="inline text-lg" /> More</>)
+                    ( openRows[index1] ? 
+                      <><RiArrowUpSFill className="inline text-lg" /> Less</> :
+                      <><RiArrowDownSFill className="inline text-lg" /> More</>
+                    )
                   }
                 </span>
               </>
@@ -66,7 +72,7 @@ export const MobileTable = (data: TData) => {
 
     rows.push(
       <div key={v4()} className={`flex items-center h-[100px] bg-white dark:bg-blue-400 
-        ${_rows.length-1 !== index1 && "border border-transparent border-b-grey-300" }`}>
+        ${_rows.length-1 !== index1 && "border border-transparent border-image-1" }`}>
       {row.map((ele, index2) => {
         if(!upRows.includes(index2)){
 
@@ -93,13 +99,16 @@ export const MobileTable = (data: TData) => {
 }
 
 const Table = (data: TData) => {
-  const {rows: _rows, className} = data;
+  const {rows: _rows, className, onClick: _onClick} = data;
+
   const rows = _rows.map((row, index) => {
     return <tr 
       key={index} 
-      className={`h-[70px] dark:bg-blue-400 bg-white ${_rows.length-1 !== index && "border border-transparent border-b-grey-300 border-image-1" }`}>
+      className={`h-[70px] dark:bg-blue-400 bg-white 
+        ${_rows.length-1 !== index && "border border-transparent border-image-1" }`
+      }>
       {row.map((ele,index) => {
-        return <td className="text-center" key={index}>{ele}</td>
+        return <td className={`text-center ${index === 0 && "cursor-pointer"}`} onClick={index === 0 ? _onClick : () => {}} key={index}>{ele}</td>
       })}
     </tr>
   })
@@ -109,7 +118,7 @@ const Table = (data: TData) => {
   const header = data.headers.map((title, index) => <th className={`text-blue-400 dark:text-white w-[${headerWidth}]% lg:w-[${maxWidth}]% text-sm font-medium pt-5 pb-3`} key={index}>{title}</th>);
 
   return <table className={`${className} table-fixed w-full border-collapse text-sm max-w-7xl`}>
-    <thead className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)] dark:shadow-none dark:text-white rounded-t-lg dark:bg-blue-900">
+    <thead className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)] dark:shadow-[0px_8px_16px_rgb(3,3,24)] dark:text-white rounded-t-lg dark:bg-blue-900">
       <tr className="">
         {header}
       </tr>

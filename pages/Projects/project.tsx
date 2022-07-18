@@ -58,7 +58,7 @@ const TableRows = TableData.map(row => {
           >
           &nbsp;
         </div>
-        <span className="text-black-900  absolute right-0 top-1/2 -translate-y-1/2 text-[5px] leading-[5px] font-medium">{percentage}%</span>
+        <span className="text-black-900  absolute right-0 top-1/2 -translate-y-1/2 text-[7px] leading-[10px] font-medium">{percentage}%</span>
       </div>
     </div>,
     <span key={v4()} className={`cursor-default inline-block ${status === "Completed" ? "text-[#7174FF]" : "text-green-100"}`}>{status}</span>,
@@ -114,10 +114,16 @@ const Project = () => {
         <h3 className="font-bold text-black-900 dark:text-white text-xl mb-4">Active</h3>
         <div className="hidden md:block">
           <Table 
-            headers={TableHeaders} rows={TableRows}
+            headers={TableHeaders} 
+            onClick={() => show("merch")}
+            rows={TableRows}
           />
         </div>
-        <MobileTable className="md:hidden -mx-10 " headers={TableHeaders} rows={TableRows}/>
+        <MobileTable 
+          onClick={() => show("merch")}
+          className="md:hidden -mx-10 " 
+          headers={TableHeaders} 
+          rows={TableRows}/>
       </div>
 
       <div>
@@ -125,14 +131,19 @@ const Project = () => {
         <div className="hidden md:block">
           <Table  
             headers={TableHeaders} rows={[TableRows[1]]}
+            onClick={() => show("merch")}
           />
         </div>
-        <MobileTable className="md:hidden -mx-10" headers={TableHeaders} rows={[TableRows[1]]}/>
+        <MobileTable 
+          className="md:hidden -mx-10" 
+          headers={TableHeaders} 
+          onClick={() => show("merch")}
+          rows={[TableRows[1]]}/>
       </div>
 
       <div className="mt-40">
         <h3 className="font-bold text-black-900 dark:text-white text-lg mb-4">Active</h3>
-        <div className="child:m-2 flex flex-wrap justify-center mb-10">
+        <div className="child:m-3 flex flex-wrap justify-center mb-10">
           <ProjectCard type="binance" />
           <ProjectCard type="mexc"/>
           <ProjectCard type="binance" />

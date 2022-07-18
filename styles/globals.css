@@ -6,8 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 #__next{
@@ -81,7 +80,8 @@ a {
 }
 
 .dark .border-image-1{
-  border-image: linear-gradient(180deg, #6A42FE 0%, rgba(106, 66, 254, 0) 100%);
+  border-bottom-color: #8767fe;
+  border-bottom-width: 0.1px;
 }
 
 .mobile-table .override-weight{
@@ -92,4 +92,14 @@ a {
 .dark .mobile-table .override-weight{
   font-weight: 500;
   color: #FFFFFF !important;
+}
+
+:not(.dark) .ellipsis{
+  display: none;
+}
+
+@media only screen and (min-width: 768px){
+  .dark .ellipsis{
+    display: block;
+  }
 }

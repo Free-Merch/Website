@@ -20,12 +20,29 @@ const Button = ({children, className, href}: IButton) => {
 }
 
 export const GreenButton = (props: IButton) =>{
-  props = {...props, className: `${props.className} text-white bg-green-100  border-1px border-green-100 `};
+  props = {...props, className: `${props.className} hover:bg-blue-300 text-white bg-green-100 `};
   return <Button {...props} />
 }
 
 export const WhiteButton = (props: IButton) => {
-  props = {...props, className: `dark:text-blue-400 dark:bg-white bg-blue-400 text-white border-1px border-white ${props.className}`};
+  props = {...props, 
+    className: 
+    `hover:bg-grey-100 hover:text-blue-900 dark:text-blue-400 
+    dark:hover:text-white
+    dark:bg-white dark:hover:bg-blue-400 bg-blue-400 text-white
+    cursor-pointer
+    ${props.className}`
+  };
+  return <Button {...props} />
+}
+
+export const WhiteButton2 = (props: IButton) => {
+  props = {...props, 
+    className: 
+    `text-blue-400 
+    bg-white hover:bg-blue-400 hover:text-white
+    ${props.className}`
+  };
   return <Button {...props} />
 }
 

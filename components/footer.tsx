@@ -1,5 +1,4 @@
-import {AiOutlineTwitter, AiOutlineInstagram} from "react-icons/ai";
-import {TbBrandTelegram} from "react-icons/tb";
+import {AiOutlineTwitter} from "react-icons/ai";
 import Logo from "../assets/pictures/logo.png";
 import Image from "next/image";
 
@@ -14,10 +13,8 @@ const Footer = () => (
       <Image src={Logo} alt="logo" /><span className="font-normal">Free</span>Merch
     </h3>
     &nbsp;
-    <div className="flex space-x-4 child:h-4 mx-auto items-center px-2">
-      <AiOutlineTwitter />
-      <AiOutlineInstagram />
-      <TbBrandTelegram />
+    <div className="flex space-x-4 mx-auto items-center px-2">
+      <AiOutlineTwitter className="w-5 h-5" />
     </div>
     &nbsp;
     <div className="mx-auto">

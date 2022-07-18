@@ -19,7 +19,6 @@ const Layout = ({children, ...others}: {[key:string]: any}) => {
   }
 
   return <div className={`
-      ${ (openNav || modalOpen) && "h-screen overflow-y-hidden" }
       ${ pathname.toLowerCase() === "/contact-us".toLowerCase() && "flex flex-col" }
       relative pb-[60px] min-h-screen bg-grey-100 dark:bg-blue-900`
     }>
@@ -28,13 +27,18 @@ const Layout = ({children, ...others}: {[key:string]: any}) => {
         <meta name="description" content="Get Free Merch" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Banner />
-      <DesktopNav openMobileNav={openMobileNav} mobileNavOpen={openNav}/>
+      <div className="fixed z-10 w-full">
+        <Banner />
+        <DesktopNav openMobileNav={openMobileNav} mobileNavOpen={openNav}/>
+      </div>
+      {/* <div className="w-full mb-32"></div> */}
         {/* mobile Nav */}
 
         {/* page content */}
         <div {...others}>
+          <div className="mt-20"></div>
           <MobileNav open={openNav} />
+          <div className="mt-32"></div>
           {children}
         </div>
       {(!openNav && !modalOpen) && <Footer />}

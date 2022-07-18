@@ -2,6 +2,7 @@ import { useState } from 'react';
 // Next imports
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 
 // package imports
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
@@ -10,6 +11,7 @@ import '@splidejs/react-splide/css/core';
 // imported components
 import { WhiteButton, GreenButton } from '../components/buttons';
 import Layout from '../components/layout';
+// import ReactPlayer from "react-player";
 
 // react icons
 import { BsChevronRight,  } from "react-icons/bs";
@@ -17,7 +19,6 @@ import { CgChevronRightR, CgChevronLeftR } from "react-icons/cg";
 import { TbCrown } from "react-icons/tb";
 import { TiStarFullOutline } from "react-icons/ti";
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
-import ReactPlayer from "react-player";
 
 // pictures
 import BankyW from "../assets/pictures/bankyw.png";
@@ -78,17 +79,47 @@ const Home: NextPage = () => {
     setFaqs(newState);
   };
 
+  const DynamicReactPlayer = dynamic(() => import("react-player"), {
+    ssr: false,
+  })
+
   const faqs = faqsText.map((faq, index) => (
     <div 
-      className={`flex pb-4 border-b-1px justify-between mt-4 
-        bg-white dark:bg-transparent
-          p-7
-          child:ease-linear
-          child:transition-all
-          child:duration-300
+      className={`flex pb-4 border-[0.2px] 
+        justify-between mt-4 
+        rounded-md
+      bg-white dark:bg-transparent
+        p-7
+        child:ease-linear
+        child:transition-all
+        child:duration-300
       `} key={index}>
-      <div className="mr-2">
-        <h4 className="text-base font-semibold max-w-[717px] dark:text-white text-blue-900 mb-4">{faq[0]}</h4>
+      <div className="w-full">
+        <h4 className="text-base cursor-pointer 
+          flex justify-between items-center font-semibold
+          dark:text-white text-blue-900 mb-4"
+          onClick={() => handleSetFaq(index)} 
+        >
+          {faq[0]} &nbsp; &nbsp;
+          <div className={`
+              shrink-0
+              cursor-pointer 
+              relative
+              h-min
+              inline-flex
+            `}
+          >
+            <div className={`
+              h-[4px] w-[14px] 
+              ease-linear transition-all 
+              duration-300
+              ${!faqState[index] ?"rotate-90" : ""}
+              bg-blue-400 
+              dark:bg-white
+            `}></div>
+            <div className="h-[4px] bg-blue-400 absolute w-[14px] dark:bg-white"></div>
+          </div>
+        </h4>
         <p className={`
           text-sm font-normal max-w-[737px]
           ease-linear
@@ -102,35 +133,16 @@ const Home: NextPage = () => {
           {faq[1]}
         </p>
       </div>
-      <div className={`
-          shrink-0
-          cursor-pointer 
-          relative
-          flex
-          h-min
-        `}
-        onClick={() => handleSetFaq(index)}
-      >
-        <div className={`
-          h-[4px] w-[14px] 
-          ease-linear transition-all 
-          duration-300
-          ${!faqState[index] ?"rotate-90" : ""}
-          bg-blue-400 
-          dark:bg-white
-        `}></div>
-        <div className="h-[4px] bg-blue-400 absolute w-[14px] dark:bg-white"></div>
-      </div>
     </div>
   ));
 
   return (
-    <Layout className="h-full bg-grey-100 dark:bg-blue-900 py-10 px-10 md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
+    <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-10 md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
       {/* bg ellipses */}
       {/* <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(22, 124, 186, 0.3)] right-0 top-4 z-10" /> */}
       <div className='flex flex-wrap justify-center sm:justify-between max-w-6xl mx-auto'>
-        <div className="text-start xl:w-2/4 mt-32 ">
-          <h1 className="text-6xl font-semibold text-green-100 max-w-[800px]">
+        <div className="text-start xl:w-2/4 mt-2 md:mt-32 ">
+          <h1 className="text-3xl md:text-6xl font-semibold text-green-100 max-w-[800px]">
             <span className="dark:text-white text-blue-400">Get Access</span> to Free Crypto Swag Wear
           </h1>
 
@@ -156,8 +168,12 @@ const Home: NextPage = () => {
         </div>
       </div>
 
+      <div className="ellipsis relative">
+        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4 " />
+      </div>
+
       {/* About Us */}
-      <div className="max-w-screen-lg mt-20 text-center mx-auto">
+      <div className="max-w-screen-lg mt-[150px] text-center mx-auto">
         <h3 className=" font-semibold text-green-100 text-3xl mb-11">About Us</h3>
         <p>
           Get free crypto merchandise is a program directed at reaching out previously existing networks of Africans and crypto 
@@ -166,20 +182,16 @@ const Home: NextPage = () => {
         </p>
       </div>
 
-      <div className="relative">
-        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4 " />
-      </div>
-
       {/* Recent Projects */}
-      <div className="md:space-x-4 text-center rouded-lg mt-20">
-        <div className="my-12 md:w-2/3 mx-auto text-start md:text-center">
+      <div className="md:space-x-4 text-center rouded-lg mt-[115px]">
+        <div className="my-12 md:w-2/3 mx-auto text-center">
           <h2 className="font-semibold text-green-100 text-3xl mb-11">Recent Projects</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit
           </p>
         </div>
 
-        <div className="child:mr-4">
+        <div className="child:mr-6">
           <ProjectCard type="binance" />
           <ProjectCard type="mexc"/>
           <ProjectCard type="binance" />
@@ -191,11 +203,11 @@ const Home: NextPage = () => {
       </div>
 
       {/* Contact Info */}
-      <div className="relative mt-32 mb-52 flex justify-center flex-wrap max-w-screen-xl mx-auto md:space-x-4">
-        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4 " />
-        <div className="dark:border-[0.2px]  dark:border-white max-w-xl bg-grey-200 bg-silver px-12 py-12 pb-6 rounded-xl max-h-min">
-          <div className="rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center shadow-[0px_15px_25px_rgba(34,167,93,0.25)]">
-            <TbCrown className="fill-white dark:fill-blue-900 w-6 h-6"/>
+      <div className="relative mt-32 mb-52 flex justify-center lg:justify-between lg:flex-nowrap flex-wrap max-w-screen-xl mx-auto md:space-x-4">
+        <div className="ellipsis absolute blur-[241px] w-[421px] h-[479px] opacity-50 bg-[#298A63] left-0 -translate-x-3/4 translate-y-1/4" />
+        <div className="dark:border-[0.2px] grow-0  dark:border-white max-w-[581px] bg-grey-200 bg-silver px-12 py-12 pb-6 rounded-xl max-h-min">
+          <div className="rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center">
+            <TbCrown className="fill-white dark:fill-blue-900 w-6 h-6 text-blue-900"/>
           </div>
           <h3 className="my-3 font-semibold text-4xl text-blue-900 dark:text-white">Company</h3>
           <p>
@@ -204,9 +216,9 @@ const Home: NextPage = () => {
           </p>
             <WhiteButton className="mt-6">Contact</WhiteButton>
         </div>
-
-        <div className="dark:border-[0.2px] dark:border-white bg-grey-200 bg-silver max-w-xl px-12 py-12 pb-6 rounded-xl translate-y-20">
-          <div className=" rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center shadow-[0px_15px_25px_rgba(34,167,93,0.25)]">
+        <div className="w-20 hidden lg:block"></div>
+        <div className="dark:border-[0.2px] grow-0 dark:border-white max-w-[581px] bg-grey-200 bg-silver px-12 py-12 pb-6 rounded-xl translate-y-20">
+          <div className=" rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center">
             <TiStarFullOutline className="fill-white dark:fill-blue-900 w-6 h-6"/>
           </div>
           <h3 className="my-3 font-semibold text-4xl text-blue-900 dark:text-white">Individual</h3>
@@ -216,24 +228,27 @@ const Home: NextPage = () => {
           </p>
             <WhiteButton className="mt-6">Contact</WhiteButton>
         </div>
+        <div className="ellipsis absolute blur-[241px] w-[421px] h-[479px] opacity-50 bg-[#298A63] right-0 translate-x-3/4 translate-y-1/4" />
       </div>
       
       {/* Gallery */}
       <div >
         <h3 className="font-semibold text-4xl text-center text-blue-900 dark:text-white mb-10">Gallery</h3>
         <div className="flex items-end mx-auto w-full space-x-1 justify-between max-w-screen-xl ">
-          <Splide aria-labelledby="Gallery" hasTrack={false} options={{pagination:false}} className="w-full">
+          <Splide 
+            draggable={true}
+            aria-labelledby="Gallery" hasTrack={false} options={{pagination:false}} className="w-full">
             <div className="relative md:static mt-20 md:mt-0 w-full">
-              <div className="splide__arrows absolute md:relative w-full md:w-20 md:ml-auto flex items-center justify-between h-full z-10 md:justify-end">
+              <div className="splide__arrows absolute top-1/2 -translate-y-1/2 md:relative w-full md:w-20 md:ml-auto flex items-center justify-between h-0 z-[5] md:justify-end">
                 <span className="splide__arrow splide__arrow--prev w-5 
                     h-5 cursor-pointer absolute left-1">
-                  <BiChevronLeftCircle className="md:hidden" />
-                  <CgChevronLeftR className="hidden md:inline-block" />
+                  <BiChevronLeftCircle className="md:hidden text-xl" />
+                  <CgChevronLeftR className="hidden md:inline-block text-xl" />
                 </span>
                 <span className="splide__arrow splide__arrow--next w-5 
                     h-5 cursor-pointer absolute right-1">
-                  <BiChevronRightCircle className="md:hidden"  />
-                  <CgChevronRightR className="hidden md:inline-block" />
+                  <BiChevronRightCircle className="md:hidden text-xl"  />
+                  <CgChevronRightR className="hidden md:inline-block text-xl" />
                 </span>
               </div>
 
@@ -275,21 +290,20 @@ const Home: NextPage = () => {
       </div>
 
       <div className="mt-32 relative max-w-[1244px] mx-auto">
-        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4 -translate-y-2/4 " />
         <h4 className="text-2xl font-semibold text-blue-400 dark:text-white">Communities</h4>
         <div className="mx-auto relative">
           <Splide aria-labelledby="Communities Slideshow" hasTrack={false} options={{pagination:false}}>
             <div className="relative md:static mt-20 md:mt-0">
-              <div className="splide__arrows absolute md:relative w-full md:w-20 md:ml-auto flex items-center justify-between h-full z-10 md:justify-end">
+              <div className="splide__arrows absolute top-1/2 -translate-y-1/2 md:relative w-full md:w-20 md:ml-auto flex items-center justify-between h-0  z-[5] md:justify-end">
                 <span className="splide__arrow splide__arrow--prev w-5 
                     h-5 cursor-pointer absolute left-1">
-                  <BiChevronLeftCircle className="md:hidden" />
-                  <CgChevronLeftR className="hidden md:inline-block" />
+                  <BiChevronLeftCircle className="md:hidden text-xl" />
+                  <CgChevronLeftR className="hidden md:inline-block text-xl" />
                 </span>
                 <span className="splide__arrow splide__arrow--next w-5 
                     h-5 cursor-pointer absolute right-1">
-                  <BiChevronRightCircle className="md:hidden"  />
-                  <CgChevronRightR className="hidden md:inline-block" />
+                  <BiChevronRightCircle className="md:hidden text-xl"  />
+                  <CgChevronRightR className="hidden md:inline-block text-xl" />
                 </span>
               </div>
 
@@ -370,14 +384,16 @@ const Home: NextPage = () => {
             </div>
           </Splide>
         </div>
+        <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
+          bg-[#298A63] -left-96 -translate-y-3/4 " />
       </div>
 
       {/* Communties */}
-      <div className="mt-32 max-w-screen-xl mx-auto">
+      <div className="mt-32 relative max-w-screen-xl mx-auto">
         <h3 className="text-2xl font-semibold text-center text-blue-900 dark:text-white                    ">
           Trusted with <span className="text-green-100">50+ Brands</span>
         </h3>
-        <div className="mt-3  child:px-2 mx-auto text-center">
+        <div className="mt-3 child:max-w-[120px] md:child:max-w-[200px] child:px-2 mx-auto text-center">
           <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
           <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
           <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
@@ -386,13 +402,16 @@ const Home: NextPage = () => {
           <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
           <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
         </div>
+        <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
+          bg-[#298A63] -right-96 -translate-y-3/4" />
       </div>
 
       {/* Learn More */}
       <div className="mt-24 flex justify-center items-center flex-col" id="Learn-More">
         <h3 className="font-semibold mb-4 text-2xl text-center text-black dark:text-white">Learn More</h3>
         <div className="h-[360px] w-full max-w-[640px]">
-          <ReactPlayer 
+          {/* relative pt-[56.25%] */}
+          <DynamicReactPlayer 
             url='https://www.youtube.com/watch?v=JNCzoG1IzoY' 
             controls
             width="100%"
@@ -402,15 +421,15 @@ const Home: NextPage = () => {
       </div>
 
       {/* FAQs */}
-      <div className="mt-24 mb-24">
+      <div className="mt-24 mb-24 relative">
+          <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
+          bg-[#298A63] -left-40 -top-0 -translate-y-4/4 " />
         <h3 className="font-semibold text-2xl text-center text-black dark:text-white">FAQs</h3>
         <div className="mt-20 max-w-[824px] mx-auto">
           {faqs}
         </div>
-      </div>
-      <div className="relative">
-        {/* <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(46,200,102,0.2)] left-0 -translate-x-2/4 -translate-y-2/4 " /> */}
-        {/* Footer */}
+          <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
+          bg-[#298A63] -right-40 -top-0 -translate-y-4/4 " />
       </div>
     </Layout>
   )

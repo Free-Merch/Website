@@ -8,7 +8,7 @@ const MerchModal = () => {
   const {modals, hide} = useContext(ModalContext)
   const open = modals.merch.open;
 
-  return open ? <div className="absolute px-12 flex justify-center scrollbar-hide z-[100] w-full h-full bg-[rgb(0,0,0,0.5)]">
+  return open ? <div className="fixed px-12 flex justify-center scrollbar-hide z-[100] w-full h-full bg-[rgb(0,0,0,0.5)]">
     <div className="relative mt-48">
       <Image src={HangerShirt} alt="merch_image"/>
       <div onClick={() => hide("merch")} className="cursor-pointer absolute rounded-full top-0 -right-5 md:-right-12 bg-white dark:bg-blue-400">

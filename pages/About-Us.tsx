@@ -5,23 +5,6 @@ import Diamond from "../assets/pictures/diamond.png";
 
 const AboutUs = () => {
   return <div className="text-center mx-auto text-base text-blue-400 max-w-5xl dark:text-white">
-    <div>
-      <h1 className="text-3xl font-semibold">About Us</h1>
-      <br />
-      <p>
-        Africans and Nigerians over the years have demonstrated unweaving support for adoption of Blockchain, Cryptocurrency and metaverse with several communities established across different zones, regions and countries all saddled with the responsibilities of education.
-      </p>
-      &nbsp;
-      <p>
-        From experience, <span className="text-green-100">Africans, just like non-fungible tokens,</span> have so much interest in <span className="text-green-100">Crypto Merchandise</span> and swags such as shirts, books and other gift items and are proud to own as many as possible. It is discovered that they are ready to engage in micro- marketing tasks for projects and learn more when there are swags.
-      </p>
-      &nbsp;
-      <p>These merchandise further help create more awareness among their peers and give them a perception of being crypto inclined. For several more reasons like this, Africans love shirts.</p>
-    </div>
-
-    <br />
-    <br />
-
     <div className="flex flex-col md:flex-row justify-between items-center">
       <div className="md:w-1/2">
         <Image src={Diamond} alt="diamond" />
@@ -32,6 +15,8 @@ const AboutUs = () => {
         <p>Get free crypto merchandise is a program directed at reaching out previously existing networks of Africans and crypto enthusiasts by creating easy, Non-complex crypto bounties for community members to get free crypto merchandise for sponsoring brands thereby creating value end to end.</p>
         &nbsp;
         <p>Our goal is to sensitize the Nigeria community through inscriptions on shirts that informs their subconsciousness about why Cryptocurrency is not a scam and inscriptions that further enlighten the public about the new technology and other opportunities in it. </p>
+        &nbsp;
+        <p>These merchandise further help create more awareness among their peers and give them a perception of being crypto inclined. For several more reasons like this, Africans love shirts.</p>
       </div>
     </div>
 
