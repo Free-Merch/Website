@@ -25,7 +25,8 @@ const ModalContextProvider = ({children}: {children: ReactNode}) => {
     setModals(_modals);
   }
 
-  const show = (modal: keyof ModalObj, ...props: any) => {
+  const show = (modal: keyof ModalObj, props: any) => {
+    console.log(props);
     handle(modal, true, props);
   }
 

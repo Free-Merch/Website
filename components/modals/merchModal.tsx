@@ -6,11 +6,12 @@ import { ModalContext } from "../../context/modalContext";
 
 const MerchModal = () => {
   const {modals, hide} = useContext(ModalContext)
-  const open = modals.merch.open;
+  const open = modals.merch.open
+  const picture = modals.merch.picture
 
   return open ? <div className="fixed px-12 flex justify-center scrollbar-hide z-[100] w-full h-full bg-[rgb(0,0,0,0.5)]">
     <div className="relative mt-48">
-      <Image src={HangerShirt} alt="merch_image"/>
+      <Image src={picture} alt="merch_image" className="merch_modal_image" layout="fill"/>
       <div onClick={() => hide("merch")} className="cursor-pointer absolute rounded-full top-0 -right-5 md:-right-12 bg-white dark:bg-blue-400">
         <IoCloseSharp className="dark:text-white text-blue-400 text-2xl md:text-4xl"/>
       </div>

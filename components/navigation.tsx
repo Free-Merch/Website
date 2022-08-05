@@ -34,38 +34,40 @@ export const DesktopNav = (props: INav) => {
     </li>
   })
 
-  return <div className="flex justify-between items-center text-blue-400 dark:text-white bg-grey-100 dark:bg-blue-900 px-10 md:px-24 h-20">
-    <h3 className="mr-12 lg:mr-20 font-black flex items-center"> <Image src={Logo} alt="logo" layout="fixed" width={"21px"} height={"21px"}/> <span className="font-normal">Free</span>Merch</h3>
-    
-    <div className="hidden md:flex justify-between w-full">
-      <ul className="mx-4 space-x-10 lg:space-x-14 md:flex items-center">
-        {navLinks}
-      </ul>
-      <div className="w-full flex justify-end items-center">
-        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="text-end cursor-pointer">
-          {theme === "dark" ?
-            <HiSun className={`rounded-full hover:text-green-100 text-grey-800}`} size={25}/> 
-            :
-            <RiMoonFill className={`rounded-full hover:text-green-100 text-blue-800 }`} size={25}/>
-          }
-        </button>
+  return <div className="px-10 md:px-24 bg-grey-100 dark:bg-blue-900">
+    <div className="flex max-w-7xl mx-auto justify-between items-center text-blue-400 dark:text-white h-20">
+      <h3 className="mr-12 lg:mr-20 font-black flex items-center"> <Image src={Logo} alt="logo" layout="fixed" width={"21px"} height={"21px"}/> <span className="font-normal">Free</span>Merch</h3>
+      
+      <div className="hidden md:flex justify-between w-full">
+        <ul className="mx-4 space-x-10 lg:space-x-14 md:flex items-center">
+          {navLinks}
+        </ul>
+        <div className="w-full flex justify-end items-center">
+          <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="text-end cursor-pointer">
+            {theme === "dark" ?
+              <HiSun className={`rounded-full hover:text-green-100 text-grey-800}`} size={25}/> 
+              :
+              <RiMoonFill className={`rounded-full hover:text-green-100 text-blue-800 }`} size={25}/>
+            }
+          </button>
+        </div>
       </div>
+
+      <button 
+        className={`
+          flex flex-col relative md:hidden w-6 
+          ${mobileNavOpen ? "items-end" : "items-end"} h-6 
+          justify-between child:transition-all
+          child:dark:bg-white
+          child:bg-blue-400
+          `
+        } onClick={() => openMobileNav(!mobileNavOpen)}>
+        <div className={`rounded border-2 border-blue-400 dark:border-white ${mobileNavOpen ? "w-full absolute -rotate-45 top-1/3" : "w-3/4"}`}></div>
+        <div className={`rounded w-full border-2 border-blue-400 dark:border-white  ${mobileNavOpen && "hidden"}`}></div>
+        <div className={`rounded border-2 border-blue-400 dark:border-white ${mobileNavOpen ? "w-full absolute rotate-45 bottom-2/4" : "static w-1/2"}`}></div>
+      </button>
+
     </div>
-
-    <button 
-      className={`
-        flex flex-col relative md:hidden w-6 
-        ${mobileNavOpen ? "items-end" : "items-end"} h-6 
-        justify-between child:transition-all
-        child:dark:bg-white
-        child:bg-blue-400
-        `
-      } onClick={() => openMobileNav(!mobileNavOpen)}>
-      <div className={`rounded border-2 border-blue-400 dark:border-white ${mobileNavOpen ? "w-full absolute -rotate-45 top-1/3" : "w-3/4"}`}></div>
-      <div className={`rounded w-full border-2 border-blue-400 dark:border-white  ${mobileNavOpen && "hidden"}`}></div>
-      <div className={`rounded border-2 border-blue-400 dark:border-white ${mobileNavOpen ? "w-full absolute rotate-45 bottom-2/4" : "static w-1/2"}`}></div>
-    </button>
-
   </div>
 }
 

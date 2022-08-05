@@ -2,9 +2,17 @@ import { ProjectCard } from "../../components/cards/project-card";
 import Layout from "../../components/layout";
 import Dropdown, { Option } from 'react-dropdown';
 import 'react-dropdown/style.css';
-import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io"
+import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
+import useProjects from "../../hooks/useProjects";
 
 import { useState } from "react";
+import { ProjectBrief } from "../../types";
+
+const orderFunctions = {
+  "A-Z": (projects: ProjectBrief[]) => projects.sort((a, b) => a.brand[0] < b.brand[0] ? -1 : 1),
+  "Z-A": (projects: ProjectBrief[]) => projects.sort((a, b) => a.brand[0] > b.brand[0] ? -1 : 1),
+  "Most recent": (projects: ProjectBrief[]) => projects
+}
 
 const Projects = () => {
   
@@ -18,6 +26,21 @@ const Projects = () => {
   // @ts-ignore
   const handleSetOrder = (value: Option) => setOrder(value)
 
+  let projects = useProjects()
+  const ProjectCards = orderFunctions[order.value as keyof typeof orderFunctions](projects)?.map((project, index) => {
+    const { about, logo, campaigns, brand, logoBgColor, id } = project;
+    return <div className="sm:mr-4 md:mr-7" key={index}>
+      <ProjectCard  
+        brand={brand}
+        image={logo}
+        about={about}
+        bgColor={logoBgColor}
+        campaigns={campaigns}
+        id={id}
+      />
+    </div>
+  })
+
   return <div className="my-12">
     <div className="flex justify-between">
       <h1 className="text-3xl font-semibold text-black-900 dark:text-white">Projects</h1>
@@ -29,9 +52,7 @@ const Projects = () => {
     </div>
 
     <div className="mt-7 mb-10 flex flex-wrap justify-center">
-      <div className="sm:mr-4 md:mr-7"><ProjectCard type="binance" /></div>
-      <div className="sm:mr-4 md:mr-7"><ProjectCard type="binance" /></div>
-      <div className="sm:mr-4 md:mr-7"><ProjectCard type="binance" /></div>
+      {ProjectCards}
     </div>
 
   </div>

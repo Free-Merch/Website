@@ -4,6 +4,7 @@ import Footer from "./footer";
 import {DesktopNav, MobileNav} from "./navigation";
 import { useContext, useState } from "react";
 import ModalContextProvider, { ModalContext } from "../context/modalContext";
+import ApolloContextProvider from "../context/apolloContext";
 import { useRouter } from "next/router";
 
 
@@ -39,14 +40,19 @@ const Layout = ({children, ...others}: {[key:string]: any}) => {
           <div className="mt-20"></div>
           <MobileNav open={openNav} />
           <div className="mt-32"></div>
-          {children}
+          <div className="max-w-7xl mx-auto">
+            {children}
+          </div>
         </div>
       {(!openNav && !modalOpen) && <Footer />}
     </div>
 }
 
-const Component = (props: any) => <ModalContextProvider>
-    <Layout {...props} />
-  </ModalContextProvider>
-
+const Component = (props: any) => (
+  <ApolloContextProvider>
+    <ModalContextProvider>
+      <Layout {...props} />
+    </ModalContextProvider>
+  </ApolloContextProvider>
+)
 export default Component;

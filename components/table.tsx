@@ -6,14 +6,15 @@ import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
 interface TData {
   headers : string[];
   rows: ReactNode[][];
-  onClick: ()=> void
+  onClick: (_:string) => void
+  images: string[]
   className?: string;
 }
 
 const upRows = [0, 1, 5, 6];
 
 export const MobileTable = (data: TData) => {
-  const {rows:_rows, className, headers: _headers, onClick: _onClick} = data;
+  const {rows:_rows, className, headers: _headers, onClick: _onClick, images} = data;
   const [openRows, setOpenRows] = useState(Array(_rows.length).fill(false));
 
   const handleSetOpenRows = (index: number, open: boolean) => {
@@ -45,7 +46,7 @@ export const MobileTable = (data: TData) => {
               <>
                 {index2 === 1 ? 
                   <span className="!font-medium">{ele} </span> : 
-                  <span className="cursor-pointer" onClick={index2 === 0 ? _onClick : () => {}}>{ele}</span>
+                  <span className="cursor-pointer" onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}}>{ele}</span>
                 }
                 <br />
                 <span className="flex items-center text-[13px] 
@@ -99,26 +100,29 @@ export const MobileTable = (data: TData) => {
 }
 
 const Table = (data: TData) => {
-  const {rows: _rows, className, onClick: _onClick} = data;
-
+  const {rows: _rows, className, onClick: _onClick, images} = data;
   const rows = _rows.map((row, index) => {
     return <tr 
       key={index} 
-      className={`h-[70px] dark:bg-blue-400 bg-white 
-        ${_rows.length-1 !== index && "border border-transparent border-image-1" }`
-      }>
+      className={`h-[70px] dark:bg-blue-400 bg-white`}>
       {row.map((ele,index) => {
-        return <td className={`text-center ${index === 0 && "cursor-pointer"}`} onClick={index === 0 ? _onClick : () => {}} key={index}>{ele}</td>
+        return <td className={`text-leftW ${index === 0 && "cursor-pointer"}`} onClick={index === 0 ? () => _onClick(images[index]) : () => {}} key={index}>{ele}</td>
       })}
     </tr>
   })
 
   const headerWidth = 100/data.headers.length;
   const maxWidth = headerWidth - (10/data.headers.length);
-  const header = data.headers.map((title, index) => <th className={`text-blue-400 dark:text-white w-[${headerWidth}]% lg:w-[${maxWidth}]% text-sm font-medium pt-5 pb-3`} key={index}>{title}</th>);
+  const header = data.headers.map((title, index) => 
+    <th 
+      className={`text-grey-300 text-left dark:text-white w-[${headerWidth}]% lg:w-[${maxWidth}]% text-sm font-medium pt-2 pb-3`} 
+      key={index}>
+      {title}
+    </th>
+  );
 
-  return <table className={`${className} table-fixed w-full border-collapse text-sm max-w-7xl`}>
-    <thead className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)] dark:shadow-[0px_8px_16px_rgb(3,3,24)] dark:text-white rounded-t-lg dark:bg-blue-900">
+  return <table className={`${className} table-fixed w-full border-collapse text-sm`}>
+    <thead className="dark:text-white rounded-t-lg">
       <tr className="">
         {header}
       </tr>

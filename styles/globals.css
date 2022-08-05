@@ -98,8 +98,17 @@ a {
   display: none;
 }
 
+
+
 @media only screen and (min-width: 768px){
   .dark .ellipsis{
     display: block;
+  }
+}
+
+@media only screen and (min-width: 768px){
+  .merch_modal_image{
+    width: 250px !important;
+    height: 250px !important;
   }
 }
