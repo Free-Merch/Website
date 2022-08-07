@@ -4,8 +4,9 @@ export interface ImageType {
   url: string,
   name: string,
   alternativeText: string,
-  height?: number,
-  width?: number
+  ratio: number,
+  height: number,
+  width: number
 }
 
 export interface Item {

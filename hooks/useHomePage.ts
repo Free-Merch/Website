@@ -1,17 +1,10 @@
 import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
+import { ImageType } from '../types';
 
 interface FAQ {
   question: string,
   answer: string
-}
-
-interface Gallery {
-  name: string
-  alternativeText: string,
-  url:string,
-  width: number
-  height: number
 }
 
 const query = gql`
@@ -40,12 +33,19 @@ const query = gql`
   }`
 
 const useHomePage = () => {
-  const {data} = useQuery(query, {client});
+  const {data} = useQuery(query, {client})
+  console.log(data)
+  const faqs: FAQ[] = data?.homePage.data.attributes.FAQ
+  const gallery: ImageType[] = data?.homePage.data.attributes.Gallery.data.map( (data:any) => data.attributes)
+  gallery?.forEach(image => {
+    image = {...image}
+    image.ratio = image.width/image.height
+    return image;
+  })
 
-  const faqs: FAQ[] = data?.homePage.data.attributes.FAQ;
-  const gallery: Gallery[] = data?.homePage.data.attributes.Gallery.data.map( (data:any) => data.attributes)
   return {
-    faqs, gallery
+    faqs,
+    gallery
   }
 }
 

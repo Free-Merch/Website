@@ -1,12 +1,13 @@
 import React, { ReactNode, useState, createContext } from "react";
 import MerchModal from "../components/modals/merchModal";
+import { ImageType } from "../types";
 
 type ModalObj = {
-  merch: {open: boolean, picture: string},
+  merch: {open: boolean, picture?: ImageType},
 }
 
 const initialModals: ModalObj = {
-  merch: {open: false, picture: ""}
+  merch: {open: false}
 }
 
 export const ModalContext = createContext({
@@ -26,7 +27,6 @@ const ModalContextProvider = ({children}: {children: ReactNode}) => {
   }
 
   const show = (modal: keyof ModalObj, props: any) => {
-    console.log(props);
     handle(modal, true, props);
   }
 

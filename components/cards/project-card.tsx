@@ -4,6 +4,7 @@ import { BsArrowRight } from "react-icons/bs";
 
 import Link from "next/link";
 import { ImageType } from "../../types";
+import { useWindowSize, useElementSize } from "../../hooks/useSize";
 
 
 interface IProjectCard {
@@ -15,25 +16,36 @@ interface IProjectCard {
   id: number
 }
 
-export const ProjectCard = ({ image, bgColor, about, brand, campaigns, id }: IProjectCard) => {
-
+export function ProjectCard (this: any, { image, bgColor, about, brand, campaigns, id }: IProjectCard){
+  const {width: windowWidth} = useWindowSize()
+  const {width: width1, ref: ref1} = useElementSize()
+  const logoWidth = 75/100 * width1
+  
   const shadow = "shadow-[0px_0px_7px_4px_rgba(46,200,102,0.04)]"
   const items = campaigns?.map((campaign, index) => {
-    return <div key={index}>
+    const width = 24/100 * width1
+    const height = width/campaign.ratio
+
+    return <div key={index} >
       <Image 
-        className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)]" src={campaign.url} 
-        alt={campaign.alternativeText} layout="fixed" width={"60px"} height={"60px"}
+        className="rounded shadow-[0px_8px_16px_rgba(171,190,209,0.4)]" 
+        src={campaign.url} 
+        alt={campaign.alternativeText} 
+        width={ width}
+        height={height}
       />
     </div>
   })
 
-  return <div className="min-w-[163px] md:w-[300px] transition-all duration-300 hover:scale-110 cursor-pointer inline-block bg-grey-200 rounded-lg max-w-[289px] p-3.5 mb-6">
+  return <div className="transition-all duration-300 hover:scale-110 cursor-pointer 
+    inline-block bg-grey-200 rounded-lg w-screen min-w-[200px] 
+    max-w-[289px] p-3.5 flex-[1_0_200px]" ref={ref1}>
     <Link href={`/projects/${id}`}>
       <div>
         <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded-lg h-[200px] w-full flex items-center justify-center`}
           style={{backgroundColor: `${bgColor}`}}
         >
-            <Image src={image.url} alt={image.alternativeText} layout="fixed" width={200} height={43}/>
+          <Image src={image.url} alt={image.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/image.ratio}/>
         </div>
 
         <div className="mt-6">
@@ -49,7 +61,7 @@ export const ProjectCard = ({ image, bgColor, about, brand, campaigns, id }: IPr
 
           <div className="justify-between text-left mt-2">
             <p className="text-blue-400">Merch</p>
-            <div className="flex mt-2 child:mr-3 child:inline-block rounded-md">
+            <div className="flex items-end mt-2 child:mr-3 child:inline-block rounded-md">
               {items}
             </div>
           </div>

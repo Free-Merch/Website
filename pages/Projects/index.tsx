@@ -29,16 +29,15 @@ const Projects = () => {
   let projects = useProjects()
   const ProjectCards = orderFunctions[order.value as keyof typeof orderFunctions](projects)?.map((project, index) => {
     const { about, logo, campaigns, brand, logoBgColor, id } = project;
-    return <div className="sm:mr-4 md:mr-7" key={index}>
-      <ProjectCard  
+    return <ProjectCard  
         brand={brand}
         image={logo}
         about={about}
         bgColor={logoBgColor}
         campaigns={campaigns}
         id={id}
+        key={index}
       />
-    </div>
   })
 
   return <div className="my-12">
@@ -51,7 +50,7 @@ const Projects = () => {
         value={order} options={options} onChange={handleSetOrder}  placeholder="Most recent" />
     </div>
 
-    <div className="mt-7 mb-10 flex flex-wrap justify-center">
+    <div className="mt-7 mb-10 flex flex-wrap justify-center gap-4">
       {ProjectCards}
     </div>
 

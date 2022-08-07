@@ -19,6 +19,8 @@ const projectsQuery = gql`
                 alternativeText
                 name
                 url
+                width
+                height
               }
             }
           }
@@ -35,6 +37,8 @@ const projectsQuery = gql`
                     url
                     alternativeText
                     name
+                    height
+                    width
                   }
                 }
               }
@@ -53,11 +57,17 @@ const useProjects = (): ProjectBrief[] => {
     merch = merch.attributes;
     const { brand, about, logoBgColor }: 
       {brand: string, about: string, logoBgColor: string} = merch;
-    const logo: ImageType = merch.logo.data.attributes;
+    const logo: ImageType = {...merch.logo.data.attributes};
+    if(logo) logo.ratio = logo?.width/logo?.height
+
     let campaigns: ImageType[] = [];
     merch.campaigns.map(
       ({items}: any) =>  {
-        campaigns.push(...items.map( (item: any) => item.image.data.attributes))
+        campaigns.push(...items.map( (item: any) => {
+          const _item = {...item.image.data.attributes}
+          _item.ratio = _item.width/_item.height
+          return _item
+        }))
       }
     )
     campaigns = campaigns.slice(0,3);

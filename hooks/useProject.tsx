@@ -45,11 +45,12 @@ const projectQuery = (id: number) => (
                   alternativeText
                   name
                   url
+                  width
+                  height
                 }
               }
             }
             campaigns{
-              active
               items{
                 quantity
                 shared
@@ -60,6 +61,8 @@ const projectQuery = (id: number) => (
                       url
                       alternativeText
                       name
+                      width
+                      height
                     }
                   }
                 }
@@ -84,15 +87,19 @@ const linkImages = {
 const useProject = (id: number): Project => {
   const { data } = useQuery(projectQuery(id), {client});
   const merch = data?.merch.data.attributes;
-  const logo: ImageType = merch?.logo.data.attributes;
+  const logo: ImageType = {...merch?.logo.data.attributes};
+  if(logo) logo.ratio = logo?.width/logo?.height;
 
   const campaigns: Campaign[] = merch?.campaigns.map(
     ({items}: any) =>  {
-      const actives: boolean[] = [];
+      const actives: boolean[] = []
       const _items = items.map( (item: any): Item => {
         actives.push(item.quantity !== item.shared)
+        const image = { ...item.image.data.attributes }
+        image.ratio = image?.width/image?.height
+
         return {
-          image: item.image.data.attributes,
+          image,
           name: item.name,
           quantity: item.quantity,
           shared: item.shared
@@ -106,7 +113,11 @@ const useProject = (id: number): Project => {
   let campaignImages: ImageType[] = [];
   merch?.campaigns.map(
     ({items}: any) =>  {
-      campaignImages.push(...items.map( (item: any) => item.image.data.attributes))
+      campaignImages.push(...items.map( (item: any) => {
+        const _item = {...item.image.data.attributes};
+        _item.ratio = _item.width/_item.height
+        return _item
+      }))
     }
   )
   campaignImages = campaignImages.slice(0,3);

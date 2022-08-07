@@ -80,8 +80,10 @@ const Home: NextPage = () => {
               shrink-0
               cursor-pointer 
               relative
-              h-min
+              items-center
               inline-flex
+              h-[14px]
+              w-[14px]
             `}
           >
             <div className={`
@@ -377,11 +379,11 @@ const Home: NextPage = () => {
           <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
           bg-[#298A63] -left-40 -top-0 -translate-y-4/4 " />
         <h3 className="font-semibold text-2xl text-center text-blue-900 dark:text-white ">FAQs</h3>
+          <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
+          bg-[#298A63] -right-40 -top-0 -translate-y-4/4 " />
         <div className="mt-8 max-w-[824px] mx-auto">
           {faqs}
         </div>
-          <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
-          bg-[#298A63] -right-40 -top-0 -translate-y-4/4 " />
       </div>
     </Layout>
   )

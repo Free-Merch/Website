@@ -1,13 +1,14 @@
 import { ReactNode, useState } from "react";
 import {v4 } from "uuid";
 import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
+import { ImageType } from "../types";
 
 
 interface TData {
   headers : string[];
   rows: ReactNode[][];
-  onClick: (_:string) => void
-  images: string[]
+  onClick: (image:ImageType) => void
+  images: ImageType[]
   className?: string;
 }
 

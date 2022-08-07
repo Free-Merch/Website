@@ -13,7 +13,7 @@ import Link from "next/link";
 import useProjects from "../../hooks/useProjects";
 import { useRouter } from "next/router";
 import useProject from "../../hooks/useProject";
-import { Item } from "../../types";
+import { ImageType, Item } from "../../types";
 
 const TableHeaders = [
   "Item", "Name", "Quantity", "Shared", "Percentage", "Status", "Task"
@@ -36,7 +36,7 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
     <span key={v4()} className="text-grey-700 override-weight">{quantity}</span>,
     <span key={v4()} className="text-grey-700 override-weight">{shared}</span>,
     <div key={v4()} className="h-[20px] flex items-center">
-      <div className="w-16 h-2 bg-grey-400 dark:bg-grey-200 relative text-left rounded-lg" key={v4()}>
+      <div className="w-16 h-2 bg-grey-400 dark:bg-grey-300 relative text-left rounded-lg" key={v4()}>
         <div 
           style={{
             width: `${percentage}%`
@@ -73,6 +73,7 @@ const Project = () => {
   const { pid } = router.query
   const project = useProject(Number(pid));
   const { brand, logoBgColor, about, logo, links: _links, campaigns, campaignImages: _campaignImages } = project;
+  console.log(_campaignImages, campaigns)
   const links = _links?.map((link, index) => (
     <Link key={index} href={link.url}>
       <span className={`inline-block mr-2`}>{link.logo as any}</span>
@@ -82,18 +83,19 @@ const Project = () => {
   const activeCampaigns = campaigns?.filter(c => c.active)
   const inActiveCampaigns = campaigns?.filter(c => !c.active)
   const [_activeRows, _inActiveRows]: [Item[], Item[]] = [ [], [] ]
-  const [activeImages, inactiveImages]: [string[], string[]] = [[], []]
+  const [activeImages, inactiveImages]: [ImageType[], ImageType[]] = [[], []]
   activeCampaigns?.forEach(c => _activeRows.push(...(c.items ?? [])))
-  activeCampaigns?.map(c => activeImages.push(...c.items.map(i => i.image.url)))
-  inActiveCampaigns?.map(c => inactiveImages.push(...c.items.map(i => i.image.url)))
+  activeCampaigns?.map(c => activeImages.push(...c.items.map(i => i.image)))
+  inActiveCampaigns?.map(c => inactiveImages.push(...c.items.map(i => i.image)))
   inActiveCampaigns?.forEach(c => _inActiveRows.push(...(c.items ?? [])))
+
   const [activeRows, inActiveRows] = [getTableRows(_activeRows), getTableRows(_inActiveRows)]
 
-  const campaignImages = _campaignImages?.map((campaign, index) => {
+  const campaignImages = _campaignImages?.map((image, index) => {
     return <div key={index}>
       <Image 
-        className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)]" src={campaign.url} 
-        alt={campaign.alternativeText} layout="fixed" width={"60px"} height={"60px"}
+        className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)]" src={image.url} 
+        alt={image.alternativeText} layout="fixed" width={"60px"} height={"60px"}
       />
     </div>
   })
@@ -118,16 +120,17 @@ const Project = () => {
   const { show } = useContext(ModalContext)
 
   return <>
-    <div className="bg-grey-200 dark:bg-blue-800 -mx-10 md:-mx-24 px-10 md:px-24">
-      <div className="w-full max-w-[1252px] mx-auto">
-        <div className={`
-          translate-y-1/4 shadow-[0px_0px_7px_4px_rgba(46,200,102,0.04)] 
-          rounded-lg h-[100px] w-[100px] flex items-center justify-center`
-        }
-          style={{ backgroundColor: logoBgColor }}
-        >
-          {logo?.url && <Image src={logo?.url} className="mx-24" width={70} height={15} alt="brand image" />}
-        </div>
+    <div className="bg-grey-200 absolute left-0 right-0 dark:bg-blue-800 h-[100px]">
+
+    </div>
+    <div className="w-full max-w-[1252px] mx-auto">
+      <div className={`
+        translate-y-1/4 shadow-[0px_0px_7px_4px_rgba(46,200,102,0.04)] 
+        rounded-lg h-[100px] w-[100px] flex items-center justify-center`
+      }
+        style={{ backgroundColor: logoBgColor }}
+      >
+        {logo?.url && <Image src={logo?.url} className="mx-24" width={70} height={15} alt="brand image" />}
       </div>
     </div>
 
@@ -147,7 +150,7 @@ const Project = () => {
       <p className="text-black-900 font-medium text-xs dark:text-white mt-4">Item:</p>
       <div className="flex mt-2 child:mr-3 child:inline-block rounded-md child:cursor-pointer">
         {campaignImages.map((img, i) => <span key={v4()} 
-            onClick={() => show("merch", {picture: _campaignImages[i].url})}>{img}
+            onClick={() => show("merch", {picture: _campaignImages[i]})}>{img}
           </span>)}
       </div>
 
