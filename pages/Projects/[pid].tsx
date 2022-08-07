@@ -9,11 +9,17 @@ import { useContext } from "react";
 import { ModalContext } from "../../context/modalContext";
 import { MobileTable } from "../../components/table";
 
+import { IconType } from "react-icons";
+import { BiLinkAlt } from "react-icons/bi";
+import { BsFacebook, BsInstagram, BsTelegram, BsTwitter } from "react-icons/bs";
+
 import Link from "next/link";
 import useProjects from "../../hooks/useProjects";
 import { useRouter } from "next/router";
-import useProject from "../../hooks/useProject";
-import { ImageType, Item } from "../../types";
+import useProject from "../../helpers/getProject";
+import { ImageType, Item, Project } from "../../types";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import getProject from "../../helpers/getProject";
 
 const TableHeaders = [
   "Item", "Name", "Quantity", "Shared", "Percentage", "Status", "Task"
@@ -67,16 +73,22 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
   ]
 });
 
+const linkImages = {
+  twitter: <BsTwitter className="cursor-pointer"/>,   
+  website: <BiLinkAlt className="cursor-pointer"/>,
+  facebook: <BsFacebook className="cursor-pointer" />,
+  instagram: <BsInstagram className="cursor-pointer" />,
+  discord: <BsInstagram className="cursor-pointer" />,
+  telegram: <BsTelegram className="cursor-pointer" />
+}
 
-const Project = () => {
-  const router = useRouter()
-  const { pid } = router.query
-  const project = useProject(Number(pid));
-  const { brand, logoBgColor, about, logo, links: _links, campaigns, campaignImages: _campaignImages } = project;
-  console.log(_campaignImages, campaigns)
+
+const Project = (props: Project) => {
+
+  const { id: pId, brand, logoBgColor, about, logo, links: _links, campaigns, campaignImages: _campaignImages } = props;
   const links = _links?.map((link, index) => (
     <Link key={index} href={link.url}>
-      <span className={`inline-block mr-2`}>{link.logo as any}</span>
+      <span className={`inline-block mr-2`}>{linkImages[link.name as keyof typeof linkImages]}</span>
     </Link>
   ));
 
@@ -104,7 +116,7 @@ const Project = () => {
   projects = projects?.slice(0, 3);
   const ProjectCards = projects?.map((project, index) => {
     const { about, logo, campaigns, brand, logoBgColor, id } = project;
-    if(id.toString() === pid) return undefined
+    if(id === pId) return undefined
     return <div className="sm:mr-4 md:mr-7" key={index}>
       <ProjectCard  
         brand={brand}
@@ -169,7 +181,7 @@ const Project = () => {
           className="md:hidden -mx-10 " 
           headers={MobileTableHeaders} 
           rows={activeRows}
-          images={inactiveImages}  
+          images={activeImages}  
         />
       </div>
 
@@ -202,10 +214,26 @@ const Project = () => {
   </>
 }
 
-const NewComponent = () => (
+const NewComponent = (param: Project) => (
   <Layout className="h-full bg-grey-100 dark:bg-blue-900 py-10 px-10 text-sm md:px-24 text-grey-300 dark:text-grey-400 overflow-y-hidden">
-    <Project />
+    <Project {...param}/>
   </Layout>
 );
 
 export default NewComponent;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+
+  const pId = Number(context.query?.pId)
+
+  try {
+    const project = await getProject(pId)
+    return {
+      props: project
+    }
+  } catch (error) {
+    return {
+      notFound: true
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import { IconType } from "react-icons";
+
 export type ThemeType = "light"|"dark";
 
 export interface ImageType {
@@ -23,4 +25,25 @@ export interface ProjectBrief {
   logoBgColor: string,
   logo: ImageType,
   campaigns: ImageType[]
+}
+
+export interface Project {
+  id: number
+  brand: string,
+  about: string,
+  logoBgColor: string,
+  links: Link[]
+  logo: ImageType,
+  campaignImages: ImageType[]
+  campaigns: Campaign[]
+}
+
+export interface Campaign {
+  items: Item[]
+  active: boolean
+}
+
+export interface Link{
+  url: string
+  name: string
 }

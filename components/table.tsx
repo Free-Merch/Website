@@ -102,12 +102,13 @@ export const MobileTable = (data: TData) => {
 
 const Table = (data: TData) => {
   const {rows: _rows, className, onClick: _onClick, images} = data;
-  const rows = _rows.map((row, index) => {
+
+  const rows = _rows.map((row, index1) => {
     return <tr 
-      key={index} 
+      key={index1} 
       className={`h-[70px] dark:bg-blue-400 bg-white`}>
-      {row.map((ele,index) => {
-        return <td className={`text-leftW ${index === 0 && "cursor-pointer"}`} onClick={index === 0 ? () => _onClick(images[index]) : () => {}} key={index}>{ele}</td>
+      {row.map((ele,index2) => {
+        return <td className={`text-left ${index2 === 0 && "cursor-pointer"}`} onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}} key={index2}>{ele}</td>
       })}
     </tr>
   })

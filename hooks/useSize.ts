@@ -19,11 +19,9 @@ export const useWindowSize = () => {
 export const useElementSize = () => {
   const ref = useRef<any>(null);
   const [size, setSize] = useState({height: 0 , width: 0})
-  console.log(size, ref);
   useEffect(() => {
 
     window.addEventListener("resize", () => {
-      console.log("here");
       setSize({ height: ref.current?.offsetHeight || 0, width: ref.current?.offsetWidth || 0 })
     })
 

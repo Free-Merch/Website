@@ -34,7 +34,6 @@ const query = gql`
 
 const useHomePage = () => {
   const {data} = useQuery(query, {client})
-  console.log(data)
   const faqs: FAQ[] = data?.homePage.data.attributes.FAQ
   const gallery: ImageType[] = data?.homePage.data.attributes.Gallery.data.map( (data:any) => data.attributes)
   gallery?.forEach(image => {

@@ -17,13 +17,12 @@ interface IProjectCard {
 }
 
 export function ProjectCard (this: any, { image, bgColor, about, brand, campaigns, id }: IProjectCard){
-  const {width: windowWidth} = useWindowSize()
   const {width: width1, ref: ref1} = useElementSize()
   const logoWidth = 75/100 * width1
   
   const shadow = "shadow-[0px_0px_7px_4px_rgba(46,200,102,0.04)]"
   const items = campaigns?.map((campaign, index) => {
-    const width = 24/100 * width1
+    const width = 20/100 * width1
     const height = width/campaign.ratio
 
     return <div key={index} >
@@ -50,7 +49,7 @@ export function ProjectCard (this: any, { image, bgColor, about, brand, campaign
 
         <div className="mt-6">
           <p className="text-left text-xl text-blue-400 flex  items-center">
-            <Link href={`/projects/${id}`} >
+            <Link href={`/projects/${id}`}>
               <span className="">
               <span className="capitalize">{brand}</span> &nbsp;
               <BsArrowRight className="inline-block stroke-1"/>

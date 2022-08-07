@@ -1,32 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
-import { IconType } from "react-icons";
-import { BiLinkAlt } from "react-icons/bi";
-import { BsFacebook, BsInstagram, BsTelegram, BsTwitter } from "react-icons/bs";
 import { client } from "../context/apolloContext";
-import { ImageType, Item } from "../types";
-
-
-interface Campaign {
-  items: Item[]
-  active: boolean
-}
-
-interface Link{
-  url: string
-  logo: string | IconType
-  name: string
-}
-
-interface Project {
-  id: number
-  brand: string,
-  about: string,
-  logoBgColor: string,
-  links: Link[]
-  logo: ImageType,
-  campaignImages: ImageType[]
-  campaigns: Campaign[]
-}
+import { Campaign, ImageType, Item, Link, Project } from "../types";
 
 
 const projectQuery = (id: number) => (
@@ -75,17 +49,8 @@ const projectQuery = (id: number) => (
   `
 )
 
-const linkImages = {
-  twitter: <BsTwitter className="cursor-pointer"/>,   
-  website: <BiLinkAlt className="cursor-pointer"/>,
-  facebook: <BsFacebook className="cursor-pointer" />,
-  instagram: <BsInstagram className="cursor-pointer" />,
-  discord: <BsInstagram className="cursor-pointer" />,
-  telegram: <BsTelegram className="cursor-pointer" />
-}
-
-const useProject = (id: number): Project => {
-  const { data } = useQuery(projectQuery(id), {client});
+const getProject = async (id: number): Promise<Project> => {
+  const { data } = await client.query({query: projectQuery(id)})
   const merch = data?.merch.data.attributes;
   const logo: ImageType = {...merch?.logo.data.attributes};
   if(logo) logo.ratio = logo?.width/logo?.height;
@@ -124,8 +89,6 @@ const useProject = (id: number): Project => {
   
   let links: Link[] = merch?.links && Object.keys( merch?.links )?.map((key) => ({
     url: merch.links[key],
-    //@ts-ignore
-    logo: linkImages[key],
     name: key
   }))
 
@@ -142,4 +105,4 @@ const useProject = (id: number): Project => {
   };
 }
 
-export default useProject;
+export default getProject;
