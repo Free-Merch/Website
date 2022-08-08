@@ -17,9 +17,9 @@ interface IProjectCard {
 }
 
 export function ProjectCard (this: any, { image, bgColor, about, brand, campaigns, id }: IProjectCard){
-  const {width: width1, ref: ref1} = useElementSize();
-  const {width: width2} = useWindowSize();
-
+  const {width: width1, ref: ref1} = useElementSize()
+  const {width: width2} = useWindowSize()
+  console.log(width1, width2)
   const logoWidth = 75/100 * width1
   
   const shadow = "shadow-[0px_0px_7px_4px_rgba(46,200,102,0.04)]"
@@ -40,7 +40,7 @@ export function ProjectCard (this: any, { image, bgColor, about, brand, campaign
 
   return <div className={`transition-all duration-300 hover:scale-110 cursor-pointer 
     inline-block bg-grey-200 rounded-lg w-screen min-w-[163px] 
-    max-w-[289px] p-${width1 <= 200 ? 3 : 3.5} flex-[1_0_163px] ${width2 <= 430 && "max-w-[200px]" }`} ref={ref1} >
+    max-w-[289px] p-${width1 <= 200 ? 3 : 3.5} flex-[1_0_163px] ${width2 && width2 <= 430 && "max-w-[200px]" }`} ref={ref1} >
 
     <Link href={`/projects/${id}`}>
       <div>
@@ -51,7 +51,7 @@ export function ProjectCard (this: any, { image, bgColor, about, brand, campaign
         </div>
 
         <div className={`${width1 <= 200 ? "mt-[5px]" : "mt-6"}`}>
-          <p className={`text-left ${width1 <= 200 ? "text-[12px]" : "text-xl"} text-blue-400 flex items-center`}>
+          <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} text-blue-400 flex items-center`}>
             <Link href={`/projects/${id}`}>
               <span className="">
               <span className="capitalize">{brand}</span> &nbsp;
@@ -59,10 +59,10 @@ export function ProjectCard (this: any, { image, bgColor, about, brand, campaign
               </span>
             </Link>
           </p>
-          <p className={`text-left text-grey-700 mt-2 ${width1 <= 200 ? "text-[10px] mt-[5px] leading-[15px]" : "text-sm mt-2"}`}>{about}</p>
+          <p className={`text-left text-grey-700 mt-2 ${width1 <= 200 ? "text-[12px] mt-[5px] leading-[15px]" : "text-sm mt-2"}`}>{about}</p>
 
           <div className={`justify-between text-left ${width1 <= 200 ? "mt-[5px]" : "mt-2"}`}>
-            <p className={`text-blue-400 ${width1 <= 200 && "text-[10px]"}`}>Merch</p>
+            <p className={`text-blue-400 ${width1 <= 200 && "text-[12px]"}`}>Merch</p>
             <div className={`flex items-end ${width1 <= 200 ? "mt-[5px]" : "mt-2"} child:mr-3 child:inline-block rounded-md`}>
               {items}
             </div>
