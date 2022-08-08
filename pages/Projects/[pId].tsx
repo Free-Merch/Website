@@ -227,7 +227,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const pId = Number(context.query?.pId)
 
   try {
-    const project = await getProject(pId)
+    const project = await getProject(pId);
     return {
       props: project
     }
