@@ -122,7 +122,7 @@ const Home: NextPage = () => {
   ))
 
   return (
-    <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-10 md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
+    <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-[12px] md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
       {/* bg ellipses */}
       {/* <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(22, 124, 186, 0.3)] right-0 top-4 z-10" /> */}
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto'>
@@ -176,7 +176,7 @@ const Home: NextPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="flex flex-wrap gap-4 justify-center">
           {ProjectCards}
         </div>
         <p className="text-center mt-20">

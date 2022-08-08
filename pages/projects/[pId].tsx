@@ -9,16 +9,13 @@ import { useContext } from "react";
 import { ModalContext } from "../../context/modalContext";
 import { MobileTable } from "../../components/table";
 
-import { IconType } from "react-icons";
 import { BiLinkAlt } from "react-icons/bi";
 import { BsFacebook, BsInstagram, BsTelegram, BsTwitter } from "react-icons/bs";
 
 import Link from "next/link";
 import useProjects from "../../hooks/useProjects";
-import { useRouter } from "next/router";
-import useProject from "../../helpers/getProject";
 import { ImageType, Item, Project } from "../../types";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import getProject from "../../helpers/getProject";
 
 const TableHeaders = [
@@ -116,7 +113,7 @@ const Project = (props: Project) => {
   projects = projects?.slice(0, 3);
   const ProjectCards = projects?.map((project, index) => {
     const { about, logo, campaigns, brand, logoBgColor, id } = project;
-    if(id === pId) return undefined
+    if( Number(id) === Number(pId)) return undefined
     return <div className="sm:mr-4 md:mr-7" key={index}>
       <ProjectCard  
         brand={brand}

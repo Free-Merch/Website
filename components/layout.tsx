@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Banner from "./banner";
 import Footer from "./footer";
-import {DesktopNav, MobileNav} from "./navigation";
+import { DesktopNav, MobileNav } from "./navigation";
 import { useContext, useState } from "react";
 import ModalContextProvider, { ModalContext } from "../context/modalContext";
 import ApolloContextProvider from "../context/apolloContext";

@@ -114,7 +114,7 @@ const AboutUs = () => {
 }
 
 const NewComponent = () => (
-  <Layout className="h-full bg-grey-100 dark:bg-blue-900 py-10 px-10 md:px-24 text-grey-300 dark:text-grey-400 overflow-y-hidden">
+  <Layout className="h-full bg-grey-100 dark:bg-blue-900 py-10 px-[12px] md:px-24 text-grey-300 dark:text-grey-400 overflow-y-hidden">
     <AboutUs />
   </Layout>
 )

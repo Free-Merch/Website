@@ -34,7 +34,7 @@ export const DesktopNav = (props: INav) => {
     </li>
   })
 
-  return <div className="px-10 md:px-24 bg-grey-100 dark:bg-blue-900">
+  return <div className="px-[12px] md:px-24 bg-grey-100 dark:bg-blue-900">
     <div className="flex max-w-7xl mx-auto justify-between items-center text-blue-400 dark:text-white h-20">
       <h3 className="mr-12 lg:mr-20 font-black flex items-center"> <Image src={Logo} alt="logo" layout="fixed" width={"21px"} height={"21px"}/> <span className="font-normal">Free</span>Merch</h3>
       
@@ -83,7 +83,7 @@ export const MobileNav = (props: {open:boolean}) => {
     </li>
   })
 
-  return <div className={`px-10 h-full left-0 fixed z-50 w-full 
+  return <div className={`px-[12px] h-full left-0 fixed z-50 w-full 
     bg-grey-100 dark:bg-blue-900 dark:text-white text-base 
     font-medium transition-all ${!open && "-translate-x-full" }`
   }>
