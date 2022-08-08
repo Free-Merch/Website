@@ -42,7 +42,7 @@ const Projects = () => {
 
   return <div className="my-12">
     <div className="flex justify-between">
-      <h1 className="text-3xl font-semibold text-black-900 dark:text-white">Projects</h1>
+      <h1 className="text-[18px] md:text-3xl font-semibold text-black-900 dark:text-white">Projects</h1>
       
       <Dropdown 
         arrowClosed={ <IoIosArrowDown className="arrow" />}
