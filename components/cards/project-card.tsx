@@ -17,7 +17,9 @@ interface IProjectCard {
 }
 
 export function ProjectCard (this: any, { image, bgColor, about, brand, campaigns, id }: IProjectCard){
-  const {width: width1, ref: ref1} = useElementSize()
+  const {width: width1, ref: ref1} = useElementSize();
+  const {width: width2} = useWindowSize();
+
   const logoWidth = 75/100 * width1
   
   const shadow = "shadow-[0px_0px_7px_4px_rgba(46,200,102,0.04)]"
@@ -38,7 +40,7 @@ export function ProjectCard (this: any, { image, bgColor, about, brand, campaign
 
   return <div className={`transition-all duration-300 hover:scale-110 cursor-pointer 
     inline-block bg-grey-200 rounded-lg w-screen min-w-[163px] 
-    max-w-[289px] p-${width1 <= 200 ? 3 : 3.5} flex-[1_0_163px]`} ref={ref1}>
+    max-w-[289px] p-${width1 <= 200 ? 3 : 3.5} flex-[1_0_163px] ${width2 <= 430 && "max-w-[200px]" }`} ref={ref1} >
 
     <Link href={`/projects/${id}`}>
       <div>
