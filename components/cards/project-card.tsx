@@ -40,7 +40,7 @@ export function ProjectCard (this: any, { image, bgColor, about, brand, campaign
 
   return <div className={`transition-all duration-300 hover:scale-110 cursor-pointer 
     inline-block bg-grey-200 rounded-lg w-screen min-w-[163px] 
-    max-w-[289px] p-${width1 <= 200 ? 3 : 3.5} flex-[1_0_163px] ${width2 && width2 <= 430 && "max-w-[200px]" }`} ref={ref1} >
+    max-w-[289px] ${width1 <= 200 ? "p-[12px]" : "p-[14px]"} flex-[1_0_163px] ${width2 && width2 <= 430 && "max-w-[200px]" }`} ref={ref1} >
 
     <Link href={`/projects/${id}`}>
       <div>
