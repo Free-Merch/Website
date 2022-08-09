@@ -34,16 +34,15 @@ const Home: NextPage = () => {
   const projects = useProjects();
   const ProjectCards = projects?.map((project, index) => {
     const { about, logo, campaigns, brand, logoBgColor, id } = project;
-    return <div className="sm:mr-4 md:mr-7" key={index}>
-      <ProjectCard  
+    return <ProjectCard  
         brand={brand}
         image={logo}
         about={about}
         bgColor={logoBgColor}
         id={id}
         campaigns={campaigns}
+        key={index}
       />
-    </div>
   })
 
   const [faqState, setFaqs] = useState<boolean[]>(Array(100).fill(false));
@@ -127,7 +126,7 @@ const Home: NextPage = () => {
       {/* <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(22, 124, 186, 0.3)] right-0 top-4 z-10" /> */}
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto'>
         <div className="text-start xl:w-2/4 mt-2 md:mt-32 ">
-          <h1 className="text-3xl md:text-6xl font-semibold text-green-100 max-w-[800px]">
+          <h1 className="text-[40px] leading-[44px] md:text-6xl font-semibold text-green-100 max-w-[800px]">
             <span className="dark:text-white text-blue-400">Get Access</span> to Free Crypto Swag Wear
           </h1>
 
@@ -147,7 +146,7 @@ const Home: NextPage = () => {
             </a>
           </div>
         </div>
-        <div className="flex justify-end relative px-2 hero-small:mx-auto">
+        <div className="flex justify-end relative hero-small:mx-auto">
           <div className="bg-green-100 absolute h-3/4 rounded-md bottom-0 w-full"></div>
           <Image alt="swag-human" src={HeroHuman}/>  
         </div>
@@ -187,7 +186,7 @@ const Home: NextPage = () => {
       {/* Contact Info */}
       <div className="relative mt-[100px] flex justify-center lg:justify-between lg:flex-nowrap flex-wrap max-w-screen-xl mx-auto">
         <div className="ellipsis absolute blur-[241px] w-[421px] h-[479px] opacity-50 bg-[#298A63] left-0 -translate-x-3/4 translate-y-1/4" />
-        <div className="dark:border-[0.2px] grow-0  dark:border-white max-w-[581px] bg-grey-200 bg-silver px-12 py-12 pb-6 rounded-xl max-h-min">
+        <div className="dark:border-[0.2px] grow-0  dark:border-white max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] pb-6 rounded-xl max-h-min">
           <div className="rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center">
             <TbCrown className="fill-white dark:fill-blue-900 w-6 h-6 text-blue-900"/>
           </div>
@@ -199,7 +198,7 @@ const Home: NextPage = () => {
             <WhiteButton className="mt-6">Contact</WhiteButton>
         </div>
         <div className="w-20 hidden lg:block"></div>
-        <div className="dark:border-[0.2px] grow-0 dark:border-white max-w-[581px] bg-grey-200 bg-silver px-12 py-12 pb-6 rounded-xl translate-y-20">
+        <div className="dark:border-[0.2px] grow-0 dark:border-white max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] pb-6 rounded-xl translate-y-20">
           <div className=" rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center">
             <TiStarFullOutline className="fill-white dark:fill-blue-900 w-6 h-6"/>
           </div>

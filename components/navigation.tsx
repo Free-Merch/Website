@@ -83,7 +83,7 @@ export const MobileNav = (props: {open:boolean}) => {
     </li>
   })
 
-  return <div className={`mt-10 px-[12px] h-full left-0 fixed z-50 w-full 
+  return <div className={`pt-10 px-[12px] h-full left-0 fixed z-50 w-full 
     bg-grey-100 dark:bg-blue-900 dark:text-white text-base 
     font-medium transition-all ${!open && "-translate-x-full" }`
   }>

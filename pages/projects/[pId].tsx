@@ -145,11 +145,11 @@ const Project = (props: Project) => {
 
     <div className="pt-8 mb-28 max-w-[1252px] mx-auto overflow-hidden">
       <div className="ellipsis relative">
-        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] right-0 translate-x-2/4 -translate-y-2/4 " />
+        <div className="absolute z-[1] blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] right-0 translate-x-2/4 -translate-y-2/4 " />
       </div>
       <h2 className="font-bold flex justify-between items-center text-blue-400 dark:text-white text-xl">
         {brand}
-        <span className="flex text-blue-900 text-[19px] dark:text-white">
+        <span className="flex text-blue-900 text-[19px] z-[2] dark:text-white">
           {links}
         </span>
       </h2>
