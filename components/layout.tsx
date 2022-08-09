@@ -1,14 +1,14 @@
 import Head from "next/head";
 import Banner from "./banner";
 import Footer from "./footer";
-import { DesktopNav, MobileNav } from "./navigation";
+import {DesktopNav, MobileNav} from "./navigation";
 import { useContext, useState } from "react";
 import ModalContextProvider, { ModalContext } from "../context/modalContext";
 import ApolloContextProvider from "../context/apolloContext";
 import { useRouter } from "next/router";
 
 
-const Layout = ({children, ...others}: {[key:string]: any}) => {
+const Layout = ({children, mainClass, ...others}: {[key:string]: any}) => {
   const [openNav, setOpenNav] = useState<boolean>(false);
   others.className = `relative ${others.className}`;
   const { pathname } = useRouter();
@@ -21,6 +21,7 @@ const Layout = ({children, ...others}: {[key:string]: any}) => {
 
   return <div className={`
       ${ pathname.toLowerCase() === "/contact-us".toLowerCase() && "flex flex-col" }
+      ${mainClass}
       relative pb-[60px] min-h-screen bg-grey-100 dark:bg-blue-900`
     }>
       <Head>
