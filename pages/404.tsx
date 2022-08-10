@@ -9,7 +9,7 @@ const CatchPage = () => {
     <Image src={Logo} width={24} height={24} alt="free merch logo" />
     <p className="mt-[20px] mb-[14px] leading-[76px] text-[60px] font-semibold">404</p>
     <p className="mb-[45px] text-lg">This Page is outside the server </p>
-    <GreenButton>Back Home</GreenButton>
+    <GreenButton href="/">Back Home</GreenButton>
   </div>
 }
 

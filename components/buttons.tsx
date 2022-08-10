@@ -12,11 +12,11 @@ const Button = ({children, className, href}: IButton) => {
     <button className={classNames}>
       {children}
     </button> :
-    <span className={classNames}>
-      <Link href={href}>
+    <Link href={href}>
+      <span className={classNames}>
         {children}
-      </Link>
-    </span>
+      </span>
+    </Link>
 }
 
 export const GreenButton = (props: IButton) =>{
