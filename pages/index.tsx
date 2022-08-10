@@ -25,9 +25,11 @@ import Binance from "../assets/pictures/binance.png";
 import BinanceText from "../assets/pictures/binance_text.png";
 import HeroHuman from "../assets/pictures/hero-human.png";
 import Playbtn from "../assets/pictures/play.png";
-import { ProjectCard } from '../components/cards/project-card';
+import { ProjectCard, ProjectCardSkeleton } from '../components/cards/project-card';
 import useHomePage from '../hooks/useHomePage';
 import useProjects from '../hooks/useProjects';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Home: NextPage = () => {
 
@@ -120,6 +122,20 @@ const Home: NextPage = () => {
     </SplideSlide>
   ))
 
+  const gallerySkeleton = Array(6).fill(0).map( (index) => (
+    <SplideSlide className="max-w-max" key={index}>
+      <div className="mr-4 w-[193px] h-[275px]">
+      <Skeleton containerClassName='w-full h-full' className='w-full h-full' />
+      </div>
+    </SplideSlide>
+  ));
+
+  const faqSkeleton = Array(4).fill(0).map((index) => (
+    <div key={index} className="w-[700px] h-[50px] mb-2 mx-auto"><Skeleton containerClassName='w-full h-full' className='w-full h-full' /></div>
+  ))
+
+  const ProjectCardSkeletons = [<ProjectCardSkeleton key={1}/>, <ProjectCardSkeleton key={2} />, <ProjectCardSkeleton key={3} />]
+
   return (
     <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-[12px] md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
       {/* bg ellipses */}
@@ -176,10 +192,10 @@ const Home: NextPage = () => {
         </div>
 
         <div className="flex flex-wrap gap-4 justify-center">
-          {ProjectCards}
+          { ProjectCardSkeletons }
         </div>
         <p className="text-center mt-20">
-          <GreenButton href="/Projects" className="mt-6">See All Brands</GreenButton>
+          <GreenButton href="/projects" className="mt-6">See All Brands</GreenButton>
         </p>
       </div>
 
@@ -234,7 +250,7 @@ const Home: NextPage = () => {
               </div>
 
               <SplideTrack className="md:mt-20 space-x-4 child:flex child:items-end">
-                {gallery}
+                {gallery || gallerySkeleton}
               </SplideTrack>
             </div>
           </Splide>
@@ -364,12 +380,12 @@ const Home: NextPage = () => {
         <h3 className="font-semibold mb-[50px] text-2xl text-center text-blue-900 dark:text-white ">Learn More</h3>
         <div className="h-[360px] w-full max-w-[640px]">
           {/* relative pt-[56.25%] */}
-          {/* <DynamicReactPlayer 
+          <DynamicReactPlayer 
             url='https://www.youtube.com/watch?v=JNCzoG1IzoY' 
             controls
             width="100%"
             height="100%"
-          /> */}
+          />
         </div>
       </div>
 
@@ -381,7 +397,7 @@ const Home: NextPage = () => {
           <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
           bg-[#298A63] -right-40 -top-0 -translate-y-4/4 " />
         <div className="mt-8 max-w-[824px] mx-auto">
-          {faqs}
+          { faqs || faqSkeleton }
         </div>
       </div>
     </Layout>

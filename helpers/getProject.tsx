@@ -41,7 +41,7 @@ const projectQuery = (id: number) => (
                   }
                 }
               }
-              }
+            }
           }
         }
       }

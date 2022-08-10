@@ -2,6 +2,8 @@ import { ReactNode, useState } from "react";
 import {v4 } from "uuid";
 import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
 import { ImageType } from "../types";
+import {horizontalLabel, verticalLabel} from "../components/labels"
+import { useWindowSize } from "../hooks/useSize";
 
 
 interface TData {
@@ -50,6 +52,7 @@ export const MobileTable = (data: TData) => {
                   <span className="cursor-pointer" onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}}>{ele}</span>
                 }
                 <br />
+                {index2 === 5 && <div className="mx-auto w-min mt-2">{verticalLabel}</div>}
                 <span className="flex items-center text-[13px] 
                   justify-center w-full cursor-pointer "
                   onClick={() => {
@@ -102,13 +105,19 @@ export const MobileTable = (data: TData) => {
 
 const Table = (data: TData) => {
   const {rows: _rows, className, onClick: _onClick, images} = data;
+  const {width: windowWidth} = useWindowSize();
 
   const rows = _rows.map((row, index1) => {
     return <tr 
       key={index1} 
       className={`h-[70px] dark:bg-blue-400 bg-white`}>
       {row.map((ele,index2) => {
-        return <td className={`text-left ${index2 === 0 && "cursor-pointer"}`} onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}} key={index2}>{ele}</td>
+        return <td className={`text-left ${index2 === 0 && "cursor-pointer"}`} onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}} key={index2}>
+          <div className={`${windowWidth > 1150 && "flex"}`}>
+            {ele} 
+            {index2 === 5 && <div className="w-min ml-2">{ windowWidth > 1150 ? horizontalLabel : <div className="mt-2">{verticalLabel}</div> }</div>}
+          </div>
+        </td>
       })}
     </tr>
   })

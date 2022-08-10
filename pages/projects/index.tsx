@@ -1,4 +1,4 @@
-import { ProjectCard } from "../../components/cards/project-card";
+import { ProjectCard, ProjectCardSkeleton } from "../../components/cards/project-card";
 import Layout from "../../components/layout";
 import Dropdown, { Option } from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -40,6 +40,8 @@ const Projects = () => {
       />
   })
 
+  const ProjectCardSkeletons = [<ProjectCardSkeleton key={1}/>, <ProjectCardSkeleton key={2} />, <ProjectCardSkeleton key={3} />, <ProjectCardSkeleton key={4} />]
+
   return <div className="my-12">
     <div className="flex justify-between">
       <h1 className="text-[18px] md:text-3xl font-semibold text-black-900 dark:text-white">Projects</h1>
@@ -51,7 +53,7 @@ const Projects = () => {
     </div>
 
     <div className="mt-7 mb-10 flex flex-wrap justify-center gap-4">
-      {ProjectCards}
+      {ProjectCards || ProjectCardSkeletons}
     </div>
 
   </div>
