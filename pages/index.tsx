@@ -22,13 +22,17 @@ import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
 
 // pictures
 import Binance from "../assets/pictures/binance.png";
+import Gida from "../assets/pictures/gida.png";
+import CryptoHills from "../assets/pictures/cryptohillz.jpeg"
+import BlockchainOAU from "../assets/pictures/blockchain_oau.jpeg";
+import ByBit from "../assets/pictures/bybit.svg"
 import BinanceText from "../assets/pictures/binance_text.png";
 import HeroHuman from "../assets/pictures/hero-human.png";
 import Playbtn from "../assets/pictures/play.png";
 import { ProjectCard, ProjectCardSkeleton } from '../components/cards/project-card';
 import useHomePage from '../hooks/useHomePage';
 import useProjects from '../hooks/useProjects';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const Home: NextPage = () => {
@@ -122,7 +126,7 @@ const Home: NextPage = () => {
     </SplideSlide>
   ))
 
-  const gallerySkeleton = Array(6).fill(0).map( (index) => (
+  const gallerySkeleton = Array(6).fill(0).map( ( _, index ) => (
     <SplideSlide className="max-w-max" key={index}>
       <div className="mr-4 w-[193px] h-[275px]">
       <Skeleton containerClassName='w-full h-full' className='w-full h-full' />
@@ -143,13 +147,11 @@ const Home: NextPage = () => {
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto'>
         <div className="text-start xl:w-2/4 mt-2 md:mt-32 ">
           <h1 className="text-[40px] leading-[44px] md:text-6xl font-semibold text-green-100 max-w-[800px]">
-            <span className="dark:text-white text-blue-400">Get Access</span> to Free Crypto Swag Wear
+            <span className="dark:text-white text-blue-400">Get Access</span> to Free Swag
           </h1>
 
           <p className="my-11 max-w-[700px]">
-            Using Merchandise to encourage new and pre-existing users 
-            to learn about blockchain, foster education and create 
-            awareness for leading blockchain and tech products.
+            Using Merchandise to create awareness, encourage adoption and reward existing users of tech and web3 products and solutions.
           </p>
           
           <div className="flex w-full max-w-max justify-start flex-wrap">
@@ -176,23 +178,22 @@ const Home: NextPage = () => {
       <div className="max-w-screen-lg mt-[100px] text-center mx-auto">
         <h3 className=" font-semibold text-green-100 text-3xl mb-[20px]">About Us</h3>
         <p>
-          Get free crypto merchandise is a program directed at reaching out previously existing networks of Africans and crypto 
-          enthusiasts by creating easy, Non-complex crypto bounties for community members to get free crypto merchandise for 
-          sponsoring brands thereby creating value end to end.
+          Freemerch is a platform helping brands create a unique voice by leveraging social impact, gen-z and millenial relatable campaigns.
+          Thereby creating awareness, adoption for leading tech and web3 solutions, bringing their products closer to users and communities.
         </p>
       </div>
 
       {/* Recent Projects */}
       <div className="md:space-x-4 text-center rouded-lg mt-[100px]">
         <div className="my-12 md:w-2/3 mx-auto text-center mb-[50px]">
-          <h2 className="font-semibold text-green-100 text-3xl mb-[20px]">Recent Projects</h2>
+          <h2 className="font-semibold text-green-100 text-3xl mb-[20px]">Ongoing Campaigns</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit
+            Participate in any of the ongoing campaigns to win yourself free merch from world-class brands. Merch is priceless.
           </p>
         </div>
 
         <div className="flex flex-wrap gap-4 justify-center">
-          { ProjectCardSkeletons }
+          { ProjectCards || ProjectCardSkeletons }
         </div>
         <p className="text-center mt-20">
           <GreenButton href="/projects" className="mt-6">See All Brands</GreenButton>
@@ -202,26 +203,24 @@ const Home: NextPage = () => {
       {/* Contact Info */}
       <div className="relative mt-[100px] flex justify-center lg:justify-between lg:flex-nowrap flex-wrap max-w-screen-xl mx-auto">
         <div className="ellipsis absolute blur-[241px] w-[421px] h-[479px] opacity-50 bg-[#298A63] left-0 -translate-x-3/4 translate-y-1/4" />
-        <div className="dark:border-[0.2px] grow-0  dark:border-white max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] pb-6 rounded-xl max-h-min">
+        <div className="dark:border-[0.2px] grow-0  dark:border-white max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px]  md:px-[47px] md:pt-[49px] md:pb-[25px] rounded-xl max-h-min">
           <div className="rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center">
             <TbCrown className="fill-white dark:fill-blue-900 w-6 h-6 text-blue-900"/>
           </div>
           <h3 className="my-3 font-semibold text-4xl text-blue-900 dark:text-white">Company</h3>
           <p>
-            Get access, Lorem ipsum dolor sit amet, consectetur 
-            adipiscing elit ut aliquam, purus sit
+            Sell out your solutions in a more relatable, user-oriented and fun way. Create unique stories and social impact with your merchandise. 
           </p>
             <WhiteButton className="mt-6">Contact</WhiteButton>
         </div>
         <div className="w-20 hidden lg:block"></div>
-        <div className="dark:border-[0.2px] grow-0 dark:border-white max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] pb-6 rounded-xl translate-y-20">
+        <div className="dark:border-[0.2px] grow-0 dark:border-white max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] md:px-[47px] md:pt-[49px] md:pb-[25px] rounded-xl translate-y-20">
           <div className=" rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center">
             <TiStarFullOutline className="fill-white dark:fill-blue-900 w-6 h-6"/>
           </div>
-          <h3 className="my-3 font-semibold text-4xl text-blue-900 dark:text-white">Individual</h3>
+          <h3 className="my-3 font-semibold text-4xl text-blue-900 dark:text-white">Community / Individual</h3>
           <p>
-            Rep the branded wears, ,Lorem ipsum dolor sit amet, 
-            consectetur adipiscing elit ut aliquam, purus sit amet luctus
+            Like what we do? Want free merch or would like to speak with our team? Reach out to us now. We are waiting to hear from you.
           </p>
             <WhiteButton className="mt-6">Contact</WhiteButton>
         </div>
@@ -237,20 +236,20 @@ const Home: NextPage = () => {
             aria-labelledby="Gallery" hasTrack={false} options={{pagination:false}} className="w-full">
             <div className="relative md:static mt-20 md:mt-0 w-full">
               <div className="splide__arrows absolute top-1/2 -translate-y-1/2 md:relative w-full md:w-20 md:ml-auto flex items-center justify-between h-0 z-[5] md:justify-end">
-                <span className="splide__arrow splide__arrow--prev w-5 
+                <button className="splide__arrow splide__arrow--prev w-5 
                     h-5 cursor-pointer absolute left-1">
                   <BiChevronLeftCircle className="md:hidden text-xl" />
                   <CgChevronLeftR className="hidden md:inline-block text-xl" />
-                </span>
-                <span className="splide__arrow splide__arrow--next w-5 
+                </button>
+                <button className="splide__arrow splide__arrow--next w-5 
                     h-5 cursor-pointer absolute right-1">
                   <BiChevronRightCircle className="md:hidden text-xl"  />
                   <CgChevronRightR className="hidden md:inline-block text-xl" />
-                </span>
+                </button>
               </div>
 
               <SplideTrack className="md:mt-20 space-x-4 child:flex child:items-end">
-                {gallery || gallerySkeleton}
+                { gallery || gallerySkeleton }
               </SplideTrack>
             </div>
           </Splide>
@@ -262,34 +261,31 @@ const Home: NextPage = () => {
         <h4 className="text-3xl font-semibold text-blue-400 dark:text-white">Communities</h4>
         <div className="mx-auto relative">
           <Splide aria-labelledby="Communities Slideshow" hasTrack={false} options={{pagination:false}}>
-            <div className="relative md:static mt-[10px] md:mt-[69px]">
-              <div className="splide__arrows absolute top-1/2 md:top-[-88px] -translate-y-1/2 md:relative w-full md:w-20 md:ml-auto flex items-center justify-between h-0  z-[5] md:justify-end">
-                <span className="splide__arrow splide__arrow--prev w-5 
-                    h-5 cursor-pointer absolute left-1">
-                  <BiChevronLeftCircle className="md:hidden text-xl" />
-                  <CgChevronLeftR className="hidden md:inline-block text-xl" />
-                </span>
-                <span className="splide__arrow splide__arrow--next w-5 
-                    h-5 cursor-pointer absolute right-1">
-                  <BiChevronRightCircle className="md:hidden text-xl"  />
-                  <CgChevronRightR className="hidden md:inline-block text-xl" />
-                </span>
-              </div>
+            <div className="static mt-[69px]">
+              <span className="splide__arrows top-[-88px] -translate-y-1/2 relative w-20 ml-auto flex items-center h-0 z-[5] justify-end">
+                <button className="splide__arrow splide__arrow--prev w-5 
+                    h-5 cursor-pointer absolute left-1 show">
+                  <CgChevronLeftR className="inline-block text-xl" />
+                </button>
+                <button className="splide__arrow splide__arrow--next w-5 
+                    h-5 cursor-pointer absolute right-1 show">
+                  <CgChevronRightR className="inline-block text-xl" />
+                </button>
+              </span>
 
               <SplideTrack className="">
                 <SplideSlide className="max-w-max cursor-pointer">
-                  <div className="flex justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
+                  <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
                     <div className="shrink-0 hidden md:block">
-                      <Image src={Binance} alt="community image" layout="fixed" height={"50px"} width={"50px"}/>
+                      <Image src={BlockchainOAU} alt="community image" layout="fixed" height={`${(BlockchainOAU.height/BlockchainOAU.width)*50}px`} width={"50px"}/>
                     </div>
                     <div className="max-w-64 shrink px-2">
                       <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
                         <span  className="md:hidden"><Image src={Binance} alt="community image" height={"29px"} width={"29px"}/>&nbsp; </span>
-                        Web3bridge
+                        Blockchain OAU
                       </h5>
                       <p>
-                        Lorem ipsum dolor sit amet, editsa consectetur 
-                        adipiscing elit ut aliquam, purus sit amet....
+                        A community of Active Blockchain and Cryptos Lovers sharing knowledge and Opportunities.
                       </p>
                     </div>
                       <BsChevronRight className="h-8 w-8 shrink-0" />
@@ -298,16 +294,15 @@ const Home: NextPage = () => {
                 <SplideSlide className="max-w-max cursor-pointer">
                   <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
                     <div className="shrink-0 hidden md:block">
-                      <Image src={Binance} alt="community image" layout="fixed" height={"50px"} width={"50px"}/>
+                      <Image src={Gida} alt="community image" layout="fixed" height={`${(Gida.height/Gida.width)*50}px`} width={"50px"}/>
                     </div>
                     <div className="max-w-64 shrink px-2">
                       <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
                         <span  className="md:hidden"><Image src={Binance} alt="community image" height={"29px"} width={"29px"}/>&nbsp; </span>
-                        Web3bridge
+                        Gida Academy
                       </h5>
                       <p>
-                        Lorem ipsum dolor sit amet, editsa consectetur 
-                        adipiscing elit ut aliquam, purus sit amet....
+                        Crypto Academy Specializing on spreading Education of Crypto And Blockchain.
                       </p>
                     </div>
                       <BsChevronRight className="h-8 w-8 shrink-0" />
@@ -316,34 +311,15 @@ const Home: NextPage = () => {
                 <SplideSlide className="max-w-max cursor-pointer">
                   <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
                     <div className="shrink-0 hidden md:block">
-                      <Image src={Binance} alt="community image" layout="fixed" height={"50px"} width={"50px"}/>
+                      <Image src={CryptoHills} alt="community image" layout="fixed" height={`${(CryptoHills.height/CryptoHills.width)*50}px`} width={"50px"}/>
                     </div>
                     <div className="max-w-64 shrink px-2">
                       <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
                         <span  className="md:hidden"><Image src={Binance} alt="community image" height={"29px"} width={"29px"}/>&nbsp; </span>
-                        Web3bridge
+                        Crypto Hills
                       </h5>
                       <p>
-                        Lorem ipsum dolor sit amet, editsa consectetur 
-                        adipiscing elit ut aliquam, purus sit amet....
-                      </p>
-                    </div>
-                      <BsChevronRight className="h-8 w-8 shrink-0" />
-                  </div>
-                </SplideSlide>
-                <SplideSlide className="max-w-max cursor-pointer">
-                  <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
-                    <div className="shrink-0 hidden md:block">
-                      <Image src={Binance} alt="community image" layout="fixed" height={"50px"} width={"50px"}/>
-                    </div>
-                    <div className="max-w-64 shrink px-2">
-                      <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
-                        <span  className="md:hidden"><Image src={Binance} alt="community image" height={"29px"} width={"29px"}/>&nbsp; </span>
-                        Web3bridge
-                      </h5>
-                      <p>
-                        Lorem ipsum dolor sit amet, editsa consectetur 
-                        adipiscing elit ut aliquam, purus sit amet....
+                        Crypto Hills is a team of professional traders with an easy, consistent and profitable trading method!
                       </p>
                     </div>
                       <BsChevronRight className="h-8 w-8 shrink-0" />
@@ -358,25 +334,19 @@ const Home: NextPage = () => {
       </div>
 
       {/* Trusted */}
-      <div className="mt-[150px] relative max-w-screen-xl mx-auto">
+      <div className="mt-[100px] relative max-w-screen-xl mx-auto">
         <h3 className="text-2xl font-semibold text-center text-blue-900 dark:text-white                    ">
-          Trusted with <span className="text-green-100">50+ Brands</span>
+          Trusted by these <span className="text-green-100">brands</span>
         </h3>
         <div className="mt-5 child:max-w-[120px] md:child:max-w-[200px] child:px-2 mx-auto text-center">
-          <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
-          <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
-          <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
-          <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
-          <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
-          <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
-          <div className="inline-block"><Image src={BinanceText} alt="brand_image" /></div>
+          <div className="inline-block"><Image src={ByBit} alt="brand_image" /></div>
         </div>
         <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
           bg-[#298A63] -right-96 -translate-y-3/4" />
       </div>
 
       {/* Learn More */}
-      <div className="mt-[150px] flex justify-center items-center flex-col" id="Learn-More">
+      <div className="mt-[100px] flex justify-center items-center flex-col" id="Learn-More">
         <h3 className="font-semibold mb-[50px] text-2xl text-center text-blue-900 dark:text-white ">Learn More</h3>
         <div className="h-[360px] w-full max-w-[640px]">
           {/* relative pt-[56.25%] */}
