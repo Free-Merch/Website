@@ -134,7 +134,7 @@ const Home: NextPage = () => {
     </SplideSlide>
   ));
 
-  const faqSkeleton = Array(4).fill(0).map((index) => (
+  const faqSkeleton = Array(4).fill(0).map((_, index) => (
     <div key={index} className="w-[700px] h-[50px] mb-2 mx-auto"><Skeleton containerClassName='w-full h-full' className='w-full h-full' /></div>
   ))
 
