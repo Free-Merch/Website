@@ -118,6 +118,39 @@ const Home: NextPage = () => {
     </div>
   ));
 
+  const communitiesInfo = [
+    { name: "Blockchain OAU", logo: BlockchainOAU, 
+      description: "A community of Active Blockchain and Cryptos Lovers sharing knowledge and Opportunities."
+    },
+    { name: "Gida Academy", logo: Gida, 
+      description: "Crypto Academy Specializing on spreading Education of Crypto And Blockchain."
+    },
+    {
+      name: "Crypto Hills", logo: CryptoHills, 
+      description: "Crypto Hills is a team of professional traders with an easy, consistent and profitable trading method!"
+    }
+  ]
+
+  const communities = communitiesInfo.map( ({name, logo, description}, index) => 
+    <SplideSlide key={index} className="max-w-max cursor-pointer">
+      <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
+        <div className="shrink-0 hidden md:block">
+          <Image src={logo} alt="community image" layout="fixed" height={`${(logo.height/logo.width)*50}px`} width={"50px"}/>
+        </div>
+        <div className="max-w-64 shrink px-2">
+          <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
+            <span  className="md:hidden"><Image src={logo} alt="community image" height={"29px"} width={"29px"}/>&nbsp; </span>
+            {name}
+          </h5>
+          <p>
+            {description}
+          </p>
+        </div>
+          <BsChevronRight className="h-8 w-8 shrink-0" />
+      </div>
+    </SplideSlide>
+  )
+
   const galleryHeights = ["h-[275px]", "h-[243px]", "h-[222px]", "h-[222px]", "h-[243px]", "h-[275px]"];
   const gallery = galleryPics?.map(({ alternativeText, url }, index) => (
     <SplideSlide className="max-w-max mr-4" key={index}>
@@ -274,57 +307,7 @@ const Home: NextPage = () => {
               </span>
 
               <SplideTrack className="">
-                <SplideSlide className="max-w-max cursor-pointer">
-                  <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
-                    <div className="shrink-0 hidden md:block">
-                      <Image src={BlockchainOAU} alt="community image" layout="fixed" height={`${(BlockchainOAU.height/BlockchainOAU.width)*50}px`} width={"50px"}/>
-                    </div>
-                    <div className="max-w-64 shrink px-2">
-                      <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
-                        <span  className="md:hidden"><Image src={Binance} alt="community image" height={"29px"} width={"29px"}/>&nbsp; </span>
-                        Blockchain OAU
-                      </h5>
-                      <p>
-                        A community of Active Blockchain and Cryptos Lovers sharing knowledge and Opportunities.
-                      </p>
-                    </div>
-                      <BsChevronRight className="h-8 w-8 shrink-0" />
-                  </div>
-                </SplideSlide>
-                <SplideSlide className="max-w-max cursor-pointer">
-                  <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
-                    <div className="shrink-0 hidden md:block">
-                      <Image src={Gida} alt="community image" layout="fixed" height={`${(Gida.height/Gida.width)*50}px`} width={"50px"}/>
-                    </div>
-                    <div className="max-w-64 shrink px-2">
-                      <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
-                        <span  className="md:hidden"><Image src={Binance} alt="community image" height={"29px"} width={"29px"}/>&nbsp; </span>
-                        Gida Academy
-                      </h5>
-                      <p>
-                        Crypto Academy Specializing on spreading Education of Crypto And Blockchain.
-                      </p>
-                    </div>
-                      <BsChevronRight className="h-8 w-8 shrink-0" />
-                  </div>
-                </SplideSlide>
-                <SplideSlide className="max-w-max cursor-pointer">
-                  <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
-                    <div className="shrink-0 hidden md:block">
-                      <Image src={CryptoHills} alt="community image" layout="fixed" height={`${(CryptoHills.height/CryptoHills.width)*50}px`} width={"50px"}/>
-                    </div>
-                    <div className="max-w-64 shrink px-2">
-                      <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
-                        <span  className="md:hidden"><Image src={Binance} alt="community image" height={"29px"} width={"29px"}/>&nbsp; </span>
-                        Crypto Hills
-                      </h5>
-                      <p>
-                        Crypto Hills is a team of professional traders with an easy, consistent and profitable trading method!
-                      </p>
-                    </div>
-                      <BsChevronRight className="h-8 w-8 shrink-0" />
-                  </div>
-                </SplideSlide>
+                {communities}
               </SplideTrack>
             </div>
           </Splide>
