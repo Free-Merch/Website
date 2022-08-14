@@ -24,7 +24,7 @@ const TableHeaders = [
 ]
 
 const MobileTableHeaders = [
-  "Item", "Name", "Shared", "Shared", "Percentage", "Quantity", "Task"
+  "Item", "Name", "Status", "Shared", "Percentage", "Quantity", "Task"
 ]
 
 const getTableRows = (tableData: Item[]) => tableData?.map(row => {
@@ -65,7 +65,7 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
     <span key={v4()} className={`cursor-default inline-block ${status === "Completed" ? "text-[#7174FF]" : "text-green-100"}`}>{status}</span>,
     <span key={v4()} className={`inline-block py-1 px-2 rounded-[30px] 
       ${status === "Completed" ? 
-        "bg-[#7174FF] text-[#E7E7FF] hover:bg-[#E7E7FF] hover:text-[#7174FF]" : 
+        "bg-[#7174FF] text-[#E7E7FF]" : 
         "bg-green-100 text-[#E8FADF] cursor-pointer hover:bg-[#E8FADF] hover:text-green-100"}`}>{task}
       </span>,
   ]
