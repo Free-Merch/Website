@@ -132,14 +132,14 @@ const Home: NextPage = () => {
   ]
 
   const communities = communitiesInfo.map( ({name, logo, description}, index) => 
-    <SplideSlide key={index} className="max-w-max cursor-pointer">
+    <SplideSlide key={index} className="max-w-max cursor-pointer h-full items-end">
       <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
         <div className="shrink-0 hidden md:block">
           <Image src={logo} alt="community image" layout="fixed" height={`${(logo.height/logo.width)*50}px`} width={"50px"}/>
         </div>
         <div className="max-w-64 shrink px-2">
           <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
-            <span  className="md:hidden"><Image src={logo} alt="community image" height={"29px"} width={"29px"}/>&nbsp; </span>
+            <span  className="md:hidden"><Image src={logo} alt="community image" height={`${(logo.height/logo.width)*29}px`} width={"29px"}/>&nbsp; </span>
             {name}
           </h5>
           <p>
@@ -306,7 +306,7 @@ const Home: NextPage = () => {
                 </button>
               </span>
 
-              <SplideTrack className="">
+              <SplideTrack className="items-end">
                 {communities}
               </SplideTrack>
             </div>

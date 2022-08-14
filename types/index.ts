@@ -40,6 +40,7 @@ export interface Project {
 
 export interface Campaign {
   items: Item[]
+  name: string
   active: boolean
 }
 

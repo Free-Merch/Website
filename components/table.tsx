@@ -2,7 +2,6 @@ import { ReactNode, useState } from "react";
 import {v4 } from "uuid";
 import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
 import { ImageType } from "../types";
-import {horizontalLabel, verticalLabel} from "../components/labels"
 import { useWindowSize } from "../hooks/useSize";
 
 
@@ -34,6 +33,7 @@ export const MobileTable = (data: TData) => {
     })}
   </div>
 
+
   let rows: JSX.Element[] = [];
   _rows.forEach((row, index1) => {
     rows.push(
@@ -52,7 +52,6 @@ export const MobileTable = (data: TData) => {
                   <span className="cursor-pointer" onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}}>{ele}</span>
                 }
                 <br />
-                {index2 === 5 && <div className="mx-auto w-min mt-2">{verticalLabel}</div>}
                 <span className="flex items-center text-[13px] 
                   justify-center w-full cursor-pointer "
                   onClick={() => {
@@ -76,8 +75,7 @@ export const MobileTable = (data: TData) => {
     if(!openRows[index1]) return;
 
     rows.push(
-      <div key={v4()} className={`flex items-center h-[100px] bg-white dark:bg-blue-400 
-        ${_rows.length-1 !== index1 && "border border-transparent border-image-1" }`}>
+      <div key={v4()} className={`flex items-center h-[100px] bg-white dark:bg-blue-400 `}>
       {row.map((ele, index2) => {
         if(!upRows.includes(index2)){
 
@@ -115,7 +113,6 @@ const Table = (data: TData) => {
         return <td className={`text-left ${index2 === 0 && "cursor-pointer"}`} onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}} key={index2}>
           <div className={`${windowWidth > 1150 && "flex"}`}>
             {ele} 
-            {index2 === 5 && <div className="w-min ml-2">{ windowWidth > 1150 ? horizontalLabel : <div className="mt-2">{verticalLabel}</div> }</div>}
           </div>
         </td>
       })}

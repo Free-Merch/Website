@@ -25,6 +25,7 @@ const projectQuery = (id: number) => (
               }
             }
             campaigns{
+              name
               items{
                 quantity
                 shared
@@ -56,7 +57,7 @@ const getProject = async (id: number): Promise<Project> => {
   if(logo) logo.ratio = logo?.width/logo?.height;
 
   const campaigns: Campaign[] = merch?.campaigns.map(
-    ({items}: any) =>  {
+    ({items, name}: any) =>  {
       const actives: boolean[] = []
       const _items = items.map( (item: any): Item => {
         actives.push(item.quantity !== item.shared)
@@ -71,7 +72,7 @@ const getProject = async (id: number): Promise<Project> => {
         }
       })
       
-      return {items: _items, active: actives.every((check) => check)}
+      return {items: _items, active: actives.every((check) => check), name}
     }
   )
 

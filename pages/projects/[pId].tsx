@@ -11,6 +11,7 @@ import { MobileTable } from "../../components/table";
 
 import { BiLinkAlt } from "react-icons/bi";
 import { BsFacebook, BsInstagram, BsTelegram, BsTwitter } from "react-icons/bs";
+import CampaignTable from "../../components/campaign";
 
 import Link from "next/link";
 import useProjects from "../../hooks/useProjects";
@@ -38,7 +39,7 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
     <span key={v4()}>{name}</span>,
     <span key={v4()} className="text-grey-700 override-weight">{quantity}</span>,
     <span key={v4()} className="text-grey-700 override-weight">{shared}</span>,
-    <div key={v4()} className="h-[20px] flex items-center">
+    <div key={v4()} className="h-[20px] flex items-center justify-center">
       <div className="w-16 h-2 bg-grey-400 dark:bg-grey-300 relative text-left rounded-lg" key={v4()}>
         <div 
           style={{
@@ -55,7 +56,7 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
         </div>
         {percentage !== 100 &&
           <span 
-            className="text-black-900 dark:text-white  absolute right-0 top-1/2 -translate-y-1/2 text-[7px] leading-[10px] font-medium">
+            className="text-black-900 dark:text-white absolute right-0 top-1/2 -translate-y-1/2 text-[7px] leading-[10px] font-medium">
             {percentage}%
           </span> 
         }
@@ -89,16 +90,12 @@ const Project = (props: Project) => {
     </Link>
   ));
 
-  const activeCampaigns = campaigns?.filter(c => c.active)
-  const inActiveCampaigns = campaigns?.filter(c => !c.active)
-  const [_activeRows, _inActiveRows]: [Item[], Item[]] = [ [], [] ]
-  const [activeImages, inactiveImages]: [ImageType[], ImageType[]] = [[], []]
-  activeCampaigns?.forEach(c => _activeRows.push(...(c.items ?? [])))
-  activeCampaigns?.map(c => activeImages.push(...c.items.map(i => i.image)))
-  inActiveCampaigns?.map(c => inactiveImages.push(...c.items.map(i => i.image)))
-  inActiveCampaigns?.forEach(c => _inActiveRows.push(...(c.items ?? [])))
+  const _rows: Item[] = []
+  const images: ImageType[] = []
+  campaigns?.forEach(c => _rows.push(...(c.items ?? [])))
+  campaigns?.map(c => images.push(...c.items.map(i => i.image)))
 
-  const [activeRows, inActiveRows] = [getTableRows(_activeRows), getTableRows(_inActiveRows)]
+  const rows = getTableRows(_rows);
 
   const campaignImages = _campaignImages?.map((image, index) => {
     return <div key={index}>
@@ -127,6 +124,17 @@ const Project = (props: Project) => {
   })
 
   const { show } = useContext(ModalContext)
+  const campaignTables = campaigns.map((c, index) => <CampaignTable 
+      show={show}
+      active={c.active}
+      tableHeaders={TableHeaders} 
+      mobileTableHeaders={MobileTableHeaders}
+      rows={getTableRows(c.items)}
+      images = {c.items.map(i => i.image)}
+      name={c.name}
+      key={index}
+    />
+  )
 
   return <>
     <div className="bg-grey-200 absolute left-0 right-0 dark:bg-blue-800 h-[100px]">
@@ -163,42 +171,7 @@ const Project = (props: Project) => {
           </span>)}
       </div>
 
-      <div className="mt-10 mb-20 px-[50px] py-[30px] bg-white dark:bg-blue-400">
-        <h3 className="font-bold text-black-900 dark:text-white text-xl mb-[10px] border-b-[0.5px] pb-[10px] border-b-grey-300 ">Active</h3>
-        <div className="hidden md:block">
-          <Table 
-            headers={TableHeaders} 
-            onClick={(image) => show("merch", {picture: image})}
-            rows={activeRows}
-            images={activeImages}
-          />
-        </div>
-        <MobileTable 
-            onClick={(image) => show("merch", {picture: image})}
-          className="md:hidden -mx-10 " 
-          headers={MobileTableHeaders} 
-          rows={activeRows}
-          images={activeImages}  
-        />
-      </div>
-
-      <div className="bg-white px-[50px] py-[30px] dark:bg-blue-400">
-        <h3 className="font-bold text-black-900 dark:text-white text-xl mb-[10px] border-b-[0.5px] pb-[10px] border-b-grey-300 ">Completed</h3>
-        <div className="hidden md:block">
-          <Table  
-            headers={TableHeaders} 
-            rows={inActiveRows}
-            onClick={(image) => show("merch", {picture: image})}
-            images={inactiveImages}
-          />
-        </div>
-        <MobileTable 
-          className="md:hidden -mx-10" 
-          headers={MobileTableHeaders} 
-          onClick={(image) => show("merch", {picture: image})}
-          images={inactiveImages}
-          rows={inActiveRows}/>
-      </div>
+      {campaignTables}
 
       <div className="mt-40">
         <h4 className="text-center text-white text-sm font-medium">Also View</h4>
