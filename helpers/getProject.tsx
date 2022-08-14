@@ -24,7 +24,7 @@ const projectQuery = (id: number) => (
                 }
               }
             }
-            campaigns{
+            campaigns(sort: "id:desc"){
               name
               items{
                 quantity
