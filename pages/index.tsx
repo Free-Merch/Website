@@ -118,17 +118,18 @@ const Home: NextPage = () => {
     </div>
   ));
 
-  const gallery = galleryPics?.map(({alternativeText, url, width, height}, index) => (
-    <SplideSlide className="max-w-max" key={index}>
-      <div className="mr-4">
-      <Image src={url} alt={alternativeText} layout="fixed" width={width} height={height}/>
+  const galleryHeights = ["h-[275px]", "h-[243px]", "h-[222px]", "h-[222px]", "h-[243px]", "h-[275px]"];
+  const gallery = galleryPics?.map(({ alternativeText, url }, index) => (
+    <SplideSlide className="max-w-max mr-4" key={index}>
+      <div className={`${galleryHeights[index]} w-[193px]`}>
+      <Image src={url} alt={alternativeText} className="rounded-[10px]" layout="fill" objectFit='cover'/>
       </div>
     </SplideSlide>
   ))
 
   const gallerySkeleton = Array(6).fill(0).map( ( _, index ) => (
     <SplideSlide className="max-w-max" key={index}>
-      <div className="mr-4 w-[193px] h-[275px]">
+      <div className={`mr-4 w-[193px] ${galleryHeights[index]}`}>
       <Skeleton containerClassName='w-full h-full' className='w-full h-full' />
       </div>
     </SplideSlide>
@@ -233,7 +234,7 @@ const Home: NextPage = () => {
         <div className="flex items-end mx-auto w-full space-x-1 justify-between max-w-screen-xl ">
           <Splide 
             draggable={true}
-            aria-labelledby="Gallery" hasTrack={false} options={{pagination:false}} className="w-full">
+            aria-labelledby="Gallery" hasTrack={false} options={{pagination:false, gap: 18}} className="w-full">
             <div className="relative md:static mt-20 md:mt-0 w-full">
               <div className="splide__arrows absolute top-1/2 -translate-y-1/2 md:relative w-full md:w-20 md:ml-auto flex items-center justify-between h-0 z-[5] md:justify-end">
                 <button className="splide__arrow splide__arrow--prev w-5 
@@ -247,8 +248,7 @@ const Home: NextPage = () => {
                   <CgChevronRightR className="hidden md:inline-block text-xl" />
                 </button>
               </div>
-
-              <SplideTrack className="md:mt-20 space-x-4 child:flex child:items-end">
+              <SplideTrack className="md:mt-20 child:flex child:items-end">
                 { gallery || gallerySkeleton }
               </SplideTrack>
             </div>
