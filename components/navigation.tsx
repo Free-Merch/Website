@@ -14,7 +14,7 @@ interface INav {
 
 const links = [
   {path: "/", text: "Home"},
-  {path: "/brands", text: "Campaigns"},
+  {path: "/campaigns", text: "Campaigns"},
   {path: "/about-us", text: "About us"},
   {path: "/contact-us", text: "Contact us"}
 ]
