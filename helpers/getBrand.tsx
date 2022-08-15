@@ -1,9 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
 import { client } from "../context/apolloContext";
-import { Campaign, ImageType, Item, Link, Project } from "../types";
+import { Campaign, ImageType, Item, Link, Brand } from "../types";
 
 
-const projectQuery = (id: number) => (
+const brandQuery = (id: number) => (
   gql`
     query {
       merch(id:${id}){
@@ -30,6 +30,7 @@ const projectQuery = (id: number) => (
                 quantity
                 shared
                 name
+                requestLink
                 image{
                   data{
                     attributes{
@@ -50,8 +51,8 @@ const projectQuery = (id: number) => (
   `
 )
 
-const getProject = async (id: number): Promise<Project> => {
-  const { data } = await client.query({query: projectQuery(id)})
+const getBrand = async (id: number): Promise<Brand> => {
+  const { data } = await client.query({query: brandQuery(id)})
   const merch = data?.merch.data.attributes;
   const logo: ImageType = {...merch?.logo.data.attributes};
   if(logo) logo.ratio = logo?.width/logo?.height;
@@ -68,7 +69,8 @@ const getProject = async (id: number): Promise<Project> => {
           image,
           name: item.name,
           quantity: item.quantity,
-          shared: item.shared
+          shared: item.shared,
+          requestLink: item.requestLink
         }
       })
       
@@ -106,4 +108,4 @@ const getProject = async (id: number): Promise<Project> => {
   };
 }
 
-export default getProject;
+export default getBrand;

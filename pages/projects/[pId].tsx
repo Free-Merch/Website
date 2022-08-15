@@ -1,23 +1,21 @@
 import Image from "next/image";
 import Layout from "../../components/layout";
 
-import Table from "../../components/table";
 import { v4 } from "uuid";
 import { ProjectCard } from "../../components/cards/project-card";
 import { GreenButton } from "../../components/buttons";
 import { useContext } from "react";
 import { ModalContext } from "../../context/modalContext";
-import { MobileTable } from "../../components/table";
 
 import { BiLinkAlt } from "react-icons/bi";
 import { BsFacebook, BsInstagram, BsTelegram, BsTwitter } from "react-icons/bs";
 import CampaignTable from "../../components/campaign";
 
 import Link from "next/link";
-import useProjects from "../../hooks/useProjects";
-import { ImageType, Item, Project } from "../../types";
+import useBrands from "../../hooks/useBrands";
+import { ImageType, Item, Brand } from "../../types";
 import { GetServerSideProps } from "next";
-import getProject from "../../helpers/getProject";
+import getBrand from "../../helpers/getBrand";
 
 const TableHeaders = [
   "Item", "Name", "Quantity", "Shared", "Percentage", "Status", "Task"
@@ -63,11 +61,10 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
       </div>
     </div>,
     <span key={v4()} className={`cursor-default inline-block ${status === "Completed" ? "text-[#7174FF]" : "text-green-100"}`}>{status}</span>,
-    <span key={v4()} className={`inline-block py-1 px-2 rounded-[30px] 
-      ${status === "Completed" ? 
-        "bg-[#7174FF] text-[#E7E7FF]" : 
-        "bg-green-100 text-[#E8FADF] cursor-pointer hover:bg-[#E8FADF] hover:text-green-100"}`}>{task}
-      </span>,
+    status === "Completed" ? <span key={v4()} className={`inline-block py-1 px-2 rounded-[30px] bg-[#7174FF] text-[#E7E7FF]`}>{task}
+      </span> : 
+      <Link href={row.requestLink}><span  className="inline-block py-1 px-2 rounded-[30px] 
+      bg-green-100 text-[#E8FADF] cursor-pointer hover:bg-[#E8FADF] hover:text-green-100">Request</span></Link>,
   ]
 });
 
@@ -81,7 +78,7 @@ const linkImages = {
 }
 
 
-const Project = (props: Project) => {
+const Project = (props: Brand) => {
 
   const { id: pId, brand, logoBgColor, about, logo, links: _links, campaigns, campaignImages: _campaignImages } = props;
   const links = _links?.map((link, index) => (
@@ -106,14 +103,14 @@ const Project = (props: Project) => {
     </div>
   })
 
-  let projects = useProjects()
-  projects = projects?.slice(0, 3);
-  const ProjectCards = projects?.map((project, index) => {
-    const { about, logo, campaigns, brand, logoBgColor, id } = project;
+  let brands = useBrands()
+  brands = brands?.slice(0, 3);
+  const ProjectCards = brands?.map((brand, index) => {
+    const { about, logo, campaigns, brand: name, logoBgColor, id } = brand;
     if( Number(id) === Number(pId)) return undefined
     return <div className="sm:mr-4 md:mr-7" key={index}>
       <ProjectCard  
-        brand={brand}
+        brand={name}
         image={logo}
         about={about}
         bgColor={logoBgColor}
@@ -184,7 +181,7 @@ const Project = (props: Project) => {
   </>
 }
 
-const NewComponent = (param: Project) => (
+const NewComponent = (param: Brand) => (
   <Layout className="h-full bg-grey-100 dark:bg-blue-900 py-10 px-[12px] text-sm md:px-24 text-grey-300 dark:text-grey-400 overflow-y-hidden">
     <Project {...param}/>
   </Layout>
@@ -197,9 +194,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const pId = Number(context.query?.pId)
 
   try {
-    const project = await getProject(pId);
+    const brand = await getBrand(pId);
     return {
-      props: project
+      props: brand
     }
   } catch (error) {
     return {

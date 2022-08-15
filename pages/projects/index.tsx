@@ -3,15 +3,15 @@ import Layout from "../../components/layout";
 import Dropdown, { Option } from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
-import useProjects from "../../hooks/useProjects";
+import useProjects from "../../hooks/useBrands";
 
 import { useState } from "react";
-import { ProjectBrief } from "../../types";
+import { BrandBrief } from "../../types";
 
 const orderFunctions = {
-  "A-Z": (projects: ProjectBrief[]) => projects.sort((a, b) => a.brand[0] < b.brand[0] ? -1 : 1),
-  "Z-A": (projects: ProjectBrief[]) => projects.sort((a, b) => a.brand[0] > b.brand[0] ? -1 : 1),
-  "Most recent": (projects: ProjectBrief[]) => projects
+  "A-Z": (projects: BrandBrief[]) => projects.sort((a, b) => a.brand[0] < b.brand[0] ? -1 : 1),
+  "Z-A": (projects: BrandBrief[]) => projects.sort((a, b) => a.brand[0] > b.brand[0] ? -1 : 1),
+  "Most recent": (projects: BrandBrief[]) => projects
 }
 
 const Projects = () => {

@@ -1,10 +1,10 @@
 import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
-import { ImageType, ProjectBrief } from '../types';
+import { ImageType, BrandBrief } from '../types';
 
 
 
-const projectsQuery = gql`
+const brandsQuery = gql`
   query {
     merches(sort: "id:desc"){
       data{
@@ -50,9 +50,9 @@ const projectsQuery = gql`
   }
 `;
 
-const useProjects = (): ProjectBrief[] => {
-  const { data } = useQuery(projectsQuery, {client});
-  const projectBriefs: ProjectBrief[] = data?.merches.data.map( (merch: any) => {
+const useBrands = (): BrandBrief[] => {
+  const { data } = useQuery(brandsQuery, {client});
+  const projectBriefs: BrandBrief[] = data?.merches.data.map( (merch: any) => {
     const id = merch.id;
     merch = merch.attributes;
     const { brand, about, logoBgColor }: 
@@ -85,4 +85,4 @@ const useProjects = (): ProjectBrief[] => {
   return projectBriefs;
 }
 
-export default useProjects;
+export default useBrands;

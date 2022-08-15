@@ -31,17 +31,17 @@ import HeroHuman from "../assets/pictures/hero-human.png";
 import Playbtn from "../assets/pictures/play.png";
 import { ProjectCard, ProjectCardSkeleton } from '../components/cards/project-card';
 import useHomePage from '../hooks/useHomePage';
-import useProjects from '../hooks/useProjects';
+import useBrands from '../hooks/useBrands';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 const Home: NextPage = () => {
 
-  const projects = useProjects();
-  const ProjectCards = projects?.map((project, index) => {
-    const { about, logo, campaigns, brand, logoBgColor, id } = project;
+  const brands = useBrands();
+  const CampaignCards = brands?.map((brand, index) => {
+    const { about, logo, campaigns, brand: name, logoBgColor, id } = brand;
     return <ProjectCard  
-        brand={brand}
+        brand={name}
         image={logo}
         about={about}
         bgColor={logoBgColor}
@@ -217,7 +217,7 @@ const Home: NextPage = () => {
         </p>
       </div>
 
-      {/* Recent Projects */}
+      {/* Recent Campaigns */}
       <div className="md:space-x-4 text-center rouded-lg mt-[100px]">
         <div className="my-12 md:w-2/3 mx-auto text-center mb-[50px]">
           <h2 className="font-semibold text-green-100 text-3xl mb-[20px]">Ongoing Campaigns</h2>
@@ -227,10 +227,10 @@ const Home: NextPage = () => {
         </div>
 
         <div className="flex flex-wrap gap-4 justify-center">
-          { ProjectCards || ProjectCardSkeletons }
+          { CampaignCards || ProjectCardSkeletons }
         </div>
         <p className="text-center mt-20">
-          <GreenButton href="/projects" className="mt-6">See All Brands</GreenButton>
+          <GreenButton href="/campaigns" className="mt-6">See All Brands</GreenButton>
         </p>
       </div>
 

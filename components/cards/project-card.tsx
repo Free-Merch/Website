@@ -43,7 +43,7 @@ export function ProjectCard (this: any, { image, bgColor, about, brand, campaign
     inline-block bg-grey-200 rounded-lg w-screen min-w-[163px] ${width2 && width2 <= 580 && "flex-[1_0_163px]" }
     max-w-[289px] ${width1 <= 200 ? "p-[12px]" : "p-[14px]"} flex-[1_0_163px] ${width2 && width2 <= 544 && "max-w-[200px]" }`} ref={ref1} >
 
-    <Link href={`/projects/${id}`}>
+    <Link href={`/campaigns/${id}`}>
       <div>
         <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded-lg ${width1 <= 200 ? "h-[105px]" : "h-[200px]"}  w-full flex items-center justify-center`}
           style={{backgroundColor: `${bgColor}`}}
@@ -53,7 +53,7 @@ export function ProjectCard (this: any, { image, bgColor, about, brand, campaign
 
         <div className={`${width1 <= 200 ? "mt-[5px]" : "mt-6"}`}>
           <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} text-blue-400 flex items-center`}>
-            <Link href={`/projects/${id}`}>
+            <Link href={`/campaigns/${id}`}>
               <span className="">
               <span className="capitalize">{brand}</span> &nbsp;
               <BsArrowRight className="inline-block stroke-1"/>

@@ -16,9 +16,10 @@ export interface Item {
   quantity: number,
   shared: number,
   image: ImageType,
+  requestLink: string
 }
 
-export interface ProjectBrief {
+export interface BrandBrief {
   id: number
   brand: string,
   about: string,
@@ -27,7 +28,7 @@ export interface ProjectBrief {
   campaigns: ImageType[]
 }
 
-export interface Project {
+export interface Brand {
   id: number
   brand: string,
   about: string,
