@@ -24,6 +24,7 @@ import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
 import Gida from "../assets/pictures/gida.png";
 import CryptoHills from "../assets/pictures/cryptohillz.jpeg"
 import BlockchainOAU from "../assets/pictures/blockchain_oau.jpeg";
+import BlockchainBUK from "../assets/pictures/bayero-university1.png"
 import ByBit from "../assets/pictures/bybit.svg"
 import Rex from "../assets/pictures/Rex.png";
 import Playbtn from "../assets/pictures/play.png";
@@ -127,6 +128,10 @@ const Home: NextPage = () => {
     {
       name: "Crypto Hills", logo: CryptoHills, 
       description: "Crypto Hills is a team of professional traders with an easy, consistent and profitable trading method!"
+    },
+    {
+      name: "Blockchain BUK", logo: BlockchainBUK,
+      description: "A Blockchain campus Club Educating any determined individual on Blockchain Technology."
     }
   ]
 
