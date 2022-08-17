@@ -21,13 +21,11 @@ import { TiStarFullOutline } from "react-icons/ti";
 import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
 
 // pictures
-import Binance from "../assets/pictures/binance.png";
 import Gida from "../assets/pictures/gida.png";
 import CryptoHills from "../assets/pictures/cryptohillz.jpeg"
 import BlockchainOAU from "../assets/pictures/blockchain_oau.jpeg";
 import ByBit from "../assets/pictures/bybit.svg"
-import BinanceText from "../assets/pictures/binance_text.png";
-import HeroHuman from "../assets/pictures/hero-human.png";
+import Rex from "../assets/pictures/rex.png";
 import Playbtn from "../assets/pictures/play.png";
 import { ProjectCard, ProjectCardSkeleton } from '../components/cards/project-card';
 import useHomePage from '../hooks/useHomePage';
@@ -50,6 +48,7 @@ const Home: NextPage = () => {
         key={index}
       />
   })
+
 
   const [faqState, setFaqs] = useState<boolean[]>(Array(100).fill(false));
   const { faqs: faqsText, gallery: galleryPics} = useHomePage();
@@ -198,9 +197,9 @@ const Home: NextPage = () => {
             </a>
           </div>
         </div>
-        <div className="flex justify-end relative hero-small:mx-auto">
+        <div className={`flex justify-end relative hero-small:mx-auto w-[314px] h-[397px] sm:w-[377px] sm:h-[476px]`}>
           <div className="bg-green-100 absolute h-3/4 rounded-md bottom-0 w-full"></div>
-          <Image alt="swag-human" src={HeroHuman}/>  
+          <Image alt="swag-human" src={Rex} layout="fill"/>
         </div>
       </div>
 
