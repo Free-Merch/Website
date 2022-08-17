@@ -25,7 +25,7 @@ import Gida from "../assets/pictures/gida.png";
 import CryptoHills from "../assets/pictures/cryptohillz.jpeg"
 import BlockchainOAU from "../assets/pictures/blockchain_oau.jpeg";
 import ByBit from "../assets/pictures/bybit.svg"
-import Rex from "../assets/pictures/rex.png";
+import Rex from "../assets/pictures/Rex.png";
 import Playbtn from "../assets/pictures/play.png";
 import { ProjectCard, ProjectCardSkeleton } from '../components/cards/project-card';
 import useHomePage from '../hooks/useHomePage';
