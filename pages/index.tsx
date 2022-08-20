@@ -338,7 +338,7 @@ const Home: NextPage = () => {
         <div className="h-[360px] w-full max-w-[640px]">
           {/* relative pt-[56.25%] */}
           <DynamicReactPlayer 
-            url='https://www.youtube.com/watch?v=JNCzoG1IzoY' 
+            url='https://youtu.be/vsODeBWNPd4' 
             controls
             width="100%"
             height="100%"
