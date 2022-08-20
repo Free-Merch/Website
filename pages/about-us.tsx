@@ -12,11 +12,15 @@ const AboutUs = () => {
       <div className="text-center md:text-start  md:w-1/2">
         <h2 className="text-3xl font-semibold  md:text-start">Our Core Solution</h2>
         &nbsp;
-        <p>Get free crypto merchandise is a program directed at reaching out previously existing networks of Africans and crypto enthusiasts by creating easy, Non-complex crypto bounties for community members to get free crypto merchandise for sponsoring brands thereby creating value end to end.</p>
+        <p>
+          Freemerch is helping world-class Tech and Web3 products use merchandise to create awareness, adoption, and reward users.</p>
         &nbsp;
-        <p>Our goal is to sensitize the Nigeria community through inscriptions on shirts that informs their subconsciousness about why Cryptocurrency is not a scam and inscriptions that further enlighten the public about the new technology and other opportunities in it. </p>
+        <p>With pre-existing and expanding partnerships with top Tech and Web3-focused communities, we help bridge the gap between the innovators and users, creating further interest in their campaigns and brand growth.</p>
         &nbsp;
-        <p>These merchandise further help create more awareness among their peers and give them a perception of being crypto inclined. For several more reasons like this, Africans love shirts.</p>
+        <p>We create simple, less technical campaigns to give brands desired conversions such as App downloads, testing, social engagements, reviews, and referrals for their platform and products. Participants in these campaigns win merchandise.</p>
+        &nbsp;
+        <p>This merchandise further helps create more awareness among their peers and excited winners who are encouraged to share their stories on social platforms creating more unique stories and social impacts for Tech and Web3 brands. 
+        </p>
       </div>
     </div>
 
@@ -27,7 +31,7 @@ const AboutUs = () => {
     <div>
       <h2 className="text-3xl font-semibold">How Do We Achieve This?</h2>
       <br />
-      <p>Our initiative is keen to further ammonizing the power of pre-existing crypto communities and offer them support thereby creating a larger network.</p>
+      <p>We take a creative and relatable approach to distributing merch, creating awareness, adoption, and rewarding existing users while creating unique stories and using merch for social impacts. Here are some of our approaches.</p>
       <br />
       <br />
       <ul className="flex flex-wrap child:rounded-md dark:child:text-white 
@@ -38,13 +42,10 @@ const AboutUs = () => {
         "
         >
         <li className="radial-initiative">Host bounties in communities for community members to share a limited number of swags.</li>
-        <li className="radial-initiative">Support Hackathon, Crypto-conferences host and virtual events with shirts, swags and merchandise for their participants delivered at the venue of the event or to their doorstep.</li>
-        <li className="radial-initiative">Host bounties in communities for community members to share a limited number of swags.</li>
+        <li className="radial-initiative">Creating and sharing merchandise to support Tech and Web3 Hackathons, conferences, and virtual events delivered at the venue of the event or to their doorstep.</li>
         <li className="radial-initiative">Support facilitators of local events who often times encounter challenges of sponsorship with limited number of crypto shirts</li>
-        <li className="radial-initiative">Books distributions to schools with Crypto theme or fun-based and relatable education contents or quotes for teenagers.</li>
-        <li className="radial-initiative">Branded health aids for hospitals and possible healthcare centers.</li>
-        <li className="radial-initiative">Host bounties on our website for Crypto shirts and swags.</li>
-
+        <li className="radial-initiative">Making social impacts by sharing branded items and merchandise in public centers, branded learning aids for schools, and supporting non-profit events or organizations.</li>
+        <li className="radial-initiative">Hosting simple, non-technical bounties both in communities and on our website is open to participation for everyone.</li>
       </ul>
     </div>
 
@@ -58,7 +59,7 @@ const AboutUs = () => {
       <ul 
         className="flex flex-wrap child:rounded-md dark:child:text-white 
           dark:child:bg-transparent child:text-start child:max-w-[353px] 
-          flex-row child:mr-2 child:mb-2 text-sm child:p-5 
+          flex-row gap-14 child:mb-2 text-sm child:p-5 
           child:shadow-[0px_9px_16px_rgba(171,190,209,0.03) child:bg-white
           justify-center  
           md:justify-start 
@@ -73,12 +74,16 @@ const AboutUs = () => {
           <p>Hosting micro-marketing tasks such as content writing, meme creation, social media engagements, attending virtual or physical events.</p>
         </li>
         <li className="radial-initiative">
+          <h3 className="text-xl font-semibold">Conversion-based Campaigns. </h3>
+          <p>From simple to less technical campaigns, get the community involved in Beta-testing, reviews, creating social campaigns, and expanding your communities and users with Merchandise. We help make that happen.</p>
+        </li>
+        {/* <li className="radial-initiative">
           <p>
             Sponsorship with swags. <br />
             Event publicity and visibility <br /> 
             Social media and micro-marketing bounties.<br />
           </p>
-        </li>
+        </li> */}
       </ul>
     </div>
 
