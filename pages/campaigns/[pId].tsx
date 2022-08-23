@@ -33,7 +33,9 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
   const task = shared === quantity ? "Completed" : "Request";
 
   return [
-    <Image key="1" className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)]" src={image.url} alt="shirt" layout="fixed" width={"32px"} height={"32px"}/>,
+    <div key="1" className="relative w-[32px] h-[32px]">
+      <Image className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)]" src={image.url} alt="shirt" layout="fill" objectFit="cover"/>
+    </div>,
     <span key={v4()}>{name}</span>,
     <span key={v4()} className="text-grey-700 override-weight">{quantity}</span>,
     <span key={v4()} className="text-grey-700 override-weight">{shared}</span>,
@@ -92,13 +94,11 @@ const Project = (props: Brand) => {
   campaigns?.forEach(c => _rows.push(...(c.items ?? [])))
   campaigns?.map(c => images.push(...c.items.map(i => i.image)))
 
-  const rows = getTableRows(_rows);
-
   const campaignImages = _campaignImages?.map((image, index) => {
-    return <div key={index}>
+    return <div key={index} className="relative w-[60px] h-[60px]" >
       <Image 
         className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)]" src={image.url} 
-        alt={image.alternativeText} layout="fixed" width={"60px"} height={"60px"}
+        alt={image.alternativeText} layout="fill" objectFit="cover"
       />
     </div>
   })
