@@ -37,7 +37,7 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
     <span key={v4()}>{name}</span>,
     <span key={v4()} className="text-grey-700 override-weight">{quantity}</span>,
     <span key={v4()} className="text-grey-700 override-weight">{shared}</span>,
-    <div key={v4()} className="h-[20px] flex items-center justify-center">
+    <div key={v4()} className="h-[20px] flex items-center">
       <div className="w-16 h-2 bg-grey-400 dark:bg-grey-300 relative text-left rounded-lg" key={v4()}>
         <div 
           style={{
@@ -130,6 +130,7 @@ const Project = (props: Brand) => {
       images = {c.items.map(i => i.image)}
       name={c.name}
       key={index}
+      _key={index}
     />
   )
 
@@ -171,7 +172,7 @@ const Project = (props: Brand) => {
       {campaignTables}
 
       <div className="mt-40">
-        <h4 className="text-center text-white text-sm font-medium">Also View</h4>
+        <h4 className="text-center text-blue-900 dark:text-white text-xl font-semibold">Also View</h4>
         <div className="child:m-3 flex flex-wrap justify-center mb-10">
           {ProjectCards}
         </div>

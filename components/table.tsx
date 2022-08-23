@@ -27,7 +27,7 @@ export const MobileTable = (data: TData) => {
 
   const headers = <div className="w-full rounded-t-lg flex">
     {_headers.slice(0,4).map(header => {
-      return <div className="w-1/4 text-center text-sm font-medium pt-5 pb-3 text-blue-400 dark:text-white" key={v4()}>
+      return <div className="w-1/4 text-sm font-medium pt-5 pb-3 text-grey-300" key={v4()}>
         {header}
       </div>
     })}
@@ -38,22 +38,22 @@ export const MobileTable = (data: TData) => {
   _rows.forEach((row, index1) => {
     rows.push(
       <div key={v4()} 
-        className={`flex items-center h-[100px] bg-white border border-transparent 
-          dark:bg-blue-400
-          ${(openRows[index1] || _rows.length-1 !== index1) && "border-image-1" } `
+        className={`flex items-center bg-white border border-transparent 
+          dark:bg-blue-400 mb-[29px]
+          `
         }
       >
         {row.map((ele,index2) => {
           if(upRows.includes(index2)){
-            return <div className="text-center w-1/2" key={index2}>
+            return <div className=" w-1/2" key={index2}>
               <>
                 {index2 === 1 ? 
                   <span className="!font-medium">{ele} </span> : 
                   <span className="cursor-pointer" onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}}>{ele}</span>
                 }
                 <br />
-                <span className="flex items-center text-[13px] 
-                  justify-center w-full cursor-pointer "
+                <span className="flex items-center text-[10px] 
+                  w-full cursor-pointer "
                   onClick={() => {
                     handleSetOpenRows(index1, !openRows[index1])
                   }}
@@ -75,12 +75,12 @@ export const MobileTable = (data: TData) => {
     if(!openRows[index1]) return;
 
     rows.push(
-      <div key={v4()} className={`flex items-center h-[100px] bg-white dark:bg-blue-400 `}>
+      <div key={v4()} className={`flex items-center mb-[29px] bg-white dark:bg-blue-400 `}>
       {row.map((ele, index2) => {
         if(!upRows.includes(index2)){
 
-          return <div className="text-center w-1/3" key={index2}>
-                {_headers[index2]}
+          return <div className="w-1/3" key={index2}>
+                <span className="text-grey-300">{_headers[index2]}</span>
               <br />
               <span className={`${index2 !== row.length-1 && "!text-blue-400 !font-medium"} `}>
                 {ele}
@@ -94,9 +94,7 @@ export const MobileTable = (data: TData) => {
   
 
   return <div className={`${className} mobile-table `}>
-    <div className={`shadow-[0px_8px_16px_rgba(171,190,209,0.4)] dark:shadow-none dark:text-white dark:bg-blue-900`}>
-      {headers}
-    </div>
+    {headers}
     {rows}
   </div>
 }
@@ -123,7 +121,7 @@ const Table = (data: TData) => {
   const maxWidth = headerWidth - (10/data.headers.length);
   const header = data.headers.map((title, index) => 
     <th 
-      className={`text-grey-300 text-left dark:text-white w-[${headerWidth}]% lg:w-[${maxWidth}]% text-sm font-medium pt-2 pb-3`} 
+      className={`text-grey-300 text-left w-[${headerWidth}]% lg:w-[${maxWidth}]% text-sm font-medium pt-2 pb-3`} 
       key={index}>
       {title}
     </th>
