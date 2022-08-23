@@ -1,11 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
-import { ImageType } from '../types';
+import { FAQ, ImageType } from '../types';
 
-interface FAQ {
-  question: string,
-  answer: string
-}
+
 
 const query = gql`
   query {

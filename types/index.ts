@@ -49,3 +49,8 @@ export interface Link{
   url: string
   name: string
 }
+
+export interface FAQ {
+  question: string,
+  answer: any
+}

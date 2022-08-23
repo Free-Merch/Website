@@ -33,6 +33,8 @@ import useHomePage from '../hooks/useHomePage';
 import useBrands from '../hooks/useBrands';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { FAQ } from '../types';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
 
@@ -52,7 +54,25 @@ const Home: NextPage = () => {
 
 
   const [faqState, setFaqs] = useState<boolean[]>(Array(100).fill(false));
-  const { faqs: faqsText, gallery: galleryPics} = useHomePage();
+  const { gallery: galleryPics} = useHomePage();
+  const faqsText: FAQ[] = [
+    {
+      question: "What is a branded Merchandise (Swag)?",
+      answer: "Branded merchandise also called swags are materials on which companies have placed their identity. These materials can be clothes, books, pens etc."
+    },
+    {
+      question: "What is Freemerch?",
+      answer: "FreeMerch is a platform that helps you get free and easy access to branded merchandise. We help brands put themselves out there and help communities and individuals receive free merchandise."
+    },
+    {
+      question: "How can I get branded merch?",
+      answer: <span>`If you are a community or individual visit the {<span className='text-green-100'><Link href="/contact-us" >Contact Us</Link></span>} page, select the option that applies and fill out the form. We&apos;ll get back to you as soon as possible.</span>
+    },
+    {
+      question: "How do I patner with Freemerch?",
+      answer: <span>Go to the {<span className='text-green-100'><Link href="/contact-us" >Contact Us</Link></span>} page and select the company button, fill the form that pops up and submit it. We&apos;ll get back to you as soon as possible.</span>
+    }
+]
   const handleSetFaq = (index:number) => {
     const newState = [...faqState];
     newState[index] = !newState[index];
@@ -189,7 +209,7 @@ const Home: NextPage = () => {
           </h1>
 
           <p className="my-11 max-w-[700px]">
-            Using Merchandise to create awareness, encourage adoption and reward existing users of tech and web3 products and solutions.
+            Using Merchandise to create awareness, encourage adoption and reward existing users of tech/web3 products and solutions
           </p>
           
           <div className="flex w-full max-w-max justify-start flex-wrap">
@@ -216,7 +236,7 @@ const Home: NextPage = () => {
       <div className="max-w-screen-lg mt-[100px] text-center mx-auto">
         <h3 className=" font-semibold text-green-100 text-3xl mb-[20px]">About Us</h3>
         <p>
-          Freemerch is a platform helping brands create a unique voice by leveraging social impact, gen-z and millenial relatable campaigns.
+          Freemerch is a platform that helps brands create a unique voice by leveraging social impact, gen-z and millennial relatable campaigns. 
           Thereby creating awareness, adoption for leading tech and web3 solutions, bringing their products closer to users and communities.
         </p>
       </div>
