@@ -108,16 +108,15 @@ const Project = (props: Brand) => {
   const ProjectCards = brands?.map((brand, index) => {
     const { about, logo, campaigns, brand: name, logoBgColor, id } = brand;
     if( Number(id) === Number(pId)) return undefined
-    return <div className="sm:mr-4 md:mr-7" key={index}>
-      <ProjectCard  
+    return <ProjectCard  
         brand={name}
         image={logo}
         about={about}
         bgColor={logoBgColor}
         campaigns={campaigns}
         id={id}
+        key={index}
       />
-    </div>
   })
 
   const { show } = useContext(ModalContext)
