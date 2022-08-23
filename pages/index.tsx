@@ -241,22 +241,23 @@ const Home: NextPage = () => {
       {/* Contact Info */}
       <div className="relative mt-[100px] flex justify-center lg:justify-between lg:flex-nowrap flex-wrap max-w-screen-xl mx-auto">
         <div className="ellipsis absolute blur-[241px] w-[421px] h-[479px] opacity-50 bg-[#298A63] left-0 -translate-x-3/4 translate-y-1/4" />
-        <div className="dark:border-[0.2px] grow-0  dark:border-white max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px]  md:px-[47px] md:pt-[49px] md:pb-[25px] rounded-xl max-h-min">
-          <div className="rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center">
-            <TbCrown className="fill-white dark:fill-blue-900 w-6 h-6 text-blue-900"/>
+        <div className="dark:border-[0.2px] grow-0  dark:border-white max-w-[342px] sm:max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px]  sm:px-[47px] sm:pt-[49px] md:pb-[25px] rounded-xl max-h-min">
+          <div className="rounded-full sm:w-12 sm:h-12 w-8 h-8 dark:bg-white bg-blue-900 flex justify-center items-center">
+            <TbCrown className="fill-white sm:w-6 sm:h-6 w-[14px] h-[14px] dark:fill-blue-900 md:w-6 md:h-6 text-blue-900"/>
           </div>
-          <h3 className="my-3 font-semibold text-4xl text-blue-900 dark:text-white">Company</h3>
+          <h3 className="my-3 font-semibold sm:text-4xl text-lg text-blue-900 dark:text-white">Company</h3>
           <p>
             Sell out your solutions in a more relatable, user-oriented and fun way. Create unique stories and social impact with your merchandise. 
           </p>
             <WhiteButton className="mt-6">Contact</WhiteButton>
         </div>
         <div className="w-20 hidden lg:block"></div>
-        <div className="dark:border-[0.2px] grow-0 dark:border-white max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] md:px-[47px] md:pt-[49px] md:pb-[25px] rounded-xl translate-y-20">
-          <div className=" rounded-full w-12 h-12 dark:bg-white bg-blue-900 flex justify-center items-center">
-            <TiStarFullOutline className="fill-white dark:fill-blue-900 w-6 h-6"/>
+
+        <div className="dark:border-[0.2px] grow-0 dark:border-white max-w-[342px] sm:max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] sm:px-[47px] sm:pt-[49px] md:pb-[25px] rounded-xl translate-y-20">
+          <div className=" rounded-full sm:w-12 sm:h-12 w-8 h-8 dark:bg-white bg-blue-900 flex justify-center items-center">
+            <TiStarFullOutline className="fill-white dark:fill-blue-900 sm:w-6 sm:h-6 w-[14px] h-[14px]"/>
           </div>
-          <h3 className="my-3 font-semibold text-4xl text-blue-900 dark:text-white">Community / Individual</h3>
+          <h3 className="my-3 font-semibold sm:text-4xl text-lg text-blue-900 dark:text-white">Community / Individual</h3>
           <p>
             Like what we do? Want free merch or would like to speak with our team? Reach out to us now. We are waiting to hear from you.
           </p>
