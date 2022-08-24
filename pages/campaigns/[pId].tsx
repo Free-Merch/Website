@@ -176,7 +176,7 @@ const Project = (props: Brand) => {
           {ProjectCards}
         </div>
       </div>
-      <GreenButton href="/projects" className="py-2 px-4 mx-auto block max-w-max">View All</GreenButton>
+      <GreenButton href="/campaigns" className="py-2 px-4 mx-auto block max-w-max">View All</GreenButton>
     </div>
   </>
 }

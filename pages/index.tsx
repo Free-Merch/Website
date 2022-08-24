@@ -85,19 +85,21 @@ const Home: NextPage = () => {
 
   const faqs = faqsText?.map((faq, index) => (
     <div 
-      className={`flex pb-4
-        justify-between mb-8 
+      className={`flex
+        justify-between mb-[10px]
         rounded-md
-      bg-white dark:bg-transparent
-        p-7
+      bg-white dark:bg-transparent faq-bg
+        py-[11px] 
+        px-[31px]
         child:ease-linear
         child:transition-all
         child:duration-300
+        shadow-[0_8px_16px_3px_rgb(3, 3, 36)]
       `} key={index}>
       <div className="w-full">
-        <h4 className="text-base cursor-pointer 
+        <h4 className="text-lg cursor-pointer 
           flex justify-between items-center font-semibold
-          dark:text-white text-blue-900 mb-4"
+          dark:text-white text-blue-900"
           onClick={() => handleSetFaq(index)} 
         >
           {faq.question} &nbsp; &nbsp;
@@ -132,6 +134,7 @@ const Home: NextPage = () => {
           text-grey-300
           ${faqState[index] ? "max-h-20" : "max-h-0" }
         `}>
+          <span className='w-full h-[15px] block'></span>
           {faq.answer}
         </p>
       </div>
@@ -375,7 +378,7 @@ const Home: NextPage = () => {
           <div className="ellipsis absolute blur-[241px] w-[334px] h-[480px] opacity-50 
           bg-[#298A63] -right-40 -top-0 -translate-y-4/4 " />
         <div className="mt-8 max-w-[824px] mx-auto">
-          { faqs || faqSkeleton }
+          { faqs ||  faqSkeleton }
         </div>
       </div>
     </Layout>
