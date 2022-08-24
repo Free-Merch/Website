@@ -1,6 +1,8 @@
 import { GreenButton, WhiteButton2 } from "../components/buttons";
 import Layout from "../components/layout";
-import { BsTwitter } from "react-icons/bs";
+import { BsTwitter, BsInstagram } from "react-icons/bs";
+import {FaTelegramPlane} from "react-icons/fa";
+import Link from "next/link";
 
 const ContactUs = () => {
 
@@ -10,8 +12,22 @@ const ContactUs = () => {
       <WhiteButton2 className="px-8 py-2 bg-white" >Community/Individual</WhiteButton2>
       <h1 className="text-blue-900 dark:text-white mt-20 font-semibold text-3xl">Follow Us</h1>
       <p className="text-blue-400 text-base dark:text-white">Follow us on Social Media</p>
-      <div className="rounded-full max-w-min mx-auto bg-[#00acee] p-[13px] mt-5">
-        <BsTwitter className="h-[22px] w-[22px]" fill="#ffffff" />
+      <div className="flex gap-2 justify-center">
+        <Link href="https://twitter.com/getFreemerch">
+          <div className="rounded-full cursor-pointer max-w-min bg-[#00acee] p-[13px] mt-5">
+            <BsTwitter className="h-[22px] w-[22px]" fill="#ffffff" />
+          </div>
+        </Link>
+        <Link href="https://t.me/getfreemerch">
+          <div className="rounded-full cursor-pointer max-w-min bg-[#0088cc] p-[13px] mt-5">
+            <FaTelegramPlane className="h-[22px] w-[22px]" fill="#ffffff" />
+          </div>
+        </Link>
+        <Link href="https://www.instagram.com/getfreemerch.io/">
+          <div className="rounded-full cursor-pointer max-w-min instagram p-[13px] mt-5">
+            <BsInstagram className="h-[22px] w-[22px]" fill="#ffffff" />
+          </div>
+        </Link>
       </div>
   </div>
 }
