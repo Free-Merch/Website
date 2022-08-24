@@ -28,8 +28,8 @@ export const DesktopNav = (props: INav) => {
   const checkPath = "/" + pathname.split("/")[1].toLowerCase();
 
   const navLinks = links.map(({path, text}) => {
-    return <li className={`whitespace-nowrap hover:text-green-100 ${checkPath === path.toLowerCase() && "text-green-100"}`} key={uuid()}>
-      <Link href={path}>{text}</Link>
+    return <li className={`whitespace-nowrap cursor-pointer hover:text-green-100 ${checkPath === path.toLowerCase() && "text-green-100"}`} key={uuid()}>
+      <Link href={path} ><span className="font-medium text-base">{text}</span></Link>
       <div className={`border-b-1px ${checkPath === path.toLowerCase() ? "border-green-100 w-1/2" : "w-0"}`} />
     </li>
   })
