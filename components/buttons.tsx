@@ -47,6 +47,19 @@ export const WhiteButton2 = (props: IButton) => {
 }
 
 
+export const WhiteButton3 = (props: IButton) => {
+  props = {...props, 
+    className: 
+    `text-blue-400 
+    bg-grey-100 dark:text-white
+    hover:bg-blue-400
+    hover:text-white
+    dark:bg-blue-400
+    ${props.className}`
+  };
+  return <Button {...props} />
+}
+
 export const GreenBorderButton = ({children, className}: IButton) => 
   <button className={`
     bg-transparent border-green-100 border-1px text-grey-500
