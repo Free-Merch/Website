@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
 import {AiFillInstagram} from "react-icons/ai";
-import {FaTelegramPlane} from "react-icons/Fa";
+import {FaTelegramPlane} from "react-icons/fa";
 import {HiOutlineMail} from "react-icons/hi";
 import Link from "next/link";
 import Ribbon from "../assets/pictures/ribbon.png"
