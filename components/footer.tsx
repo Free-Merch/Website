@@ -1,4 +1,5 @@
-import {AiOutlineTwitter} from "react-icons/ai";
+import {AiOutlineTwitter, AiOutlineInstagram} from "react-icons/ai";
+import {FaTelegramPlane} from "react-icons/Fa";
 import Logo from "../assets/pictures/logo.png";
 import Image from "next/image";
 
@@ -14,7 +15,9 @@ const Footer = () => (
     </h3>
     &nbsp;
     <div className="flex space-x-4 mx-auto items-center px-2">
-      <AiOutlineTwitter className="w-5 h-5" />
+      <a href="https://twitter.com/getFreemerch"><AiOutlineTwitter className="w-5 h-5" /></a>
+      <a href="https://t.me/getfreemerch"><FaTelegramPlane className="w-5 h-5" /></a>
+      <a href="https://www.instagram.com/getfreemerch.io/"><AiOutlineInstagram className="w-5 h-5" /></a>
     </div>
     &nbsp;
     <div className="mx-auto">
