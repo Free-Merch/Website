@@ -1,5 +1,5 @@
 import {AiOutlineTwitter, AiOutlineInstagram} from "react-icons/ai";
-import {FaTelegramPlane} from "react-icons/Fa";
+import {FaTelegramPlane} from "react-icons/fa";
 import Logo from "../assets/pictures/logo.png";
 import Image from "next/image";
 
