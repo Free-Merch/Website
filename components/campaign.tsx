@@ -28,8 +28,9 @@ const CampaignTable = (props: Props) => {
     }
   }, [_key])
 
-  return  <div className="mt-5 md:px-[50px] md:py-[22px] px-[24px] py-[30px] bg-white dark:bg-blue-400 rounded-lg">
-        <h3 className={`cursor-pointer flex items-center font-bold text-black-900 dark:text-white text-xl`}
+  return  <div className="mt-5 md:px-[50px] md:py-[22px] px-[24px] py-[11px] bg-white dark:bg-blue-400 rounded-lg">
+        <h3 className={`cursor-pointer flex items-center font-bold text-black-900 dark:text-white text-xl 
+          ${open && "border-b-[0.5px] border-b-[#667085] pb-1"}`}
           onClick={() => setOpen(!open)}
         > 
           <>
