@@ -210,7 +210,7 @@ const Home: NextPage = () => {
     <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-[12px] md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
       {/* bg ellipses */}
       {/* <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(22, 124, 186, 0.3)] right-0 top-4 z-10" /> */}
-      <div className='flex flex-wrap justify-center sm:justify-between mx-auto'>
+      <div className='flex flex-wrap justify-center sm:justify-between mx-auto pt-[51px]'>
         <div className="text-start xl:w-2/4 mt-2 md:mt-32 ">
           <h1 className="text-[40px] leading-[44px] md:text-6xl font-semibold text-green-100 max-w-[800px]">
             <span className="dark:text-white text-blue-400">Get Access</span> to Free Swag
@@ -271,7 +271,7 @@ const Home: NextPage = () => {
         <div className="ellipsis absolute blur-[241px] w-[421px] h-[479px] opacity-50 bg-[#298A63] left-0 -translate-x-3/4 translate-y-1/4" />
         <div className="
           drop-shadow-[0_9px_16px_rgba(171,190,209,0.03)]
-          dark:border-[0.5px] grow-0  dark:border-white max-w-[342px] sm:max-w-[581px] 
+          dark:border-[0.5px] grow-0  dark:border-white max-w-[581px] 
           bg-grey-200 bg-silver px-[27px] py-[14px]  sm:px-[47px] sm:pt-[49px] md:pb-[25px] rounded-xl max-h-min">
           <div className="rounded-full sm:w-12 sm:h-12 w-8 h-8 dark:bg-white bg-blue-900 flex justify-center items-center">
             <TbCrown className="fill-white sm:w-6 sm:h-6 w-[14px] h-[14px] dark:fill-blue-900 md:w-6 md:h-6 text-white dark:text-blue-900"/>
@@ -284,7 +284,7 @@ const Home: NextPage = () => {
         </div>
 
         <div className="
-          dark:border-[0.5px] grow-0 dark:border-white max-w-[342px] sm:max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] sm:px-[47px] sm:pt-[49px] md:pb-[25px] rounded-xl lg:translate-y-20
+          dark:border-[0.5px] grow-0 dark:border-white max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] sm:px-[47px] sm:pt-[49px] md:pb-[25px] rounded-xl lg:translate-y-20
           drop-shadow-[0_9px_16px_rgba(171,190,209,0.03)]
           ">
           <div className=" rounded-full sm:w-12 sm:h-12 w-8 h-8 dark:bg-white bg-blue-900 flex justify-center items-center">

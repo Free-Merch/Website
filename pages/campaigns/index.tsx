@@ -43,7 +43,7 @@ const Projects = () => {
   const ProjectCardSkeletons = [<ProjectCardSkeleton key={1}/>, <ProjectCardSkeleton key={2} />, <ProjectCardSkeleton key={3} />, <ProjectCardSkeleton key={4} />]
 
   return <div className="my-12">
-    <div className="flex justify-between">
+    <div className="flex justify-between pt-[50px]">
       <h1 className="text-[18px] md:text-3xl font-semibold text-black-900 dark:text-white">Projects</h1>
       
       <Dropdown 

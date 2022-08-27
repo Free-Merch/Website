@@ -5,7 +5,7 @@ import Diamond from "../assets/pictures/diamond.png";
 
 const AboutUs = () => {
   return <div className="text-center mx-auto text-base text-blue-400 max-w-5xl dark:text-white">
-    <div className="flex flex-col md:flex-row justify-between items-center">
+    <div className="flex flex-col md:flex-row justify-between items-center pt-[74px]">
       <div className="md:w-1/2">
         <Image src={Diamond} alt="diamond" />
       </div>
