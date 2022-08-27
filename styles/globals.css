@@ -114,6 +114,10 @@ a {
   background: radial-gradient(98.48% 326.98% at 0% 3.35%, rgba(255, 255, 255, 0.038) 0%, rgba(102, 112, 133, 0.01) 100%) 
 }
 
+.splide__list{
+  align-items: baseline;
+}
+
 @media only screen and (min-width: 768px){
   .dark .ellipsis{
     display: block;

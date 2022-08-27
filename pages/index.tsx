@@ -35,6 +35,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { FAQ } from '../types';
 import Link from 'next/link';
+import { useWindowSize } from '../hooks/useSize';
 
 const Home: NextPage = () => {
 
@@ -51,6 +52,8 @@ const Home: NextPage = () => {
         key={index}
       />
   })
+
+  const {width: windowWidth} = useWindowSize();
 
 
   const [faqState, setFaqs] = useState<boolean[]>(Array(100).fill(false));
@@ -146,7 +149,7 @@ const Home: NextPage = () => {
       description: "A community of Active Blockchain and Cryptos Lovers sharing knowledge and Opportunities."
     },
     { name: "Gida Academy", logo: Gida, 
-      description: "Crypto Academy Specializing on spreading Education of Crypto And Blockchain."
+      description: "Gida academy is a crypto academy Specializing on spreading Education of Crypto And Blockchain."
     },
     {
       name: "Crypto Hills", logo: CryptoHills, 
@@ -158,16 +161,17 @@ const Home: NextPage = () => {
     }
   ]
 
-  const communities = communitiesInfo.map( ({name, logo, description}, index) => 
-    <SplideSlide key={index} className="max-w-max cursor-pointer h-full items-end">
-      <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:border-[0.25px] border-green-100 rounded-xl bg-white dark:bg-transparent">
-        <div className="shrink-0 hidden md:block">
-          <Image src={logo} alt="community image" layout="fixed" height={`${(logo.height/logo.width)*50}px`} width={"50px"}/>
-        </div>
+  const communities = communitiesInfo.map( ({name, logo, description}, index) => {
+    
+    const width = windowWidth <= 760 ? 28 : 50;
+    return <SplideSlide key={index} className="max-w-max cursor-pointer h-full items-end align-bottom">
+      <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:bg-[#0B1237] rounded-xl bg-white dark:bg-transparent">
         <div className="max-w-64 shrink px-2">
-          <h5 className="flex items-center text-blue-400 font-bold dark:text-white">
-            <span  className="md:hidden"><Image src={logo} alt="community image" height={`${(logo.height/logo.width)*29}px`} width={"29px"}/>&nbsp; </span>
-            {name}
+          <h5 className="flex mb-[12px] items-center text-blue-400 font-bold dark:text-white">
+            <span className="md:mr-3 mr-[3px] inline-flex justify-center items-center"><Image className='rounded' src={logo} alt="community image" 
+              height={`${(logo.height/logo.width)* width}px`} 
+              width={`${width}px`}/>&nbsp; </span>
+            <span>{name}</span>
           </h5>
           <p>
             {description}
@@ -176,6 +180,7 @@ const Home: NextPage = () => {
           <BsChevronRight className="h-8 w-8 shrink-0" />
       </div>
     </SplideSlide>
+  }
   )
 
   const galleryHeights = ["h-[275px]", "h-[243px]", "h-[222px]", "h-[222px]", "h-[243px]", "h-[275px]"];
@@ -262,26 +267,31 @@ const Home: NextPage = () => {
       </div>
 
       {/* Contact Info */}
-      <div className="relative mt-[100px] flex justify-center lg:justify-between lg:flex-nowrap flex-wrap max-w-screen-xl mx-auto">
+      <div className="relative mt-[100px] flex justify-center gap-x-20 gap-y-8 lg:flex-nowrap flex-wrap max-w-screen-xl mx-auto">
         <div className="ellipsis absolute blur-[241px] w-[421px] h-[479px] opacity-50 bg-[#298A63] left-0 -translate-x-3/4 translate-y-1/4" />
-        <div className="dark:border-[0.2px] grow-0  dark:border-white max-w-[342px] sm:max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px]  sm:px-[47px] sm:pt-[49px] md:pb-[25px] rounded-xl max-h-min">
+        <div className="
+          drop-shadow-[0_9px_16px_rgba(171,190,209,0.03)]
+          dark:border-[0.5px] grow-0  dark:border-white max-w-[342px] sm:max-w-[581px] 
+          bg-grey-200 bg-silver px-[27px] py-[14px]  sm:px-[47px] sm:pt-[49px] md:pb-[25px] rounded-xl max-h-min">
           <div className="rounded-full sm:w-12 sm:h-12 w-8 h-8 dark:bg-white bg-blue-900 flex justify-center items-center">
-            <TbCrown className="fill-white sm:w-6 sm:h-6 w-[14px] h-[14px] dark:fill-blue-900 md:w-6 md:h-6 text-blue-900"/>
+            <TbCrown className="fill-white sm:w-6 sm:h-6 w-[14px] h-[14px] dark:fill-blue-900 md:w-6 md:h-6 text-white dark:text-blue-900"/>
           </div>
-          <h3 className="my-3 font-semibold sm:text-4xl text-lg text-blue-900 dark:text-white">Company</h3>
-          <p>
+          <h3 className="my-3 font-semibold sm:text-3xl text-lg text-blue-900 dark:text-white">Company</h3>
+          <p className="text-xs md:text-lg text-[#7A797D] font-normal">
             Sell out your solutions in a more relatable, user-oriented and fun way. Create unique stories and social impact with your merchandise. 
           </p>
             <WhiteButton className="mt-6">Contact</WhiteButton>
         </div>
-        <div className="w-20 hidden lg:block"></div>
 
-        <div className="dark:border-[0.2px] grow-0 dark:border-white max-w-[342px] sm:max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] sm:px-[47px] sm:pt-[49px] md:pb-[25px] rounded-xl translate-y-20">
+        <div className="
+          dark:border-[0.5px] grow-0 dark:border-white max-w-[342px] sm:max-w-[581px] bg-grey-200 bg-silver px-[27px] py-[14px] sm:px-[47px] sm:pt-[49px] md:pb-[25px] rounded-xl lg:translate-y-20
+          drop-shadow-[0_9px_16px_rgba(171,190,209,0.03)]
+          ">
           <div className=" rounded-full sm:w-12 sm:h-12 w-8 h-8 dark:bg-white bg-blue-900 flex justify-center items-center">
             <TiStarFullOutline className="fill-white dark:fill-blue-900 sm:w-6 sm:h-6 w-[14px] h-[14px]"/>
           </div>
-          <h3 className="my-3 font-semibold sm:text-4xl text-lg text-blue-900 dark:text-white">Community / Individual</h3>
-          <p>
+          <h3 className="my-3 font-semibold sm:text-3xl text-lg text-blue-900 dark:text-white">Community / Individual</h3>
+          <p className="text-xs md:text-lg text-[#7A797D] font-normal">
             Like what we do? Want free merch or would like to speak with our team? Reach out to us now. We are waiting to hear from you.
           </p>
             <WhiteButton className="mt-6">Contact</WhiteButton>
