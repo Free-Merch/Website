@@ -30,12 +30,12 @@ const ContactUs = () => {
         <h2 className="mb-[10px] font-semibold text-3xl">Need Help? Get in touch.</h2>
         <p>Send us an email</p>
         {/* <p className="mt-[14px] whitespace-nowrap flex items-center cursor-pointer email"> */}
-          <a href="mailto:team@freemerch.io" className="mt-[14px] flex items-center cursor-pointer email"  target={'_blank'} rel='noreferrer'>
+          <a href="mailto:freemerchteam@gmail.com" className="mt-[14px] flex items-center cursor-pointer email"  target={'_blank'} rel='noreferrer'>
             <>
               <span className="rounded-full inline-block h-[26px] mr-1 cursor-pointer bg-blue-400 p-[3px] dark:bg-white">
                 <HiOutlineMail className="w-[21px] h-[21px]" fill="#ffffff" />
               </span> 
-              team@freemerch.io
+              freemerchteam@gmail.com
             </>
           </a>
         {/* </p> */}

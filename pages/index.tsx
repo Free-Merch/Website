@@ -357,7 +357,8 @@ const Home: NextPage = () => {
       {/* Trusted */}
       <div className="mt-[100px] relative max-w-screen-xl mx-auto">
         <h3 className="text-2xl font-semibold text-center text-blue-900 dark:text-white                    ">
-          Trusted by these <span className="text-green-100">brands</span>
+          Trusted by 
+          {/* these <span className="text-green-100">brands</span> */}
         </h3>
         <div className="mt-5 child:max-w-[120px] md:child:max-w-[200px] child:px-2 mx-auto text-center">
           <div className="inline-block"><Image src={ByBit} alt="brand_image" /></div>
