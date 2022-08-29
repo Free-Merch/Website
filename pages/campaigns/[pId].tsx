@@ -34,11 +34,11 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
 
   return [
     <div key="1" className="relative w-[32px] h-[32px]">
-      <Image className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)]" src={image.url} alt="shirt" layout="fill" objectFit="cover"/>
+      <Image className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)] rounded" src={image.url} alt="shirt" layout="fill" objectFit="cover"/>
     </div>,
-    <span key={v4()}>{name}</span>,
-    <span key={v4()} className="text-grey-700 override-weight">{quantity}</span>,
-    <span key={v4()} className="text-grey-700 override-weight">{shared}</span>,
+    <span key={v4()} className="capitalize">{name}</span>,
+    <span key={v4()} className="override-weight">{quantity}</span>,
+    <span key={v4()} className="override-weight">{shared}</span>,
     <div key={v4()} className="h-[20px] flex items-center">
       <div className="w-16 h-2 bg-grey-400 dark:bg-grey-300 relative text-left rounded-lg" key={v4()}>
         <div 
@@ -97,7 +97,7 @@ const Project = (props: Brand) => {
   const campaignImages = _campaignImages?.map((image, index) => {
     return <div key={index} className="relative w-[60px] h-[60px]" >
       <Image 
-        className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)]" src={image.url} 
+        className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)] rounded-[5px]" src={image.url} 
         alt={image.alternativeText} layout="fill" objectFit="cover"
       />
     </div>
@@ -158,7 +158,7 @@ const Project = (props: Brand) => {
           {links}
         </span>
       </h2>
-      <p className="text-grey-300 dark:text-grey-700 max-w-[569px] text-sm">
+      <p className="text-grey-300 mt-[10px] dark:text-white max-w-[569px] text-sm">
         {about}
       </p>
       <p className="text-black-900 font-medium text-xs dark:text-white mt-4">Item:</p>

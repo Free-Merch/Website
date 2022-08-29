@@ -40,7 +40,7 @@ const Layout = ({children, mainClass, ...others}: {[key:string]: any}) => {
         <div {...others}>
           <div className="mt-20"></div>
           <MobileNav open={openNav} />
-          <div className="mt-32"></div>
+          {/* <div className="mt-32"></div> */}
           <div className="max-w-7xl mx-auto">
             {children}
           </div>

@@ -5,7 +5,7 @@ import Diamond from "../assets/pictures/diamond.png";
 
 const AboutUs = () => {
   return <div className="text-center mx-auto text-base text-blue-400 max-w-5xl dark:text-white">
-    <div className="flex flex-col md:flex-row justify-between items-center">
+    <div className="flex flex-col md:flex-row justify-between items-center pt-[74px]">
       <div className="md:w-1/2">
         <Image src={Diamond} alt="diamond" />
       </div>
@@ -57,16 +57,16 @@ const AboutUs = () => {
       <p>Values for Partners and sponsors.</p>
       <br />
       <ul 
-        className="flex flex-wrap child:rounded-md dark:child:text-white 
-          dark:child:bg-transparent child:text-start child:max-w-[353px] 
+        className="flex flex-wrap child:rounded-md
+          child:text-start child:max-w-[353px] 
           flex-row gap-14 child:mb-2 text-sm child:p-5 
           child:shadow-[0px_9px_16px_rgba(171,190,209,0.03) child:bg-white
           justify-center  
-          md:justify-start 
+          md:justify-start text-blue-400
         "
       >
-        <li className="radial-initiative">
-          <h3 className="text-xl font-semibold">Brands visibility </h3>
+        <li className=" bg-white">
+          <h3 className="text-xl font-semibold">Brand visibility </h3>
           <p>Our shirts and merchandise designs allow inscription on shirts leading to partners preferred social media, community link or search engines.</p>
         </li>
         <li className="radial-initiative">

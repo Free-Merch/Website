@@ -78,7 +78,7 @@ export const MobileNav = (props: {open:boolean}) => {
   const checkPath = "/" + pathname.split("/")[1].toLowerCase();
 
   const navLinks = links.map(({path, text}, index) => {
-    return <li className={`whitespace-nowrap hover:text-green-100 ${checkPath === path.toLowerCase() && "text-green-100"}`} key={index}>
+    return <li className={`whitespace-nowrap hover:text-green-100 ${checkPath === path.toLowerCase() ? "text-green-100" : "text-blue-400 dark:text-white"}`} key={index}>
       <Link href={path}>{text}</Link>
     </li>
   })
@@ -90,15 +90,15 @@ export const MobileNav = (props: {open:boolean}) => {
     <ul className="space-y-4 text-base">
       {navLinks}
     </ul>
-    <div className="flex justify-between mt-3 items-center">
+    <div className="flex justify-between mt-3 items-center text-blue-400 dark:text-white">
       Dark mode 
-      <div className="p-2 py-6 h-8 bg-grey-600 rounded-3xl flex items-center">
-        <button className="rounded-full bg-white p-2" onClick={() => setTheme("light")}>
-          <HiSun className={`rounded-full ${theme === "light" ? "text-green-100" : "text-grey-300"}`} size={20}/> 
+      <div className="p-1 py-5 h-[30px] bg-grey-600 rounded-3xl flex items-center">
+        <button className={`rounded-full ${theme === "light" && "bg-white"} p-2`} onClick={() => setTheme("light")}>
+          <HiSun className={`rounded-full ${theme === "light" ? "text-green-100" : "text-grey-300"}`} size={18}/> 
         </button>
         &nbsp;
-        <button className="rounded-full bg-white p-2" onClick={() => setTheme("dark")}>
-          <HiOutlineMoon className={`rounded-full ${theme === "dark" ? "text-green-100" : "text-grey-300"}`} size={20}/>
+        <button className={`rounded-full ${theme === "dark" && "bg-white"}  p-2`} onClick={() => setTheme("dark")}>
+          <HiOutlineMoon className={`rounded-full ${theme === "dark" ? "text-green-100" : "text-grey-300"}`} size={18}/>
         </button>
       </div>
     </div>
