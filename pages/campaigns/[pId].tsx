@@ -38,7 +38,7 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
     </div>,
     <span key={v4()} className="capitalize">{name}</span>,
     <span key={v4()} className="override-weight">{quantity}</span>,
-    <span key={v4()} className="override-weight">{shared}</span>,
+    <span key={v4()} className="override-weight">{shared || 0}</span>,
     <div key={v4()} className="h-[20px] flex items-center">
       <div className="w-16 h-2 bg-grey-400 dark:bg-grey-300 relative text-left rounded-lg" key={v4()}>
         <div 

@@ -165,16 +165,16 @@ const Home: NextPage = () => {
     
     const width = windowWidth <= 760 ? 28 : 50;
     return <SplideSlide key={index} className="max-w-max cursor-pointer h-full items-end align-bottom">
-      <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:bg-[#0B1237] rounded-xl bg-white dark:bg-transparent">
+      <div className="flex justify-between mr-4 items-center max-w-[400px] border-com p-5 dark:bg-[#0B1237] rounded-xl bg-white dark:bg-transparent">
         <div className="max-w-64 shrink px-2">
-          <h5 className="flex mb-[12px] items-center text-blue-400 font-bold dark:text-white">
+          <h5 className="flex mb-[12px] h-[50px] items-center text-blue-400 font-bold dark:text-white">
             <span className="md:mr-3 mr-[3px] inline-flex justify-center items-center"><Image className='rounded' src={logo} alt="community image" 
               height={`${(logo.height/logo.width)* width}px`} 
               width={`${width}px`}/>&nbsp; </span>
             <span>{name}</span>
           </h5>
           <p>
-            {description}
+            {description.substring(0, 77) + (description.length > 77 ? "..." : "")}
           </p>
         </div>
           <BsChevronRight className="h-8 w-8 shrink-0" />
@@ -216,12 +216,12 @@ const Home: NextPage = () => {
             <span className="dark:text-white text-blue-400">Get Access</span> to Free Swag
           </h1>
 
-          <p className="my-11 max-w-[700px]">
+          <p className="my-[30px] max-w-[700px] font-normal text-[14px] md:text-[20px] leading-[20px] md:leading-[28px]">
             Using Merchandise to create awareness, encourage adoption and reward existing users of tech/web3 products and solutions
           </p>
           
           <div className="flex w-full max-w-max justify-start flex-wrap">
-            <GreenButton href="/contact-us" className="mr-6 mb-4">Contact</GreenButton>
+            <GreenButton href="/campaigns" className="mr-6 mb-4">Get Merch</GreenButton>
             <a href="#Learn-More" className="flex items-center -translate-y-[10px]">
               <button className="flex items-center">
                 <Image src={Playbtn} alt="play"/> 
