@@ -173,7 +173,7 @@ const Home: NextPage = () => {
               width={`${width}px`}/>&nbsp; </span>
             <span>{name}</span>
           </h5>
-          <p>
+          <p className='h-[60px]'>
             {description.substring(0, 77) + (description.length > 77 ? "..." : "")}
           </p>
         </div>
