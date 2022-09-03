@@ -2,11 +2,10 @@ import Head from "next/head";
 import Banner from "./banner";
 import Footer from "./footer";
 import {DesktopNav, MobileNav} from "./navigation";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import ModalContextProvider, { ModalContext } from "../context/modalContext";
 import ApolloContextProvider from "../context/apolloContext";
 import { useRouter } from "next/router";
-import TagManager from 'react-gtm-module';
 
 
 const Layout = ({children, mainClass, ...others}: {[key:string]: any}) => {
@@ -15,10 +14,6 @@ const Layout = ({children, mainClass, ...others}: {[key:string]: any}) => {
   const { pathname } = useRouter();
   const modalContext = useContext(ModalContext);
   const modalOpen = Object.values(modalContext.modals).map(obj => obj.open).includes(true);
-
-  useEffect(() => {
-      TagManager.initialize({ gtmId: 'GTM-5RWRHZ2' });
-  }, []);
 
   const openMobileNav = (open: boolean) => {
     setOpenNav(open);
