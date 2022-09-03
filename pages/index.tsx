@@ -82,9 +82,9 @@ const Home: NextPage = () => {
     setFaqs(newState);
   };
 
-  const DynamicReactPlayer = dynamic(() => import("react-player"), {
-    ssr: false,
-  })
+  // const DynamicReactPlayer = dynamic(() => import("react-player"), {
+  //   ssr: false,
+  // })
 
   const faqs = faqsText?.map((faq, index) => (
     <div 
@@ -372,12 +372,12 @@ const Home: NextPage = () => {
         <h3 className="font-semibold mb-[50px] text-2xl text-center text-blue-900 dark:text-white ">Learn More</h3>
         <div className="h-[360px] w-full max-w-[640px]">
           {/* relative pt-[56.25%] */}
-          <DynamicReactPlayer 
+          {/* <DynamicReactPlayer 
             url='https://youtu.be/vsODeBWNPd4' 
             controls
             width="100%"
             height="100%"
-          />
+          /> */}
         </div>
       </div>
 
