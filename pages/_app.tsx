@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} >
+  return <>
     <Head>
       <title>FreeMerch</title>
       <meta name="description" content="Get Free Merch" />
@@ -19,7 +19,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         })(window,document,'script','dataLayer','GTM-5RWRHZ2');
       `}
     </Script>
-  </Component>
+    <Component {...pageProps} />
+  </>
 }
 
 export default MyApp;
