@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // Next imports
 import type { NextPage } from 'next'
 import Image from 'next/image'
@@ -57,6 +57,14 @@ const Home: NextPage = () => {
 
   const [faqState, setFaqs] = useState<boolean[]>(Array(100).fill(false));
   const { gallery: galleryPics} = useHomePage();
+  const [hasWindow, setHasWindow] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
+  
   const faqsText: FAQ[] = [
     {
       question: "What is a branded Merchandise (Swag)?",
@@ -172,8 +180,8 @@ const Home: NextPage = () => {
               width={`${width}px`}/>&nbsp; </span>
             <span>{name}</span>
           </h5>
-          <p className='h-[60px]'>
-            {description.substring(0, 77) + (description.length > 77 ? "..." : "")}
+          <p className='brand-text'>
+            {description}
           </p>
         </div>
           <BsChevronRight className="h-8 w-8 shrink-0" />
@@ -371,12 +379,12 @@ const Home: NextPage = () => {
         <h3 className="font-semibold mb-[50px] text-2xl text-center text-blue-900 dark:text-white ">Learn More</h3>
         <div className="h-[360px] w-full max-w-[640px]">
           {/* relative pt-[56.25%] */}
-          <ReactPlayer 
+          {hasWindow && <ReactPlayer 
             url='https://youtu.be/vsODeBWNPd4' 
             controls
             width="100%"
             height="100%"
-          />
+          />}
         </div>
       </div>
 
