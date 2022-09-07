@@ -29,7 +29,7 @@ export const DesktopNav = (props: INav) => {
 
   const navLinks = links.map(({path, text}) => {
     return <li className={`whitespace-nowrap cursor-pointer hover:text-green-100 ${checkPath === path.toLowerCase() && "text-green-100"}`} key={uuid()}>
-      <Link href={path} ><span className="font-medium text-base">{text}</span></Link>
+      <Link href={path} ><span className="font-semibold text-base">{text}</span></Link>
       <div className={`border-b-1px ${checkPath === path.toLowerCase() ? "border-green-100 w-1/2" : "w-0"}`} />
     </li>
   })
@@ -78,7 +78,7 @@ export const MobileNav = (props: {open:boolean}) => {
   const checkPath = "/" + pathname.split("/")[1].toLowerCase();
 
   const navLinks = links.map(({path, text}, index) => {
-    return <li className={`whitespace-nowrap hover:text-green-100 ${checkPath === path.toLowerCase() ? "text-green-100" : "text-blue-400 dark:text-white"}`} key={index}>
+    return <li className={`whitespace-nowrap font-semibold hover:text-green-100 ${checkPath === path.toLowerCase() ? "text-green-100" : "text-blue-400 dark:text-white"}`} key={index}>
       <Link href={path}>{text}</Link>
     </li>
   })

@@ -26,9 +26,9 @@ export const MobileTable = (data: TData) => {
   }
 
   const headers = <div className="w-full rounded-t-lg flex">
-    {_headers.slice(0,4).map(header => {
+    {_headers.slice(0,4).map((header, index) => {
       return <div className="w-1/4 text-sm font-medium pt-5 pb-3 text-grey-300" key={v4()}>
-        {header}
+        {index !== 3 ? header : "Task"}
       </div>
     })}
   </div>
@@ -39,7 +39,8 @@ export const MobileTable = (data: TData) => {
     rows.push(
       <div key={v4()} 
         className={`flex items-center bg-white border border-transparent 
-          dark:bg-blue-400 mb-[29px]
+          dark:bg-blue-400 ${ openRows[index1] ? "mb-[15px]" : "" }
+          ${index1 === 0 ? "" : "mt-[29px]"}
           `
         }
       >
@@ -48,23 +49,26 @@ export const MobileTable = (data: TData) => {
             return <div className=" w-1/2" key={index2}>
               <>
                 {index2 === 1 ? 
-                  <span className="!font-medium">{ele} </span> : 
+                  <span className="font-medium text-black-200 dark:text-white">{ele} </span> : 
                   <span className="cursor-pointer" onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}}>{ele}</span>
                 }
-                <br />
-                <span className="flex items-center text-[10px] 
-                  w-full cursor-pointer "
-                  onClick={() => {
-                    handleSetOpenRows(index1, !openRows[index1])
-                  }}
-                >
-                  {index2 === 1 && 
-                    ( openRows[index1] ? 
-                      <><RiArrowUpSFill className="inline text-lg" /> Less</> :
-                      <><RiArrowDownSFill className="inline text-lg" /> More</>
-                    )
-                  }
-                </span>
+                
+                { index2 === 1 ?
+                  <> 
+                    <br />
+                    <span className="flex items-center text-[10px] 
+                      w-full cursor-pointer "
+                      onClick={() => {
+                        handleSetOpenRows(index1, !openRows[index1])
+                      }}
+                    >
+                      {openRows[index1] ? 
+                        <><RiArrowUpSFill className="inline text-lg" /> Less</> :
+                        <><RiArrowDownSFill className="inline text-lg" /> More</>
+                      }
+                    </span>
+                  </> : ""
+                }
               </>
             </div>
           }
@@ -75,7 +79,7 @@ export const MobileTable = (data: TData) => {
     if(!openRows[index1]) return;
 
     rows.push(
-      <div key={v4()} className={`flex items-center mb-[29px] bg-white dark:bg-blue-400 `}>
+      <div key={v4()} className={`flex items-center bg-white dark:bg-blue-400 `}>
       {row.map((ele, index2) => {
         if(!upRows.includes(index2)){
 
@@ -106,7 +110,7 @@ const Table = (data: TData) => {
   const rows = _rows.map((row, index1) => {
     return <tr 
       key={index1} 
-      className={`h-[70px] dark:bg-blue-400 bg-white`}>
+      className={`h-[50px] dark:bg-blue-400 bg-white`}>
       {row.map((ele,index2) => {
         return <td className={`text-left ${index2 === 0 && "cursor-pointer"}`} onClick={index2 === 0 ? () => _onClick(images[index1]) : () => {}} key={index2}>
           <div className={`${windowWidth > 1150 && "flex"}`}>
