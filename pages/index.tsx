@@ -2,7 +2,6 @@ import { useState } from 'react';
 // Next imports
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import dynamic from 'next/dynamic'
 
 // package imports
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
@@ -11,7 +10,7 @@ import '@splidejs/react-splide/css/core';
 // imported components
 import { WhiteButton, GreenButton } from '../components/buttons';
 import Layout from '../components/layout';
-// import ReactPlayer from "react-player";
+import ReactPlayer from "react-player";
 
 // react icons
 import { BsChevronRight,  } from "react-icons/bs";
@@ -236,19 +235,6 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className="ellipsis relative">
-        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4 " />
-      </div>
-
-      {/* About Us */}
-      <div className="max-w-screen-lg mt-[100px] text-center mx-auto">
-        <h3 className=" font-semibold text-green-100 text-3xl mb-[20px]">About Us</h3>
-        <p>
-          Freemerch is a platform that helps brands create a unique voice by leveraging social impact, gen-z and millennial relatable campaigns. 
-          Thereby creating awareness, adoption for leading tech and web3 solutions, bringing their products closer to users and communities.
-        </p>
-      </div>
-
       {/* Recent Campaigns */}
       <div className="md:space-x-4 text-center rouded-lg mt-[100px]">
         <div className="my-12 md:w-2/3 mx-auto text-center mb-[50px]">
@@ -262,7 +248,20 @@ const Home: NextPage = () => {
           { CampaignCards || ProjectCardSkeletons }
         </div>
         <p className="text-center mt-20">
-          <GreenButton href="/campaigns" className="mt-6">See All Brands</GreenButton>
+          <GreenButton href="/campaigns" className="mt-6">See All Campaigns</GreenButton>
+        </p>
+      </div>
+
+      <div className="ellipsis relative">
+        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4 " />
+      </div>
+
+      {/* About Us */}
+      <div className="max-w-screen-lg mt-[100px] text-center mx-auto">
+        <h3 className=" font-semibold text-green-100 text-3xl mb-[20px]">About Us</h3>
+        <p>
+          Freemerch is a platform that helps brands create a unique voice by leveraging social impact, gen-z and millennial relatable campaigns. 
+          Thereby creating awareness, adoption for leading tech and web3 solutions, bringing their products closer to users and communities.
         </p>
       </div>
 
@@ -372,12 +371,12 @@ const Home: NextPage = () => {
         <h3 className="font-semibold mb-[50px] text-2xl text-center text-blue-900 dark:text-white ">Learn More</h3>
         <div className="h-[360px] w-full max-w-[640px]">
           {/* relative pt-[56.25%] */}
-          {/* <DynamicReactPlayer 
+          <ReactPlayer 
             url='https://youtu.be/vsODeBWNPd4' 
             controls
             width="100%"
             height="100%"
-          /> */}
+          />
         </div>
       </div>
 
