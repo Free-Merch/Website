@@ -89,10 +89,6 @@ const Home: NextPage = () => {
     setFaqs(newState);
   };
 
-  // const DynamicReactPlayer = dynamic(() => import("react-player"), {
-  //   ssr: false,
-  // })
-
   const faqs = faqsText?.map((faq, index) => (
     <div 
       className={`flex
@@ -112,7 +108,7 @@ const Home: NextPage = () => {
           dark:text-white text-blue-900"
           onClick={() => handleSetFaq(index)} 
         >
-          {faq.question} &nbsp; &nbsp;
+          {faq.question}
           <div className={`
               shrink-0
               cursor-pointer 
@@ -142,7 +138,7 @@ const Home: NextPage = () => {
           overflow-hidden
           dark:text-grey-800
           text-grey-300
-          ${faqState[index] ? "max-h-20" : "max-h-0" }
+          ${faqState[index] ? "max-h-80" : "max-h-0" }
         `}>
           <span className='w-full h-[15px] block'></span>
           {faq.answer}
