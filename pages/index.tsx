@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // Next imports
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import dynamic from 'next/dynamic'
 
 // package imports
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
@@ -11,7 +10,7 @@ import '@splidejs/react-splide/css/core';
 // imported components
 import { WhiteButton, GreenButton } from '../components/buttons';
 import Layout from '../components/layout';
-// import ReactPlayer from "react-player";
+import ReactPlayer from "react-player";
 
 // react icons
 import { BsChevronRight,  } from "react-icons/bs";
@@ -58,6 +57,14 @@ const Home: NextPage = () => {
 
   const [faqState, setFaqs] = useState<boolean[]>(Array(100).fill(false));
   const { gallery: galleryPics} = useHomePage();
+  const [hasWindow, setHasWindow] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
+  
   const faqsText: FAQ[] = [
     {
       question: "What is a branded Merchandise (Swag)?",
@@ -82,10 +89,6 @@ const Home: NextPage = () => {
     setFaqs(newState);
   };
 
-  const DynamicReactPlayer = dynamic(() => import("react-player"), {
-    ssr: false,
-  })
-
   const faqs = faqsText?.map((faq, index) => (
     <div 
       className={`flex
@@ -105,7 +108,7 @@ const Home: NextPage = () => {
           dark:text-white text-blue-900"
           onClick={() => handleSetFaq(index)} 
         >
-          {faq.question} &nbsp; &nbsp;
+          {faq.question}
           <div className={`
               shrink-0
               cursor-pointer 
@@ -135,7 +138,7 @@ const Home: NextPage = () => {
           overflow-hidden
           dark:text-grey-800
           text-grey-300
-          ${faqState[index] ? "max-h-20" : "max-h-0" }
+          ${faqState[index] ? "max-h-80" : "max-h-0" }
         `}>
           <span className='w-full h-[15px] block'></span>
           {faq.answer}
@@ -165,15 +168,15 @@ const Home: NextPage = () => {
     
     const width = windowWidth <= 760 ? 28 : 50;
     return <SplideSlide key={index} className="max-w-max cursor-pointer h-full items-end align-bottom">
-      <div className="flex ml-5 justify-between items-center max-w-[400px] border-com p-5 dark:bg-[#0B1237] rounded-xl bg-white dark:bg-transparent">
+      <div className="flex justify-between mr-4 items-center max-w-[400px] border-com p-5 dark:bg-[#0B1237] rounded-xl bg-white dark:bg-transparent">
         <div className="max-w-64 shrink px-2">
-          <h5 className="flex mb-[12px] items-center text-blue-400 font-bold dark:text-white">
+          <h5 className="flex mb-[12px] h-[50px] items-center text-blue-400 font-bold dark:text-white">
             <span className="md:mr-3 mr-[3px] inline-flex justify-center items-center"><Image className='rounded' src={logo} alt="community image" 
               height={`${(logo.height/logo.width)* width}px`} 
               width={`${width}px`}/>&nbsp; </span>
             <span>{name}</span>
           </h5>
-          <p>
+          <p className='brand-text'>
             {description}
           </p>
         </div>
@@ -216,12 +219,12 @@ const Home: NextPage = () => {
             <span className="dark:text-white text-blue-400">Get Access</span> to Free Swag
           </h1>
 
-          <p className="my-11 max-w-[700px]">
+          <p className="my-[30px] max-w-[700px] font-normal text-[14px] md:text-[20px] leading-[20px] md:leading-[28px]">
             Using Merchandise to create awareness, encourage adoption and reward existing users of tech/web3 products and solutions
           </p>
           
           <div className="flex w-full max-w-max justify-start flex-wrap">
-            <GreenButton href="/contact-us" className="mr-6 mb-4">Contact</GreenButton>
+            <GreenButton href="/campaigns" className="mr-6 mb-4">Get Merch</GreenButton>
             <a href="#Learn-More" className="flex items-center -translate-y-[10px]">
               <button className="flex items-center">
                 <Image src={Playbtn} alt="play"/> 
@@ -234,19 +237,6 @@ const Home: NextPage = () => {
           <div className="bg-green-100 absolute h-3/4 rounded-md bottom-0 w-full"></div>
           <Image alt="swag-human" src={Rex} layout="fill"/>
         </div>
-      </div>
-
-      <div className="ellipsis relative">
-        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4 " />
-      </div>
-
-      {/* About Us */}
-      <div className="max-w-screen-lg mt-[100px] text-center mx-auto">
-        <h3 className=" font-semibold text-green-100 text-3xl mb-[20px]">About Us</h3>
-        <p>
-          Freemerch is a platform that helps brands create a unique voice by leveraging social impact, gen-z and millennial relatable campaigns. 
-          Thereby creating awareness, adoption for leading tech and web3 solutions, bringing their products closer to users and communities.
-        </p>
       </div>
 
       {/* Recent Campaigns */}
@@ -262,7 +252,20 @@ const Home: NextPage = () => {
           { CampaignCards || ProjectCardSkeletons }
         </div>
         <p className="text-center mt-20">
-          <GreenButton href="/campaigns" className="mt-6">See All Brands</GreenButton>
+          <GreenButton href="/campaigns" className="mt-6">See All Campaigns</GreenButton>
+        </p>
+      </div>
+
+      <div className="ellipsis relative">
+        <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] left-0 -translate-x-2/4 " />
+      </div>
+
+      {/* About Us */}
+      <div className="max-w-screen-lg mt-[100px] text-center mx-auto">
+        <h3 className=" font-semibold text-green-100 text-3xl mb-[20px]">About Us</h3>
+        <p>
+          Freemerch is a platform that helps brands create a unique voice by leveraging social impact, gen-z and millennial relatable campaigns. 
+          Thereby creating awareness, adoption for leading tech and web3 solutions, bringing their products closer to users and communities.
         </p>
       </div>
 
@@ -372,12 +375,12 @@ const Home: NextPage = () => {
         <h3 className="font-semibold mb-[50px] text-2xl text-center text-blue-900 dark:text-white ">Learn More</h3>
         <div className="h-[360px] w-full max-w-[640px]">
           {/* relative pt-[56.25%] */}
-          <DynamicReactPlayer 
+          {hasWindow && <ReactPlayer 
             url='https://youtu.be/vsODeBWNPd4' 
             controls
             width="100%"
             height="100%"
-          />
+          />}
         </div>
       </div>
 

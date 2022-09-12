@@ -72,20 +72,11 @@ export function ProjectCard (this: any, { image, bgColor, about, brand, campaign
 
 
 export const ProjectCardSkeleton = () => {
-  const {width: width1, ref: ref1} = useElementSize()
-  const {width: width2} = useWindowSize()
 
   return <SkeletonTheme>
-    <div className={`transition-all duration-300
-      inline-block bg-grey-200 rounded-lg w-screen min-w-[163px] 
-      max-w-[289px] ${width1 <= 200 ? "p-[12px]" : "p-[14px]"} ${width2 && width2 <= 544 && "max-w-[200px] flex-[1_0_163px]" }
-      ${width2 && width2 <= 580 && "flex-[1_0_163px]" }`} ref={ref1} >
-      <div className={`mb-2 rounded-lg ${width1 <= 200 ? "h-[105px]" : "h-[200px]"}  w-full flex items-center justify-center overflow-hidden`}>
-        <Skeleton className={`h-full w-full`} containerClassName="w-full h-full"/>
-      </div>
-
-      <div className="w-1/2">
-        <Skeleton />
+    <div className={`bg-grey-200 min-w-[163px] w-[399px] max-w-[399px] p-2 rounded`}>
+      <div className="w-full h-[50px] flex mb-6 items-center">
+        <div className="h-[50px] w-[40px]"><Skeleton className="h-[50px]" /> </div> <div className=" ml-2 w-1/2"><Skeleton /></div>
       </div>
 
       <p className="w-full h-4 md:h-2 mb-2">
@@ -94,7 +85,7 @@ export const ProjectCardSkeleton = () => {
       <p className="w-full h-4 md:h-2  mb-2">
         <Skeleton />
       </p>
-      <p className="w-full h-4 md:h-2  mb-3">
+      <p className="w-full h-4 md:h-2  mb-6">
         <Skeleton />
       </p>
       

@@ -9,7 +9,7 @@ import { ModalContext } from "../../context/modalContext";
 
 import { BiLinkAlt } from "react-icons/bi";
 import { BsFacebook, BsInstagram, BsTelegram, BsTwitter } from "react-icons/bs";
-import CampaignTable from "../../components/campaign";
+import CampaignTable from "../../components/campaignTable";
 
 import Link from "next/link";
 import useBrands from "../../hooks/useBrands";
@@ -36,9 +36,9 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
     <div key="1" className="relative w-[32px] h-[32px]">
       <Image className="shadow-[0px_8px_16px_rgba(171,190,209,0.4)] rounded" src={image.url} alt="shirt" layout="fill" objectFit="cover"/>
     </div>,
-    <span key={v4()} className="capitalize">{name}</span>,
-    <span key={v4()} className="override-weight">{quantity}</span>,
-    <span key={v4()} className="override-weight">{shared}</span>,
+    <span key={v4()} className="capitalize text-blue-400 dark:text-white">{name}</span>,
+    <span key={v4()} className="override-weight text-blue-400 dark:text-white">{quantity}</span>,
+    <span key={v4()} className="override-weight text-blue-400 dark:text-white">{shared || 0}</span>,
     <div key={v4()} className="h-[20px] flex items-center">
       <div className="w-16 h-2 bg-grey-400 dark:bg-grey-300 relative text-left rounded-lg" key={v4()}>
         <div 
@@ -65,8 +65,8 @@ const getTableRows = (tableData: Item[]) => tableData?.map(row => {
     <span key={v4()} className={`cursor-default inline-block ${status === "Completed" ? "text-[#7174FF]" : "text-green-100"}`}>{status}</span>,
     status === "Completed" ? <span key={v4()} className={`inline-block py-1 px-2 rounded-[30px] bg-[#7174FF] text-[#E7E7FF]`}>{task}
       </span> : 
-      <Link href={row.requestLink}><span  className="inline-block py-1 px-2 rounded-[30px] 
-      bg-green-100 text-[#E8FADF] cursor-pointer hover:bg-[#E8FADF] hover:text-green-100">Request</span></Link>,
+      <a href={row.requestLink} rel="noreferrer" target="_blank"><span  className="inline-block py-1 px-2 rounded-[30px] 
+      bg-green-100 text-[#E8FADF] cursor-pointer hover:bg-[#E8FADF] hover:text-green-100">Request</span></a>,
   ]
 });
 
