@@ -75,7 +75,7 @@ export const ProjectCardSkeleton = () => {
 
   return <SkeletonTheme>
     <div className={`bg-grey-200 min-w-[163px] w-[399px] max-w-[399px] p-2 rounded`}>
-      <div className="w-full h-[50px] flex mb-4 items-center">
+      <div className="w-full h-[50px] flex mb-6 items-center">
         <div className="h-[50px] w-[40px]"><Skeleton className="h-[50px]" /> </div> <div className=" ml-2 w-1/2"><Skeleton /></div>
       </div>
 
@@ -85,7 +85,7 @@ export const ProjectCardSkeleton = () => {
       <p className="w-full h-4 md:h-2  mb-2">
         <Skeleton />
       </p>
-      <p className="w-full h-4 md:h-2  mb-3">
+      <p className="w-full h-4 md:h-2  mb-6">
         <Skeleton />
       </p>
       
