@@ -17,12 +17,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
       `}
     </Script>
+    
     <Head>
       <title>FreeMerch</title>
       <meta name="description" content="Get Free Merch" />
       <link rel="icon" href="favicon.ico" />
     </Head>
-    <Component {...pageProps} />
+  <Component {...pageProps} />
   </>
 }
 
