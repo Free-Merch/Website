@@ -218,7 +218,7 @@ const Home: NextPage = () => {
         <meta name="twitter:description" content="Win free branded merchandise when you join campaings & 
           promote your brand when you create campaigns." 
         />
-        <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1661498127/Illustration_dark_nsqxhu.svg" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663653009/logo_7c91fc5575_rslzfu.svg" />
       </Head>
 
       {/* bg ellipses */}
