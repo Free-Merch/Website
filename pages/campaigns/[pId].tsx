@@ -17,6 +17,7 @@ import { ImageType, Item, Brand } from "../../types";
 import { GetServerSideProps } from "next";
 import getBrand from "../../helpers/getBrand";
 import Head from "next/head";
+import { GoVerified } from "react-icons/go";
 
 const TableHeaders = [
   "Item", "Name", "Quantity", "Shared", "Percentage", "Status", "Task"
@@ -158,7 +159,10 @@ const Project = (props: Brand) => {
         <div className="absolute z-[1] blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] right-0 translate-x-2/4 -translate-y-2/4 " />
       </div>
       <h2 className="font-semibold flex justify-between items-center text-blue-400 dark:text-white text-xl">
-        {brand}
+        <span>
+          {brand}
+          <GoVerified className="fill-[#2382E1] w-[14px]"/>
+        </span>
         <span className="flex text-blue-900 text-[19px] z-[2] dark:text-white">
           {links}
         </span>
