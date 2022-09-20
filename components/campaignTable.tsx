@@ -29,7 +29,7 @@ const CampaignTable = (props: Props) => {
   }, [_key])
 
   return  <div className={`mt-5 md:px-[50px] ${!open ? "md:py-[10px]" : "md:py-[30px]"} px-[24px] py-[19px] bg-white dark:bg-blue-400 rounded-lg`}>
-        <p className={`cursor-pointer flex items-center font-bold text-black-900 dark:text-white text-xl 
+        <div className={`cursor-pointer flex items-center font-semibold text-black-900 dark:text-white text-xl 
           ${open && "border-b-[0.5px] border-b-[#667085] pb-1"}`}
           onClick={() => setOpen(!open)}
         > 
@@ -39,7 +39,7 @@ const CampaignTable = (props: Props) => {
             &nbsp;
             {active && horizontalLabel}
           </>
-        </p>
+        </div>
         {open && <div >
           <div className={ `${width < 870 && "hidden"} block`}>
             <Table 

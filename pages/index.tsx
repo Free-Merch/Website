@@ -81,7 +81,7 @@ const Home: NextPage = () => {
       question: "How do I patner with Freemerch?",
       answer: <span>Go to the {<span className='text-green-100'><Link href="/contact-us" >Contact Us</Link></span>} page and select the company button, fill the form that pops up and submit it. We&apos;ll get back to you as soon as possible.</span>
     }
-]
+  ]
   const handleSetFaq = (index:number) => {
     const newState = [...faqState];
     newState[index] = !newState[index];

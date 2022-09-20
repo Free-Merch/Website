@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     
     <Head>
       <title>FreeMerch</title>
-      <meta name="description" content="Get Free Merch" />
+      <meta name="description" content="Win a free branded merchandise" />
       <link rel="icon" href="favicon.ico" />
     </Head>
   <Component {...pageProps} />

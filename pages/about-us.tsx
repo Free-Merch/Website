@@ -2,9 +2,16 @@ import Layout from "../components/layout";
 import Image from "next/image";
 
 import Diamond from "../assets/pictures/diamond.png";
+import Head from "next/head";
 
 const AboutUs = () => {
   return <div className="text-center mx-auto text-base text-blue-400 max-w-5xl dark:text-white">
+    <div>
+      <Head>
+        <title>About Us</title>
+        <meta name="description" content="All the information you want about Freemerch" />
+      </Head>
+    </div>
     <div className="flex flex-col md:flex-row justify-between items-center pt-[74px]">
       <div className="md:w-1/2">
         <Image src={Diamond} alt="diamond" />

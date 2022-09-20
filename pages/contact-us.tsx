@@ -7,10 +7,15 @@ import {HiOutlineMail} from "react-icons/hi";
 import Link from "next/link";
 import Ribbon from "../assets/pictures/ribbon.png"
 import Ribbon2 from "../assets/pictures/ribbon2.png"
+import Head from "next/head";
 
 const ContactUs = () => {
 
   return <div className="pt-[28px] md:pt-[75px]">
+    <Head>
+      <title>Contact Us</title>
+      <meta name="description" content="Contact us to push your brand with campaigns on Freemerch" />
+    </Head>
     <div className="flex gap-2 flex-wrap rounded-[10px] 
       dark:text-white text-blue-400 justify-between 
       px-[21px] py-[29px]

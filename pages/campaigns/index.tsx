@@ -7,6 +7,7 @@ import useProjects from "../../hooks/useBrands";
 
 import { useState } from "react";
 import { BrandBrief } from "../../types";
+import Head from "next/head";
 
 const orderFunctions = {
   "A-Z": (projects: BrandBrief[]) => projects.sort((a, b) => a.brand[0] < b.brand[0] ? -1 : 1),
@@ -43,6 +44,10 @@ const Projects = () => {
   const ProjectCardSkeletons = [<ProjectCardSkeleton key={1}/>, <ProjectCardSkeleton key={2} />, <ProjectCardSkeleton key={3} />, <ProjectCardSkeleton key={4} />]
 
   return <div className="my-12">
+    <Head>
+      <title>Campaigns</title>
+      <meta name="description" content="All active campaigns on Freemerch"/>
+    </Head>
     <div className="flex justify-between pt-[50px]">
       <h1 className="text-[18px] md:text-3xl font-semibold text-black-900 dark:text-white">Campaigns</h1>
       

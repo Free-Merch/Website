@@ -3,6 +3,7 @@ import Image from "next/image";
 import useBrands from "../hooks/useBrands";
 import { ProjectCard } from "../components/cards/project-card";
 import {HiOutlineExclamation} from "react-icons/hi";
+import Head from "next/head";
 
 const CatchPage = () => {
   let brands = useBrands()
@@ -21,6 +22,10 @@ const CatchPage = () => {
   })
 
   return <div className="text-center relative overflow-hidden">
+    <Head>
+      <title>404</title>
+      <meta name="description" content="Content not Found" />
+    </Head>
     <div className="relative w-[301px] h-[195px] mx-auto mb-[40px]">
       <Image className="dark-404" src="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1661498127/Illustration_dark_nsqxhu.svg" layout="fill" alt="free merch logo" />
       <Image className="light-404" src="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1661498127/Illustration_rlluvt.svg" layout="fill" alt="free merch logo" />

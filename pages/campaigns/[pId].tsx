@@ -16,6 +16,7 @@ import useBrands from "../../hooks/useBrands";
 import { ImageType, Item, Brand } from "../../types";
 import { GetServerSideProps } from "next";
 import getBrand from "../../helpers/getBrand";
+import Head from "next/head";
 
 const TableHeaders = [
   "Item", "Name", "Quantity", "Shared", "Percentage", "Status", "Task"
@@ -134,6 +135,10 @@ const Project = (props: Brand) => {
   )
 
   return <>
+    <Head>
+      <title>{`${brand}`} Campaigns</title>
+      <meta name="description" content={`${about}`}/>
+    </Head>
     <div className="bg-grey-200 absolute left-0 right-0 dark:bg-blue-800 h-[100px]">
 
     </div>
@@ -152,7 +157,7 @@ const Project = (props: Brand) => {
       <div className="ellipsis relative">
         <div className="absolute z-[1] blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] right-0 translate-x-2/4 -translate-y-2/4 " />
       </div>
-      <h2 className="font-bold flex justify-between items-center text-blue-400 dark:text-white text-xl">
+      <h2 className="font-semibold flex justify-between items-center text-blue-400 dark:text-white text-xl">
         {brand}
         <span className="flex text-blue-900 text-[19px] z-[2] dark:text-white">
           {links}
