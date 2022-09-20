@@ -35,6 +35,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { FAQ } from '../types';
 import Link from 'next/link';
 import { useWindowSize } from '../hooks/useSize';
+import Head from 'next/head';
 
 const Home: NextPage = () => {
 
@@ -53,8 +54,6 @@ const Home: NextPage = () => {
   })
 
   const {width: windowWidth} = useWindowSize();
-
-
   const [faqState, setFaqs] = useState<boolean[]>(Array(100).fill(false));
   const { gallery: galleryPics} = useHomePage();
   const [hasWindow, setHasWindow] = useState(false);
@@ -211,6 +210,17 @@ const Home: NextPage = () => {
 
   return (
     <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-[12px] md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
+      <Head>
+        {/* Twitter tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@getFreemerch" />
+        <meta name="twitter:title" content="Freemerch Homepage" />
+        <meta name="twitter:description" content="Win free branded merchandise when you join campaings & 
+          promote your brand when you create campaigns." 
+        />
+        <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1663653009/logo_7c91fc5575_rslzfu.jpg" />
+      </Head>
+
       {/* bg ellipses */}
       {/* <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(22, 124, 186, 0.3)] right-0 top-4 z-10" /> */}
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto pt-[51px]'>
