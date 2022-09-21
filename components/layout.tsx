@@ -24,11 +24,6 @@ const Layout = ({children, mainClass, ...others}: {[key:string]: any}) => {
       ${mainClass}
       relative pb-[60px] min-h-screen bg-grey-100 dark:bg-blue-900`
     }>
-      <Head>
-        <title>FreeMerch</title>
-        <meta name="description" content="Get Free Merch" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className="fixed z-10 w-full">
         <Banner />
         <DesktopNav openMobileNav={openMobileNav} mobileNavOpen={openNav}/>
