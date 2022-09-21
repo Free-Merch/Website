@@ -212,6 +212,15 @@ const Home: NextPage = () => {
     <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-[12px] md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
       {/* bg ellipses */}
       {/* <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(22, 124, 186, 0.3)] right-0 top-4 z-10" /> */}
+      <Head>
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@getFreemerch" />
+          <meta name="twitter:title" content="Freemerch Homepage" />
+          <meta name="twitter:description" content="Win free branded merchandise when you join campaings & 
+            promote your brand when you create campaigns." 
+          />
+          <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1660804811/Logo3_3e827aaa71.png" />
+      </Head>
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto pt-[51px]'>
         <div className="text-start xl:w-2/4 mt-2 md:mt-32 ">
           <h1 className="text-[40px] leading-[44px] md:text-6xl font-semibold text-green-100 max-w-[800px]">

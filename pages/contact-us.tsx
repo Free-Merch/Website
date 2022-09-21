@@ -21,7 +21,7 @@ const ContactUs = () => {
       <meta name="twitter:title" content="Contact us to push your brand" />
       <meta name="twitter:description" content="Got questions, complaints or feedback? Contact us and we'll get back to you as soon as possible." 
       />
-      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1663653009/logo_7c91fc5575_rslzfu.jpg" />
+      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1660804811/Logo3_3e827aaa71.png" />
     </Head>
     <div className="flex gap-2 flex-wrap rounded-[10px] 
       dark:text-white text-blue-400 justify-between 

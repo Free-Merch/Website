@@ -31,7 +31,7 @@ const CatchPage = () => {
       <meta name="twitter:title" content="Content not found" />
       <meta name="twitter:description" content="We can't find the content you are looking for. You can win a merch by participating in any of our campaings." 
       />
-      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1663653009/logo_7c91fc5575_rslzfu.jpg" />
+      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1660804811/Logo3_3e827aaa71.png" />
     </Head>
     <div className="relative w-[301px] h-[195px] mx-auto mb-[40px]">
       <Image className="dark-404" src="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1661498127/Illustration_dark_nsqxhu.svg" layout="fill" alt="free merch logo" />

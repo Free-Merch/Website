@@ -16,7 +16,7 @@ const AboutUs = () => {
         <meta name="twitter:title" content="All the information you want about Freemerch" />
         <meta name="twitter:description" content="Curious about Freemerch? All the information about how you we can help your brands is right here." 
         />
-        <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1663653009/logo_7c91fc5575_rslzfu.jpg" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1660804811/Logo3_3e827aaa71.png" />
       </Head>
     </div>
     <div className="flex flex-col md:flex-row justify-between items-center pt-[74px]">
