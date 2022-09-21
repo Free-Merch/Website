@@ -213,6 +213,9 @@ const Home: NextPage = () => {
       {/* bg ellipses */}
       {/* <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(22, 124, 186, 0.3)] right-0 top-4 z-10" /> */}
       <Head>
+          <title>FreeMerch</title>
+          <meta name="description" content="Win free branded merchandise when you join campaings & 
+            promote your brand when you create campaigns." />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@getFreemerch" />
           <meta name="twitter:title" content="Freemerch Homepage" />
