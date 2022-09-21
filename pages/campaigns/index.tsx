@@ -45,8 +45,16 @@ const Projects = () => {
 
   return <div className="my-12">
     <Head>
-      <title>Campaigns</title>
-      <meta name="description" content="All active campaigns on Freemerch"/>
+      <title>Campaigns - Freemerch</title>
+      <meta name="description" content="All active campaigns on Freemerch. Campaigns are brand adverts to perform activities and win free merchandise from them.."/>
+      {/* Twitter tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@getFreemerch" />
+      <meta name="twitter:title" content="Join a campaign to win a free merchandise." />
+      <meta name="twitter:description" 
+        content="Campaigns are brand adverts to perform activities and win free merchandise from them." 
+      />
+      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1663653009/logo_7c91fc5575_rslzfu.jpg" />
     </Head>
     <div className="flex justify-between pt-[50px]">
       <h1 className="text-[18px] md:text-3xl font-semibold text-black-900 dark:text-white">Campaigns</h1>

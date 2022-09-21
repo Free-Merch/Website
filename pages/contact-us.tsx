@@ -13,8 +13,15 @@ const ContactUs = () => {
 
   return <div className="pt-[28px] md:pt-[75px]">
     <Head>
-      <title>Contact Us</title>
+      <title>Contact Us - Freemerch</title>
       <meta name="description" content="Contact us to push your brand with campaigns on Freemerch" />
+      {/* Twitter tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@getFreemerch" />
+      <meta name="twitter:title" content="Contact us to push your brand" />
+      <meta name="twitter:description" content="Got questions, complaints or feedback? Contact us and we'll get back to you as soon as possible." 
+      />
+      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1663653009/logo_7c91fc5575_rslzfu.jpg" />
     </Head>
     <div className="flex gap-2 flex-wrap rounded-[10px] 
       dark:text-white text-blue-400 justify-between 

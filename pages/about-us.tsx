@@ -8,8 +8,15 @@ const AboutUs = () => {
   return <div className="text-center mx-auto text-base text-blue-400 max-w-5xl dark:text-white">
     <div>
       <Head>
-        <title>About Us</title>
+        <title>About Us - Freemerch</title>
         <meta name="description" content="All the information you want about Freemerch" />
+        {/* Twitter tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@getFreemerch" />
+        <meta name="twitter:title" content="All the information you want about Freemerch" />
+        <meta name="twitter:description" content="Curious about Freemerch? All the information about how you we can help your brands is right here." 
+        />
+        <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1663653009/logo_7c91fc5575_rslzfu.jpg" />
       </Head>
     </div>
     <div className="flex flex-col md:flex-row justify-between items-center pt-[74px]">
