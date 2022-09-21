@@ -146,7 +146,7 @@ const Project = (props: Brand) => {
       <meta name="twitter:description" 
         content={`Win a ${brand} merchandise when you participate in any of their Freemerch campaigns.`}  
       />
-      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1660804811/Logo3_3e827aaa71.png" />
+      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
     </Head>
     <div className="bg-grey-200 absolute left-0 right-0 dark:bg-blue-800 h-[100px]">
 
