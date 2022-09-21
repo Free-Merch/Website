@@ -144,7 +144,7 @@ const Project = (props: Brand) => {
       <meta name="twitter:site" content="@getFreemerch" />
       <meta name="twitter:title" content={`Win a ${brand} merchandise.`} />
       <meta name="twitter:description" 
-        content={`Win a ${brand} merchandise when you participate in any of their campaigns.`}  
+        content={`Win a ${brand} merchandise when you participate in any of their Freemerch campaigns.`}  
       />
       <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1660804811/Logo3_3e827aaa71.png" />
     </Head>
@@ -167,9 +167,8 @@ const Project = (props: Brand) => {
         <div className="absolute z-[1] blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] right-0 translate-x-2/4 -translate-y-2/4 " />
       </div>
       <h2 className="font-semibold flex justify-between items-center text-blue-400 dark:text-white text-xl">
-        <span>
-          {brand}
-          <GoVerified className="fill-[#2382E1] w-[14px]"/>
+        <span className="flex justify-between items-center">
+          {brand}&nbsp;<GoVerified className="fill-[#2382E1] w-[14px]"/>
         </span>
         <span className="flex text-blue-900 text-[19px] z-[2] dark:text-white">
           {links}
