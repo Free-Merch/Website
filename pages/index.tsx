@@ -35,6 +35,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { FAQ } from '../types';
 import Link from 'next/link';
 import { useWindowSize } from '../hooks/useSize';
+import Head from 'next/head';
 
 const Home: NextPage = () => {
 
@@ -53,8 +54,6 @@ const Home: NextPage = () => {
   })
 
   const {width: windowWidth} = useWindowSize();
-
-
   const [faqState, setFaqs] = useState<boolean[]>(Array(100).fill(false));
   const { gallery: galleryPics} = useHomePage();
   const [hasWindow, setHasWindow] = useState(false);
@@ -82,7 +81,7 @@ const Home: NextPage = () => {
       question: "How do I patner with Freemerch?",
       answer: <span>Go to the {<span className='text-green-100'><Link href="/contact-us" >Contact Us</Link></span>} page and select the company button, fill the form that pops up and submit it. We&apos;ll get back to you as soon as possible.</span>
     }
-]
+  ]
   const handleSetFaq = (index:number) => {
     const newState = [...faqState];
     newState[index] = !newState[index];
@@ -213,6 +212,20 @@ const Home: NextPage = () => {
     <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-[12px] md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
       {/* bg ellipses */}
       {/* <div className="absolute blur-[241px] w-[334px] h-[480px] opacity-50 bg-[rgba(22, 124, 186, 0.3)] right-0 top-4 z-10" /> */}
+      <Head>
+          <title>FreeMerch</title>
+          <meta name="description" content="Win free branded merchandise when you join campaings & 
+            promote your brand when you create campaigns." />
+          {/* Twitter tags */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@getFreemerch" />
+          <meta name="twitter:title" content="Freemerch Homepage" />
+          <meta name="twitter:description" content="Win free branded merchandise when you join campaings & 
+            promote your brand when you create campaigns." 
+          />
+          <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663858269/coverr-02-02_ciidge.png" />
+
+      </Head>
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto pt-[51px]'>
         <div className="text-start xl:w-2/4 mt-2 md:mt-32 ">
           <h1 className="text-[40px] leading-[44px] md:text-6xl font-semibold text-green-100 max-w-[800px]">

@@ -16,6 +16,8 @@ import useBrands from "../../hooks/useBrands";
 import { ImageType, Item, Brand } from "../../types";
 import { GetServerSideProps } from "next";
 import getBrand from "../../helpers/getBrand";
+import Head from "next/head";
+import { GoVerified } from "react-icons/go";
 
 const TableHeaders = [
   "Item", "Name", "Quantity", "Shared", "Percentage", "Status", "Task"
@@ -134,6 +136,18 @@ const Project = (props: Brand) => {
   )
 
   return <>
+    <Head>
+      <title>{`${brand}`} Campaigns - Freemerch</title>
+      <meta name="description" content={`${about}`}/>
+      {/* Twitter tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@getFreemerch" />
+      <meta name="twitter:title" content={`Win a ${brand} merchandise.`} />
+      <meta name="twitter:description" 
+        content={`Win a ${brand} merchandise when you participate in any of their Freemerch campaigns.`}  
+      />
+      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
+    </Head>
     <div className="bg-grey-200 absolute left-0 right-0 dark:bg-blue-800 h-[100px]">
 
     </div>
@@ -152,8 +166,10 @@ const Project = (props: Brand) => {
       <div className="ellipsis relative">
         <div className="absolute z-[1] blur-[241px] w-[334px] h-[480px] opacity-50 bg-[#298A63] right-0 translate-x-2/4 -translate-y-2/4 " />
       </div>
-      <h2 className="font-bold flex justify-between items-center text-blue-400 dark:text-white text-xl">
-        {brand}
+      <h2 className="font-semibold flex justify-between items-center text-blue-400 dark:text-white text-xl">
+        <span className="flex justify-between items-center">
+          {brand}&nbsp;<GoVerified className="fill-[#2382E1] w-[14px]"/>
+        </span>
         <span className="flex text-blue-900 text-[19px] z-[2] dark:text-white">
           {links}
         </span>

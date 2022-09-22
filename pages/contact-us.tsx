@@ -7,10 +7,22 @@ import {HiOutlineMail} from "react-icons/hi";
 import Link from "next/link";
 import Ribbon from "../assets/pictures/ribbon.png"
 import Ribbon2 from "../assets/pictures/ribbon2.png"
+import Head from "next/head";
 
 const ContactUs = () => {
 
   return <div className="pt-[28px] md:pt-[75px]">
+    <Head>
+      <title>Contact Us - Freemerch</title>
+      <meta name="description" content="Contact us to push your brand with campaigns on Freemerch" />
+      {/* Twitter tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@getFreemerch" />
+      <meta name="twitter:title" content="Contact us to push your brand" />
+      <meta name="twitter:description" content="Got questions, complaints or feedback? Contact us and we'll get back to you as soon as possible." 
+      />
+      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
+    </Head>
     <div className="flex gap-2 flex-wrap rounded-[10px] 
       dark:text-white text-blue-400 justify-between 
       px-[21px] py-[29px]
