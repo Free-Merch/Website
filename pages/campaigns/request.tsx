@@ -1,9 +1,8 @@
-import TextInput from "../../components/form/textInput";
 import Layout from "../../components/layout";
 import {HiOutlineMail} from "react-icons/hi";
 import {BsTwitter} from "react-icons/bs";
 import Image from "next/image";
-import ImageInput from "../../components/form/imageInput";
+import { ImageInput, TextInput, RadioInput } from "../../components/form";
 
 const Request = () => {
   return <div>
@@ -16,7 +15,9 @@ const Request = () => {
         />
       </div>
     </div>
+    
     <div></div>
+
     <form className="w-full flex flex-col justify-center mt-[40px] gap-5">
       <TextInput
         title="Email"
@@ -25,21 +26,31 @@ const Request = () => {
         placeholder="Email"
         first={true}
       ></TextInput>
+
       <TextInput
         title="Follow On Twiiter"
         description="Please provide your Twitter profile url with your username. It must have at least 30 followers and show human activity. You must have followed us on Twitter."
         image={(className: string) => <BsTwitter className={`${className}`}/>}
         placeholder="Twitter username"
         first={false}
+        titleLink="https://"
       ></TextInput>
 
       <ImageInput 
-        title="Follow On Twiiter"
-        description="Please provide your Twitter profile url with your username. It must have at least 30 followers and show human activity. You must have followed us on Twitter."
+        title="Deposit Proof"
+        description="Please provide a screenshot like the one below showing either your P2P trading or deposit history of at least $10."
         image={(className: string) => <BsTwitter className={`${className}`}/>}
-        placeholder="Twitter username"
         first={false}
         sample="https://res.cloudinary.com/nonseodion/image/upload/v1664461952/eQnFS5BvowhmHUV3xUffTnNoVb8UvM1VMDMiPJsjL5e6heAruXMr8KJHpmDpzD_8PkrqNhEhICnJ07Y6VvDQPJ5it5JQv3I2saMtIyfu2vJ1fWTe_N1NzcMGOLhTb4w9PQ_w591_iliqee.jpg"
+      />
+
+      <RadioInput 
+        title="Shirt size"
+        description=""
+        first={false}
+        radioTexts={
+          ["XS", "S", "M", "L", "XL", "XXL"]
+        }
       />
     </form>
   </div>

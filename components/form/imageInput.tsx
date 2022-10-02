@@ -5,14 +5,16 @@ import { MdDriveFolderUpload } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 import {ImageType} from "../../types/index";
 import { useModalContext } from "../../hooks/contexthooks";
+import { TbExternalLink } from "react-icons/tb";
+import Link from "next/link";
 
 interface IImageInput {
   title: string,
   description: string,
-  placeholder: string,
   image: (className:string) => JSX.Element,
-  first: boolean
+  first?: boolean
   sample: string
+  titleLink?: string
 }
 
 interface ExFile extends File {
@@ -20,7 +22,7 @@ interface ExFile extends File {
 }
 
 const ImageInput = (props: IImageInput) => {
-  const {title, description, image, sample, first, placeholder} = props;
+  const {title, description, image, sample, first, titleLink} = props;
   const [focus, setFocus] = useState<boolean>();
   const [file, setFile] = useState<ExFile|undefined>();
   const { show } = useModalContext();
@@ -55,7 +57,15 @@ const ImageInput = (props: IImageInput) => {
 
   return <div 
     className="w-[342px] px-[21px] rounded-[10px] py-[21px] bg-blue-400 shadow-[0px_8px_16px_3px_#030324]">
-    <p className="font-semibold text-lg text-white">{title}</p>
+    {
+      !titleLink ?
+      <p className={`font-semibold flex items-center text-lg text-white`}>
+        {title}
+      </p> :
+      <Link href={titleLink} className={`"underline font-semibold flex items-center text-lg text-white`}>
+        {title} <TbExternalLink className="text-[22px] inline-block ml-[4px]" />
+      </Link>
+    }
     <p className="text-grey-300 text-sm font-normal mb-[8px]">{description}</p>
     <span className="text-xs">Sample:</span>
     <div className="relative h-[40px] w-[40px] mt-[6px] mb-[24px]">
