@@ -15,7 +15,7 @@ interface IImageInput {
   sample: string
 }
 
-class ExFile extends File {
+interface ExFile extends File {
   url?: string;
 }
 
