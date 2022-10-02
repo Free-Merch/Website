@@ -12,7 +12,7 @@ const initialModals: ModalObj = {
 
 export const ModalContext = createContext({
   modals: initialModals, 
-  show: (modal: keyof ModalObj, ..._:any) =>{}, 
+  show: <T extends keyof ModalObj>(modal: T, options: ModalObj[T]) => {}, 
   hide: (modal: keyof ModalObj) => {}  }
 );
 
@@ -26,8 +26,9 @@ const ModalContextProvider = ({children}: {children: ReactNode}) => {
     setModals(_modals);
   }
 
-  const show = (modal: keyof ModalObj, props: any) => {
-    handle(modal, true, props);
+  const show: <T extends keyof ModalObj>(modal: T, options: ModalObj[T]) => void =
+  (modal, options) => {
+    handle(modal, true, options);
   }
 
   const hide = (modal: keyof ModalObj) => {
