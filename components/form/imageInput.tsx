@@ -3,26 +3,18 @@ import { ReactElement, SyntheticEvent, useContext, useState } from "react";
 import { FormBack, FormNext } from "./buttons";
 import { MdDriveFolderUpload } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
-import {ImageType} from "../../types/index";
+import {IImageInput, IImageInput1, ImageType} from "../../types/index";
 import { useModalContext } from "../../hooks/contexthooks";
 import { TbExternalLink } from "react-icons/tb";
 import Link from "next/link";
 
-interface IImageInput {
-  title: string,
-  description: string,
-  image: (className:string) => JSX.Element,
-  first?: boolean
-  sample: string
-  titleLink?: string
-}
 
 interface ExFile extends File {
   url?: string;
 }
 
-const ImageInput = (props: IImageInput) => {
-  const {title, description, image, sample, first, titleLink} = props;
+const ImageInput = (props: IImageInput1) => {
+  const {title, description, sample, first, titleLink} = props;
   const [focus, setFocus] = useState<boolean>();
   const [file, setFile] = useState<ExFile|undefined>();
   const { show } = useModalContext();

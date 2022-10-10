@@ -1,19 +1,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { TbExternalLink } from "react-icons/tb";
+import { IRadioInput, IRadioInput1 } from "../../types";
 import { FormBack, FormNext } from "./buttons";
 
-interface IRadioInput {
-  title: string,
-  description: string,
-  radioTexts: string[],
-  first?: boolean
-  titleLink?: string
-}
 
-const RadioInput = (props: IRadioInput) => {
-  const {title, description, first, radioTexts, titleLink} = props;
-  const [focus, setFocus] = useState<boolean>();
+const RadioInput = (props: IRadioInput1) => {
+  const {title, description, first, radioTexts, setFocus, index, last, titleLink} = props;
+  // const [focus, setFocus] = useState<boolean>();
   const [value, setValue] = useState<string>("")
 
   return <div 
@@ -24,7 +18,9 @@ const RadioInput = (props: IRadioInput) => {
         {title}
       </p> :
       <Link href={titleLink} className={`"underline font-semibold flex items-center text-lg text-white`}>
-        {title} <TbExternalLink className="text-[22px] inline-block ml-[4px]" />
+        <div className={`"underline font-semibold flex items-center text-lg text-white`}>
+          <span className="underline">{title}</span> <TbExternalLink className="text-[22px] inline-block ml-[4px]" />
+        </div>
       </Link>
     }
     <p className="text-grey-300 text-sm font-normal">{description}</p>
@@ -44,8 +40,8 @@ const RadioInput = (props: IRadioInput) => {
       )}
     </div>
     <div className="h-[48px] flex justify-between">
-      {!first && <div className="h-full w-[100px]"><FormBack active={false} /> </div>}
-      <div className={`h-full ${first ? "w-full" : "w-[156px]"}`}><FormNext active={focus ?? false} /></div>
+      {!first && <div className={`h-full ${last ? "w-full" : "w-[100px]"}`}><FormBack onClick={() => setFocus(index-1, true)} active={true} /> </div>}
+      {!last && <div className={`h-full ${first ? "w-full" : "w-[156px]"}`}><FormNext onClick={() => setFocus(index+1, true)} active={value ? true : false} /></div>}
     </div>
   </div>
 }
