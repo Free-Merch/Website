@@ -27,7 +27,7 @@ import BlockchainBUK from "../assets/pictures/bayero-university1.png"
 import ByBit from "../assets/pictures/bybit.svg"
 import Rex from "../assets/pictures/Rex.png";
 import Playbtn from "../assets/pictures/play.png";
-import { ProjectCard, ProjectCardSkeleton } from '../components/cards/project-card';
+import { ProjectCard, ProjectCardSkeleton } from '../components/cards/campaign-card';
 import useHomePage from '../hooks/useHomePage';
 import useBrands from '../hooks/useBrands';
 import Skeleton from 'react-loading-skeleton'

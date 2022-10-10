@@ -1,4 +1,4 @@
-import { ProjectCard, ProjectCardSkeleton } from "../../components/cards/campaign-card";
+import { CampaignCard, CampaignCardSkeleton } from "../../components/cards/campaign-card";
 import Layout from "../../components/layout";
 import Dropdown, { Option } from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -15,7 +15,7 @@ const orderFunctions = {
   "Most recent": (projects: BrandBrief[]) => projects
 }
 
-const Projects = () => {
+const Campaigns = () => {
   
   const options = [
     {value: "Most recent", label: "Most recent"},
@@ -28,9 +28,9 @@ const Projects = () => {
   const handleSetOrder = (value: Option) => setOrder(value)
 
   let projects = useProjects()
-  const ProjectCards = orderFunctions[order.value as keyof typeof orderFunctions](projects)?.map((project, index) => {
+  const CampaignCards = orderFunctions[order.value as keyof typeof orderFunctions](projects)?.map((project, index) => {
     const { about, logo, campaigns, brand, logoBgColor, id } = project;
-    return <ProjectCard  
+    return <CampaignCard  
         brand={brand}
         image={logo}
         about={about}
@@ -41,7 +41,7 @@ const Projects = () => {
       />
   })
 
-  const ProjectCardSkeletons = [<ProjectCardSkeleton key={1}/>, <ProjectCardSkeleton key={2} />, <ProjectCardSkeleton key={3} />, <ProjectCardSkeleton key={4} />]
+  const CampaignCardSkeletons = [<CampaignCardSkeleton key={1}/>, <CampaignCardSkeleton key={2} />, <CampaignCardSkeleton key={3} />, <CampaignCardSkeleton key={4} />]
 
   return <div className="my-12">
     <Head>
@@ -66,7 +66,7 @@ const Projects = () => {
     </div>
 
     <div className="mt-7 mb-10 flex flex-wrap justify-center gap-4">
-      {ProjectCards || ProjectCardSkeletons}
+      {CampaignCards || CampaignCardSkeletons}
     </div>
 
   </div>
@@ -74,7 +74,7 @@ const Projects = () => {
 
 const NewComponent = () => (
   <Layout className="h-full bg-grey-100 dark:bg-blue-900 py-10 px-[12px] text-sm md:px-24 text-grey-300 dark:text-grey-400 overflow-y-hidden">
-    <Projects />
+    <Campaigns />
   </Layout>
 );
 

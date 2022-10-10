@@ -2,7 +2,7 @@ import Image from "next/image";
 import Layout from "../../components/layout";
 
 import { v4 } from "uuid";
-import { ProjectCard } from "../../components/cards/project-card";
+import { ProjectCard } from "../../components/cards/campaign-card";
 import { GreenButton } from "../../components/buttons";
 import { useContext } from "react";
 import { ModalContext } from "../../context/modalContext";
