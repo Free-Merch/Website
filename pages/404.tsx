@@ -1,7 +1,7 @@
 import Layout from "../components/layout";
 import Image from "next/image";
 import useBrands from "../hooks/useBrands";
-import { ProjectCard } from "../components/cards/project-card";
+import { CampaignCard } from "../components/cards/campaign-card";
 import {HiOutlineExclamation} from "react-icons/hi";
 import Head from "next/head";
 
@@ -10,7 +10,7 @@ const CatchPage = () => {
   brands = brands?.slice(0, 3);
   const BrandCards = brands?.map((brand, index) => {
   const { about, logo, campaigns, brand: name, logoBgColor, id } = brand;
-    return <ProjectCard  
+    return <CampaignCard  
         brand={name}
         image={logo}
         about={about}
