@@ -28,7 +28,7 @@ export const Submit = ({active, onClick}: FormButton) => {
     onClick={onClick}
     submit
     className={`
-      ${active ? "bg-green-100 text-white" : "bg-grey-150 text-grey-250"}
+      ${active ? "bg-green-100 text-white" : "cursor-default bg-grey-150 text-grey-250"}
       h-[48px] text-md font-medium w-[342px]
     `} />
 }
@@ -39,7 +39,7 @@ export const FormNext = ({active, onClick}: FormButton) => {
     text="Next" 
     onClick={() => onClick()}
     className={`
-      ${active ? "bg-green-100 text-white" : "bg-grey-150 text-grey-250"}
+      ${active ? "bg-green-100 text-white" : "cursor-default bg-grey-150 text-grey-250"}
       w-full h-full text-md font-medium
     `} />
 }
