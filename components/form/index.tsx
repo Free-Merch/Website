@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { schemas as validationSchemas } from "./validation-schemas";
+import { useModalContext } from "../../hooks/contexthooks";
 
 
 export {
@@ -33,33 +34,43 @@ const Form = ({questions}: IForm) => {
     ] ?? validationSchemas["text"]
   })
 
-  const { register, handleSubmit, formState:{ errors } } = useForm({
+  const { register, handleSubmit, formState:{ errors }, getValues } = useForm({
     resolver: yupResolver(yup.object(schema).required()),
-    mode: "onChange"
+    mode: "onBlur"
   });
-  
-  const [values, setValues] = useState<{[key: string]: string}>({});
-  const onChange = (key: string) => (value: string) => {
+  console.log(getValues(), "form values")
+  const [values, setValues] = useState<{[key: string]: string|File}>({});
+  const onChange = (key: string) => (value: string|File) => {
     setValues({...values, [key]: value})
   }
 
+  const [ready, setReady] = useState<boolean>(false);
   const [focus, _setFocus] = useState<boolean[]>(Array(6).map(() => false))
   const setFocus = (index: number, value: boolean) => {
-    console.log(index, value)
     const newFocus = focus.map(() => false)
     newFocus[index] = value;
     _setFocus(newFocus);
   }
 
-  const onSubmit = (data: IFormInputs) => console.log(data);
+  const { show } = useModalContext();
+  
+  const record = () => {}
+
+  const onSubmit = (data: IFormInputs) => {
+    console.log(data);
+    show("submitForm", {open: true, progress: "Sending", call: record})
+  }
   const getQuestion = (type: TQuestion, index: number) => {
     const questions = {
       "TEXT":  (props: ITextInput) => <TextInput {...props} 
         focus={focus[index]}
         setFocus={setFocus}
         index = {index}
-        value={values[props.name] ?? ""} 
-        valid={errors[props.name] || !values[props.name] ? false : true}
+        //@ts-ignore 
+        value={values[props.name] ?? ""}
+        //@ts-ignore 
+        error={errors[props.name]?.message || ""}
+        // valid={errors[props.name] || !values[props.name] ? false : true}
         onChange={onChange(props.name)} 
         register={register}
       />,
@@ -67,18 +78,29 @@ const Form = ({questions}: IForm) => {
         focus={focus[index]}
         setFocus={setFocus}
         index={index}
+        //@ts-ignore 
         value={values[props.name] ?? ""} 
-        valid={errors[props.name] || !values[props.name] ? false : true}
+        //@ts-ignore 
+        error={errors[props.name]?.message || ""}
+        // valid={errors[props.name] || !values[props.name] ? false : true}
         onChange={onChange(props.name)}
         register={register}
       />,
       "RADIO": (props: IRadioInput) => <RadioInput {...props} setFocus={setFocus}
-        index={index} 
+        index={index} focus={focus[index]}
+        register={register}
+        //@ts-ignore 
         value={values[props.name]} valid={errors[props.name] || !values[props.name] ? false : true}
         onChange={onChange(props.name)}
       />,
       "IMAGE": (props: IImageInput) => <ImageInput {...props} 
+        index={index}
+        focus={focus[index]}
+        setFocus={setFocus}
+        register={register}
+        //@ts-ignore 
         value={values[props.name]} valid={errors[props.name] || !values[props.name] ? false : true}
+        //@ts-ignore 
         onChange={onChange(props.name)}
       />
     }
@@ -99,16 +121,26 @@ const Form = ({questions}: IForm) => {
 
   useEffect(() => {
     setFocus(0, true)
-    console.log("running")
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    if(Object.keys(errors).length === 0 && Object.keys(values).length === questions.length){
+      console.log(questions)
+      const _ready = Object.values(values).reduce((oldValue, currValue) => {
+        return oldValue && currValue ? true : false
+      }, true)
+      setReady(_ready);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errors, values]);
 
   return <form className="w-full flex flex-col items-center justify-center mt-[40px] gap-5"
     // @ts-ignore
     onSubmit={handleSubmit(onSubmit)}
   >
-      {queComponents}
-      <Submit active={false} onClick={() => {}}/>
+    {queComponents}
+      <Submit active={ready} onClick={() => {}}/>
     </form>
 }
 

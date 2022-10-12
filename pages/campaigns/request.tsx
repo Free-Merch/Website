@@ -68,10 +68,10 @@ const data: Question[] = [
     type: TQuestion.IMAGE, title: "Deposit Proof",
     description: "Please provide a screenshot like the one below showing either your P2P trading or deposit history of at least $10.",
     sample: "https://res.cloudinary.com/nonseodion/image/upload/v1664461952/eQnFS5BvowhmHUV3xUffTnNoVb8UvM1VMDMiPJsjL5e6heAruXMr8KJHpmDpzD_8PkrqNhEhICnJ07Y6VvDQPJ5it5JQv3I2saMtIyfu2vJ1fWTe_N1NzcMGOLhTb4w9PQ_w591_iliqee.jpg",
-    name: "deposit proof", validation: "TEXT"
+    name: "deposit-proof", validation: "IMAGE"
   },
   {
-    type: TQuestion.RADIO, title: "Shirt size", name: "shirt size", validation: "TEXT",
+    type: TQuestion.RADIO, title: "Shirt size", name: "shirt-size", validation: "TEXT",
     description: "", radioTexts: ["XS", "S", "M", "L", "XL", "XXL"],
   }
 ]

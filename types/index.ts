@@ -76,7 +76,7 @@ export interface ITextInput {
 
 export interface ITextInput1 extends ITextInput {
     value: string;
-    valid: boolean;
+    error: string|undefined;
     focus: boolean;
     register: UseFormRegister<FieldValues>,
     setFocus: (index:number, focus: boolean) => void
@@ -96,9 +96,13 @@ export interface IImageInput {
 }
 
 export interface IImageInput1 extends IImageInput {
+    index: number;
+    setFocus: (index:number, focus: boolean) => void;
+    register: UseFormRegister<FieldValues>,
+    error: string|undefined;
+    focus: boolean;
     value: string;
-    valid: boolean;
-    onChange: (value:string) => void
+    onChange: (value:File|undefined) => void
 }
 
 export interface IRadioInput {
@@ -114,8 +118,9 @@ export interface IRadioInput {
 
 export interface IRadioInput1 extends IRadioInput {
     value: string;
-    valid: boolean;
     onChange: (value:string) => void
+    focus: boolean;
+    register: UseFormRegister<FieldValues>,
     setFocus: (index:number, focus: boolean) => void
     index: number
 }
