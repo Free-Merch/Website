@@ -5,7 +5,7 @@ import { ImageType } from "../types";
 
 type ModalObj = {
   merch: {open: boolean, picture?: ImageType},
-  submitForm: {open: boolean, progress?: "Sent"|"Sending"|"Failed", call: () => void},
+  submitForm: {open: boolean, progress?: "Sent"|"Sending"|"Failed", call?: () => void},
 
 }
 

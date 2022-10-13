@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { schemas as validationSchemas } from "./validation-schemas";
 import { useModalContext } from "../../hooks/contexthooks";
+import { FormClient } from "../../helpers/formClient";
 
 
 export {
@@ -20,10 +21,7 @@ interface IForm {
   questions: Question[]
 }
 
-interface IFormInputs {
-  firstName: string
-  age: number
-}
+type IFormInputs = {[key:string]:string}
 
 
 const Form = ({questions}: IForm) => {
@@ -53,12 +51,15 @@ const Form = ({questions}: IForm) => {
   }
 
   const { show } = useModalContext();
-  
-  const record = () => {}
 
-  const onSubmit = (data: IFormInputs) => {
-    console.log(data);
-    show("submitForm", {open: true, progress: "Sending", call: record})
+  const onSubmit = async (data: IFormInputs) => {
+    show("submitForm", {open: true, progress: "Sending"})
+    const status = await FormClient.saveFormData("14LdzeHMNPLVSrTBmmGyR-g6yFOIa6fFfqmDDd4hGLBc", "trest", data)
+    if(status === "success"){
+      show("submitForm", {open: true, progress: "Sent"})
+    }else{
+      show("submitForm", {open: true, progress: "Failed", call: () => onSubmit(data)}, )
+    }
   }
   const getQuestion = (type: TQuestion, index: number) => {
     const questions = {

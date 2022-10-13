@@ -1,11 +1,11 @@
 import axios, { Axios, AxiosResponse } from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.PUBLNEXT_PUBLIC_SHEET_API,
+  baseURL: process.env.NEXT_PUBLIC_SHEET_API,
   timeout: 1000
 });
 
-export class FormClient {
+class FormClientClass {
   async uploadImage(id: number, index: number, file: File): Promise<string>{
     const form = new FormData();
     form.append('title', "Campaign form image");
@@ -20,15 +20,25 @@ export class FormClient {
     return await handleError(call);
   }
 
-  async saveFormData(id: number, index: number, row: {string: string}): Promise<string>{
-    const call = () => instance.post("update", JSON.stringify(row), {
+  async saveFormData(id: string, title: string, row: {[key:string]: string}): Promise<string>{
+    const form = new FormData();
+    Object.keys(row).forEach(key => form.append(key, row[key]))
+    const call = () => instance.post("add", form, {
       params: {
-        id, index
+        id, title
+      },
+      headers: {
+        'Content-Type': 'multipart/form-data'
       }
     });
 
     return await handleError(call);
   }
+}
+
+const FormClient  = new FormClientClass();
+export {
+  FormClient
 }
 
 const handleError = async (apiCall: () => Promise<AxiosResponse>) => {

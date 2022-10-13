@@ -27,7 +27,7 @@ const FormSubmitModal = () => {
 
   const cp = components[state ?? "Sending"];
   
-  return open ? <div onClick={() => hide("submitForm")} className="fixed  px-12 flex justify-center items-center scrollbar-hide z-[100] w-full h-full bg-[rgb(0,0,0,0.5)]">
+  return open ? <div className="fixed  px-12 flex justify-center items-center scrollbar-hide z-[100] w-full h-full bg-[rgb(0,0,0,0.5)]">
     <div onClick={(e) => e.stopPropagation()} className="relative flex-wrap flex-col bg-blue-900 flex justify-center items-center max-h-screen h-[600px] max-w-[600px] w-full mx-4">
       <Image src={cp.image} alt="successful" layout="fixed" className={`${state === "Sending" ? "animate-spin" : ""} w-[150px] h-[150px]`} />
       <p className="mt-[36px] font-semibold text-white text-lg">{cp.text}</p>
