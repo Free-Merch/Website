@@ -29,7 +29,7 @@ export const Submit = ({active, onClick}: FormButton) => {
     submit
     className={`
       ${active ? "bg-green-100 text-white" : "cursor-default bg-grey-150 text-grey-250"}
-      h-[48px] text-md font-medium w-[342px]
+      h-[48px] text-md font-medium w-full
     `} />
 }
 
