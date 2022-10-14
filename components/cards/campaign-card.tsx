@@ -39,23 +39,33 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, campaig
   return <div className={`cursor-pointer inline-block bg-grey-200 rounded-lg min-w-[163px] w-[399px] max-w-[399px]" }`} ref={ref1} >
     <Link href={`/campaigns/${id}`}>
       <div className={`my-[30px] md:mx-[21px] mx-[18px]`}>
-        <div className="flex bg-grey-100 max-w-max py-[10px] px-[8px] rounded-[15px]">
-          <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded h-[24px] w-[24px] flex items-center justify-center`}
-            style={{backgroundColor: `${bgColor}`}}
-          >
-            <Image src={image.url} alt={image.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/image.ratio}/>
+        <div className="flex justify-between items-center">
+          <div className="flex bg-grey-100 max-w-max py-[10px] px-[8px] rounded-[15px]">
+            <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded h-[24px] w-[24px] flex items-center justify-center`}
+              style={{backgroundColor: `${bgColor}`}}
+            >
+              <Image src={image.url} alt={image.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/image.ratio}/>
+            </div>
+            <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
+              <Link href={`/campaigns/${id}`}>
+                <>
+                  <span className="capitalize font-medium text-[20px]">{brand}</span>
+                  &nbsp;
+                  <span className="">
+                    <GoVerified className="fill-[#2382E1] w-[14px]"/>
+                  </span>
+                </>
+              </Link>
+            </p>
           </div>
-          <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
-            <Link href={`/campaigns/${id}`}>
-              <>
-                <span className="capitalize font-medium text-[20px]">{brand}</span>
-                &nbsp;
-                <span className="">
-                  <GoVerified className="fill-[#2382E1] w-[14px]"/>
-                </span>
-              </>
-            </Link>
-          </p>
+          <div className={`${false ? "text-green-100" : "text-red-150"}  flex items-center`}>
+            {/* <div className="bg-green-100 rounded-full w-[5px] h-[5px]"></div>  
+            &nbsp;
+            <span>Active</span> */}
+            <div className={`${false ? "bg-green-100" : "bg-red-150"} rounded-full w-[5px] h-[5px]`}></div>  
+            &nbsp;
+            <span>{false ? "Active" : "Completed"}</span>
+          </div>
         </div>
 
         <p className="font-semibold text-xl text-blue-400">Celebration of Launch</p>
