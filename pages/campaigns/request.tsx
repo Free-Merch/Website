@@ -57,13 +57,15 @@ const data: Question[] = [
     image: formImages["email"], name: "email",
     required: true,
     validation: "EMAIL",
+    index: 0
   },
   { 
     type: TQuestion.TEXT, title: "Follow on Twitter", 
     description: "Please provide your Twitter profile url with your username. It must have at least 30 followers and show human activity. You must have followed us on Twitter.",
     placeholder: "https://twitter.com/getfreemerch", titleLink: "https://twitter.com/getfreemerch",
     image: formImages["twitter"], name: "twitter",
-    required: false, validation: "TWITTER"
+    required: false, validation: "TWITTER",
+    index: 1
   },
   // {
   //   type: TQuestion.NUMBER, title: "Bybit uid", 
@@ -75,11 +77,13 @@ const data: Question[] = [
     type: TQuestion.IMAGE, title: "Deposit Proof",
     description: "Please provide a screenshot like the one below showing either your P2P trading or deposit history of at least $10.",
     sample: "https://res.cloudinary.com/nonseodion/image/upload/v1664461952/eQnFS5BvowhmHUV3xUffTnNoVb8UvM1VMDMiPJsjL5e6heAruXMr8KJHpmDpzD_8PkrqNhEhICnJ07Y6VvDQPJ5it5JQv3I2saMtIyfu2vJ1fWTe_N1NzcMGOLhTb4w9PQ_w591_iliqee.jpg",
-    name: "deposit-proof", validation: "IMAGE"
+    name: "deposit-proof", validation: "IMAGE",
+    index: 2, required: false
   },
   {
     type: TQuestion.RADIO, title: "Shirt size", name: "shirt-size", validation: "TEXT",
     description: "", radioTexts: ["XS", "S", "M", "L", "XL", "XXL"],
+    index: 3, required:false
   }
 ]
 
@@ -136,8 +140,8 @@ const Request = () => {
           </p>
         </div>
         <div className="flex gap-2 text-lg text-black-200 dark:text-white z-[1]">
-          <Link href="https://"><BsTwitter className="cursor-pointer"/></Link>
-          <Link href="https://"><BiLinkAlt className="cursor-pointer"/></Link>
+          <Link href="https://"><><BsTwitter className="cursor-pointer"/></></Link>
+          <Link href="https://"><><BiLinkAlt className="cursor-pointer"/></></Link>
         </div>
     </div>
     

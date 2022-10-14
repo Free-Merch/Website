@@ -4,8 +4,8 @@ import { GoVerified } from "react-icons/go";
 
 import Link from "next/link";
 import { ImageType } from "../../types";
-import { useWindowSize, useElementSize } from "../../hooks/useSize";
-
+import { useElementSize } from "../../hooks/useSize";
+import { AiFillQuestionCircle } from "react-icons/ai"
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
@@ -14,22 +14,22 @@ interface ICampaignCard {
   bgColor: string,
   about: string,
   brand: string,
-  campaigns: ImageType[]
+  merchandise: ImageType[]
   id: number
 }
 
-export function CampaignCard (this: any, { image, bgColor, about, brand, campaigns, id }: ICampaignCard){
+export function CampaignCard (this: any, { image, bgColor, about, brand, merchandise, id }: ICampaignCard){
   const {width: width1, ref: ref1} = useElementSize()
   const logoWidth = 20
 
   const shadow = "shadow-[0px_0px_7px_4px_rgba(46,200,102,0.04)]"
-  const items = campaigns?.map((campaign, index) => {
+  const items = merchandise?.map((merch, index) => {
 
     return <div key={index} className="w-[36px] h-[30px] relative shadow-[0px_8px_16px_rgba(171,190,209,0.4)] rounded" >
       <Image 
         className="rounded"
-        src={campaign.url} 
-        alt={campaign.alternativeText} 
+        src={merch.url} 
+        alt={merch.alternativeText} 
         layout="fill"
         objectFit="cover"
       />
@@ -44,7 +44,10 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, campaig
             <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded h-[24px] w-[24px] flex items-center justify-center`}
               style={{backgroundColor: `${bgColor}`}}
             >
-              <Image src={image.url} alt={image.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/image.ratio}/>
+              {image.url 
+              ?
+                <Image src={image.url} alt={image.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/image.ratio}/>
+              : <AiFillQuestionCircle className="w-[20px] h-[20px] fill-green-100" />}
             </div>
             <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
               <Link href={`/campaigns/${id}`}>

@@ -1,12 +1,8 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { IconType } from "react-icons";
-import ISchema from "./schema";
 
 
 export type ThemeType = "light"|"dark";
-export {
-  ISchema
-};
 
 export interface ImageType {
   url: string,
@@ -35,20 +31,21 @@ export interface BrandBrief {
 }
 
 export interface Brand {
-  id: number
-  brand: string,
-  about: string,
+  name: string,
+  description: string,
   logoBgColor: string,
   links: Link[]
   logo: ImageType,
-  campaignImages: ImageType[]
-  campaigns: Campaign[]
 }
 
 export interface Campaign {
-  items: Item[]
   name: string
+  brand: string
   active: boolean
+  identifier: string
+  description: string
+  merchandise: ImageType[]
+  id: number
 }
 
 export interface Link{
@@ -61,17 +58,22 @@ export interface FAQ {
   answer: any
 }
 
-export interface ITextInput {
-  title: string,
+interface IInput {
+  title: string
   description: string,
-  placeholder: string,
   name: string,
-  required: boolean,
+  validation: string,
+  required: boolean
+  titleLink?: string,
+  index: number
+}
+
+export interface ITextInput extends IInput {
+  placeholder: string,
   validation: string,
   image?: (className:string) => JSX.Element,
   first?: boolean
-    last?: boolean
-  titleLink?: string
+  last?: boolean
 }
 
 export interface ITextInput1 extends ITextInput {
@@ -84,15 +86,10 @@ export interface ITextInput1 extends ITextInput {
     onChange: (value:string) => void
 }
 
-export interface IImageInput {
-  title: string,
-  description: string,
-  name: string,
+export interface IImageInput extends IInput {
   first?: boolean,
   last?: boolean
   sample: string,
-  validation: string,
-  titleLink?: string
 }
 
 export interface IImageInput1 extends IImageInput {
@@ -105,13 +102,8 @@ export interface IImageInput1 extends IImageInput {
     onChange: (value:File|undefined) => void
 }
 
-export interface IRadioInput {
-  title: string,
-  description: string,
-  name: string,
+export interface IRadioInput extends IInput {
   radioTexts: string[],
-  validation: string,
-  titleLink?: string
   first?: boolean,
   last?: boolean
 }

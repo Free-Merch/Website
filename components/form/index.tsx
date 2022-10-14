@@ -36,7 +36,7 @@ const Form = ({questions}: IForm) => {
     resolver: yupResolver(yup.object(schema).required()),
     mode: "onBlur"
   });
-  console.log(getValues(), "form values")
+
   const [values, setValues] = useState<{[key: string]: string|File}>({});
   const onChange = (key: string) => (value: string|File) => {
     setValues({...values, [key]: value})
@@ -127,7 +127,6 @@ const Form = ({questions}: IForm) => {
 
   useEffect(() => {
     if(Object.keys(errors).length === 0 && Object.keys(values).length === questions.length){
-      console.log(questions)
       const _ready = Object.values(values).reduce((oldValue, currValue) => {
         return oldValue && currValue ? true : false
       }, true)

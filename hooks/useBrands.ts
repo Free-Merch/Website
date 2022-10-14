@@ -1,46 +1,22 @@
 import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
-import { ImageType, BrandBrief } from '../types';
-
-
+import { Brand } from '../types';
 
 const brandsQuery = gql`
-  query {
-    merches(sort: "id:desc"){
+    query {
+    brands {
       data{
-        id
-        attributes{
-          brand
-          about
+        attributes {
+          name
+          description
           logoBgColor
-          logo{
+          logo {
             data{
               attributes{
-                alternativeText
-                name
                 url
-                width
                 height
-              }
-            }
-          }
-          campaigns(
-            pagination: {
-              start: 0
-              limit: 3
-            }
-          ){
-            items{
-              image{
-                data{
-                  attributes{
-                    url
-                    alternativeText
-                    name
-                    height
-                    width
-                  }
-                }
+                alternativeText
+                width
               }
             }
           }
@@ -48,41 +24,24 @@ const brandsQuery = gql`
       }
     }
   }
-`;
+`; 
 
-const useBrands = (): BrandBrief[] => {
+const useBrands = (): {[key:string]: Brand} => {
   const { data } = useQuery(brandsQuery, {client});
-  const projectBriefs: BrandBrief[] = data?.merches.data.map( (merch: any) => {
-    const id = merch.id;
-    merch = merch.attributes;
-    const { brand, about, logoBgColor }: 
-      {brand: string, about: string, logoBgColor: string} = merch;
-    const logo: ImageType = {...merch.logo.data.attributes};
-    if(logo) logo.ratio = logo?.width/logo?.height
+  let brands: {[key:string]: Brand} = {};
 
-    let campaigns: ImageType[] = [];
-    merch.campaigns.map(
-      ({items}: any) =>  {
-        campaigns.push(...items.map( (item: any) => {
-          const _item = {...item.image.data.attributes}
-          _item.ratio = _item.width/_item.height
-          return _item
-        }))
-      }
-    )
-    campaigns = campaigns.slice(0,3);
-
-    return {
-      brand,
-      about,
+  data?.brands?.data.forEach((brand:any) => {
+    let {logo, name, description, links, logoBgColor } = brand.attributes
+    logo = {...logo.data.attributes};
+    logo.ratio = logo.width/logo.height;
+    brands[name.toLowerCase()] = {
+      name, links: JSON.parse(links ?? "{}"),
+      description, 
       logo,
       logoBgColor,
-      campaigns,
-      id
     }
-  })
-  
-  return projectBriefs;
+  });
+  return brands;
 }
 
 export default useBrands;

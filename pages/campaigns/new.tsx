@@ -6,13 +6,15 @@ import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
 import useProjects from "../../hooks/useBrands";
 
 import { useState } from "react";
-import { BrandBrief } from "../../types";
+import { BrandBrief, Campaign } from "../../types";
 import Head from "next/head";
+import useCampaigns from "../../hooks/useCampaigns";
+import useBrands from "../../hooks/useBrands";
 
 const orderFunctions = {
-  "A-Z": (projects: BrandBrief[]) => projects.sort((a, b) => a.brand[0] < b.brand[0] ? -1 : 1),
-  "Z-A": (projects: BrandBrief[]) => projects.sort((a, b) => a.brand[0] > b.brand[0] ? -1 : 1),
-  "Most recent": (projects: BrandBrief[]) => projects
+  "A-Z": (projects: Campaign[]) => projects.sort((a, b) => a.brand[0] < b.brand[0] ? -1 : 1),
+  "Z-A": (projects: Campaign[]) => projects.sort((a, b) => a.brand[0] > b.brand[0] ? -1 : 1),
+  "Most recent": (projects: Campaign[]) => projects
 }
 
 const Campaigns = () => {
@@ -23,19 +25,26 @@ const Campaigns = () => {
     {value: "Z-A", label: "Z-A"}
   ];
 
+  const campaigns = useCampaigns()
+  const brands = useBrands();
+
   const [order, setOrder] = useState({value: "Most recent", label: "Most recent"});
   // @ts-ignore
   const handleSetOrder = (value: Option) => setOrder(value)
 
-  let projects = useProjects()
-  const CampaignCards = orderFunctions[order.value as keyof typeof orderFunctions](projects)?.map((project, index) => {
-    const { about, logo, campaigns, brand, logoBgColor, id } = project;
+
+  const CampaignCards = orderFunctions[order.value as keyof typeof orderFunctions](campaigns)?.map((campaign, index) => {
+    const { description, merchandise, brand, id } = campaign;
+    const {logo, logoBgColor} = brands[brand.toLowerCase()] ?? 
+      {logo: {width:20, height:20, alternativeText: "...", url: "", name: brand, ratio: 1}, logoBgColor: "#ffffff" 
+    };
+    console.log(logo, logoBgColor, "logo")
     return <CampaignCard  
         brand={brand}
         image={logo}
-        about={about}
+        about={description}
         bgColor={logoBgColor}
-        campaigns={campaigns}
+        merchandise={merchandise}
         id={id}
         key={index}
       />

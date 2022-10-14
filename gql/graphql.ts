@@ -46,6 +46,7 @@ export type Brand = {
   __typename?: 'Brand';
   createdAt?: Maybe<Scalars['DateTime']>;
   description?: Maybe<Scalars['String']>;
+  links?: Maybe<Scalars['JSON']>;
   logo?: Maybe<UploadFileEntityResponse>;
   logoBgColor?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -75,6 +76,7 @@ export type BrandFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
+  links?: InputMaybe<JsonFilterInput>;
   logoBgColor?: InputMaybe<StringFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<BrandFiltersInput>;
@@ -85,6 +87,7 @@ export type BrandFiltersInput = {
 
 export type BrandInput = {
   description?: InputMaybe<Scalars['String']>;
+  links?: InputMaybe<Scalars['JSON']>;
   logo?: InputMaybe<Scalars['ID']>;
   logoBgColor?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;

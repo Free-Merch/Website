@@ -1,9 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
-import { ImageType, Campaign } from '../types';
-import { graphql } from '../gql';
+import { Campaign } from '../types';
 
-const campaignsQuery = graphql(/* GraphQL */ `
+const campaignsQuery = gql`
   query {
     campaigns {
       data{
@@ -27,12 +26,20 @@ const campaignsQuery = graphql(/* GraphQL */ `
       }
     }
   }
-`);
+`; 
 
 const useCampaigns = (): Campaign[] => {
   const { data } = useQuery(campaignsQuery, {client});
-  
- return data;
+  const campaigns = data?.campaigns?.data.map((campaign:any) => {
+    const {name, brand, description, identifier, merchandise: merchData} = campaign.attributes;
+    const merchandise = merchData?.data?.map( (merch: any) => {
+      return merch.attributes;
+    })
+    return {
+      name, brand, description, identifier, merchandise
+    }
+  })
+  return campaigns;
 }
 
 export default useCampaigns;
