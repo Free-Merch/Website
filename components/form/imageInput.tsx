@@ -36,10 +36,11 @@ const ImageInput = (props: IImageInput1) => {
 
   return <div 
     onClick={() => setFocus(index, true)}
-    className={`${focus || file ? "bg-blue-400 py-[21px]" : ""} cursor-pointer w-[342px] px-[21px] rounded-[10px] shadow-[0px_8px_16px_3px_#030324]`}>
+    className={`${focus || file ? "bg-white dark:bg-blue-400 py-[21px]" : ""} cursor-pointer w-full px-[21px] rounded-[10px] 
+      shadow-[0px_9px_16px_rgba(171,190,209,0.03)] dark:shadow-[0px_8px_16px_3px_#030324]`}>
     {
       !titleLink ?
-      <p className={`font-semibold flex items-center text-lg text-white`}>
+      <p className={`font-semibold flex items-center text-lg text-blue-400 dark:text-white`}>
         {title}
       </p> :
       <Link href={titleLink} className={`"underline font-semibold flex items-center text-lg text-white`}>
@@ -52,7 +53,7 @@ const ImageInput = (props: IImageInput1) => {
       <div><Image onClick={() => show("merch", {open: true, picture:samplePicture})} src={sample} layout="fill" objectFit="cover" className="cursor-zoom-in rounded" alt="campaign-sample"/></div>
     </div>
 
-    <div className={`text-white items-center w-full rounded border border-dashed justify-center ${error && file ? "border-red-150" : ""} ${ file && !error ? "border-green-100": ""}`}>
+    <div className={`text-blue-400 dark:text-white items-center w-full rounded border border-dashed justify-center ${!file && "border-blue-400 dark:border-white"} ${error && file ? "border-red-150" : ""} ${ file && !error ? "border-green-100": ""} `}>
       {!file ?
         <label htmlFor="fileUpload" className="flex items-center justify-center py-[16px] h-full w-full cursor-pointer">
           <MdDriveFolderUpload className="text-[20px] inline-block mr-[2px]" /> Upload File

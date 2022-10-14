@@ -111,7 +111,7 @@ const Form = ({questions}: IForm) => {
   const queComponents = questions.map((question, i) => {
     if(i === 0) question.first = true;
     if(i === questions.length-1) question.last = true;
-    return <div key={i} className="max-w-max">
+    return <div key={i} className="w-full">
       {// @ts-ignore
       getQuestion(question.type, i)({ 
         ...question, 
@@ -141,7 +141,9 @@ const Form = ({questions}: IForm) => {
     onSubmit={handleSubmit(onSubmit)}
   >
     {queComponents}
+    <div className="px-[21px] w-full">
       <Submit active={ready} onClick={() => {}}/>
+    </div>
     </form>
 }
 

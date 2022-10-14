@@ -11,10 +11,11 @@ const RadioInput = (props: IRadioInput1) => {
 
   return <div 
     onClick={() => setFocus(index, true)}
-    className={`${(focus || value) && "bg-blue-400 py-[21px]"} cursor-pointer w-[342px] px-[21px] rounded-[10px] shadow-[0px_8px_16px_3px_#030324]`}>
+    className={`${(focus || value) && "bg-white dark:bg-blue-400 py-[21px]"} cursor-pointer w-full px-[21px] rounded-[10px] 
+      shadow-[0px_9px_16px_rgba(171,190,209,0.03)] dark:shadow-[0px_8px_16px_3px_#030324]`}>
     {
       !titleLink ?
-      <p className={`font-semibold flex items-center text-lg text-white`}>
+      <p className={`font-semibold flex items-center text-lg dark:text-white text-blue-400`}>
         {title}
       </p> :
       <Link href={titleLink} className={`"underline font-semibold flex items-center text-lg text-white`}>
@@ -32,7 +33,7 @@ const RadioInput = (props: IRadioInput1) => {
             className="flex items-center cursor-pointer"
           >
           <div className={
-              `inline-block w-[17px] mr-1 h-[17px] border rounded-full
+              `inline-block w-[17px] mr-1 h-[17px] border rounded-full border-white
               ${value === text ? "bg-green-100" : ""}`
             } />
           {text}
