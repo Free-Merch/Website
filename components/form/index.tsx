@@ -20,12 +20,14 @@ export {
 }
 interface IForm {
   questions: Question[]
+  id: string,
+  name: string
 }
 
 type IFormInputs = {[key:string]:string}
 
 
-const Form = ({questions}: IForm) => {
+const Form = ({questions, id, name}: IForm) => {
   let schema: {[key: string]: yup.AnySchema} = {}
   questions.forEach(question => {
     schema[question.name] = validationSchemas[
@@ -55,7 +57,7 @@ const Form = ({questions}: IForm) => {
 
   const onSubmit = async (data: IFormInputs) => {
     show("submitForm", {open: true, progress: "Sending"})
-    const status = await FormClient.saveFormData("14LdzeHMNPLVSrTBmmGyR-g6yFOIa6fFfqmDDd4hGLBc", "trest", data)
+    const status = await FormClient.saveFormData(id, name, data)
     if(status === "success"){
       show("submitForm", {open: true, progress: "Sent"})
     }else{
@@ -143,10 +145,6 @@ const Form = ({questions}: IForm) => {
     {queComponents}
     <div className="px-[21px] w-full">
       <Submit active={ready} onClick={() => {}}/>
-    </div>
-    <div className="mt-[103px]">
-      <p className="text-blue-500 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>
-      <CampaignsSnippet />
     </div>
     </form>
 }

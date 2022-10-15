@@ -12,6 +12,7 @@ import { ModalContext } from "../../context/modalContext";
 import { useContext } from "react";
 import { GetServerSideProps } from "next";
 import getCampaign from "../../helpers/getCampaign";
+import CampaignsSnippet from "../../components/campaignsSnippet";
 
 {/* <TextInput
         title="Email"
@@ -104,11 +105,11 @@ const linkImages = {
 }
 
 const Campaign = (props: {campaign: Campaign_Q}) => {
-  const {width: width1, ref: ref1} = useElementSize()
+  const {width: width1} = useElementSize()
   const logoWidth = 20;
-  const {campaign: {questions, merchandise, brand}} = props;
+  const {campaign: {questions, merchandise, brand, identifier, name}} = props;
   const links = Object.entries(brand.links)?.map(([key, url], index) => {
-    return <Link key={index} href={url}>
+    return <Link key={index} href={url} target="_blank">
       <span className={`cursor-pointer`}>{linkImages[key.toLowerCase() as keyof typeof linkImages]}</span>
     </Link>
   });
@@ -127,14 +128,13 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
 
   return <div className="mb-[100px]">
     <div className="w-full relative flex justify-between items-center h-[120px]">
-      <div className="absolute -ml-[1000px] h-full md:dark:md:bg-blue-800 w-[10000px]  -z-0"></div>
         <div className="flex z-[1]">
           <div className={`cursor-pointer bg-white rounded h-[24px] w-[24px] flex items-center justify-center`}
             >
             <Image src={brand.logo.url} alt={brand.logo.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/brand.logo.ratio}/>
           </div>
           <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
-            <Link href={`/campaigns/${""}`}>
+            <Link href={`/brands/${brand.name}`}>
               <>
                 <span className="capitalize text-blue-400 dark:text-white font-medium text-[20px]">Freemerch</span>
                 &nbsp;
@@ -163,7 +163,13 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       </div>
     </div>
 
-    <Form questions={questions} />
+    <Form questions={questions} id={identifier} name={name} />
+    <div className="mt-[103px] w-full">
+      <p className="text-blue-500 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>
+      <div className="flex justify-center flex-wrap">
+        <CampaignsSnippet />
+      </div>
+    </div>
   </div>
 }
 
@@ -177,7 +183,6 @@ export default NewComponent;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.query?.id
-  console.log(String(id), id)
   try {
     const campaign = await getCampaign(String(id));
     return {

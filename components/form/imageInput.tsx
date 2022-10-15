@@ -14,7 +14,7 @@ interface ExFile extends File {
 }
 
 const ImageInput = (props: IImageInput1) => {
-  const {title, description, value:file, error, name, register, onChange, sample, first, titleLink, focus, setFocus, index} = props;
+  const {title, description, value:file, error, name, register, onChange, sample, first, last, titleLink, focus, setFocus, index} = props;
   const { show } = useModalContext();
   
   const previewFile = ({target}: {target: HTMLInputElement}) : void => {
@@ -43,8 +43,8 @@ const ImageInput = (props: IImageInput1) => {
       <p className={`font-semibold flex items-center text-lg text-blue-400 dark:text-white`}>
         {title}
       </p> :
-      <Link href={titleLink} >
-        <div className={`underline font-semibold flex items-center text-blue-400 text-lg dark:text-white`}>
+      <Link href={titleLink} target="_blank">
+        <div className={`max-w-max underline font-semibold flex items-center text-blue-400 text-lg dark:text-white`}>
           {title} <TbExternalLink className="text-[22px] inline-block ml-[4px]" />
         </div>
       </Link>
@@ -72,9 +72,9 @@ const ImageInput = (props: IImageInput1) => {
     </div>
       {error && focus && <span className="text-red-150 inline-block mt-[8px]">*{error}</span>}
     {focus &&
-      <div className="h-[48px] flex justify-between mt-[24px]">
-        {!first && <div className="h-full w-[100px]"><FormBack onClick={() => setFocus(index-1, true)} active={false} /> </div>}
-        <div className={`h-full ${first ? "w-full" : "w-[156px]"}`}><FormNext onClick={() => {file && setFocus(index+1, true)}} active={file && !error ? true : false} /></div>
+      <div className="h-[48px] gap-14 flex justify-between mt-[24px]">
+        {!first && <div className={`h-full ${last ? "w-full" : "w-[100px]"} md:w-full max-w-[240px]`}><FormBack onClick={() => setFocus(index-1, true)} active={false} /> </div>}
+        {!last && <div className={`h-full w-[156px] md:w-full max-w-[500px]`}><FormNext onClick={() => {file && setFocus(index+1, true)}} active={file && !error ? true : false} /></div>}
       </div>
     }
   </div>
