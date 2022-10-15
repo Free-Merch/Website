@@ -1,28 +1,10 @@
 import Layout from "../components/layout";
 import Image from "next/image";
-import useBrands from "../hooks/useBrands";
-import { CampaignCard } from "../components/cards/campaign-card";
 import {HiOutlineExclamation} from "react-icons/hi";
 import Head from "next/head";
-import useCampaigns from "../hooks/useCampaigns";
+import CampaignsSnippet from "../components/campaignsSnippet";
 
 const CatchPage = () => {
-  let campaigns = useCampaigns()
-  campaigns = campaigns?.slice(0, 3);
-  const CampaignCards = campaigns?.map((campaign, index) => {
-  const { description, merchandise, active, brand, id, name } = campaign;
-    return <CampaignCard  
-        brand={brand.name}
-        image={brand.logo}
-        name={name}
-        about={description}
-        bgColor={brand.logoBgColor}
-        id={id}
-        key={index}
-        merchandise={merchandise}
-        active={active}
-      />
-  })
 
   return <div className="text-center relative overflow-hidden">
     <Head>
@@ -44,7 +26,7 @@ const CatchPage = () => {
     <h3 className="mt-[13px] text-3xl dark:text-white text-[#191D23] font-semibold ">Page not Found</h3>
     <p className="mb-[45px] mt-[26px] text-lg dark:text-white text-[#64748B]">Sorry, the page you are looking for doesn’t exist or has been removed.</p>
     <div className="child:m-3 flex flex-wrap justify-center mb-10">
-      {CampaignCards}
+      <CampaignsSnippet />
     </div>
   </div>
 }

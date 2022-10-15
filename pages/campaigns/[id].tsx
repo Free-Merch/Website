@@ -178,6 +178,7 @@ export default NewComponent;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.query?.id
+  console.log(String(id), id)
   try {
     const campaign = await getCampaign(String(id));
     return {

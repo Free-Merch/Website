@@ -10,6 +10,7 @@ import * as yup from "yup";
 import { schemas as validationSchemas } from "./validation-schemas";
 import { useModalContext } from "../../hooks/contexthooks";
 import { FormClient } from "../../helpers/formClient";
+import CampaignsSnippet from "../campaignsSnippet";
 
 
 export {
@@ -142,6 +143,10 @@ const Form = ({questions}: IForm) => {
     {queComponents}
     <div className="px-[21px] w-full">
       <Submit active={ready} onClick={() => {}}/>
+    </div>
+    <div className="mt-[103px]">
+      <p className="text-blue-500 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>
+      <CampaignsSnippet />
     </div>
     </form>
 }

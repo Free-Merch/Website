@@ -6,7 +6,7 @@ import getBrands from './getBrands';
 
 const campaignsQuery = (id: string) => gql`
   query {
-    campaign(id: 1) {
+    campaign(id: ${id}) {
       data{
         attributes {
           name
