@@ -10,7 +10,6 @@ const brandsQuery = gql`
           name
           description
           logoBgColor
-          links
           logo {
             data{
               attributes{
@@ -27,16 +26,15 @@ const brandsQuery = gql`
   }
 `; 
 
-const useBrands = (): {[key:string]: Brand} => {
-  const { data } = useQuery(brandsQuery, {client});
+const getBrands = async (): Promise<{[key:string]: Brand}> => {
+  const { data } = await client.query({query: brandsQuery})
   let brands: {[key:string]: Brand} = {};
-
   data?.brands?.data.forEach((brand:any) => {
     let {logo, name, description, links, logoBgColor } = brand.attributes
     logo = {...logo.data.attributes};
     logo.ratio = logo.width/logo.height;
     brands[name.toLowerCase()] = {
-      name, links,
+      name, links: JSON.parse(links ?? "{}"),
       description, 
       logo,
       logoBgColor,
@@ -45,4 +43,4 @@ const useBrands = (): {[key:string]: Brand} => {
   return brands;
 }
 
-export default useBrands;
+export default getBrands;

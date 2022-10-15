@@ -191,6 +191,7 @@ export type ComponentQuestionTypeImage = {
   id: Scalars['ID'];
   index?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
+  required?: Maybe<Scalars['Boolean']>;
   samples?: Maybe<UploadFileRelationResponseCollection>;
   title: Scalars['String'];
   titleLink?: Maybe<Scalars['String']>;
@@ -211,6 +212,7 @@ export type ComponentQuestionTypeImageFiltersInput = {
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ComponentQuestionTypeImageFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentQuestionTypeImageFiltersInput>>>;
+  required?: InputMaybe<BooleanFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   titleLink?: InputMaybe<StringFilterInput>;
   validation?: InputMaybe<StringFilterInput>;
@@ -221,6 +223,7 @@ export type ComponentQuestionTypeImageInput = {
   id?: InputMaybe<Scalars['ID']>;
   index?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
+  required?: InputMaybe<Scalars['Boolean']>;
   samples?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   title?: InputMaybe<Scalars['String']>;
   titleLink?: InputMaybe<Scalars['String']>;
@@ -234,8 +237,10 @@ export type ComponentQuestionTypeRadio = {
   index?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   radioOptions?: Maybe<Scalars['JSON']>;
+  required?: Maybe<Scalars['Boolean']>;
   title: Scalars['String'];
   titleLink?: Maybe<Scalars['String']>;
+  validation?: Maybe<Scalars['String']>;
 };
 
 export type ComponentQuestionTypeRadioFiltersInput = {
@@ -246,8 +251,10 @@ export type ComponentQuestionTypeRadioFiltersInput = {
   not?: InputMaybe<ComponentQuestionTypeRadioFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentQuestionTypeRadioFiltersInput>>>;
   radioOptions?: InputMaybe<JsonFilterInput>;
+  required?: InputMaybe<BooleanFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   titleLink?: InputMaybe<StringFilterInput>;
+  validation?: InputMaybe<StringFilterInput>;
 };
 
 export type ComponentQuestionTypeRadioInput = {
@@ -256,8 +263,10 @@ export type ComponentQuestionTypeRadioInput = {
   index?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
   radioOptions?: InputMaybe<Scalars['JSON']>;
+  required?: InputMaybe<Scalars['Boolean']>;
   title?: InputMaybe<Scalars['String']>;
   titleLink?: InputMaybe<Scalars['String']>;
+  validation?: InputMaybe<Scalars['String']>;
 };
 
 export type ComponentQuestionTypeText = {
@@ -267,6 +276,7 @@ export type ComponentQuestionTypeText = {
   index?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   placeholder?: Maybe<Scalars['String']>;
+  required?: Maybe<Scalars['Boolean']>;
   title?: Maybe<Scalars['String']>;
   titleLink?: Maybe<Scalars['String']>;
   validation?: Maybe<Scalars['String']>;
@@ -280,6 +290,7 @@ export type ComponentQuestionTypeTextFiltersInput = {
   not?: InputMaybe<ComponentQuestionTypeTextFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentQuestionTypeTextFiltersInput>>>;
   placeholder?: InputMaybe<StringFilterInput>;
+  required?: InputMaybe<BooleanFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   titleLink?: InputMaybe<StringFilterInput>;
   validation?: InputMaybe<StringFilterInput>;
@@ -291,6 +302,7 @@ export type ComponentQuestionTypeTextInput = {
   index?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
   placeholder?: InputMaybe<Scalars['String']>;
+  required?: InputMaybe<Scalars['Boolean']>;
   title?: InputMaybe<Scalars['String']>;
   titleLink?: InputMaybe<Scalars['String']>;
   validation?: InputMaybe<Scalars['String']>;

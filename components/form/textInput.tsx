@@ -1,16 +1,24 @@
-import { ReactElement, useState } from "react";
+import { useState } from "react";
 import { FormBack, FormNext } from "./buttons";
 import {TbExternalLink} from "react-icons/tb";
 import Link from "next/link";
 import { ITextInput1 } from "../../types";
 import { BsExclamationTriangleFill, BsFillCheckCircleFill } from "react-icons/bs";
+import formImages from "./formImages";
 
 
 const TextInput = (props: ITextInput1) => {
-  const {title, value, focus, name, last, index, setFocus, description, error, image, onChange, first, placeholder, titleLink, register} = props;
+  const {title, value, focus, name, last, index, setFocus, description, error, onChange, first, placeholder, titleLink, register} = props;
+  let {image} = props;
   const [inputFocus, setInputFocus] = useState<boolean>(false);
   // console.log(last, name, "textInput");
   const valid = error || !value ? false : true
+
+  Object.entries(formImages).forEach( ([key, _image]) => {
+    if(name.toLowerCase().includes(key)){
+      image = _image;
+    }
+  })
   
   return <div 
     onClick={(e) => setFocus(index,true)}

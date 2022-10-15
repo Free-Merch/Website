@@ -28,7 +28,7 @@ const Form = ({questions}: IForm) => {
   let schema: {[key: string]: yup.AnySchema} = {}
   questions.forEach(question => {
     schema[question.name] = validationSchemas[
-      question.validation.toLowerCase() as keyof typeof validationSchemas
+      question?.validation?.toLowerCase() as keyof typeof validationSchemas
     ] ?? validationSchemas["text"]
   })
 

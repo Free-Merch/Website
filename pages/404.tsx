@@ -4,20 +4,23 @@ import useBrands from "../hooks/useBrands";
 import { CampaignCard } from "../components/cards/campaign-card";
 import {HiOutlineExclamation} from "react-icons/hi";
 import Head from "next/head";
+import useCampaigns from "../hooks/useCampaigns";
 
 const CatchPage = () => {
-  let brands = useBrands()
-  brands = brands?.slice(0, 3);
-  const BrandCards = brands?.map((brand, index) => {
-  const { about, logo, campaigns, brand: name, logoBgColor, id } = brand;
+  let campaigns = useCampaigns()
+  campaigns = campaigns?.slice(0, 3);
+  const CampaignCards = campaigns?.map((campaign, index) => {
+  const { description, merchandise, active, brand, id, name } = campaign;
     return <CampaignCard  
-        brand={name}
-        image={logo}
-        about={about}
-        bgColor={logoBgColor}
-        campaigns={campaigns}
+        brand={brand.name}
+        image={brand.logo}
+        name={name}
+        about={description}
+        bgColor={brand.logoBgColor}
         id={id}
         key={index}
+        merchandise={merchandise}
+        active={active}
       />
   })
 
@@ -39,9 +42,9 @@ const CatchPage = () => {
     </div>
     <div className="mt-2 flex max-w-fit px-[17px] py-[3px] items-center mx-auto bg-[#FEF2F2] rounded-md text-[#991B1B] justify-center"><HiOutlineExclamation /> &nbsp;  404 Error</div>
     <h3 className="mt-[13px] text-3xl dark:text-white text-[#191D23] font-semibold ">Page not Found</h3>
-    <p className="mb-[45px] mt-[26px] text-lg dark:text-white text-[#64748B]">Sorry, the page you are looking for doesn’t exist or has been removed. Keep exploring out site: </p>
+    <p className="mb-[45px] mt-[26px] text-lg dark:text-white text-[#64748B]">Sorry, the page you are looking for doesn’t exist or has been removed.</p>
     <div className="child:m-3 flex flex-wrap justify-center mb-10">
-      {BrandCards}
+      {CampaignCards}
     </div>
   </div>
 }

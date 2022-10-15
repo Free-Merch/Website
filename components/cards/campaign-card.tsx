@@ -13,12 +13,14 @@ interface ICampaignCard {
   image: ImageType,
   bgColor: string,
   about: string,
+  name: string
   brand: string,
   merchandise: ImageType[]
   id: number
+  active: boolean
 }
 
-export function CampaignCard (this: any, { image, bgColor, about, brand, merchandise, id }: ICampaignCard){
+export function CampaignCard (this: any, { image, bgColor, about, brand, merchandise, active, id, name}: ICampaignCard){
   const {width: width1, ref: ref1} = useElementSize()
   const logoWidth = 20
 
@@ -61,17 +63,14 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
               </Link>
             </p>
           </div>
-          <div className={`${false ? "text-green-100" : "text-red-150"}  flex items-center`}>
-            {/* <div className="bg-green-100 rounded-full w-[5px] h-[5px]"></div>  
+          <div className={`${active ? "text-green-100" : "text-red-150"}  flex items-center`}>
+            <div className={`${active ? "bg-green-100" : "bg-red-150"} rounded-full w-[5px] h-[5px]`}></div>  
             &nbsp;
-            <span>Active</span> */}
-            <div className={`${false ? "bg-green-100" : "bg-red-150"} rounded-full w-[5px] h-[5px]`}></div>  
-            &nbsp;
-            <span>{false ? "Active" : "Completed"}</span>
+            <span>{active ? "Active" : "Completed"}</span>
           </div>
         </div>
 
-        <p className="font-semibold text-xl text-blue-400">Celebration of Launch</p>
+        <p className="text-left font-semibold text-xl text-blue-400">{name}</p>
 
         <p className={`text-left h-[70px] text-ellipsis overflow-hidden text-grey-700 mt-[13px] ${width1 <= 200 ? "text-[12px] leading-[15px]" : "text-sm"}`}>{about.substring(0, 100)+ "..." }</p>
 

@@ -43,8 +43,10 @@ const ImageInput = (props: IImageInput1) => {
       <p className={`font-semibold flex items-center text-lg text-blue-400 dark:text-white`}>
         {title}
       </p> :
-      <Link href={titleLink} className={`"underline font-semibold flex items-center text-lg text-white`}>
-        {title} <TbExternalLink className="text-[22px] inline-block ml-[4px]" />
+      <Link href={titleLink} >
+        <div className={`underline font-semibold flex items-center text-blue-400 text-lg dark:text-white`}>
+          {title} <TbExternalLink className="text-[22px] inline-block ml-[4px]" />
+        </div>
       </Link>
     }
     <p className="text-grey-300 text-sm font-normal mb-[8px]">{description}</p>

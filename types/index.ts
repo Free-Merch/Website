@@ -34,13 +34,13 @@ export interface Brand {
   name: string,
   description: string,
   logoBgColor: string,
-  links: Link[]
+  links: {[key: string]: string}
   logo: ImageType,
 }
 
 export interface Campaign {
   name: string
-  brand: string
+  brand: Brand
   active: boolean
   identifier: string
   description: string
@@ -48,9 +48,8 @@ export interface Campaign {
   id: number
 }
 
-export interface Link{
-  url: string
-  name: string
+export interface Campaign_Q extends Campaign {
+  questions: Question[]
 }
 
 export interface FAQ {
@@ -68,12 +67,20 @@ interface IInput {
   index: number
 }
 
+export enum TQuestion {
+  EMAIL = "EMAIL",
+  TEXT = "TEXT",
+  RADIO = "RADIO",
+  IMAGE = "IMAGE"
+}
+
 export interface ITextInput extends IInput {
   placeholder: string,
   validation: string,
   image?: (className:string) => JSX.Element,
   first?: boolean
   last?: boolean
+  type: TQuestion.TEXT
 }
 
 export interface ITextInput1 extends ITextInput {
@@ -90,6 +97,7 @@ export interface IImageInput extends IInput {
   first?: boolean,
   last?: boolean
   sample: string,
+  type: TQuestion.IMAGE,
 }
 
 export interface IImageInput1 extends IImageInput {
@@ -106,23 +114,16 @@ export interface IRadioInput extends IInput {
   radioTexts: string[],
   first?: boolean,
   last?: boolean
+  type: TQuestion.RADIO,
 }
 
 export interface IRadioInput1 extends IRadioInput {
-    value: string;
-    onChange: (value:string) => void
-    focus: boolean;
-    register: UseFormRegister<FieldValues>,
-    setFocus: (index:number, focus: boolean) => void
-    index: number
+  value: string;
+  onChange: (value:string) => void
+  focus: boolean;
+  register: UseFormRegister<FieldValues>,
+  setFocus: (index:number, focus: boolean) => void
+  index: number
 }
 
-export enum TQuestion {
-  EMAIL = "EMAIL",
-  TEXT = "TEXT",
-  RADIO = "RADIO",
-  IMAGE = "IMAGE"
-}
-
-export type Question =  {type: TQuestion.RADIO } & IRadioInput | {type: TQuestion.IMAGE } & IImageInput 
-  | {type: TQuestion.TEXT } & ITextInput;
+export type Question = IRadioInput | IImageInput | ITextInput;
