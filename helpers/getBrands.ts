@@ -3,13 +3,14 @@ import { client } from '../context/apolloContext';
 import { Brand } from '../types';
 
 const brandsQuery = gql`
-    query {
+  query {
     brands {
       data{
         attributes {
           name
           description
           logoBgColor
+          links
           logo {
             data{
               attributes{
@@ -34,7 +35,7 @@ const getBrands = async (): Promise<{[key:string]: Brand}> => {
     logo = {...logo.data.attributes};
     logo.ratio = logo.width/logo.height;
     brands[name.toLowerCase()] = {
-      name, links: JSON.parse(links ?? "{}"),
+      name, links: links,
       description, 
       logo,
       logoBgColor,

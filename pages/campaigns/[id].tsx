@@ -108,9 +108,8 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
   const logoWidth = 20;
   const {campaign: {questions, merchandise, brand}} = props;
   const links = Object.entries(brand.links)?.map(([key, url], index) => {
-    console.log(key, url)
     return <Link key={index} href={url}>
-      {/* <span className={`cursor-pointer`}>{linkImages[key.toLowerCase() as keyof typeof linkImages]}</span> */}
+      <span className={`cursor-pointer`}>{linkImages[key.toLowerCase() as keyof typeof linkImages]}</span>
     </Link>
   });
 
