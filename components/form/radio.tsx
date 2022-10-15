@@ -43,9 +43,9 @@ const RadioInput = (props: IRadioInput1) => {
       )}
     </div>
     {focus && 
-      <div className="h-[48px] gap-14 flex justify-between mt-[24px]">
+      <div className="h-[48px] md:gap-14 flex justify-between mt-[24px]">
         {!first && <div className={`h-full ${last ? "w-full" : "w-[100px]"} md:w-full max-w-[240px]`}><FormBack onClick={() => setFocus(index-1, true)} active={false} /> </div>}
-        {!last && <div className={`h-full ${first ? "w-full" : "max-w-[500px]"}`}><FormNext onClick={() => {value && setFocus(index+1, true)}} active={value ? true : false} /></div>}
+        {!last && <div className={`h-full ${first ? "w-full" : "w-[156px]"} md:w-full`}><FormNext onClick={() => {value && setFocus(index+1, true)}} active={value ? true : false} /></div>}
       </div>
     }
   </div>

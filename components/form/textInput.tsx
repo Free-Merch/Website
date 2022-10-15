@@ -58,8 +58,8 @@ const TextInput = (props: ITextInput1) => {
     }
     {error && !inputFocus && <span className="text-red-150 inline-block mt-[8px]">*{error.replace( /the following:.*/ , placeholder)}</span>}
     {focus && <div className="h-[48px] mt-[20px] gap-5 md:gap-14 flex justify-between">
-      {!first && <div className={`h-full ${last ? "w-full" : "w-[100px]"} md:w-full max-w-[240px]`}><FormBack onClick={() => setFocus(index-1, true)} active={true} /> </div>}
-      {!last && <div className={`h-full w-[156px] md:w-full max-w-[500px]`}><FormNext active={inputFocus || valid} onClick={() => {valid && setFocus(index+1, true)}} /></div>}
+      {!first && <div className={`h-full ${last ? "w-full" : "w-[100px] max-w-[240px]"} md:w-full `}><FormBack onClick={() => setFocus(index-1, true)} active={true} /> </div>}
+      {!last && <div className={`h-full ${first ? "w-full" : "w-[156px] max-w-[500px]"}  md:w-full`}><FormNext active={inputFocus || valid} onClick={() => {valid && setFocus(index+1, true)}} /></div>}
     </div>
     }
   </div>

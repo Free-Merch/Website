@@ -3,10 +3,9 @@ import Layout from "../../components/layout";
 import Dropdown, { Option } from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
-import useProjects from "../../hooks/useBrands";
 
 import { useState } from "react";
-import { BrandBrief, Campaign } from "../../types";
+import {  Campaign } from "../../types";
 import Head from "next/head";
 import useCampaigns from "../../hooks/useCampaigns";
 import useBrands from "../../hooks/useBrands";
