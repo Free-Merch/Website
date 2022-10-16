@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ModalContext } from "../../context/modalContext";
 import LoadingDark from "../../assets/pictures/form-loading-dark.png"
 import Loading from "../../assets/pictures/form-loading-white.png";
@@ -7,20 +7,20 @@ import Failed from "../../assets/pictures/form-submit-failed.svg";
 import Success from "../../assets/pictures/form-submit-success.svg";
 import { Button } from "../buttons";
 import useTheme from "../../hooks/useTheme";
+import Link from "next/link";
 
 const FormSubmitModal = () => {
   const {theme} = useTheme();
   const {modals, hide} = useContext(ModalContext)
   const open = modals.submitForm.open
-  const state = modals.submitForm.progress
+  let state = modals.submitForm.progress
   const retry = modals.submitForm.call;
-
   const close = () => {
     hide("submitForm");
   }
 
   const components = {
-    "Sent": {text: "Successful", subText: "Your entry has been recorded.", buttonText: "Close", image: Success},
+    "Sent": {text: "Successful", subText: "Your entry has been recorded.", buttonText: "View Campaigns", image: Success},
     "Sending": {text: "Please wait", subText: "Your entry is being recorded.", buttonText: "", image: theme === "light" ? Loading : LoadingDark},
     "Failed": {text: "Failed", subText: "Submission failed.", buttonText: "Retry", image: Failed},
   }
@@ -32,9 +32,20 @@ const FormSubmitModal = () => {
       <Image src={cp.image} alt="successful" layout="fixed" className={`${state === "Sending" ? "animate-spin" : ""} w-[150px] h-[150px]`} />
       <p className="mt-[36px] font-semibold text-white text-lg">{cp.text}</p>
       <p className="text-md mt-[8px] text-white mb-[20px]">{cp.subText}</p>
-      {cp.buttonText && <Button 
-        onClick={state === "Sent" ? close : retry}
-        className={`w-[156px] h-[46px] text-white flex items-center ${state === "Sent" ? "bg-green-100" : "bg-red-150"} justify-center`}>{cp.buttonText}</Button>}
+      {state !== "Sending" ? (state === "Failed" ? <div className="flex gap-4">
+          <Button 
+          onClick={retry}
+          className={`w-[156px] h-[46px] text-white flex items-center bg-green-100 justify-center`}>Retry</Button>
+          <Button 
+          onClick={close}
+          className={`w-[156px] h-[46px] text-white flex items-center bg-red-150 justify-center`}>Close</Button>
+          </div>
+        :
+        <Link  href="/campaigns">
+          <span className={`w-[183px] cursor-pointer h-[46px] text-white px-[4px] flex justify-center items-center rounded-[5px] bg-green-100`}>See all Campaigns</span>
+        </Link>) : <></>
+      }
+      
     </div>
   </div> : <></>
 }
