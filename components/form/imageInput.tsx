@@ -38,7 +38,12 @@ const ImageInput = (props: IImageInput1) => {
       }
 
       setUploading(true);
-      const url = await FormClient.uploadImage(file);
+      const {body: url, status} = await FormClient.uploadImage(file);
+      if(status !== "success"){
+        setUploading(false);
+        setError("Uploading Failed.");
+        return;
+      }
       setUploading(false);
       onChange(url)
     }
@@ -91,8 +96,8 @@ const ImageInput = (props: IImageInput1) => {
       {uploading && <span className="inline-block mt-[8px]">Uploading...</span>}
     {focus &&
       <div className="h-[48px] md:gap-14 flex justify-between mt-[24px]">
-        {!first && <div className={`h-full ${last ? "w-full" : "w-[100px]"} md:w-full max-w-[240px]`}><FormBack onClick={() => setFocus(index-1, true)} active={false} /> </div>}
-        {!last && <div className={`h-full ${first ? "w-full" : "w-[156px]"} md:w-full max-w-[500px]`}><FormNext onClick={() => {value && setFocus(index+1, true)}} active={value && !error ? true : false} /></div>}
+        {!first && <div className={`h-full ${last ? "w-full" : "w-[100px] max-w-[240px]"} md:w-full `}><FormBack onClick={() => setFocus(index-1, true)} active={false} /> </div>}
+        {!last && <div className={`h-full ${first ? "w-full" : "w-[156px] max-w-[500px]"} md:w-full `}><FormNext onClick={() => {value && setFocus(index+1, true)}} active={value && !error ? true : false} /></div>}
       </div>
     }
   </div>
