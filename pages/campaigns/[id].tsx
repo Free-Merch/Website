@@ -14,87 +14,6 @@ import { GetServerSideProps } from "next";
 import getCampaign from "../../helpers/getCampaign";
 import CampaignsSnippet from "../../components/campaignsSnippet";
 
-{/* <TextInput
-        title="Email"
-        description=""
-        image={(className: string) => <HiOutlineMail className={`${className}`}/>}
-        placeholder="Email"
-        first={true}
-      ></TextInput>
-
-      <TextInput
-        title="Follow On Twiiter"
-        description="Please provide your Twitter profile url with your username. It must have at least 30 followers and show human activity. You must have followed us on Twitter."
-        image={(className: string) => <BsTwitter className={`${className}`}/>}
-        placeholder="Twitter username"
-        first={false}
-        titleLink="https://"
-      ></TextInput>
-
-      <NumberInput
-        title="Bybit uid"
-        description="You can find it on your profile page. Select your profile button at the top left of the app to to your profile page."
-        placeholder="Bybit uid"
-        first={false}
-        titleLink="https://"
-      ></NumberInput>
-
-      <ImageInput 
-        title="Deposit Proof"
-        description="Please provide a screenshot like the one below showing either your P2P trading or deposit history of at least $10."
-        image={(className: string) => <BsTwitter className={`${className}`}/>}
-        first={false}
-        sample="https://res.cloudinary.com/nonseodion/image/upload/v1664461952/eQnFS5BvowhmHUV3xUffTnNoVb8UvM1VMDMiPJsjL5e6heAruXMr8KJHpmDpzD_8PkrqNhEhICnJ07Y6VvDQPJ5it5JQv3I2saMtIyfu2vJ1fWTe_N1NzcMGOLhTb4w9PQ_w591_iliqee.jpg"
-      />
-
-      <RadioInput 
-        title="Shirt size"
-        description=""
-        first={false}
-
-      /> */}
-
-// const data: Question[] = [
-//   {type: TQuestion.TEXT, title: "Email", description: "Input your correct address for contact", placeholder: "Email",
-//     image: formImages["email"], name: "email",
-//     required: true,
-//     validation: "EMAIL",
-//     index: 0
-//   },
-//   { 
-//     type: TQuestion.TEXT, title: "Follow on Twitter", 
-//     description: "Please provide your Twitter profile url with your username. It must have at least 30 followers and show human activity. You must have followed us on Twitter.",
-//     placeholder: "https://twitter.com/getfreemerch", titleLink: "https://twitter.com/getfreemerch",
-//     image: formImages["twitter"], name: "twitter",
-//     required: false, validation: "TWITTER",
-//     index: 1
-//   },
-//   // {
-//   //   type: TQuestion.NUMBER, title: "Bybit uid", 
-//   //   description: "You can find it on your profile page. Select your profile button at the top left of the app to to your profile page.",
-//   //   placeholder: "114567",
-//   //   titleLink: "https://www.bybit.com/en-US/"
-//   // },
-//   {
-//     type: TQuestion.IMAGE, title: "Deposit Proof",
-//     description: "Please provide a screenshot like the one below showing either your P2P trading or deposit history of at least $10.",
-//     sample: "https://res.cloudinary.com/nonseodion/image/upload/v1664461952/eQnFS5BvowhmHUV3xUffTnNoVb8UvM1VMDMiPJsjL5e6heAruXMr8KJHpmDpzD_8PkrqNhEhICnJ07Y6VvDQPJ5it5JQv3I2saMtIyfu2vJ1fWTe_N1NzcMGOLhTb4w9PQ_w591_iliqee.jpg",
-//     name: "deposit-proof", validation: "IMAGE",
-//     index: 2, required: false
-//   },
-//   {
-//     type: TQuestion.RADIO, title: "Shirt size", name: "shirt-size", validation: "TEXT",
-//     description: "", radioTexts: ["XS", "S", "M", "L", "XL", "XXL"],
-//     index: 3, required:false
-//   }
-// ]
-
-// const image = {
-//   alternativeText:"",
-//   url: "https://res.cloudinary.com/nonseodion/image/upload/v1660579251/logo_7c91fc5575.svg",
-//   ratio: 1,
-// }
-
 const linkImages = {
   twitter: <BsTwitter className="cursor-pointer"/>,   
   website: <BiLinkAlt className="cursor-pointer"/>,
@@ -167,7 +86,7 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       <Form questions={questions} id={identifier} name={name} />
     </div>
     <div className="mt-[103px] w-full">
-      <p className="text-blue-500 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>
+      <p className="text-blue-400 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>
       <div className="flex justify-center flex-wrap">
         <CampaignsSnippet />
       </div>

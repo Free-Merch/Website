@@ -68,7 +68,6 @@ interface IInput {
 }
 
 export enum TQuestion {
-  EMAIL = "EMAIL",
   TEXT = "TEXT",
   RADIO = "RADIO",
   IMAGE = "IMAGE"
@@ -96,7 +95,7 @@ export interface ITextInput1 extends ITextInput {
 export interface IImageInput extends IInput {
   first?: boolean,
   last?: boolean
-  sample: string,
+  sample: ImageType,
   type: TQuestion.IMAGE,
 }
 
@@ -104,10 +103,9 @@ export interface IImageInput1 extends IImageInput {
     index: number;
     setFocus: (index:number, focus: boolean) => void;
     register: UseFormRegister<FieldValues>,
-    error: string|undefined;
     focus: boolean;
     value: string;
-    onChange: (value:File|undefined) => void
+    onChange: (value:string) => void
 }
 
 export interface IRadioInput extends IInput {
@@ -124,6 +122,12 @@ export interface IRadioInput1 extends IRadioInput {
   register: UseFormRegister<FieldValues>,
   setFocus: (index:number, focus: boolean) => void
   index: number
+}
+
+export interface TQuestionInput {
+  "TEXT": ITextInput,
+  "RADIO": IRadioInput,
+  "IMAGE": IImageInput
 }
 
 export type Question = IRadioInput | IImageInput | ITextInput;

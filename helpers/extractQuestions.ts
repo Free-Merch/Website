@@ -13,7 +13,7 @@ const extractText = (question: any): ITextInput => {
 const extractImage = (question: any): IImageInput => {
   const {title, description, required, validation, index, titleLink, name, samples} = question;
   let sample = samples.data[0].attributes;
-  sample = sample.url
+  sample = sample
 
   return{
     type: TQuestion.IMAGE, title, description,

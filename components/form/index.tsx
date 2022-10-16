@@ -1,7 +1,7 @@
 import ImageInput from "./imageInput";
 import TextInput from "./textInput";
 import RadioInput from "./radio";
-import { IImageInput, IImageInput1, IRadioInput, IRadioInput1, ITextInput, ITextInput1, Question, TQuestion } from "../../types";
+import { Question } from "../../types";
 import { Submit } from "./buttons";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -10,7 +10,7 @@ import * as yup from "yup";
 import { schemas as validationSchemas } from "./validation-schemas";
 import { useModalContext } from "../../hooks/contexthooks";
 import { FormClient } from "../../helpers/formClient";
-import CampaignsSnippet from "../campaignsSnippet";
+import getQueComponent from "../../helpers/getQueComponent";
 
 
 export {
@@ -35,14 +35,14 @@ const Form = ({questions, id, name}: IForm) => {
     ] ?? validationSchemas["text"]
   })
 
-  const { register, handleSubmit, formState:{ errors }, getValues } = useForm({
+  const { register, handleSubmit, formState:{ errors } } = useForm({
     resolver: yupResolver(yup.object(schema).required()),
     mode: "onBlur"
   });
-
-  const [values, setValues] = useState<{[key: string]: string|File}>({});
-  const onChange = (key: string) => (value: string|File) => {
-    setValues({...values, [key]: value})
+  
+  const [values, setValues] = useState<{[key: string]: string}>({});
+  const onChange = (key: string) => (value: string) => {
+    setValues((_values) => { return {..._values, [key]: value}})
   }
 
   const [ready, setReady] = useState<boolean>(false);
@@ -57,68 +57,24 @@ const Form = ({questions, id, name}: IForm) => {
 
   const onSubmit = async (data: IFormInputs) => {
     show("submitForm", {open: true, progress: "Sending"})
-    const status = await FormClient.saveFormData(id, name, data)
+    const {status} = await FormClient.saveFormData(id, name, values)
     if(status === "success"){
       show("submitForm", {open: true, progress: "Sent"})
     }else{
       show("submitForm", {open: true, progress: "Failed", call: () => onSubmit(data)}, )
     }
   }
-  const getQuestion = (type: TQuestion, index: number) => {
-    const questions = {
-      "TEXT":  (props: ITextInput) => <TextInput {...props} 
-        focus={focus[index]}
-        setFocus={setFocus}
-        index = {index}
-        //@ts-ignore 
-        value={values[props.name] ?? ""}
-        //@ts-ignore 
-        error={errors[props.name]?.message || ""}
-        // valid={errors[props.name] || !values[props.name] ? false : true}
-        onChange={onChange(props.name)} 
-        register={register}
-      />,
-      "EMAIL": (props: ITextInput) => <TextInput {...props} 
-        focus={focus[index]}
-        setFocus={setFocus}
-        index={index}
-        //@ts-ignore 
-        value={values[props.name] ?? ""} 
-        //@ts-ignore 
-        error={errors[props.name]?.message || ""}
-        // valid={errors[props.name] || !values[props.name] ? false : true}
-        onChange={onChange(props.name)}
-        register={register}
-      />,
-      "RADIO": (props: IRadioInput) => <RadioInput {...props} setFocus={setFocus}
-        index={index} focus={focus[index]}
-        register={register}
-        //@ts-ignore 
-        value={values[props.name]} valid={errors[props.name] || !values[props.name] ? false : true}
-        onChange={onChange(props.name)}
-      />,
-      "IMAGE": (props: IImageInput) => <ImageInput {...props} 
-        index={index}
-        focus={focus[index]}
-        setFocus={setFocus}
-        register={register}
-        //@ts-ignore 
-        value={values[props.name]} valid={errors[props.name] || !values[props.name] ? false : true}
-        //@ts-ignore 
-        onChange={onChange(props.name)}
-      />
-    }
-    return questions[type];
-  }
 
   const queComponents = questions.map((question, i) => {
     if(i === 0) question.first = true;
     if(i === questions.length-1) question.last = true;
     return <div key={i} className="w-full">
-      {// @ts-ignore
-      getQuestion(question.type, i)({ 
-        ...question, 
-      })
+      {
+        getQueComponent({
+          type: question.type, index: i, 
+          focus, setFocus, values, onChange,
+          register, errors: errors as unknown as { [key: string]: {message: string} }
+        })(question)
       }
     </div>
   })

@@ -4,7 +4,6 @@ import * as yup from "yup";
 const checkImageTypes = (files?: File[]) => {
   const types = ["image/apng","image/bmp","image/gif","image/jpeg","image/pjpeg","image/png","image/svg+xml","image/tiff","image/webp","image/x-icon"];
   let valid = true;
-  console.log("checking types", files)
   files?.forEach(file => {
     console.log(file)
     if(!types.includes(file.type)) valid = false;
@@ -27,7 +26,7 @@ const twitteRegex = /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))
 const imageValidation = yup.string().test({
   name: "type-check", 
   message:"This image type is not supported", 
-  test: (s) => {console.log(s); return(checkImageTypes())}
+  test: (s) => { return(checkImageTypes())}
 })
 
 yup.object().shape({
