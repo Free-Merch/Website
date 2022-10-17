@@ -78,11 +78,11 @@ const campaignsQuery = (id: string) => gql`
 const getCampaign = async (id: string): Promise<Campaign & {questions :Question[]}> => {
   const { data } = await client.query({query: campaignsQuery(id)});
   const brands = await getBrands();
-  const {name, brand: brandName, description, active, identifier, merchandise: merchData, questions: _questions} = data?.campaign?.data?.attributes;
-  const brand: Brand = brands && (brands[brandName.toLowerCase()] ?? {
-    logo: {width:20, height:20, alternativeText: "...", url: "", name: brandName, ratio: 1}, 
-    logoBgColor: "#ffffff", name: brandName, description: "", links: {}
-  });
+  const {name, brand: brandId, description, active, identifier, merchandise: merchData, questions: _questions} = data?.campaign?.data?.attributes;
+  const brand: Brand = brands[brandId] ?? {
+    logo: {width:20, height:20, alternativeText: "...", url: "", name: "...", ratio: 1}, 
+    logoBgColor: "#ffffff", description: "", links: {}, id: "0"
+  };
 
   const merchandise = merchData?.data?.map( (merch: any) => {
     return merch.attributes;

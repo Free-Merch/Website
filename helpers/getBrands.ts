@@ -2,10 +2,16 @@ import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
 import { Brand } from '../types';
 
-const brandsQuery = gql`
-  query {
-    brands {
+const brandsQuery = (id: string, name: string) => gql`
+    query {
+    brands(filters: 
+      {
+        id: ${ id ? "{eq:"+ id + "}" : "{}"},
+        name: ${ name ? "{eq:"+ name + "}" : "{}"}
+      }
+    ) {
       data{
+        id
         attributes {
           name
           description
@@ -27,20 +33,25 @@ const brandsQuery = gql`
   }
 `; 
 
-const getBrands = async (): Promise<{[key:string]: Brand}> => {
-  const { data } = await client.query({query: brandsQuery})
-  let brands: {[key:string]: Brand} = {};
+const getBrands = async (id?: string, name?: string): Promise<Brand[]> => {
+  const { data } = await client.query({query: brandsQuery(id ?? "", name ?? "")})
+  let brands: Brand[] =[];
+  // @ts-ignore
+  brands.push({});
   data?.brands?.data.forEach((brand:any) => {
+    const {id} = brand;
     let {logo, name, description, links, logoBgColor } = brand.attributes
     logo = {...logo.data.attributes};
     logo.ratio = logo.width/logo.height;
-    brands[name.toLowerCase()] = {
+    brands.push({
       name, links: links,
+      id,
       description, 
       logo,
       logoBgColor,
-    }
+    })
   });
+
   return brands;
 }
 

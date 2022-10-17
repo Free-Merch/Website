@@ -11,7 +11,6 @@ const TextInput = (props: ITextInput1) => {
   const {title, value, focus, name, last, index, setFocus, description, error, onChange, first, placeholder, titleLink, register} = props;
   let {image} = props;
   const [inputFocus, setInputFocus] = useState<boolean>(false);
-  // console.log(last, name, "textInput");
   const valid = error || !value ? false : true
 
   Object.entries(formImages).forEach( ([key, _image]) => {
@@ -30,9 +29,9 @@ const TextInput = (props: ITextInput1) => {
         {title}
       </p> :
       <div className={`"underline cursor-pointer max-w-max font-semibold flex items-center text-lg text-blue-400 dark:text-white`}>
-        <Link target="_blank" href={"https://google.com"}>
+        <a rel="noreferrer" target="_blank" href={titleLink}>
           <span><span className="underline">{title}</span> <TbExternalLink className="text-[22px] inline-block ml-[2px]" /></span>
-        </Link>
+        </a>
       </div>
     }
     <p className="text-grey-300 text-sm font-normal">{description}</p>

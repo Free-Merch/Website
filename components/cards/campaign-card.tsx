@@ -66,7 +66,7 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
           <div className={`${active ? "text-green-100" : "text-red-150"}  flex items-center`}>
             <div className={`${active ? "bg-green-100" : "bg-red-150"} rounded-full w-[5px] h-[5px]`}></div>  
             &nbsp;
-            <span>{active ? "Active" : "Completed"}</span>
+            <span>{active ? "Ongoing" : "Completed"}</span>
           </div>
         </div>
 

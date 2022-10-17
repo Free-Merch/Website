@@ -3,19 +3,21 @@ import Layout from "../../components/layout";
 import Dropdown, { Option } from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
-import useProjects from "../../hooks/useBrands";
-
+import {FiSearch} from "react-icons/fi";
 import { useState } from "react";
-import { BrandBrief } from "../../types";
+import {  Brand, Campaign } from "../../types";
 import Head from "next/head";
-import Image from "next/image";
-import { GoVerified } from "react-icons/go";
+import useCampaigns from "../../hooks/useCampaigns";
+import useBrands from "../../hooks/useBrands";
+import { BrandCard, BrandCardSkeleton } from "../../components/cards/brand-card";
 
 const orderFunctions = {
-  "A-Z": (projects: BrandBrief[]) => projects.sort((a, b) => a.brand[0] < b.brand[0] ? -1 : 1),
-  "Z-A": (projects: BrandBrief[]) => projects.sort((a, b) => a.brand[0] > b.brand[0] ? -1 : 1),
-  "Most recent": (projects: BrandBrief[]) => projects
+  "A-Z": (campaigns: Brand[]) => campaigns.sort((a, b) => a.name[0] < b.name[0] ? -1 : 1),
+  "Z-A": (campaigns:  Brand[]) => campaigns.sort((a, b) => a.name[0] > b.name[0] ? -1 : 1),
+  "Most recent": (projects: Brand[]) => projects
 }
+
+const BrandCardSkeletons = [<BrandCardSkeleton key={1}/>, <BrandCardSkeleton key={2} />, <BrandCardSkeleton key={3} />, <CampaignCardSkeleton key={4} />]
 
 const Campaigns = () => {
   
@@ -25,22 +27,18 @@ const Campaigns = () => {
     {value: "Z-A", label: "Z-A"}
   ];
 
+  const campaigns = useCampaigns()
+  let brands = useBrands();
+  brands = brands.slice(1)
+
   const [order, setOrder] = useState({value: "Most recent", label: "Most recent"});
   // @ts-ignore
   const handleSetOrder = (value: Option) => setOrder(value)
 
-  const [section, setSection] = useState<"ongoing"|"completed">("ongoing");
 
-  let projects = useProjects()
-  const CampaignCards = orderFunctions[order.value as keyof typeof orderFunctions](projects)?.map((project, index) => {
-    const { about, logo, campaigns, brand, logoBgColor, id } = project;
-    return <CampaignCard  
+  const BrandCards = orderFunctions[order.value as keyof typeof orderFunctions](brands)?.map((brand, index) => {
+    return <BrandCard 
         brand={brand}
-        image={logo}
-        about={about}
-        bgColor={logoBgColor}
-        campaigns={campaigns}
-        id={id}
         key={index}
       />
   })
@@ -49,7 +47,7 @@ const Campaigns = () => {
 
   return <div className="my-12">
     <Head>
-      <title>Campaigns - Freemerch</title>
+      <title>Brands - Freemerch</title>
       <meta name="description" content="All active campaigns on Freemerch. Campaigns are brand adverts to perform activities and win free merchandise from them.."/>
       {/* Twitter tags */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -60,56 +58,22 @@ const Campaigns = () => {
       />
       <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
     </Head>
-
-    <div className="w-full max-w-[1252px] mx-auto">
-      <div className={`
-        shadow-[0px_0px_7px_4px_rgba(46,200,102,0.04)] 
-        rounded-lg h-[100px] w-[100px] flex items-center justify-center
-        bg-blue-400
-        `
-      }
-      >
-      <Image src="https://res.cloudinary.com/nonseodion/image/upload/v1659695499/binance_text_17a78e9dee.png" className="mx-24" width={70} height={15} alt="brand image" />
-      </div>
+    <div className="flex justify-between pt-[50px]">
+      <h1 className="text-[18px] md:text-3xl font-semibold text-black-900 dark:text-white">Brands</h1>
+      {/* <Dropdown 
+        arrowClosed={ <IoIosArrowDown className="arrow" />}
+        arrowOpen={<IoIosArrowUp className="arrow" />}
+        value={order} options={options} onChange={handleSetOrder}  placeholder="Most recent" /> */}
+    </div>
+    <div className="h-[46px] rounded-[10px] flex mt-[40px] mb-[60px] w-full items-center justify-between bg-white dark:bg-grey-550 px-[18px] pt-[13px] pb-[9px]
+      shadow-[inset_0px_1px_2px_rgba(11,18,55,0.2)] dark:shadow-[0px_8px_16px_3px_#030324]">
+      <FiSearch className="mr-[14px] text-[24px] text-black-100 dark:text-white stroke-[2px]" /> 
+      <input className="bg-transparent w-full outline-none placeholder:text-grey-400 dark:placeholder:text-grey-650" placeholder="Search for Brands"/>
     </div>
 
-      <div className="flex items-center mt-[10px] mb-[10px]">
-        <span className="capitalize font-semibold text-[20px] dark:text-white text-blue-900">{"Binance"}</span>
-        &nbsp;
-        <span className="">
-          <GoVerified className="fill-[#2382E1] w-[14px]"/>
-        </span>
-      </div>
-      <p className="max-w-[586px] mb-[42px] text-grey-300">
-        Lorem ipsum dolor sitascad, cdjcdccdaamet, consectetg elit ut aliquam, 
-        purus sitmet luctus venenatis, lectusagna fringilla urna, 
-        porttitorhoncus dolor purus non enim
-      </p>
-
-    {CampaignCards 
-      ?
-        <>
-          <div className="mx-auto max-w-max">
-            <button onClick={() => setSection("ongoing")} className={`dark:text-white text-blue-900 py-0 font-semibold text-xl 
-              ${ section === "ongoing" ? "border-b-2 border-green-100" : ""}`}>Ongoing</button>
-            <span className="inline-block w-[80px]"></span>
-            <button onClick={() => setSection("completed")} className={`dark:text-white text-blue-900 py-0 font-semibold text-xl  
-              ${ section === "completed" ? "border-b-2 border-green-100" : ""}`}>Completed</button>
-          </div>
-          
-          {section === "ongoing"?
-              <div className="mt-7 mb-10 flex flex-wrap justify-center gap-4">
-                {CampaignCards}
-              </div>
-            :
-              <div className="mt-7 mb-10 flex flex-wrap justify-center gap-4">
-                {CampaignCards}
-              </div>
-          }
-        </> 
-      :
-      <div className="flex flex-wrap gap-2">{CampaignCardSkeletons}</div>
-    }
+    <div className="mb-10 flex flex-wrap justify-center gap-4">
+      {BrandCards || BrandCardSkeletons}
+    </div>
 
   </div>
 }

@@ -5,7 +5,6 @@ const checkImageTypes = (files?: File[]) => {
   const types = ["image/apng","image/bmp","image/gif","image/jpeg","image/pjpeg","image/png","image/svg+xml","image/tiff","image/webp","image/x-icon"];
   let valid = true;
   files?.forEach(file => {
-    console.log(file)
     if(!types.includes(file.type)) valid = false;
   })
   return valid;
@@ -15,7 +14,6 @@ const checkFileSizes = (size: number) => (files?: File[]) => {
   let valid = true;
   files?.forEach(file => {
     if(file.size > size) valid = false;
-    console.log(size, file.size)
   })
   return valid;
 }

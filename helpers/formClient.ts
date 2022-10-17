@@ -20,7 +20,6 @@ class FormClientClass {
     form.append('file', file);
     // campaign pictures id on Google drive
     const id = "1hWOXAR6mB1cxKED6JR_PVqf7RolVj0YY";
-    console.log(form, Array.from(form.entries()));
 
     const call = () => driveInstance.post('upload', form, {
       params: {

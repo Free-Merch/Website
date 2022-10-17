@@ -28,9 +28,9 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
   const logoWidth = 20;
   const {campaign: {questions, merchandise, brand, identifier, name}} = props;
   const links = Object.entries(brand.links)?.map(([key, url], index) => {
-    return <Link key={index} href={url} target="_blank">
+    return <a rel="noreferrer" key={index} href={url} target="_blank">
       <span className={`cursor-pointer`}>{linkImages[key.toLowerCase() as keyof typeof linkImages]}</span>
-    </Link>
+    </a>
   });
 
   const { show } = useContext(ModalContext);

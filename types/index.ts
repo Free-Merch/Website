@@ -36,6 +36,7 @@ export interface Brand {
   logoBgColor: string,
   links: {[key: string]: string}
   logo: ImageType,
+  id: number,
 }
 
 export interface Campaign {

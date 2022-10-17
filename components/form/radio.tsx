@@ -18,11 +18,11 @@ const RadioInput = (props: IRadioInput1) => {
       <p className={`font-semibold flex items-center text-lg dark:text-white text-blue-400`}>
         {title}
       </p> :
-      <Link href={titleLink} target="_blank" className={`"underline font-semibold flex items-center text-lg text-white`}>
+      <a href={titleLink} rel="noreferrer" target="_blank" className={`"underline font-semibold flex items-center text-lg text-white`}>
         <div className={`"underline font-semibold flex items-center text-lg text-white`}>
           <span className="underline">{title}</span> <TbExternalLink className="text-[22px] inline-block ml-[4px]" />
         </div>
-      </Link>
+      </a>
     }
     <p className="text-grey-300 text-sm font-normal">{description}</p>
     <div className="relative mt-[17px] mb-[20px] gap-4 flex flex-wrap w-full items-center px-[8px] py-[15px] justify-left">

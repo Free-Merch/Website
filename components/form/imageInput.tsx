@@ -6,7 +6,6 @@ import { IoCloseSharp } from "react-icons/io5";
 import {IImageInput, IImageInput1, ImageType} from "../../types/index";
 import { useModalContext } from "../../hooks/contexthooks";
 import { TbExternalLink } from "react-icons/tb";
-import Link from "next/link";
 import { FormClient } from "../../helpers/formClient";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
@@ -58,11 +57,11 @@ const ImageInput = (props: IImageInput1) => {
       <p className={`font-semibold flex items-center text-lg text-blue-400 dark:text-white`}>
         {title}
       </p> :
-      <Link href={titleLink} target="_blank">
+      <a rel="noreferrer" href={titleLink} target="_blank">
         <div className={`max-w-max underline font-semibold flex items-center text-blue-400 text-lg dark:text-white`}>
           {title} <TbExternalLink className="text-[22px] inline-block ml-[4px]" />
         </div>
-      </Link>
+      </a>
     }
     <p className="text-grey-300 text-sm font-normal mb-[8px]">{description}</p>
     <span className="text-xs">Sample:</span>

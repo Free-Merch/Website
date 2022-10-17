@@ -3,9 +3,9 @@ import { client } from '../context/apolloContext';
 import { Brand, Campaign } from '../types';
 import useBrands from './useBrands';
 
-const campaignsQuery = gql`
+const campaignsQuery = (brand: string) => gql`
   query {
-    campaigns {
+    campaigns(filters: {brand: ${ brand ? "{eq:"+ brand + "}" : "{}"}}) {
       data{
         id
         attributes {
@@ -31,17 +31,18 @@ const campaignsQuery = gql`
   }
 `; 
 
-const useCampaigns = (): Campaign[] => {
-  const { data } = useQuery(campaignsQuery, {client});
+const useCampaigns = (brand?: string): Campaign[] => {
+
+  const { data } = useQuery(campaignsQuery(brand ?? ""), {client});
   const brands = useBrands();
 
   const campaigns = data?.campaigns?.data.map((campaign:any) => {
     const {id} = campaign
-    const {name, brand: brandName, description, active, identifier, merchandise: merchData} = campaign.attributes;
-    const brand: Brand = brands && (brands[brandName.toLowerCase()] ?? {
-      logo: {width:20, height:20, alternativeText: "...", url: "", name: brandName, ratio: 1}, 
-      logoBgColor: "#ffffff", name: brandName, description: "", links: {} 
-    });
+    const {name, brand: brandId, description, active, identifier, merchandise: merchData} = campaign.attributes;
+    const brand: Brand = brands[brandId] ?? {
+      logo: {width:20, height:20, alternativeText: "...", url: "", name: "...", ratio: 1}, 
+      logoBgColor: "#ffffff", name: "...", description: "", links: {} , id: "0"
+    };
 
     // @ts-ignore
     brand.links = brand.links;

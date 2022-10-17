@@ -25,8 +25,6 @@ const Campaigns = () => {
   ];
 
   const campaigns = useCampaigns()
-  const brands = useBrands();
-
   const [order, setOrder] = useState({value: "Most recent", label: "Most recent"});
   // @ts-ignore
   const handleSetOrder = (value: Option) => setOrder(value)
