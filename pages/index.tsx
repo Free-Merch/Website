@@ -27,7 +27,7 @@ import BlockchainBUK from "../assets/pictures/bayero-university1.png"
 import ByBit from "../assets/pictures/bybit.svg"
 import Rex from "../assets/pictures/Rex.png";
 import Playbtn from "../assets/pictures/play.png";
-import { ProjectCard, ProjectCardSkeleton } from '../components/cards/project-card';
+import { CampaignCard, CampaignCardSkeleton } from '../components/cards/campaign-card';
 import useHomePage from '../hooks/useHomePage';
 import useBrands from '../hooks/useBrands';
 import Skeleton from 'react-loading-skeleton'
@@ -36,23 +36,9 @@ import { FAQ } from '../types';
 import Link from 'next/link';
 import { useWindowSize } from '../hooks/useSize';
 import Head from 'next/head';
+import CampaignsSnippet from '../components/campaignsSnippet';
 
 const Home: NextPage = () => {
-
-  const brands = useBrands();
-  const CampaignCards = brands?.map((brand, index) => {
-    const { about, logo, campaigns, brand: name, logoBgColor, id } = brand;
-    return <ProjectCard  
-        brand={name}
-        image={logo}
-        about={about}
-        bgColor={logoBgColor}
-        id={id}
-        campaigns={campaigns}
-        key={index}
-      />
-  })
-
   const {width: windowWidth} = useWindowSize();
   const [faqState, setFaqs] = useState<boolean[]>(Array(100).fill(false));
   const { gallery: galleryPics} = useHomePage();
@@ -206,8 +192,6 @@ const Home: NextPage = () => {
     <div key={index} className="w-[700px] h-[50px] mb-2 mx-auto"><Skeleton containerClassName='w-full h-full' className='w-full h-full' /></div>
   ))
 
-  const ProjectCardSkeletons = [<ProjectCardSkeleton key={1}/>, <ProjectCardSkeleton key={2} />, <ProjectCardSkeleton key={3} />]
-
   return (
     <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-[12px] md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
       {/* bg ellipses */}
@@ -262,7 +246,7 @@ const Home: NextPage = () => {
         </div>
 
         <div className="flex flex-wrap gap-4 justify-center">
-          { CampaignCards || ProjectCardSkeletons }
+          <CampaignsSnippet />
         </div>
         <p className="text-center mt-20">
           <GreenButton href="/campaigns" className="mt-6">See All Campaigns</GreenButton>

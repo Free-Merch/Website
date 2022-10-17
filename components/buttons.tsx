@@ -4,12 +4,13 @@ interface IButton {
   children: string,
   className?: string
   href?: string
+  onClick?: () => void
 }
 
-const Button = ({children, className, href}: IButton) => {
+export const Button = ({children, className, href, onClick}: IButton) => {
   const classNames = `${className} py-[14px] px-[32px] rounded-md  cursor-pointer`;
   return !href ? 
-    <button className={classNames}>
+    <button className={classNames} onClick={onClick}>
       {children}
     </button> :
     <Link href={href}>
