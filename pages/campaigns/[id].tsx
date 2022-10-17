@@ -1,8 +1,7 @@
 import Layout from "../../components/layout";
 import Image from "next/image";
 import Form from "../../components/form";
-import { Campaign_Q, ImageType, Question, TQuestion } from "../../types";
-import formImages from "../../components/form/formImages";
+import { Campaign_Q } from "../../types";
 import { useElementSize } from "../../hooks/useSize";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
@@ -56,7 +55,7 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
             <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
               <Link href={`/brands/${brand.name}`}>
                 <>
-                  <span className="capitalize text-blue-400 dark:text-white font-medium text-[20px]">Freemerch</span>
+                  <span className="capitalize text-blue-400 dark:text-white font-medium text-[20px]">{brand.name}</span>
                   &nbsp;
                   <span className="relative">
                     <span className="absolute bg-white top-1/2 left-1/2 -z-[10] -translate-x-1/2 -translate-y-1/2 inline-block h-[8px] w-[8px]"></span>
@@ -87,7 +86,7 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
     </div>
     <div className="mt-[103px] w-full">
       <p className="text-blue-400 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>
-      <div className="flex justify-center flex-wrap">
+      <div className="flex gap-4 justify-center flex-wrap">
         <CampaignsSnippet />
       </div>
     </div>
