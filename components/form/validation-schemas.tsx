@@ -45,9 +45,9 @@ yup.object().shape({
 
 export const schemas = {
   "text": yup.string(),
-  "twitterProfileURL": yup.string().matches(twitterProfileRegex),
+  "twitterprofileurl": yup.string().matches(twitterProfileRegex),
   "username": yup.string().matches(username),
-  "twitterPost": yup.string().matches(twitterPost),
+  "twitterpost": yup.string().matches(twitterPost),
   "email": yup.string().email(),
   "image": imageValidation
 }
