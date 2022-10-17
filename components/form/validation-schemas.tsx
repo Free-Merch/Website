@@ -19,7 +19,9 @@ const checkFileSizes = (size: number) => (files?: File[]) => {
 }
 
 // regexes
-const twitteRegex = /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))|^$/;
+const twitterProfileRegex = /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))|^$/;
+const twitterPost = /^https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+)/;
+const username = /@[a-zA-Z0-9_]+/;
 
 const imageValidation = yup.string().test({
   name: "type-check", 
@@ -43,7 +45,9 @@ yup.object().shape({
 
 export const schemas = {
   "text": yup.string(),
-  "twitter": yup.string().matches(twitteRegex),
+  "twitterProfileURL": yup.string().matches(twitterProfileRegex),
+  "username": yup.string().matches(username),
+  "twitterPost": yup.string().matches(twitterPost),
   "email": yup.string().email(),
   "image": imageValidation
 }
