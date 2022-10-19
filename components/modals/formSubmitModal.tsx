@@ -6,11 +6,11 @@ import Loading from "../../assets/pictures/form-loading-white.png";
 import Failed from "../../assets/pictures/form-submit-failed.svg";
 import Success from "../../assets/pictures/form-submit-success.svg";
 import { Button } from "../buttons";
-import useTheme from "../../hooks/useTheme";
 import Link from "next/link";
+import { useThemeContext } from "../../hooks/contexthooks";
 
 const FormSubmitModal = () => {
-  const {theme} = useTheme();
+  const {theme} = useThemeContext();
   const {modals, hide} = useContext(ModalContext)
   const open = modals.submitForm.open
   let state = modals.submitForm.progress

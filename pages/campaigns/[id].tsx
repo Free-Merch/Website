@@ -15,7 +15,7 @@ import { linkImages } from "../../hooks/images";
 const Campaign = (props: {campaign: Campaign_Q}) => {
   const {width: width1} = useElementSize()
   const logoWidth = 20;
-  const {campaign: {questions, merchandise, brand, identifier, name}} = props;
+  const {campaign: {questions, merchandise, brand, identifier, name, active}} = props;
   const links = Object.entries(brand.links)?.map(([key, url], index) => {
     return <a rel="noreferrer" key={index} href={url} target="_blank">
       <span className={`cursor-pointer`}>{linkImages[key.toLowerCase() as keyof typeof linkImages]}</span>
@@ -74,11 +74,11 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
         </div>
       </div>
 
-      <Form questions={questions} id={identifier} name={name} />
+      <Form questions={questions} id={identifier} name={name} active={false} />
     </div>
     <div className="mt-[103px] w-full">
       <p className="text-blue-400 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>
-      <div className="flex gap-4 justify-center flex-wrap">
+      <div className="flex mb-8 gap-4 justify-center flex-wrap">
         <CampaignsSnippet />
       </div>
     </div>

@@ -12,7 +12,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 export function BrandCard (this: any, {brand}: {brand: Brand}){
   
-  const {id, description, logo, logoBgColor, name} = brand;
+  const {description, logoBgColor, name} = brand;
   const {width: width1, ref: ref1} = useElementSize()
   const logoWidth = 32
   let logoHeight = logoWidth*brand.logo.ratio;

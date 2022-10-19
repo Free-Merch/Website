@@ -3,9 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Logo from "../assets/pictures/logo.png";
-import useTheme from "../hooks/useTheme";
 import {HiOutlineMoon, HiSun} from "react-icons/hi";
 import {RiMoonFill} from "react-icons/ri";
+import { useThemeContext } from "../hooks/contexthooks";
 
 interface INav {
   openMobileNav: (_:boolean) => void
@@ -24,7 +24,7 @@ const links = [
 // file contains only desktop nav
 export const DesktopNav = (props: INav) => {
   const {pathname} = useRouter();
-  const {theme, setTheme} = useTheme();
+  const {theme, setTheme} = useThemeContext();
   const {openMobileNav, mobileNavOpen} = props;
   const checkPath = "/" + pathname.split("/")[1].toLowerCase();
 
@@ -75,7 +75,7 @@ export const DesktopNav = (props: INav) => {
 export const MobileNav = (props: {open:boolean}) => {
   const {open} = props;
   const {pathname} = useRouter();
-  const {setTheme, theme} = useTheme();
+  const {setTheme, theme} = useThemeContext();
   const checkPath = "/" + pathname.split("/")[1].toLowerCase();
 
   const navLinks = links.map(({path, text}, index) => {

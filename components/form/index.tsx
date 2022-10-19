@@ -1,6 +1,8 @@
 import ImageInput from "./imageInput";
 import TextInput from "./textInput";
 import RadioInput from "./radio";
+import LockLight from "../../assets/svgs/filelock_light.svg"
+import LockDark from "../../assets/svgs/filelock_dark.svg"
 import { Question } from "../../types";
 import { Submit } from "./buttons";
 import { useEffect, useState } from "react";
@@ -8,10 +10,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { schemas as validationSchemas } from "./validation-schemas";
-import { useModalContext } from "../../hooks/contexthooks";
+import { useModalContext, useThemeContext } from "../../hooks/contexthooks";
 import { FormClient } from "../../helpers/formClient";
 import getQueComponent from "../../helpers/getQueComponent";
-
+import { Button } from "../buttons";
+import Image from "next/image";
 
 export {
   ImageInput,
@@ -22,12 +25,13 @@ interface IForm {
   questions: Question[]
   id: string,
   name: string
+  active: boolean
 }
 
 type IFormInputs = {[key:string]:string}
 
 
-const Form = ({questions, id, name}: IForm) => {
+const Form = ({questions, id, name, active}: IForm) => {
   let schema: {[key: string]: yup.AnySchema} = {}
   questions.forEach(question => {
     schema[question.name] = validationSchemas[
@@ -54,6 +58,7 @@ const Form = ({questions, id, name}: IForm) => {
   }
 
   const { show } = useModalContext();
+  const {theme} = useThemeContext();
 
   const onSubmit = async (data: IFormInputs) => {
     show("submitForm", {open: true, progress: "Sending"})
@@ -80,7 +85,9 @@ const Form = ({questions, id, name}: IForm) => {
   })
 
   useEffect(() => {
-    setFocus(0, true)
+    if(active){
+      setFocus(0, true)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -94,15 +101,24 @@ const Form = ({questions, id, name}: IForm) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [errors, values]);
 
-  return <form className="w-full flex flex-col items-center justify-center mt-[40px] gap-5"
-    // @ts-ignore
-    onSubmit={handleSubmit(onSubmit)}
+  return <form className={`${!active && ""} w-full relative  mt-[40px] `}
+    onSubmit={handleSubmit(onSubmit)} 
   >
-    {queComponents}
-    <div className="px-[21px] w-full">
-      <Submit active={ready} onClick={() => {}}/>
+    <div className="absolute -left-[1000px]  h-full -right-[1000px] bg-[#ffffff] dark:bg-blue-400 z-[5] opacity-40">
     </div>
-    </form>
+    <div className="absolute  items-center h-full z-[6] w-full flex flex-col justify-center blur-none">
+      <Image src={theme === "dark" ? LockDark : LockLight} alt="file_locked" />
+      <p className="my-[20px] font-semibold text-blue-400 dark:text-white text-xl">Campaign completed</p>
+      <Button href="/campaigns" className="dark:bg-black-200 border-green-200 border text-green-200 px-[51px] py-[14px] bg-white font-medium">View Other Tasks</Button>
+    </div>
+    <div className="blur-[2px] gap-5 flex flex-col items-center justify-center shadow-[0px_9px_16px_rgba(171,190,209,0.03)]">
+      {!active && <div className="mt-[20px]"></div>}
+      {queComponents}
+      {active && <div className="px-[21px] w-full">
+        <Submit active={ready} onClick={() => {}}/>
+      </div>}
+    </div>
+  </form>
 }
 
 export default Form
