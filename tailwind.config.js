@@ -12,6 +12,7 @@ module.exports = {
       screens: {
         "hero-small": { max: "1279px" },
         "initiative-small": { max: "1207px" },
+        "desk-nav-mid": {max: "890px"}
       },
       margin: {
         "414px": "414px",

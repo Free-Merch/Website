@@ -21,7 +21,7 @@ const TextInput = (props: ITextInput1) => {
   
   return <div 
     onClick={(e) => setFocus(index,true)}
-    className={`w-full px-[40px] md:px-[20px] rounded-[10px] cursor-pointer ${(value || focus) && "py-[24px] md:py-[20px] bg-white dark:bg-blue-400"} 
+    className={`w-full md:px-[40px] px-[20px] rounded-[10px] cursor-pointer ${(value || focus) && "md:py-[24px] py-[20px] bg-white dark:bg-blue-400"} 
     shadow-[0px_9px_16px_rgba(171,190,209,0.03)] dark:shadow-[0px_8px_16px_3px_#030324]`}>
     {
       !titleLink ?

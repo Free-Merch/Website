@@ -5,21 +5,12 @@ import { Campaign_Q } from "../../types";
 import { useElementSize } from "../../hooks/useSize";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
-import { BsFacebook, BsGlobe, BsInstagram, BsTelegram, BsTwitter } from "react-icons/bs";
 import { ModalContext } from "../../context/modalContext";
 import { useContext } from "react";
 import { GetServerSideProps } from "next";
 import getCampaign from "../../helpers/getCampaign";
 import CampaignsSnippet from "../../components/campaignsSnippet";
-
-const linkImages = {
-  twitter: <BsTwitter className="cursor-pointer"/>,   
-  website: <BsGlobe className="cursor-pointer"/>,
-  facebook: <BsFacebook className="cursor-pointer" />,
-  instagram: <BsInstagram className="cursor-pointer" />,
-  discord: <BsInstagram className="cursor-pointer" />,
-  telegram: <BsTelegram className="cursor-pointer" />
-}
+import { linkImages } from "../../hooks/images";
 
 const Campaign = (props: {campaign: Campaign_Q}) => {
   const {width: width1} = useElementSize()
@@ -45,7 +36,8 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
 
   return <div>
       <div className="mb-[100px] max-w-[886px] mx-auto">
-      <div className="w-full relative flex justify-between items-center h-[120px]">
+      <div className="w-full relative flex justify-between cursor-pointer items-center h-[120px]">
+        <Link href={`/brands/${brand.id}`}>
           <div className="flex z-[1]">
             <div className={`cursor-pointer bg-white rounded h-[24px] w-[24px] flex items-center justify-center`}
               >
@@ -64,6 +56,7 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
               </Link>
             </p>
           </div>
+        </Link>
           <div className="flex gap-2 text-lg text-black-200 dark:text-white z-[1]">
             {links}
           </div>

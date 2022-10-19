@@ -14,6 +14,7 @@ const CampaignsSnippet = () => {
           bgColor={brand.logoBgColor}
           id={id}
           key={index}
+          brandId={brand.id}
           merchandise={merchandise}
           active={active}
         />

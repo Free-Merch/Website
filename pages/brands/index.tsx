@@ -27,7 +27,6 @@ const Campaigns = () => {
     {value: "Z-A", label: "Z-A"}
   ];
 
-  const campaigns = useCampaigns()
   let brands = useBrands();
   brands = brands.slice(1)
 

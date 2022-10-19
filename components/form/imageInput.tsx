@@ -50,8 +50,8 @@ const ImageInput = (props: IImageInput1) => {
 
   return <div 
     onClick={() => setFocus(index, true)}
-    className={`${focus || file ? "bg-white dark:bg-blue-400 py-[21px]" : ""} cursor-pointer w-full px-[21px] rounded-[10px] 
-      shadow-[0px_9px_16px_rgba(171,190,209,0.03)] dark:shadow-[0px_8px_16px_3px_#030324]`}>
+    className={`${focus || file ? "bg-white dark:bg-blue-400 md:py-[24px] py-[20px]" : ""} cursor-pointer w-full px-[21px] rounded-[10px] 
+      shadow-[0px_9px_16px_rgba(171,190,209,0.03)] md:px-[40px] dark:shadow-[0px_8px_16px_3px_#030324]`}>
     {
       !titleLink ?
       <p className={`font-semibold flex items-center text-lg text-blue-400 dark:text-white`}>

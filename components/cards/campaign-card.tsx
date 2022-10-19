@@ -17,10 +17,11 @@ interface ICampaignCard {
   brand: string,
   merchandise: ImageType[]
   id: number
-  active: boolean
+  active: boolean,
+  brandId: number,
 }
 
-export function CampaignCard (this: any, { image, bgColor, about, brand, merchandise, active, id, name}: ICampaignCard){
+export function CampaignCard (this: any, { image, bgColor, about, brand, merchandise, active, brandId, id, name}: ICampaignCard){
   const {width: width1, ref: ref1} = useElementSize()
   const logoWidth = 20
 
@@ -41,28 +42,30 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
   return <div className={`cursor-pointer inline-block bg-grey-200 rounded-lg min-w-[163px] w-[399px] max-w-[399px]" }`} ref={ref1} >
     <Link href={`/campaigns/${id}`}>
       <div className={`my-[30px] md:mx-[21px] mx-[18px]`}>
-        <div className="flex justify-between items-center">
-          <div className="flex bg-grey-100 max-w-max py-[8px] px-[8px] rounded-[15px]">
-            <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded h-[24px] w-[24px] flex items-center justify-center`}
-              style={{backgroundColor: `${bgColor}`}}
-            >
-              {image.url 
-              ?
-                <Image src={image.url} alt={image.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/image.ratio}/>
-              : <AiFillQuestionCircle className="w-[20px] h-[20px] fill-green-100" />}
+        <div className="flex justify-between items-center" onClick={(e) => e.stopPropagation()}>
+          <Link href={`/brands/${brandId}`} >
+            <div className="flex bg-grey-100 max-w-max py-[8px] px-[8px] rounded-[15px] items-center" >
+              <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded h-[24px] w-[24px] flex items-center justify-center`}
+                style={{backgroundColor: `${bgColor}`}}
+              >
+                {image.url 
+                ?
+                  <Image src={image.url} alt={image.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/image.ratio}/>
+                : <AiFillQuestionCircle className="w-[20px] h-[20px] fill-green-100" />}
+              </div>
+              <p className={`text-left  ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
+                
+                  <>
+                    <span className="capitalize font-medium text-[14px]">{brand}</span>
+                    &nbsp;
+                  </>
+              </p>
+              <div className="relative flex">
+                <span className=" bg-white top-1/2 left-1/2  inline-block h-[8px] w-[8px]"></span>
+                <GoVerified className="fill-[#2382E1] w-[14px]"/>
+              </div>
             </div>
-            <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
-              <Link href={`/campaigns/${id}`}>
-                <>
-                  <span className="capitalize font-medium text-[14px]">{brand}</span>
-                  &nbsp;
-                  <span className="">
-                    <GoVerified className="fill-[#2382E1] w-[14px]"/>
-                  </span>
-                </>
-              </Link>
-            </p>
-          </div>
+          </Link>
           <div className={`${active ? "text-green-100" : "text-red-150"}  flex items-center`}>
             <div className={`${active ? "bg-green-100" : "bg-red-150"} rounded-full w-[5px] h-[5px]`}></div>  
             &nbsp;

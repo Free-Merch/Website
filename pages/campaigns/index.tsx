@@ -34,6 +34,7 @@ const Campaigns = () => {
 
     return <CampaignCard  
         brand={brand.name}
+        brandId={brand.id}
         name={name}
         image={brand.logo}
         about={description}
