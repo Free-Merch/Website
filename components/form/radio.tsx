@@ -1,9 +1,7 @@
-import Link from "next/link";
-import { useState } from "react";
 import { TbExternalLink } from "react-icons/tb";
-import { IRadioInput, IRadioInput1 } from "../../types";
+import { IRadioInput1 } from "../../types";
 import { FormBack, FormNext } from "./buttons";
-
+import MarkdownView from 'react-showdown';
 
 const RadioInput = (props: IRadioInput1) => {
   const {title, description, value, first, register, radioTexts, onChange, setFocus, focus, index, last, titleLink} = props;
@@ -24,16 +22,16 @@ const RadioInput = (props: IRadioInput1) => {
         </div>
       </a>
     }
-    <p className="text-grey-300 text-sm font-normal">{description}</p>
-    <div className="relative mt-[17px] mb-[20px] gap-4 flex flex-wrap w-full items-center px-[8px] py-[15px] justify-left">
+    <div className="text-grey-300 text-sm font-normal"><MarkdownView markdown={description} /></div>
+    <div className="relative mt-[17px] mb-[20px] gap-4 flex flex-wrap w-full items-center py-[15px] justify-left">
       {radioTexts.map((text, index) => 
-        <div key={index} className="flex gap-1 items-center text-[#ffffff80]">
+        <div key={index} className="flex gap-1 items-center text-grey-300 dark:text-[#ffffff80]">
           <label 
             htmlFor={text} 
             className="flex items-center cursor-pointer"
           >
           <div className={
-              `inline-block w-[17px] mr-1 h-[17px] border rounded-full border-white
+              `inline-block w-[17px] mr-1 h-[17px] border rounded-full border-blue-400 dark:border-white
               ${value === text ? "bg-green-100" : ""}`
             } />
           {text}

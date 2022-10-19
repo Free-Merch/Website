@@ -5,8 +5,7 @@ import { Campaign_Q } from "../../types";
 import { useElementSize } from "../../hooks/useSize";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
-import { BiLinkAlt } from "react-icons/bi";
-import { BsFacebook, BsInstagram, BsTelegram, BsTwitter } from "react-icons/bs";
+import { BsFacebook, BsGlobe, BsInstagram, BsTelegram, BsTwitter } from "react-icons/bs";
 import { ModalContext } from "../../context/modalContext";
 import { useContext } from "react";
 import { GetServerSideProps } from "next";
@@ -15,7 +14,7 @@ import CampaignsSnippet from "../../components/campaignsSnippet";
 
 const linkImages = {
   twitter: <BsTwitter className="cursor-pointer"/>,   
-  website: <BiLinkAlt className="cursor-pointer"/>,
+  website: <BsGlobe className="cursor-pointer"/>,
   facebook: <BsFacebook className="cursor-pointer" />,
   instagram: <BsInstagram className="cursor-pointer" />,
   discord: <BsInstagram className="cursor-pointer" />,

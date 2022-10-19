@@ -24,6 +24,7 @@
     "react-icons": "^4.4.0",
     "react-loading-skeleton": "^3.1.0",
     "react-player": "^2.10.1",
+    "react-showdown": "^2.3.1",
     "strapi": "^3.6.10",
     "tailwind-scrollbar-hide": "^1.1.7",
     "uuidv4": "^6.2.13",

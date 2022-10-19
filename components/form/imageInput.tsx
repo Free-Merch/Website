@@ -8,7 +8,7 @@ import { useModalContext } from "../../hooks/contexthooks";
 import { TbExternalLink } from "react-icons/tb";
 import { FormClient } from "../../helpers/formClient";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
+import MarkdownView from 'react-showdown';
 
 interface ExFile extends File {
   url?: string;
@@ -63,7 +63,7 @@ const ImageInput = (props: IImageInput1) => {
         </div>
       </a>
     }
-    <p className="text-grey-300 text-sm font-normal mb-[8px]">{description}</p>
+       <div className="text-grey-300 text-sm font-normal"><MarkdownView markdown={description} /></div>
     <span className="text-xs">Sample:</span>
     <div className="relative h-[40px] w-[40px] mt-[6px] mb-[24px]">
       <div><Image onClick={() => show("merch", {open: true, picture:sample})} src={sample.url} layout="fill" objectFit="cover" className="cursor-zoom-in rounded" alt="campaign-sample"/></div>

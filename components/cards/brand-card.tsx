@@ -38,8 +38,9 @@ export function BrandCard (this: any, {brand}: {brand: Brand}){
 
         <p className="text-left mt-[4px] font-semibold text-xl text-blue-400">{name}</p>
 
-        <p className={`text-left h-[70px] text-ellipsis overflow-hidden text-grey-700 mt-[13px] ${width1 <= 200 ? "text-[12px] leading-[15px]" : "text-sm"}`}>{description.substring(0, 100)+ "..." }</p>
-
+        <p className={`text-left brand-text text-ellipsis overflow-hidden text-grey-700 mt-[13px] ${width1 <= 200 ? "text-[12px] leading-[15px]" : "text-sm"}`}>
+          {description}
+        </p>
       </div>
     </Link>
   </div>
