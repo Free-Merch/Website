@@ -3,7 +3,9 @@ import {BsTwitter} from "react-icons/bs";
 
 const formImages = {
   "twitter": (className: string) => <BsTwitter className={`${className}`}/>,
-  "email": (className: string) => <HiOutlineMail className={`${className}`}/>
+  "email": (className: string) => <HiOutlineMail className={`${className}`}/>,
+  "instagram": (className: string) => <></>,
+  "telegram": (className: string) => <></>
 }
 
 export default formImages;

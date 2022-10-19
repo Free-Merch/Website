@@ -42,7 +42,7 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
     <Link href={`/campaigns/${id}`}>
       <div className={`my-[30px] md:mx-[21px] mx-[18px]`}>
         <div className="flex justify-between items-center">
-          <div className="flex bg-grey-100 max-w-max py-[10px] px-[8px] rounded-[15px]">
+          <div className="flex bg-grey-100 max-w-max py-[8px] px-[8px] rounded-[15px]">
             <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded h-[24px] w-[24px] flex items-center justify-center`}
               style={{backgroundColor: `${bgColor}`}}
             >
@@ -54,7 +54,7 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
             <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
               <Link href={`/campaigns/${id}`}>
                 <>
-                  <span className="capitalize font-medium text-[20px]">{brand}</span>
+                  <span className="capitalize font-medium text-[14px]">{brand}</span>
                   &nbsp;
                   <span className="">
                     <GoVerified className="fill-[#2382E1] w-[14px]"/>
@@ -72,7 +72,7 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
 
         <p className="text-left font-semibold text-xl text-blue-400">{name}</p>
 
-        <p className={`text-left h-[70px] text-ellipsis overflow-hidden text-grey-700 mt-[13px] ${width1 <= 200 ? "text-[12px] leading-[15px]" : "text-sm"}`}>{about.substring(0, 100)+ "..." }</p>
+        <p className={`text-left brand-text mb-[20px] text-ellipsis overflow-hidden text-grey-700 mt-[13px] ${width1 <= 200 ? "text-[12px] leading-[15px]" : "text-sm"}`}>{about}</p>
 
         <div className={`justify-between text-left mt-[5px]`}>
           <p className={`text-blue-400 ${width1 <= 200 && "text-[12px]"}`}>Reward:</p>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FormBack, FormNext } from "./buttons";
 import {TbExternalLink} from "react-icons/tb";
-import Link from "next/link";
+import MarkdownView from 'react-showdown';
 import { ITextInput1 } from "../../types";
 import { BsExclamationTriangleFill, BsFillCheckCircleFill } from "react-icons/bs";
 import formImages from "./formImages";
@@ -21,7 +21,7 @@ const TextInput = (props: ITextInput1) => {
   
   return <div 
     onClick={(e) => setFocus(index,true)}
-    className={`w-full px-[21px] rounded-[10px] cursor-pointer ${(value || focus) && "py-[21px] bg-white dark:bg-blue-400"} 
+    className={`w-full px-[40px] md:px-[20px] rounded-[10px] cursor-pointer ${(value || focus) && "py-[24px] md:py-[20px] bg-white dark:bg-blue-400"} 
     shadow-[0px_9px_16px_rgba(171,190,209,0.03)] dark:shadow-[0px_8px_16px_3px_#030324]`}>
     {
       !titleLink ?
@@ -34,18 +34,20 @@ const TextInput = (props: ITextInput1) => {
         </a>
       </div>
     }
-    <p className="text-grey-300 text-sm font-normal">{description}</p>
+
+    <div className="text-grey-300 text-sm font-normal"><MarkdownView markdown={description} /></div>
+
     { (value || focus) && 
       <div className={`${error && !inputFocus ? "border border-red-150" : ""} ${valid && !inputFocus ? "border border-green-100" : ""}
         relative mt-[17px] flex w-full items-center px-[8px] py-[15px] bg-white dark:bg-black-200 rounded-md 
         shadow-[inset_0px_1px_2px_rgba(11,18,15,0.2)] dark:shadow-[inset_0px_1px_2px_rgba(231,231,255,0.2)]`}>
-        <span className={`text-grey-400 dark:text-grey-450 transition-all duration-300 absolute z-[1] ${ image ? "left-[33px]" : "left-[7px]"} ${(inputFocus || value) && "-translate-y-[15px] text-[10px]"}`}>{placeholder}</span>
         <>{image && image("text-lg text-blue-400 dark:text-white")}</>
         <input 
-          className={`${image && "ml-[7px]"}  w-full text-sm font-normal bg-transparent outline-none z-[2]`}
+          className={`${image && "ml-[7px]"} placeholder:text-grey-400 placeholder:dark:text-grey-450 w-full text-sm font-normal bg-transparent outline-none z-[2]`}
           type="text"
           onFocus={() => setInputFocus(true)}
           value={value}
+          placeholder={placeholder}
           {...register(props.name, {
             onChange: (e) => onChange(e.currentTarget.value),
             onBlur: () => setInputFocus(false)
