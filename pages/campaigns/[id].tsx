@@ -37,14 +37,13 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
   return <div>
       <div className="mb-[100px] max-w-[886px] mx-auto">
       <div className="w-full relative flex justify-between cursor-pointer items-center h-[120px]">
-        <Link href={`/brands/${brand.id}`}>
+        <Link href={`/brands/${brand.name}`}>
           <div className="flex z-[1]">
             <div className={`cursor-pointer bg-white rounded h-[24px] w-[24px] flex items-center justify-center`}
               >
               <Image src={brand.logo.url} alt={brand.logo.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/brand.logo.ratio}/>
             </div>
             <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
-              <Link href={`/brands/${brand.name}`}>
                 <>
                   <span className="capitalize text-blue-400 dark:text-white font-medium text-[20px]">{brand.name}</span>
                   &nbsp;
@@ -53,7 +52,6 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
                     <GoVerified className="fill-[#2382E1] w-[14px]"/>
                   </span>
                 </>
-              </Link>
             </p>
           </div>
         </Link>

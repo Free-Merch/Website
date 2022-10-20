@@ -7,7 +7,7 @@ const brandsQuery = (id: string, name: string) => gql`
     brands(filters: 
       {
         id: ${ id ? "{eq:"+ id + "}" : "{}"},
-        name: ${ name ? "{eq:"+ name + "}" : "{}"}
+        name: ${ name ? "{eq:\""+ name + "\"}" : "{}"}
       },
       sort: ["id"]
     ) {

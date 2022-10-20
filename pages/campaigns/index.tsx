@@ -65,7 +65,7 @@ const Campaigns = () => {
       <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
 
     </Head>
-    <div className="flex justify-between pt-[50px]">
+    <div className="flex justify-between pt-[50px] mb-[80px]">
       <h1 className="text-[18px] md:text-3xl font-semibold text-black-900 dark:text-white">Campaigns</h1>
       <Dropdown 
         arrowClosed={ <IoIosArrowDown className="arrow" />}

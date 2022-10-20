@@ -94,8 +94,8 @@ const Brand = (props: {brand: Brand}) => {
           </div>
         </div>
       </div>
-      <div className=" flex justify-between w-full ">
-        <span className="max-w-[586px] mb-[42px] text-grey-300">{brand.description}</span>
+      <div className=" flex justify-between w-full mb-[80px]">
+        <span className="max-w-[586px] text-grey-300">{brand.description}</span>
         <div className="flex gap-2 text-lg text-black-200 dark:text-white z-[1]">
             {links}
         </div>
@@ -143,7 +143,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   letters[0] = letters[0].toUpperCase()
   brandName = letters.join("");
   try {
-    const brand = (await getBrands())[1];
+    const brand = (await getBrands("",  brandName))[1];
     return {
       props: brand
     }

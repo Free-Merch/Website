@@ -31,12 +31,8 @@ export function BrandCard (this: any, {brand}: {brand: Brand}){
           style={{background: logoBgColor}}
           >
           <Image src={brand.logo.url} className="mx-24" layout="fixed" width={logoWidth} height={logoHeight} alt="brand image" />
-          <span className="relative">
-            <span className=" bg-white top-1/2 left-1/2 -z-[10] -translate-x-1/2 -translate-y-1/2 inline-block h-[8px] w-[8px]"></span>
-            <GoVerified className="fill-[#2382E1] w-[14px]"/>
-          </span>
+          <GoVerified className="fill-[#2382E1] w-[14px] absolute bottom-0 right-0 translate-x-[7px]"/>
           </div>
-          
         </div>
 
         <div className="text-left mt-[4px] font-semibold text-xl text-blue-400">{name}</div>
