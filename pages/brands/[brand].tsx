@@ -14,9 +14,9 @@ import useCampaigns from "../../hooks/useCampaigns";
 import { linkImages } from "../../hooks/images";
 
 const orderFunctions = {
-  "A-Z": (projects: Campaign[]) => projects.sort((a, b) => a.name[0] < b.name[0] ? -1 : 1),
-  "Z-A": (projects: Campaign[]) => projects.sort((a, b) => a.name[0] > b.name[0] ? -1 : 1),
-  "Most recent": (campaigns: Campaign[]) => campaigns.sort((a, b) => a.id > b.id ? -1 : 1)
+  "A-Z": (projects: Campaign[]) => projects?.sort((a, b) => a.name[0] < b.name[0] ? -1 : 1),
+  "Z-A": (projects: Campaign[]) => projects?.sort((a, b) => a.name[0] > b.name[0] ? -1 : 1),
+  "Most recent": (campaigns: Campaign[]) => campaigns?.sort((a, b) => a.id > b.id ? -1 : 1)
 }
 
 const Brand = (props: {brand: Brand}) => {

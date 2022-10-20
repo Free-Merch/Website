@@ -10,9 +10,9 @@ import Head from "next/head";
 import useCampaigns from "../../hooks/useCampaigns";
 
 const orderFunctions = {
-  "A-Z": (campaigns: Campaign[]) => campaigns.sort((a, b) => a.name[0] < b.name[0] ? -1 : 1),
-  "Z-A": (campaigns: Campaign[]) => campaigns.sort((a, b) => a.name[0] > b.name[0] ? -1 : 1),
-  "Most recent": (campaigns: Campaign[]) => campaigns.sort((a, b) => a.id > b.id ? -1 : 1)
+  "A-Z": (campaigns: Campaign[]) => campaigns?.sort((a, b) => a.name[0] < b.name[0] ? -1 : 1),
+  "Z-A": (campaigns: Campaign[]) => campaigns?.sort((a, b) => a.name[0] > b.name[0] ? -1 : 1),
+  "Most recent": (campaigns: Campaign[]) => campaigns?.sort((a, b) => a.id > b.id ? -1 : 1)
 }
 
 const Campaigns = () => {

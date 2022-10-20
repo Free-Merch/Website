@@ -12,8 +12,8 @@ import useBrands from "../../hooks/useBrands";
 import { BrandCard, BrandCardSkeleton } from "../../components/cards/brand-card";
 
 const orderFunctions = {
-  "A-Z": (campaigns: Brand[]) => campaigns.sort((a, b) => a.name[0] < b.name[0] ? -1 : 1),
-  "Z-A": (campaigns:  Brand[]) => campaigns.sort((a, b) => a.name[0] > b.name[0] ? -1 : 1),
+  "A-Z": (campaigns: Brand[]) => campaigns?.sort((a, b) => a.name[0] < b.name[0] ? -1 : 1),
+  "Z-A": (campaigns:  Brand[]) => campaigns?.sort((a, b) => a.name[0] > b.name[0] ? -1 : 1),
   "Most recent": (projects: Brand[]) => projects
 }
 
