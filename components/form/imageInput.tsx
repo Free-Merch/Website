@@ -50,51 +50,46 @@ const ImageInput = (props: IImageInput1) => {
 
   return <div 
     onClick={() => setFocus(index, true)}
-    className={`${focus || file ? "bg-white dark:bg-blue-400 md:py-[24px] py-[20px]" : ""} cursor-pointer w-full px-[21px] rounded-[10px] 
+    className={`${focus || file ? " bg-white dark:bg-blue-400 md:py-[24px] py-[20px]" : ""} cursor-pointer w-full px-[20px] rounded-[10px] 
       shadow-[0px_9px_16px_rgba(171,190,209,0.03)] md:px-[40px] dark:shadow-[0px_8px_16px_3px_#030324]`}>
-    {
-      !titleLink ?
-      <p className={`font-semibold flex items-center text-lg text-blue-400 dark:text-white`}>
-        {title}
-      </p> :
-      <a rel="noreferrer" href={titleLink} target="_blank">
-        <div className={`max-w-max underline font-semibold flex items-center text-blue-400 text-lg dark:text-white`}>
-          {title} <TbExternalLink className="text-[22px] inline-block ml-[4px]" />
-        </div>
-      </a>
-    }
-       <div className="text-grey-300 text-sm font-normal"><MarkdownView markdown={description} /></div>
-    <span className="text-xs">Sample:</span>
-    <div className="relative h-[40px] w-[40px] mt-[6px] mb-[24px]">
+    <div className={`font-semibold flex items-center text-lg ${focus ? "text-blue-400 dark:text-white" : "text-grey-300"}`}>
+      {title}
+    </div>
+    
+    <div className={`my-[8px] text-grey-300 text-sm font-normal ${focus && "description-link"}`}><MarkdownView markdown={description} /></div>
+    <span className={`text-xs ${!focus && "text-grey-300"}`}>Sample:</span>
+    <div className="relative h-[40px] w-[40px] mt-[6px]">
       <div><Image onClick={() => show("merch", {open: true, picture:sample})} src={sample.url} layout="fill" objectFit="cover" className="cursor-zoom-in rounded" alt="campaign-sample"/></div>
     </div>
-
-    <div className={`text-blue-400 dark:text-white items-center w-full rounded border border-dashed justify-center ${!file && "border-blue-400 dark:border-white"} ${error && file ? "border-red-150" : ""} ${ file && !error ? "border-green-100": ""} `}>
-      {!file ?
-        <label htmlFor="fileUpload" className="flex items-center justify-center py-[16px] h-full w-full cursor-pointer">
-          <MdDriveFolderUpload className="text-[20px] inline-block mr-[2px]" /> Upload File
-          <input id="fileUpload" onChange={uploadFile} className="opacity-0 w-0 h-0" type="file" accept="image/*"/>
-        </label>
-        :
-        <div className="flex items-center justify-between py-[16px] px-[13px] h-full w-full">
-          {//@ts-ignore 
-            <span className="flex items-center"><Image src={file?.url ?? ""} objectFit="cover" width="24" height="24" alt="preview" /><span className="inline-block ml-[8px]">{file?.name}</span></span>
-          }
-          <button onClick={() => {onChange(""), setFile(undefined), setError("")}}> 
-            {uploading 
-            ?
-              <AiOutlineLoading3Quarters className="text-green-100 animate-spin text-[23px]" />
-            :
-              <IoCloseSharp className={`text-[25px] cursor-pointer ${error && file ? "text-red-150" : ""} ${ file && !error ? "text-green-100": ""}`} />
+    <div className="my-[20px]">
+      <div className={`${!focus ? "text-grey-300 border-grey-300" : "dark:text-white text-blue-400"}  items-center w-full rounded border border-dashed justify-center 
+        ${!file && focus && "border-blue-400 dark:border-white"} ${error && file ? "border-red-150" : ""} ${ file && !error ? "border-green-100": ""} `}>
+        {!file ?
+          <label htmlFor="fileUpload" className="flex items-center justify-center py-[16px] h-full w-full cursor-pointer">
+            <MdDriveFolderUpload className="text-[20px] inline-block mr-[2px]" /> Upload File
+            <input id="fileUpload" onChange={uploadFile} className="opacity-0 w-0 h-0" type="file" accept="image/*"/>
+          </label>
+          :
+          <div className="flex items-center justify-between py-[16px] px-[13px] h-full w-full">
+            {//@ts-ignore 
+              <span className="flex items-center"><Image src={file?.url ?? ""} objectFit="cover" width="24" height="24" alt="preview" /><span className="inline-block ml-[8px]">{file?.name}</span></span>
             }
-          </button>
-        </div>
-      }
-    </div>
+            <button onClick={() => {onChange(""), setFile(undefined), setError("")}}> 
+              {uploading 
+              ?
+                <AiOutlineLoading3Quarters className="text-green-100 animate-spin text-[23px]" />
+              :
+                <IoCloseSharp className={`text-[25px] cursor-pointer ${error && file ? "text-red-150" : ""} ${ file && !error ? "text-green-100": ""}`} />
+              }
+            </button>
+          </div>
+        }
+      </div>
       {error && focus && <span className="text-red-150 inline-block mt-[8px]">*{error}</span>}
       {uploading && <span className="inline-block mt-[8px]">Uploading...</span>}
+    </div>
     {focus &&
-      <div className="h-[48px] md:gap-14 flex justify-between mt-[24px]">
+      <div className="h-[48px] md:gap-14 flex justify-between">
         {!first && <div className={`h-full ${last ? "w-full" : "w-[100px] max-w-[240px]"} md:w-full `}><FormBack onClick={() => setFocus(index-1, true)} active={false} /> </div>}
         {!last && <div className={`h-full ${first ? "w-full" : "w-[156px] max-w-[500px]"} md:w-full `}><FormNext onClick={() => {value && setFocus(index+1, true)}} active={value && !error ? true : false} /></div>}
       </div>

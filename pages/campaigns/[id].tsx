@@ -74,7 +74,7 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
         </div>
       </div>
 
-      <Form questions={questions} id={identifier} name={name} active={false} />
+      <Form questions={questions} id={identifier} name={name} active={active} />
     </div>
     <div className="mt-[103px] w-full">
       <p className="text-blue-400 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>

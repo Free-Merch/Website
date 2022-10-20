@@ -27,8 +27,12 @@ const Campaigns = () => {
     {value: "Z-A", label: "Z-A"}
   ];
 
+  const [query, enterQuery] = useState("");
   let brands = useBrands();
   brands = brands.slice(1)
+  brands = brands.filter(brand => brand.name.toLowerCase().includes(query.toLowerCase()));
+  
+
 
   const [order, setOrder] = useState({value: "Most recent", label: "Most recent"});
   // @ts-ignore
@@ -67,11 +71,11 @@ const Campaigns = () => {
     <div className="h-[46px] rounded-[10px] flex mt-[40px] mb-[60px] w-full items-center justify-between bg-white dark:bg-grey-550 px-[18px] pt-[13px] pb-[9px]
       shadow-[inset_0px_1px_2px_rgba(11,18,55,0.2)] dark:shadow-[0px_8px_16px_3px_#030324]">
       <FiSearch className="mr-[14px] text-[24px] text-black-100 dark:text-white stroke-[2px]" /> 
-      <input className="bg-transparent w-full outline-none placeholder:text-grey-400 dark:placeholder:text-grey-650" placeholder="Search for Brands"/>
+      <input onChange={(e) => enterQuery(e.target.value)} value={query} className="bg-transparent w-full outline-none placeholder:text-grey-400 dark:placeholder:text-grey-650" placeholder="Search for Brands"/>
     </div>
 
     <div className="mb-10 flex flex-wrap justify-center gap-4">
-      {BrandCards || BrandCardSkeletons}
+      {query && brands.length === 0 ? <div className="mt-20">No Brands match your search.</div> : BrandCards || BrandCardSkeletons}
     </div>
 
   </div>

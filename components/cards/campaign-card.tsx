@@ -41,8 +41,8 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
 
   return <div className={`cursor-pointer inline-block bg-grey-200 rounded-lg min-w-[163px] w-[399px] max-w-[399px]" }`} ref={ref1} >
     <Link href={`/campaigns/${id}`}>
-      <div className={`my-[30px] md:mx-[21px] mx-[18px]`}>
-        <div className="flex justify-between items-center" onClick={(e) => e.stopPropagation()}>
+      <div className={`m-[20px]`}>
+        <div className="flex mb-[4px] justify-between items-center" onClick={(e) => e.stopPropagation()}>
           <Link href={`/brands/${brandId}`} >
             <div className="flex bg-grey-100 max-w-max py-[8px] px-[8px] rounded-[15px] items-center" >
               <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded h-[24px] w-[24px] flex items-center justify-center`}
@@ -73,12 +73,12 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
           </div>
         </div>
 
-        <p className="text-left font-semibold text-xl text-blue-400">{name}</p>
+        <div className="text-left font-semibold text-xl text-blue-400">{name}</div>
 
-        <p className={`text-left brand-text mb-[20px] text-ellipsis overflow-hidden text-grey-700 mt-[13px] ${width1 <= 200 ? "text-[12px] leading-[15px]" : "text-sm"}`}>{about}</p>
+        <p className={`text-left brand-text mb-[20px] text-ellipsis overflow-hidden text-grey-700 mt-[12px] ${width1 <= 200 ? "text-[12px] leading-[15px]" : "text-sm"}`}>{about}</p>
 
         <div className={`justify-between text-left mt-[5px]`}>
-          <p className={`text-blue-400 ${width1 <= 200 && "text-[12px]"}`}>Reward:</p>
+          <div className={`text-blue-400 ${width1 <= 200 && "text-[12px]"}`}>Reward:</div>
           <div className={`flex gap-2 items-end ${width1 <= 200 ? "mt-[5px]" : "mt-2"} child:inline-block rounded-md`}>
             {items}
           </div>

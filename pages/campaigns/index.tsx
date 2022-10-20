@@ -12,7 +12,7 @@ import useCampaigns from "../../hooks/useCampaigns";
 const orderFunctions = {
   "A-Z": (campaigns: Campaign[]) => campaigns.sort((a, b) => a.name[0] < b.name[0] ? -1 : 1),
   "Z-A": (campaigns: Campaign[]) => campaigns.sort((a, b) => a.name[0] > b.name[0] ? -1 : 1),
-  "Most recent": (projects: Campaign[]) => projects
+  "Most recent": (campaigns: Campaign[]) => campaigns.sort((a, b) => a.id > b.id ? -1 : 1)
 }
 
 const Campaigns = () => {
@@ -28,22 +28,25 @@ const Campaigns = () => {
   // @ts-ignore
   const handleSetOrder = (value: Option) => setOrder(value)
 
-
+  const [section, setSection] = useState<"ongoing"|"completed">("ongoing");
+  const activeCampaigns: JSX.Element[] = []
+  const inActiveCampaigns: JSX.Element[] = []
   const CampaignCards = orderFunctions[order.value as keyof typeof orderFunctions](campaigns)?.map((campaign, index) => {
-    const { description, name, merchandise, brand, active, id } = campaign;
-
-    return <CampaignCard  
-        brand={brand.name}
+    const { brand, id, merchandise, description, name, active } =  campaign;
+    const card = <CampaignCard  
+        merchandise={merchandise}
         brandId={brand.id}
-        name={name}
         image={brand.logo}
+        brand={brand.name}
+        active={active}
+        name={name}
         about={description}
         bgColor={brand.logoBgColor}
-        merchandise={merchandise}
-        active={active}
         id={id}
         key={index}
       />
+    active ? activeCampaigns.push(card) : inActiveCampaigns.push(card);
+    return card;
   })
 
   const CampaignCardSkeletons = [<CampaignCardSkeleton key={1}/>, <CampaignCardSkeleton key={2} />, <CampaignCardSkeleton key={3} />, <CampaignCardSkeleton key={4} />]
@@ -70,9 +73,33 @@ const Campaigns = () => {
         value={order} options={options} onChange={handleSetOrder}  placeholder="Most recent" />
     </div>
 
-    <div className="mt-7 mb-10 flex flex-wrap justify-center gap-4">
+    {/* <div className="mt-7 mb-10 flex flex-wrap justify-center gap-4">
       {CampaignCards || CampaignCardSkeletons}
-    </div>
+    </div> */}
+    {CampaignCards 
+      ?
+        <>
+          <div className="mx-auto max-w-max">
+            <button onClick={() => setSection("ongoing")} className={`dark:text-white text-blue-900 py-0 font-semibold text-xl 
+              ${ section === "ongoing" ? "border-b-2 border-green-100" : ""}`}>Ongoing</button>
+            <span className="inline-block w-[40px] md:w-[80px]"></span>
+            <button onClick={() => setSection("completed")} className={`dark:text-white text-blue-900 py-0 font-semibold text-xl  
+              ${ section === "completed" ? "border-b-2 border-green-100" : ""}`}>Completed</button>
+          </div>
+          
+          {section === "ongoing" ?
+              <div className="mt-7 mb-10 flex flex-wrap justify-center gap-4">
+                {activeCampaigns.length > 0 ? activeCampaigns : <div className="mt-20">There are currently no ongoing campaigns</div>}
+              </div>
+            :
+              <div className="mt-7 mb-10 flex flex-wrap justify-center gap-4">
+                {inActiveCampaigns.length > 0 ? inActiveCampaigns : <div className="mt-20">There are currently no completed campaigns</div>}
+              </div>
+          }
+        </> 
+      :
+      <div className="flex flex-wrap gap-2">{CampaignCardSkeletons}</div>
+    }
 
   </div>
 }

@@ -5,7 +5,7 @@ import useBrands from './useBrands';
 
 const campaignsQuery = (brand: string) => gql`
   query {
-    campaigns(filters: {brand: ${ brand ? "{eq:"+ brand + "}" : "{}"}}) {
+    campaigns(filters: {brand: ${ brand ? "{eq:"+ brand + "}" : "{}"}}, sort: ["id"]) {
       data{
         id
         attributes {
@@ -53,8 +53,8 @@ const useCampaigns = (brand?: string): Campaign[] => {
       name, id, brand, description, active, identifier, merchandise
     }
   });
-
-  return campaigns;
+  
+  return campaigns?.reverse();
 }
 
 export default useCampaigns;

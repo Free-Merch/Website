@@ -124,6 +124,10 @@ a {
   -webkit-box-orient: vertical;
 }
 
+.description-link a{
+  color: #2EC866;
+}
+
 
 @media only screen and (min-width: 768px){
   .dark .ellipsis{
@@ -144,18 +148,3 @@ a {
   }
 }
 
-/* @media only screen and (max-width: 800px){
-  .desk-nav{
-    display: none;
-  }
-  .desk-items{
-    gap: 10px;
-  }
-}
-
-@media only screen and (min-width: 800px){
-  .mobile-nav-control{
-    display: none;
-    gap: 10px;
-  }
-} */

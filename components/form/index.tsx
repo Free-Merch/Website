@@ -104,14 +104,18 @@ const Form = ({questions, id, name, active}: IForm) => {
   return <form className={`${!active && ""} w-full relative  mt-[40px] `}
     onSubmit={handleSubmit(onSubmit)} 
   >
-    <div className="absolute -left-[1000px]  h-full -right-[1000px] bg-[#ffffff] dark:bg-blue-400 z-[5] opacity-40">
-    </div>
-    <div className="absolute  items-center h-full z-[6] w-full flex flex-col justify-center blur-none">
-      <Image src={theme === "dark" ? LockDark : LockLight} alt="file_locked" />
-      <p className="my-[20px] font-semibold text-blue-400 dark:text-white text-xl">Campaign completed</p>
-      <Button href="/campaigns" className="dark:bg-black-200 border-green-200 border text-green-200 px-[51px] py-[14px] bg-white font-medium">View Other Tasks</Button>
-    </div>
-    <div className="blur-[2px] gap-5 flex flex-col items-center justify-center shadow-[0px_9px_16px_rgba(171,190,209,0.03)]">
+    {!active && 
+      <>
+        <div className="absolute -left-[1000px]  h-full -right-[1000px] bg-[#ffffff] dark:bg-blue-400 z-[5] opacity-40">
+        </div>
+        <div className="absolute  items-center h-full z-[6] w-full flex flex-col justify-center blur-none">
+          <Image src={theme === "dark" ? LockDark : LockLight} alt="file_locked" />
+          <p className="my-[20px] font-semibold text-blue-400 dark:text-white text-xl">Campaign completed</p>
+          <Button href="/campaigns" className="dark:bg-black-200 border-green-200 border text-green-200 px-[51px] py-[14px] bg-white font-medium">See Other Campaigns</Button>
+        </div>
+      </>
+    }
+    <div className={`${!active && "blur-[2px]"} gap-5 flex flex-col items-center justify-center shadow-[0px_9px_16px_rgba(171,190,209,0.03)]`}>
       {!active && <div className="mt-[20px]"></div>}
       {queComponents}
       {active && <div className="px-[21px] w-full">

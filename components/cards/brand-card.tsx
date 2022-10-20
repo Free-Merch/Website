@@ -39,11 +39,11 @@ export function BrandCard (this: any, {brand}: {brand: Brand}){
           
         </div>
 
-        <p className="text-left mt-[4px] font-semibold text-xl text-blue-400">{name}</p>
+        <div className="text-left mt-[4px] font-semibold text-xl text-blue-400">{name}</div>
 
-        <p className={`text-left brand-text text-ellipsis overflow-hidden text-grey-700 mt-[13px] ${width1 <= 200 ? "text-[12px] leading-[15px]" : "text-sm"}`}>
+        <div className={`text-left brand-text text-ellipsis overflow-hidden text-grey-700 mt-[12px] ${width1 <= 200 ? "text-[12px] leading-[15px]" : "text-sm"}`}>
           {description}
-        </p>
+        </div>
       </div>
     </Link>
   </div>
