@@ -3,6 +3,16 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head';
 import Script from 'next/script';
 
+import Router from 'next/router';
+import NProgress from 'nprogress'; //nprogress module
+import 'nprogress/nprogress.css'; //styles of nprogress
+import "../styles/Nprogress.css"
+//Route Events. 
+Router.events.on('routeChangeStart', () => NProgress.start()); 
+Router.events.on('routeChangeComplete', () => NProgress.done()); 
+Router.events.on('routeChangeError', () => NProgress.done());
+NProgress.configure({ showSpinner: false })
+
 function MyApp({ Component, pageProps }: AppProps) {
   return <>
     <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
