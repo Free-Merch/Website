@@ -54,13 +54,13 @@ const Campaigns = () => {
   return <div className="my-12">
     <Head>
       <title>Campaigns - Freemerch</title>
-      <meta name="description" content="All active campaigns on Freemerch. Campaigns are brand adverts to perform activities and win free merchandise from them.."/>
+      <meta name="description" content="Win a merch when you participate in any of our campaigns."/>
       {/* Twitter tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content="Join a campaign to win a free merchandise." />
+      <meta name="twitter:title" content="Campaigns - Freemerch" />
       <meta name="twitter:description" 
-        content="Campaigns are brand adverts to perform activities and win free merchandise from them." 
+        content="Win a merch when you participate in any of our campaigns." 
       />
       <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
 
@@ -98,7 +98,7 @@ const Campaigns = () => {
           }
         </> 
       :
-      <div className="flex flex-wrap gap-2">{CampaignCardSkeletons}</div>
+      <div className="flex justify-center flex-wrap gap-2">{CampaignCardSkeletons}</div>
     }
 
   </div>

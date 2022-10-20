@@ -51,13 +51,13 @@ const Campaigns = () => {
   return <div className="my-12">
     <Head>
       <title>Brands - Freemerch</title>
-      <meta name="description" content="All active campaigns on Freemerch. Campaigns are brand adverts to perform activities and win free merchandise from them.."/>
+      <meta name="description" content="We have successfully pushed the adoption of these brands through our campaigns."/>
       {/* Twitter tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content="Join a campaign to win a free merchandise." />
+      <meta name="twitter:title" content="Brands - Freemerch" />
       <meta name="twitter:description" 
-        content="Campaigns are brand adverts to perform activities and win free merchandise from them." 
+        content="We have successfully pushed the adoption of these brands through our campaigns." 
       />
       <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
     </Head>

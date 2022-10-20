@@ -11,11 +11,12 @@ import { GetServerSideProps } from "next";
 import getCampaign from "../../helpers/getCampaign";
 import CampaignsSnippet from "../../components/campaignsSnippet";
 import { linkImages } from "../../hooks/images";
+import Head from "next/head";
 
 const Campaign = (props: {campaign: Campaign_Q}) => {
   const {width: width1} = useElementSize()
   const logoWidth = 20;
-  const {campaign: {questions, merchandise, brand, identifier, name, active}} = props;
+  const {campaign: {questions, merchandise, brand, identifier, name, description, active, id}} = props;
   const links = Object.entries(brand.links)?.map(([key, url], index) => {
     return <a rel="noreferrer" key={index} href={url} target="_blank">
       <span className={`cursor-pointer`}>{linkImages[key.toLowerCase() as keyof typeof linkImages]}</span>
@@ -35,7 +36,19 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
   )
 
   return <div>
-      <div className="mb-[100px] max-w-[886px] mx-auto">
+    <Head>
+      <title>${name} - Freemerch</title>
+      <meta name="description" content={`${description}`}/>
+      {/* Twitter tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@getFreemerch" />
+      <meta name="twitter:title" content={`${name} - Freemerch`} />
+      <meta name="twitter:description" 
+        content={`${description}`}
+      />
+      <meta name="twitter:image" content={`${merchandise[0].url}`} />
+    </Head>
+      <div className="mb-[100px] max-w-[886px] mx-auto scroll-smooth">
       <div className="w-full relative flex justify-between cursor-pointer items-center h-[120px]">
         <Link href={`/brands/${brand.name}`}>
           <div className="flex z-[1]">
@@ -55,14 +68,14 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
             </p>
           </div>
         </Link>
-          <div className="flex gap-2 text-lg text-black-200 dark:text-white z-[1]">
+          <div className="flex gap-2 ml-2 text-lg text-black-200 dark:text-white z-[1]">
             {links}
           </div>
       </div>
       
       <div>
-        <p className="text-blue-400 dark:text-white leading-[38px] font-semibold text-[24px]">Celebration Of Launch</p>
-        <p className="dark:text-white leading-[24px] text-[14px]">To celebrate our launch, we are giving away 30 merch for free in our limited Freemerch designs.</p>
+        <p className="text-blue-400 dark:text-white leading-[38px] font-semibold text-[24px]">${name}</p>
+        <p className="dark:text-white leading-[24px] text-[14px]">${description}</p>
       </div>
 
       <div className="mt-[40px]">
@@ -77,7 +90,7 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
     <div className="mt-[103px] w-full">
       <p className="text-blue-400 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>
       <div className="flex mb-8 gap-4 justify-center flex-wrap">
-        <CampaignsSnippet />
+        <CampaignsSnippet exclude={id} />
       </div>
     </div>
   </div>

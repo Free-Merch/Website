@@ -60,16 +60,16 @@ const Brand = (props: {brand: Brand}) => {
 
   return <div className="my-12 mt-[60px]">
     <Head>
-      <title>Campaigns - Freemerch</title>
-      <meta name="description" content="All active campaigns on Freemerch. Campaigns are brand adverts to perform activities and win free merchandise from them.."/>
+      <title>`${brand.name}` - Freemerch</title>
+      <meta name="description" content={`${brand.description}`}/>
       {/* Twitter tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content="Join a campaign to win a free merchandise." />
+      <meta name="twitter:title" content={`${brand.name} - Freemerch`}/>
       <meta name="twitter:description" 
-        content="Campaigns are brand adverts to perform activities and win free merchandise from them." 
+        content={`${brand.description}`}
       />
-      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
+      <meta name="twitter:image" content={`${brand.logo.url}`} />
     </Head>
 
     <div className="w-full mx-auto pt-[60px]">
@@ -123,7 +123,7 @@ const Brand = (props: {brand: Brand}) => {
           }
         </> 
       :
-      <div className="flex flex-wrap gap-2">{CampaignCardSkeletons}</div>
+      <div className="flex w-full justify-center lg:justify-start flex-wrap gap-2">{CampaignCardSkeletons}</div>
     }
 
   </div>

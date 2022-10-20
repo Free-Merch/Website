@@ -61,11 +61,11 @@ const Home: NextPage = () => {
     },
     {
       question: "How can I get branded merch?",
-      answer: <span>`If you are a community or individual visit the {<span className='text-green-100'><Link href="/contact-us" >Contact Us</Link></span>} page, select the option that applies and fill out the form. We&apos;ll get back to you as soon as possible.</span>
+      answer: <span><span className='text-green-100'><Link href={"/campaigns"}>Participate in any campaign and monitor</Link></span> your email or our social media platforms for winner annoucements.</span>
     },
     {
       question: "How do I patner with Freemerch?",
-      answer: <span>Go to the {<span className='text-green-100'><Link href="/contact-us" >Contact Us</Link></span>} page and select the company button, fill the form that pops up and submit it. We&apos;ll get back to you as soon as possible.</span>
+      answer: <span>{<span className='text-green-100'><Link href="/contact-us" >Send us an email</Link></span>} page and select the company button, fill the form that pops up and submit it. We&apos;ll get back to you as soon as possible.</span>
     }
   ]
   const handleSetFaq = (index:number) => {
@@ -213,21 +213,21 @@ const Home: NextPage = () => {
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto pt-[51px]'>
         <div className="text-start xl:w-2/4 mt-2 md:mt-32 ">
           <h1 className="text-[40px] leading-[44px] md:text-6xl font-semibold text-green-100 max-w-[800px]">
-            <span className="dark:text-white text-blue-400">Get Access</span> to Free Swag
+            <span className="dark:text-white text-blue-400">Rewards,</span> for adoption
           </h1>
 
           <p className="my-[30px] max-w-[700px] font-normal text-[14px] md:text-[20px] leading-[20px] md:leading-[28px]">
-            Using Merchandise to create awareness, encourage adoption and reward existing users of tech/web3 products and solutions
+            Get merchandise from leading brands when you participate in any of our campaigns. Create a loyalty campaign to reward existing users and reach new audiences and communities for your brand.
           </p>
           
           <div className="flex w-full max-w-max justify-start flex-wrap">
             <GreenButton href="/campaigns" className="mr-6 mb-4">Get Merch</GreenButton>
-            <a href="#Learn-More" className="flex items-center -translate-y-[10px]">
+            {/* <a href="#Learn-More" className="flex items-center -translate-y-[10px]">
               <button className="flex items-center">
                 <Image src={Playbtn} alt="play"/> 
                 &nbsp; Learn More
               </button>
-            </a>
+            </a> */}
           </div>
         </div>
         <div className={`flex justify-end relative hero-small:mx-auto w-[314px] h-[397px] sm:w-[377px] sm:h-[476px]`}>
@@ -241,7 +241,7 @@ const Home: NextPage = () => {
         <div className="my-12 md:w-2/3 mx-auto text-center mb-[50px]">
           <h2 className="font-semibold text-green-100 text-3xl mb-[20px]">Ongoing Campaigns</h2>
           <p>
-            Participate in any of the ongoing campaigns to win yourself free merch from world-class brands. Merch is priceless.
+            Participate in any of the ongoing campaigns to win yourself free merch from world-class brands. Merch is priceless!
           </p>
         </div>
 
@@ -249,7 +249,7 @@ const Home: NextPage = () => {
           <CampaignsSnippet />
         </div>
         <p className="text-center mt-20">
-          <GreenButton href="/campaigns" className="mt-6">See All Campaigns</GreenButton>
+          <GreenButton href="/campaigns" className="mt-6">See Other Campaigns</GreenButton>
         </p>
       </div>
 
@@ -261,8 +261,7 @@ const Home: NextPage = () => {
       <div className="max-w-screen-lg mt-[100px] text-center mx-auto">
         <h3 className=" font-semibold text-green-100 text-3xl mb-[20px]">About Us</h3>
         <p>
-          Freemerch is a platform that helps brands create a unique voice by leveraging social impact, gen-z and millennial relatable campaigns. 
-          Thereby creating awareness, adoption for leading tech and web3 solutions, bringing their products closer to users and communities.
+          We help brands create an aura of belonging and social connection for their customers, recognize and personalize communities/ individuals. 
         </p>
       </div>
 
@@ -280,7 +279,7 @@ const Home: NextPage = () => {
           <p className="text-xs md:text-lg text-[#7A797D] font-normal">
             Sell out your solutions in a more relatable, user-oriented and fun way. Create unique stories and social impact with your merchandise. 
           </p>
-            <WhiteButton className="mt-6">Contact</WhiteButton>
+            <WhiteButton className="mt-6">Contact Us</WhiteButton>
         </div>
 
         <div className="
@@ -294,7 +293,7 @@ const Home: NextPage = () => {
           <p className="text-xs md:text-lg text-[#7A797D] font-normal">
             Like what we do? Want free merch or would like to speak with our team? Reach out to us now. We are waiting to hear from you.
           </p>
-            <WhiteButton className="mt-6">Contact</WhiteButton>
+            <WhiteButton className="mt-6">Contact Us</WhiteButton>
         </div>
         <div className="ellipsis absolute blur-[241px] w-[421px] h-[479px] opacity-50 bg-[#298A63] right-0 translate-x-3/4 translate-y-1/4" />
       </div>
@@ -329,7 +328,7 @@ const Home: NextPage = () => {
 
       {/* Communities */}
       <div className="mt-[100px] relative mx-auto">
-        <h4 className="text-3xl font-semibold text-blue-400 dark:text-white">Communities</h4>
+        <h4 className="text-3xl font-semibold text-blue-400 dark:text-white">Community Partners</h4>
         <div className="mx-auto relative">
           <Splide aria-labelledby="Communities Slideshow" hasTrack={false} options={{pagination:false}}>
             <div className="static mt-[69px]">
@@ -368,18 +367,18 @@ const Home: NextPage = () => {
       </div>
 
       {/* Learn More */}
-      <div className="mt-[100px] flex justify-center items-center flex-col" id="Learn-More">
+      {/* <div className="mt-[100px] flex justify-center items-center flex-col" id="Learn-More">
         <h3 className="font-semibold mb-[50px] text-2xl text-center text-blue-900 dark:text-white ">Learn More</h3>
         <div className="h-[360px] w-full max-w-[640px]">
           {/* relative pt-[56.25%] */}
-          {hasWindow && <ReactPlayer 
+          {/* {hasWindow && <ReactPlayer 
             url='https://youtu.be/vsODeBWNPd4' 
             controls
             width="100%"
             height="100%"
-          />}
-        </div>
-      </div>
+          />}  */}
+        {/* </div>
+      </div> */}
 
       {/* FAQs */}
       <div className="mt-24 mb-24 relative">
