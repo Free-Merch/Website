@@ -15,7 +15,7 @@ interface INav {
 const links = [
   {path: "/", text: "Home"},
   {path: "/campaigns", text: "Campaigns"},
-  {path: "/brands", text: "Brands"},
+
   {path: "/about-us", text: "About us"},
   {path: "/contact-us", text: "Contact us"}
 ]
@@ -38,13 +38,13 @@ export const DesktopNav = (props: INav) => {
   return <div className="px-[12px] md:px-24 bg-grey-100 dark:bg-blue-900 w-full flex">
       {/* <div className=" w-full"> */}
       <div className="flex w-full max-w-7xl mt-[25px] mb-[25px]  mx-auto justify-between text-blue-400 dark:text-white">
-        <h3 className="mr-12 lg:mr-20 font-black flex "> <Image src={Logo} alt="logo" layout="fixed" width={"21px"} height={"21px"}/> <span className="font-normal">Free</span>Merch</h3>
+        <h3 className="items-center mr-12 lg:mr-20 font-black flex "> <Image src={Logo} alt="logo" layout="fixed" width={"21px"} height={"21px"}/> <span className="font-normal">Free</span>Merch</h3>
         
         <div className="hidden md:flex justify-between w-full">
-          <ul className="mx-4 gap-[10px] max-w-[720px] flex-wrap md:w-full desk-nav-mid:gap-[15px] md:gap-[30px] md:flex items-center">
+          <ul className="mx-4 gap-[20px] max-w-[720px] lg:gap-[40px] flex-wrap md:w-full  md:flex items-center">
             {navLinks}
           </ul>
-          <div className="">
+          <div className="flex items-center">
             <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="text-end cursor-pointer">
               {theme === "dark" ?
                 <HiSun className={`rounded-full hover:text-green-100 text-grey-800}`} size={25}/> 

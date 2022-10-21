@@ -106,7 +106,8 @@ export interface IImageInput1 extends IImageInput {
     register: UseFormRegister<FieldValues>,
     focus: boolean;
     value: string;
-    onChange: (value:string) => void
+    onChange: (value:string) => void;
+    error: string|undefined;
 }
 
 export interface IRadioInput extends IInput {
@@ -122,7 +123,8 @@ export interface IRadioInput1 extends IRadioInput {
   focus: boolean;
   register: UseFormRegister<FieldValues>,
   setFocus: (index:number, focus: boolean) => void
-  index: number
+  index: number,
+  error: string|undefined;
 }
 
 export interface TQuestionInput {

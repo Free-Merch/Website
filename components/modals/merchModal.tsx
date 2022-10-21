@@ -13,12 +13,12 @@ const MerchModal = () => {
 
   const imageWidth = windowWidth <= 700 ? 250 : 500;
   let imageHeight = picture?.ratio ? imageWidth/picture?.ratio : 0;
-  const maxHeight = 0.85 * windowHeight
+  const maxHeight = 0.85 * windowHeight;
   imageHeight = imageHeight > maxHeight ? maxHeight : imageHeight;
   return open ? <div onClick={() => hide("merch")} className="cursor-zoom-out fixed px-12 flex justify-center items-center scrollbar-hide z-[100] w-full h-full bg-[rgb(0,0,0,0.5)]">
     <div className="relative flex ">
         {picture && <Image objectFit="cover" src={picture?.url ?? ""} alt="merch_image" className="merch_modal_image" layout="fixed" width={imageWidth} height={imageHeight}/>}
-      <div onClick={() => hide("merch")} className="cursor-pointer ml-2 h-min w-min rounded-full bg-white dark:bg-blue-400">
+      <div onClick={() => hide("merch")} className="absolute -right-12 cursor-pointer ml-2 h-min w-min rounded-full bg-white dark:bg-blue-400">
         <IoCloseSharp className="dark:text-white text-blue-400 text-2xl md:text-4xl"/>
       </div>
     </div>

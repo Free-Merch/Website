@@ -45,7 +45,7 @@ const AboutUs = () => {
     <div>
       <h2 className="text-3xl font-semibold">How Do We Achieve This?</h2>
       <br />
-      <p>We take a creative and relatable approach to distributing merch, creating awareness, adoption, and rewarding existing users while creating unique stories and using merch for social impacts. Here are some of our approaches.</p>
+      <p>We take a creative and relatable approach to distributing merch, creating awareness, adoption, and rewarding existing users while creating unique stories and using merch for social impacts. Here are some of our approaches:</p>
       <br />
       <br />
       <ul className="flex flex-wrap child:rounded-md dark:child:text-white 
@@ -119,7 +119,7 @@ const AboutUs = () => {
             For collectors, it serves as proof of participation and active involvement in Blockchain and crypto related activities.
           </li>
           <li className="radial-initiative">
-            Oftentimes the drive for people to attend events.
+            Frequently drives people to attend events.
           </li>
           <li className="radial-initiative">
             Provides an easy approach to crypto and general Blockchain Education.

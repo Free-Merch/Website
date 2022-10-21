@@ -81,7 +81,7 @@ const getCampaign = async (id: string): Promise<Campaign & {questions :Question[
   const {name, brand: brandId, description, active, identifier, merchandise: merchData, questions: _questions} = data?.campaign?.data?.attributes;
   const brand: Brand = brands[brandId] ?? {
     logo: {width:20, height:20, alternativeText: "...", url: "", name: "...", ratio: 1}, 
-    logoBgColor: "#ffffff", description: "", links: {}, id: "0"
+    logoBgColor: "#ffffff", description: "", links: {}, id: 0
   };
 
   const merchandise = merchData?.data?.map( (merch: any) => {

@@ -56,21 +56,21 @@ const ContactUs = () => {
         <p className="font-semibold text-lg">Follow Us</p>
         <p className="mt-[5px] mb-[14px]">Reach us on social media</p>
         <div className="flex gap-2 justify-end">
-          <Link href="https://twitter.com/getFreemerch">
+          <a target="_blank" rel="noreferrer" href="https://twitter.com/getFreemerch">
             <div className="rounded-full h-[26px] w-[26px] cursor-pointer max-w-min bg-blue-400 p-[5px] dark:bg-white">
               <BsTwitter className="" fill="#ffffff" />
             </div>
-          </Link>
-          <Link href="https://t.me/getfreemerch">
+          </a>
+          <a rel="noreferrer" target="_blank" href="https://t.me/getfreemerch">
             <div className="rounded-full h-[26px] w-[26px] cursor-pointer max-w-min bg-blue-400 dark:bg-white p-[5px]">
               <FaTelegramPlane className="" fill="#ffffff" />
             </div>
-          </Link>
-          <Link href="https://www.instagram.com/getfreemerch.io/">
+          </a>
+          <a rel="noreferrer" target="_blank" href="https://www.instagram.com/getfreemerch.io/">
             <div className="rounded-[10px] cursor-pointer max-w-min bg-blue-400 dark:bg-white">
               <AiFillInstagram className="h-[26px] w-[26px]" fill="#ffffff" />
             </div>
-          </Link>
+          </a>
         </div>
       </div>
     </div>

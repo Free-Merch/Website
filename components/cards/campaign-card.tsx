@@ -43,7 +43,7 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
     <Link href={`/campaigns/${id}`}>
       <div className={`m-[20px]`}>
         <div className="flex mb-[4px] justify-between items-center" onClick={(e) => e.stopPropagation()}>
-          <Link href={`/brands/${brandId}`} >
+          <Link href={`/brands/${brand}`} >
             <div className="flex bg-grey-100 max-w-max py-[8px] px-[8px] rounded-[15px] items-center" >
               <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded h-[24px] w-[24px] flex items-center justify-center`}
                 style={{backgroundColor: `${bgColor}`}}
@@ -92,9 +92,9 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
 export const CampaignCardSkeleton = () => {
 
   return <SkeletonTheme>
-    <div className={`bg-grey-200 min-w-[163px] w-[399px] max-w-[399px] p-2 rounded`}>
-      <div className="w-full h-[50px] flex mb-6 items-center">
-        <div className="h-[50px] w-[40px]"><Skeleton className="h-[50px]" /> </div> <div className=" ml-2 w-1/2"><Skeleton /></div>
+    <div className={`bg-grey-200 min-w-[163px] py-[20px] w-[399px] max-w-[399px] px-[20px] md:px-[40px] rounded`}>
+      <div className="w-full  flex mb-[20px] items-center">
+       <div className="w-1/2"><Skeleton /></div>
       </div>
 
       <div className="w-3/4"><Skeleton /></div>
@@ -105,11 +105,11 @@ export const CampaignCardSkeleton = () => {
       <p className="w-full h-4 md:h-2  mb-2">
         <Skeleton />
       </p>
-      <p className="w-full h-4 md:h-2  mb-6">
+      <p className="w-full h-4 md:h-2  mb-2">
         <Skeleton />
       </p>
       
-      <div className="flex gap-2 child:h-[50px] child:w-[40px]">
+      <div className="flex gap-2 mt-[20px] child:h-[50px] child:w-[40px]">
         <div><Skeleton className="h-[50px]" /></div>
         <div><Skeleton className="h-[50px]" /></div>
         <div><Skeleton className="h-[50px]" /></div>

@@ -20,8 +20,8 @@ const checkFileSizes = (size: number) => (files?: File[]) => {
 
 // regexes
 const twitterProfileRegex = /(https:\/\/twitter.com\/(?![a-zA-Z0-9_]+\/)([a-zA-Z0-9_]+))|^$/;
-const twitterPost = /^https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+)/;
-const username = /@[a-zA-Z0-9_]+/;
+const twitterPost = /(^https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+))|^$/;
+const username = /(@[a-zA-Z0-9_]+)|^$/;
 
 const imageValidation = yup.string().test({
   name: "type-check", 

@@ -134,6 +134,7 @@ a {
 }
 .dark .autofill-none:-webkit-autofill{
     -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff;
 }
 
 .autofill-none,
@@ -146,6 +147,7 @@ a {
 }
 .autofill-none:-webkit-autofill{
     -webkit-text-fill-color: #667085 !important;
+    caret-color: #667085;
 }
 
 .image-text{

@@ -15,6 +15,7 @@ import { FormClient } from "../../helpers/formClient";
 import getQueComponent from "../../helpers/getQueComponent";
 import { Button } from "../buttons";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export {
   ImageInput,
@@ -24,6 +25,7 @@ export {
 interface IForm {
   questions: Question[]
   id: string,
+  pathId: number,
   name: string
   active: boolean
 }
@@ -31,34 +33,60 @@ interface IForm {
 type IFormInputs = {[key:string]:string}
 
 
-const Form = ({questions, id, name, active}: IForm) => {
+const Form = ({questions, id, name, active, pathId}: IForm) => {
   let schema: {[key: string]: yup.AnySchema} = {}
   questions.forEach(question => {
     schema[question.name] = validationSchemas[
       question?.validation?.toLowerCase() as keyof typeof validationSchemas
     ] ?? validationSchemas["text"]
+    if(question.required){
+      schema[question.name] = schema[question.name].required();
+    }
   })
 
-  const { register, handleSubmit, formState:{ errors } } = useForm({
+  const { register, getValues, setValue: _setValue, handleSubmit, reset, clearErrors, formState:{ errors }, setFocus: __setFocus } = useForm({
     resolver: yupResolver(yup.object(schema).required()),
     mode: "onBlur"
   });
+
+
+  console.log(getValues(), "getValues", errors);
   
   const [values, setValues] = useState<{[key: string]: string}>({});
   const onChange = (key: string) => (value: string) => {
     setValues((_values) => { return {..._values, [key]: value}})
+    _setValue(key, value)
   }
 
+  const {push} = useRouter()
   const [ready, setReady] = useState<boolean>(false);
-  const [focus, _setFocus] = useState<boolean[]>(Array(6).map(() => false))
+  const [focus, _setFocus] = useState<boolean[]>(Array(6).map(() => false));
   const setFocus = (index: number, value: boolean) => {
     const newFocus = focus.map(() => false)
     newFocus[index] = value;
+    // if(value) __setFocus(questions[index].name);
     _setFocus(newFocus);
   }
 
   const { show } = useModalContext();
   const {theme} = useThemeContext();
+
+  const checkErrors = (_errors: typeof errors, ) => {
+    const entries = Object.entries(_errors);
+    if(entries.length > 1){
+      let index: number ;
+      let name = entries[0][0];
+      for(let i = 0; i < questions.length; i++){
+        const question = questions[i]
+        if(question.name === name) {
+          index = question.index - 2;
+          name = index >= 0 ? questions[index].name : "top";
+        }
+      }
+      const path = `/campaigns/${pathId}#${name}`;
+      push(path);
+    }
+  }
 
   const onSubmit = async (data: IFormInputs) => {
     show("submitForm", {open: true, progress: "Sending"})
@@ -85,24 +113,21 @@ const Form = ({questions, id, name, active}: IForm) => {
   })
 
   useEffect(() => {
+    return () => {
+      reset();
+      clearErrors();
+    }
+  }, [])
+
+  useEffect(() => {
     if(active){
       setFocus(0, true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-    if(Object.keys(errors).length === 0 && Object.keys(values).length === questions.length){
-      const _ready = Object.values(values).reduce((oldValue, currValue) => {
-        return oldValue && currValue ? true : false
-      }, true)
-      setReady(_ready);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [errors, values]);
-
   return <form className={`${!active && ""} w-full relative  mt-[40px] `}
-    onSubmit={handleSubmit(onSubmit)} 
+    onSubmit={handleSubmit(onSubmit, checkErrors)} 
   >
     {!active && 
       <>
@@ -119,7 +144,7 @@ const Form = ({questions, id, name, active}: IForm) => {
       {!active && <div className="mt-[20px]"></div>}
       {queComponents}
       {active && <div className="px-[21px] w-full">
-        <Submit active={ready} onClick={() => {}}/>
+        <Submit active={true} onClick={() => {}}/>
       </div>}
     </div>
   </form>

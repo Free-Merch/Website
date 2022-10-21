@@ -60,7 +60,7 @@ const Brand = (props: {brand: Brand}) => {
 
   return <div className="my-12 mt-[60px]">
     <Head>
-      <title>`${brand.name}` - Freemerch</title>
+      <title>{brand.name} - Freemerch</title>
       <meta name="description" content={`${brand.description}`}/>
       {/* Twitter tags */}
       <meta name="twitter:card" content="summary_large_image" />

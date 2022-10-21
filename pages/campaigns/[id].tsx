@@ -37,7 +37,7 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
 
   return <div>
     <Head>
-      <title>${name} - Freemerch</title>
+      <title>{name} - Freemerch</title>
       <meta name="description" content={`${description}`}/>
       {/* Twitter tags */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -74,18 +74,18 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       </div>
       
       <div>
-        <p className="text-blue-400 dark:text-white leading-[38px] font-semibold text-[24px]">${name}</p>
-        <p className="dark:text-white leading-[24px] text-[14px]">${description}</p>
+        <p className="text-blue-400 dark:text-white leading-[38px] font-semibold text-[24px]">{name}</p>
+        <p className="dark:text-white leading-[24px] text-[14px]">{description}</p>
       </div>
 
-      <div className="mt-[40px]">
+      <div className="mt-[40px]" id="top" >
         <p className="mb-[8px]">Rewards:</p>
         <div className="flex gap-[10px]">
           {images}
         </div>
       </div>
 
-      <Form questions={questions} id={identifier} name={name} active={active} />
+      <Form questions={questions} id={identifier} pathId={id} name={name} active={active} />
     </div>
     <div className="mt-[103px] w-full">
       <p className="text-blue-400 mb-[4px] mt-[50px] dark:text-white font-semibold text-xl text-center">Also View</p>

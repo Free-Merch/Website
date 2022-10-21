@@ -1,6 +1,7 @@
 import {HiOutlineMail} from "react-icons/hi";
 import {FaTelegramPlane} from "react-icons/fa";
-import {BsTwitter, BsDiscord, BsInstagram, BsTelegram, BsFillHouseFill} from "react-icons/bs";
+import {BsTwitter, BsDiscord, BsInstagram} from "react-icons/bs";
+import { MdLocationOn } from "react-icons/md";
 
 const formImages = {
   "twitter": (className: string) => <BsTwitter className={`${className}`}/>,
@@ -9,7 +10,7 @@ const formImages = {
   "telegram": (className: string) => <FaTelegramPlane className={`${className}`} />,
   "discord": (className: string) => <BsDiscord className={`${className}`}/>,
   "tweet": (className: string) => <BsTwitter className={`${className}`}/>,
-  "house": (className: string) => <BsFillHouseFill className={`${className}`}/>,
+  "house": (className: string) => <MdLocationOn className={`${className}`}/>,
 }
 
 export default formImages;

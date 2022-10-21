@@ -50,7 +50,7 @@ const useCampaigns = (brand?: string): Campaign[] => {
       return merch.attributes;
     })
     return {
-      name, id, brand, description, active, identifier, merchandise
+      name, id: parseInt(id), brand, description, active, identifier, merchandise
     }
   });
   

@@ -37,6 +37,7 @@ const getQueComponent = (
       register={register}
       value={values[props.name]} 
       onChange={onChange(props.name)}
+      error={errors[props.name]?.message || ""}
     />,
     "IMAGE": (props: IImageInput) => <ImageInput {...props} 
       index={index}
@@ -45,6 +46,7 @@ const getQueComponent = (
       register={register}
       value={values[props.name]} 
       onChange={onChange(props.name)}
+      error={errors[props.name]?.message || ""}
     />
   }
 
