@@ -41,13 +41,14 @@ const questionExtractors = {
 }
 
 export const extractQuestions = (questions: {[key:string]: any[]}) => {
-  const extractedQuestions: Question[] = [];
+  let extractedQuestions: Question[] = [];
   Object.entries(questionExtractors).forEach(([type, extractor]) => {
     questions[type].forEach(question => {
       extractedQuestions.push(extractor(question))
     })
   })
 
+  extractedQuestions = extractedQuestions.map(q => ({...q, index: q.index-1 }))
   return extractedQuestions.sort((a, b) => {
     return a.index < b.index ? -1 : 1
   })

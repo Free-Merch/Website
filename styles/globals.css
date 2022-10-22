@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-family: 'Readex Pro', sans-serif;
   font-weight: 400;
+  scroll-behavior: smooth;
 }
 
 #__next{

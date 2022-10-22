@@ -22,8 +22,8 @@ const CampaignsSnippet = ({exclude}: {exclude?: number}) => {
   })
 
   const skeletons = <div className="flex flex-wrap gap-3 justify-center items-center">
-    <CampaignCardSkeleton key={0} />,
-    <CampaignCardSkeleton key={1} />,
+    <CampaignCardSkeleton key={0} />
+    <CampaignCardSkeleton key={1} />
     <CampaignCardSkeleton key={2} />
   </div>
 

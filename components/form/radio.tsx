@@ -28,7 +28,7 @@ const RadioInput = (props: IRadioInput1) => {
           <label 
             htmlFor={text} 
             className="flex items-center cursor-pointer"
-            onClick={() => onChange(text)}
+            onClick={(e) => {e.stopPropagation(), onChange(text)}}
           >
           <div className={
               `inline-block w-[17px] mr-1 h-[17px] border rounded-full ${focus || value ? "border-blue-400 dark:border-white" : "dark:border-grey-300"} 

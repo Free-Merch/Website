@@ -192,6 +192,8 @@ const Home: NextPage = () => {
     <div key={index} className="w-[700px] h-[50px] mb-2 mx-auto"><Skeleton containerClassName='w-full h-full' className='w-full h-full' /></div>
   ))
 
+  const catchTexts = ["", "", ""]
+
   return (
     <Layout className="h-full overflow-hidden bg-grey-100 dark:bg-blue-900 py-10 px-[12px] md:px-24 text-sm text-grey-300 dark:text-grey-400 overflow-y-hidden">
       {/* bg ellipses */}
@@ -212,12 +214,34 @@ const Home: NextPage = () => {
       </Head>
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto pt-[51px]'>
         <div className="text-start xl:w-2/4 mt-2 md:mt-32 ">
-          <h1 className="text-[40px] leading-[44px] md:text-6xl font-semibold text-green-100 max-w-[800px]">
-            <span className="dark:text-white text-blue-400">Rewards,</span> for adoption
-          </h1>
+          <div className="text-[40px] flex flex-wrap relative leading-[44px] md:text-6xl font-semibold text-green-100 max-w-[800px]">
+            <span className="dark:text-white text-blue-400">Rewards,&nbsp;</span>
+            <Splide 
+              draggable={false} 
+              aria-labelledby="Gallery" hasTrack={false} options={
+                {
+                  pagination:false, gap: 18, arrows: false, direction: "ttb", 
+                  autoplay: true, height: "60px", type: "loop", interval: 5000
+                }
+              } className="w-full"
+              
+            >
+              <SplideTrack className="">
+                 <SplideSlide className="">
+                  for contribution
+                </SplideSlide>
+                <SplideSlide className="">
+                  for adoption
+                </SplideSlide>
+                <SplideSlide className="">
+                  for participation
+                </SplideSlide>
+              </SplideTrack>
+            </Splide>
+          </div>
 
-          <p className="my-[30px] max-w-[700px] font-normal text-[14px] md:text-[20px] leading-[20px] md:leading-[28px]">
-            Get merchandise from leading brands when you participate in any of our campaigns. Create a loyalty campaign to reward existing users and reach new audiences and communities for your brand.
+          <p className="mt-[20px] mb-[30px]  md:my-[30px] max-w-[700px] font-normal text-[14px] md:text-[20px] leading-[20px] md:leading-[28px]">
+            Get merchandise from leading brands when you participate in any of our campaigns. Reward existing users and reach new audiences with loyalty campaigns for your brand.
           </p>
           
           <div className="flex w-full max-w-max justify-start flex-wrap">
@@ -328,7 +352,7 @@ const Home: NextPage = () => {
 
       {/* Communities */}
       <div className="mt-[100px] relative mx-auto">
-        <h4 className="text-3xl font-semibold text-blue-400 dark:text-white">Community Partners</h4>
+        <h4 className="text-3xl font-semibold text-blue-400 w-[80%] dark:text-white">Community Partners</h4>
         <div className="mx-auto relative">
           <Splide aria-labelledby="Communities Slideshow" hasTrack={false} options={{pagination:false}}>
             <div className="static mt-[69px]">

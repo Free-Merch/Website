@@ -70,9 +70,9 @@ const ImageInput = (props: IImageInput1) => {
       <div className={`${!focus && !file ? "text-grey-300 border-grey-300" : "dark:text-white text-blue-400"}  items-center w-full rounded border border-dashed justify-center 
         ${!file && focus && "border-blue-400 dark:border-white"} ${_error && file ? "border-red-150" : ""} ${ file && !_error ? "border-green-100": ""} `}>
         {!file ?
-          <label htmlFor="fileUpload" className="flex items-center justify-center py-[16px] h-full w-full cursor-pointer">
+          <label htmlFor="fileUpload" onClick={e => e.stopPropagation()} className="flex items-center justify-center py-[16px] h-full w-full cursor-pointer">
             <MdDriveFolderUpload className="text-[20px] inline-block mr-[2px]" /> Upload File
-            <input id="fileUpload" onChange={uploadFile} className="opacity-0 w-0 h-0" type="file" accept="image/*"/>
+            <input id="fileUpload" onChange={e => {e.stopPropagation(); uploadFile(e)}} className="opacity-0 w-0 h-0" type="file" accept="image/*"/>
           </label>
           :
           <div className="flex items-center justify-between py-[16px] px-[13px] h-full w-full">
@@ -84,7 +84,7 @@ const ImageInput = (props: IImageInput1) => {
                 </span>
               </span>
             }
-            <button onClick={() => {onChange(""); setFile(undefined), setError("")}}> 
+            <button onClick={(e) => { e.stopPropagation(), onChange(""); setFile(undefined), setError("") }}> 
               {uploading 
               ?
                 <AiOutlineLoading3Quarters className="text-green-100 animate-spin text-[23px]" />

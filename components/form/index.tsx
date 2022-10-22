@@ -50,7 +50,6 @@ const Form = ({questions, id, name, active, pathId}: IForm) => {
   });
 
 
-  console.log(getValues(), "getValues", errors);
   
   const [values, setValues] = useState<{[key: string]: string}>({});
   const onChange = (key: string) => (value: string) => {
@@ -59,12 +58,16 @@ const Form = ({questions, id, name, active, pathId}: IForm) => {
   }
 
   const {push} = useRouter()
-  const [ready, setReady] = useState<boolean>(false);
   const [focus, _setFocus] = useState<boolean[]>(Array(6).map(() => false));
   const setFocus = (index: number, value: boolean) => {
     const newFocus = focus.map(() => false)
     newFocus[index] = value;
-    // if(value) __setFocus(questions[index].name);
+    if(value === true && index > 0){
+      index = index-1;
+      name = questions[index].name
+      const path = `/campaigns/${pathId}#${name}`;
+      push(path);
+    }
     _setFocus(newFocus);
   }
 
@@ -72,6 +75,7 @@ const Form = ({questions, id, name, active, pathId}: IForm) => {
   const {theme} = useThemeContext();
 
   const checkErrors = (_errors: typeof errors, ) => {
+    console.log(_errors);
     const entries = Object.entries(_errors);
     if(entries.length > 1){
       let index: number ;
@@ -79,7 +83,7 @@ const Form = ({questions, id, name, active, pathId}: IForm) => {
       for(let i = 0; i < questions.length; i++){
         const question = questions[i]
         if(question.name === name) {
-          index = question.index - 2;
+          index = question.index - 1;
           name = index >= 0 ? questions[index].name : "top";
         }
       }
@@ -112,19 +116,18 @@ const Form = ({questions, id, name, active, pathId}: IForm) => {
     </div>
   })
 
-  useEffect(() => {
-    return () => {
-      reset();
-      clearErrors();
-    }
-  }, [])
 
   useEffect(() => {
     if(active){
       setFocus(0, true)
     }
+    return () => {
+      reset();
+      clearErrors();
+    }
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [pathId])
 
   return <form className={`${!active && ""} w-full relative  mt-[40px] `}
     onSubmit={handleSubmit(onSubmit, checkErrors)} 
