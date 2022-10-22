@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { ThemeType } from "../types";
 
-const useTheme = () => {
-  const [theme, setTheme] = useState<ThemeType>("light")
+
+export const ThemeContext = createContext({theme: "dark", setTheme: (theme: ThemeType) => {}});
+
+const ThemeContextProvider = ({children}: {children: ReactNode}) => {
+  const [theme, setTheme] = useState<ThemeType>("dark")
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -17,10 +20,9 @@ const useTheme = () => {
     localStorage.setItem("theme", theme);
   }
 
-  return {
-    setTheme: handleSetTheme,
-    theme
-  }
+  return <ThemeContext.Provider value={{theme, setTheme: handleSetTheme}}>
+    {children}
+  </ThemeContext.Provider>
 }
 
-export default useTheme;
+export default ThemeContextProvider;

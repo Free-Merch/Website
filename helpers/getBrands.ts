@@ -7,7 +7,7 @@ const brandsQuery = (id: string, name: string) => gql`
     brands(filters: 
       {
         id: ${ id ? "{eq:"+ id + "}" : "{}"},
-        name: ${ name ? "{eq:"+ name + "}" : "{}"}
+        name: ${ name ? "{eq:\""+ name + "\"}" : "{}"}
       },
       sort: ["id"]
     ) {
@@ -34,9 +34,9 @@ const brandsQuery = (id: string, name: string) => gql`
   }
 `; 
 
-const useBrands = (id?: string, name?: string):  Brand[] => {
-  const { data } = useQuery(brandsQuery(id ?? "", name ?? ""), {client});
-  let brands: Brand[] = [];
+const getBrands = async (id?: string, name?: string): Promise<Brand[]> => {
+  const { data } = await client.query({query: brandsQuery(id ?? "", name ?? "")})
+  let brands: Brand[] =[];
   // @ts-ignore
   brands.push({});
   data?.brands?.data.forEach((brand:any) => {
@@ -45,15 +45,15 @@ const useBrands = (id?: string, name?: string):  Brand[] => {
     logo = {...logo.data.attributes};
     logo.ratio = logo.width/logo.height;
     brands.push({
-      name, links,
+      name, links: links,
+      id,
       description, 
       logo,
       logoBgColor,
-      id
     })
   });
 
   return brands;
 }
 
-export default useBrands;
+export default getBrands;

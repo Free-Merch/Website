@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Banner from "./banner";
 import Footer from "./footer";
 import {DesktopNav, MobileNav} from "./navigation";
@@ -6,6 +5,7 @@ import { useContext, useState } from "react";
 import ModalContextProvider, { ModalContext } from "../context/modalContext";
 import ApolloContextProvider from "../context/apolloContext";
 import { useRouter } from "next/router";
+import ThemeContextProvider from "../context/themeContext";
 
 
 const Layout = ({children, mainClass, ...others}: {[key:string]: any}) => {
@@ -47,7 +47,9 @@ const Layout = ({children, mainClass, ...others}: {[key:string]: any}) => {
 const Component = (props: any) => (
   <ApolloContextProvider>
     <ModalContextProvider>
-      <Layout {...props} />
+      <ThemeContextProvider>
+        <Layout {...props} />
+      </ThemeContextProvider>
     </ModalContextProvider>
   </ApolloContextProvider>
 )

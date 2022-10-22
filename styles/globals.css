@@ -6,8 +6,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Readex Pro', sans-serif;
   font-weight: 400;
+  scroll-behavior: smooth;
 }
 
 #__next{
@@ -124,6 +125,45 @@ a {
   -webkit-box-orient: vertical;
 }
 
+.dark .autofill-none,
+.dark .autofill-none:-webkit-autofill,
+.dark .autofill-none:-webkit-autofill:hover, 
+.dark .autofill-none:-webkit-autofill:focus, 
+.dark .autofill-none:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #050624 inset !important;
+    box-shadow: 0 0 0 30px #050624 inset !important;
+}
+.dark .autofill-none:-webkit-autofill{
+    -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff;
+}
+
+.autofill-none,
+.autofill-none:-webkit-autofill,
+.autofill-none:-webkit-autofill:hover, 
+.autofill-none:-webkit-autofill:focus, 
+.autofill-none:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+    box-shadow: 0 0 0 30px #FFFFFF inset !important;
+}
+.autofill-none:-webkit-autofill{
+    -webkit-text-fill-color: #667085 !important;
+    caret-color: #667085;
+}
+
+.image-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+          line-clamp: 1; 
+  -webkit-box-orient: vertical;
+}
+
+.description-link a{
+  color: #2EC866;
+}
+
 
 @media only screen and (min-width: 768px){
   .dark .ellipsis{
@@ -143,3 +183,4 @@ a {
     display: none;
   }
 }
+
