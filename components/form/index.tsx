@@ -75,7 +75,6 @@ const Form = ({questions, id, name, active, pathId}: IForm) => {
   const {theme} = useThemeContext();
 
   const checkErrors = (_errors: typeof errors, ) => {
-    console.log(_errors);
     const entries = Object.entries(_errors);
     if(entries.length > 1){
       let index: number ;
