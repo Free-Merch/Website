@@ -12,6 +12,7 @@ import getCampaign from "../../helpers/getCampaign";
 import CampaignsSnippet from "../../components/campaignsSnippet";
 import { linkImages } from "../../hooks/images";
 import Head from "next/head";
+import MarkdownView from "react-showdown";
 
 const Campaign = (props: {campaign: Campaign_Q}) => {
   const {width: width1} = useElementSize()
@@ -46,7 +47,7 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       <meta name="twitter:description" 
         content={`${description}`}
       />
-      <meta name="twitter:image" content={`${merchandise[0].url}`} />
+      <meta name="twitter:image" content={`${merchandise[0]?.url}`} />
     </Head>
       <div className="mb-[100px] max-w-[886px] mx-auto scroll-smooth">
       <div className="w-full relative flex justify-between cursor-pointer items-center h-[120px]">
@@ -75,7 +76,9 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       
       <div>
         <p className="text-blue-400 dark:text-white leading-[38px] font-semibold text-[24px]">{name}</p>
-        <p className="dark:text-white leading-[24px] text-[14px]">{description}</p>
+        <p className="dark:text-white leading-[24px] text-[14px]">
+          <MarkdownView markdown={description}></MarkdownView>
+        </p>
       </div>
 
       <div className="mt-[40px]" id="top" >

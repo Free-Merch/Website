@@ -54,9 +54,9 @@ const Brand = (props: {brand: Brand}) => {
   })
 
   const CampaignCardSkeletons = [<CampaignCardSkeleton key={1}/>, <CampaignCardSkeleton key={2} />, <CampaignCardSkeleton key={3} />, <CampaignCardSkeleton key={4} />]
-  const logoWidth = 70
-  let logoHeight = logoWidth*brand.logo.ratio;
-  logoHeight = logoHeight > 100 ? 80 : logoHeight;
+  let logoWidth = 70
+  let logoHeight = logoWidth/brand.logo.ratio;
+  [logoHeight, logoWidth] = logoHeight > 100 ? [80, 80*brand.logo.ratio] : [logoHeight, logoWidth];
 
   return <div className="my-12 mt-[60px]">
     <Head>
@@ -142,6 +142,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const letters = brandName.toLowerCase().split("")
   letters[0] = letters[0].toUpperCase()
   brandName = letters.join("");
+
   try {
     const brand = (await getBrands("",  brandName))[1];
     return {
