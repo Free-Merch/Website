@@ -63,13 +63,11 @@ const Brand = (props: {brand: Brand}) => {
       <title>{brand.name} - Freemerch</title>
       <meta name="description" content={`${brand.description}`}/>
       {/* Twitter tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content={`${brand.name} - Freemerch`}/>
-      <meta name="twitter:description" 
+      <meta name="og:title" content={`${brand.name} - Freemerch`}/>
+      <meta name="og:description" 
         content={`${brand.description}`}
       />
-      <meta name="twitter:image" content={`${brand.logo.url}`} />
+      <meta name="og:image" content={`${brand.logo.url}`} />
     </Head>
 
     <div className="w-full mx-auto pt-[60px]">

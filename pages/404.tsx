@@ -11,12 +11,11 @@ const CatchPage = () => {
       <title>404 - Freemerch</title>
       <meta name="description" content="Content not Found" />
       {/* Twitter tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content="Content not found" />
-      <meta name="twitter:description" content="We can't find the content you are looking for. You can win a merch by participating in any of our campaings." 
+      <meta name="og:title" content="Content not found" />
+      <meta name="og:description" content="We can't find the content you are looking for. You can win a merch by participating in any of our campaings." 
       />
-      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
+      <meta name="og:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
+      <meta name="robot" content="noindex,nofollow" />
     </Head>
     <div className="relative w-[301px] h-[195px] mx-auto mb-[40px]">
       <Image className="dark-404" src="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1661498127/Illustration_dark_nsqxhu.svg" layout="fill" alt="free merch logo" />

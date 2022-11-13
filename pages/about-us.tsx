@@ -11,12 +11,10 @@ const AboutUs = () => {
         <title>About Us - Freemerch</title>
         <meta name="description" content="All the information you want about Freemerch" />
         {/* Twitter tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@getFreemerch" />
-        <meta name="twitter:title" content="All the information you want about Freemerch" />
-        <meta name="twitter:description" content="Curious about Freemerch? All the information about how you we can help your brands is right here." 
+        <meta name="og:title" content="All the information you want about Freemerch" />
+        <meta name="og:description" content="Curious about Freemerch? All the information about how you we can help your brands is right here." 
         />
-        <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
+        <meta name="og:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
       </Head>
     </div>
     <div className="flex flex-col md:flex-row justify-between items-center pt-[74px]">

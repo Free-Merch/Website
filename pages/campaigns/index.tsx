@@ -56,13 +56,11 @@ const Campaigns = () => {
       <title>Campaigns - Freemerch</title>
       <meta name="description" content="Win a merch when you participate in any of our campaigns."/>
       {/* Twitter tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content="Campaigns - Freemerch" />
-      <meta name="twitter:description" 
+      <meta name="og:title" content="Campaigns - Freemerch" />
+      <meta name="og:description" 
         content="Win a merch when you participate in any of our campaigns." 
       />
-      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
+      <meta name="og:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
 
     </Head>
     <div className="flex justify-between pt-[50px] mb-[80px]">

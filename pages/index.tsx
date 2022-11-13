@@ -203,13 +203,11 @@ const Home: NextPage = () => {
           <meta name="description" content="Win free branded merchandise when you join campaings & 
             promote your brand when you create campaigns." />
           {/* Twitter tags */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@getFreemerch" />
-          <meta name="twitter:title" content="Freemerch Homepage" />
-          <meta name="twitter:description" content="Win free branded merchandise when you join campaings & 
+          <meta name="og:title" content="Freemerch Homepage" />
+          <meta name="og:description" content="Win free branded merchandise when you join campaings & 
             promote your brand when you create campaigns." 
           />
-          <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663858269/coverr-02-02_ciidge.png" />
+          <meta name="og:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663858269/coverr-02-02_ciidge.png" />
 
       </Head>
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto pt-[51px]'>

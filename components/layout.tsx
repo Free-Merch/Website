@@ -6,6 +6,7 @@ import ModalContextProvider, { ModalContext } from "../context/modalContext";
 import ApolloContextProvider from "../context/apolloContext";
 import { useRouter } from "next/router";
 import ThemeContextProvider from "../context/themeContext";
+import Head from "next/head";
 
 
 const Layout = ({children, mainClass, ...others}: {[key:string]: any}) => {
@@ -23,7 +24,13 @@ const Layout = ({children, mainClass, ...others}: {[key:string]: any}) => {
       ${ pathname.toLowerCase() === "/contact-us".toLowerCase() && "flex flex-col" }
       ${mainClass}
       relative pb-[60px] min-h-screen bg-grey-100 dark:bg-blue-900`
-    }>
+    }>  
+      <Head>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@nonseodion" />
+        <meta name="twitter:site" content="@getfreemerch" />
+      </Head>
+
       <div className="fixed z-10 w-full">
         <Banner />
         <DesktopNav openMobileNav={openMobileNav} mobileNavOpen={openNav}/>

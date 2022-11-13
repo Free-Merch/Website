@@ -41,13 +41,11 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       <title>{name} - Freemerch</title>
       <meta name="description" content={`${description}`}/>
       {/* Twitter tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content={`${name} - Freemerch`} />
-      <meta name="twitter:description" 
+      <meta name="og:title" content={`${name} - Freemerch`} />
+      <meta name="og:description" 
         content={`${description}`}
       />
-      <meta name="twitter:image" content={`${merchandise[0]?.url}`} />
+      <meta name="og:image" content={`${merchandise[0]?.url}`} />
     </Head>
       <div className="mb-[100px] max-w-[886px] mx-auto scroll-smooth">
       <div className="w-full relative flex justify-between cursor-pointer items-center h-[120px]">
