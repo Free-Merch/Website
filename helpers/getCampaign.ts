@@ -7,7 +7,6 @@ import getBrands from './getBrands';
 const campaignToIdMap: {[key:string]: string} = {};
 
 const createMap = async () => {
-  console.log("creating map");
   const campaignsData = (await client.query({query: gql`
     query {
       campaigns {

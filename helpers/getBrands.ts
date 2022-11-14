@@ -5,7 +5,6 @@ import { Brand } from '../types';
 const brandsToIdMap: {[key:string]: string} = {};
 
 const createMap = async () => {
-  console.log("creating map");
   const brandsData = (await client.query({query: gql`
     query {
       brands {
