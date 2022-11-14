@@ -2,12 +2,31 @@ import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
 import { Brand } from '../types';
 
-const brandsQuery = (id: string, name: string) => gql`
+const brandsToIdMap: {[key:string]: string} = {};
+
+const createMap = async () => {
+  const brandsData = (await client.query({query: gql`
+    query {
+      brands {
+        data{
+          id
+          attributes {
+            name
+          }
+        }
+      }
+    }
+  `}));
+
+  brandsData.data.brands.data.map(({id, attributes: {name}}: {id: string, attributes: {name: string}}) => {
+    brandsToIdMap[name.toLowerCase().replace(/\s+/g, "-")] = id;
+  });
+}
+const brandsQuery = (id?: string) => gql`
     query {
     brands(filters: 
       {
         id: ${ id ? "{eq:"+ id + "}" : "{}"},
-        name: ${ name ? "{eq:\""+ name + "\"}" : "{}"}
       },
       sort: ["id"]
     ) {
@@ -34,8 +53,14 @@ const brandsQuery = (id: string, name: string) => gql`
   }
 `; 
 
-const getBrands = async (id?: string, name?: string): Promise<Brand[]> => {
-  const { data } = await client.query({query: brandsQuery(id ?? "", name ?? "")})
+setInterval(createMap, 120000);
+
+const getBrands = async (id?: string): Promise<Brand[]> => {
+  if(Object.keys(brandsToIdMap).length == 0){
+    await createMap();
+  }
+  id = (id && brandsToIdMap[id]) ? brandsToIdMap[id] : id;
+  const { data } = await client.query({query: brandsQuery(id)})
   let brands: Brand[] =[];
   // @ts-ignore
   brands.push({});

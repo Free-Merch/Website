@@ -63,13 +63,11 @@ const Brand = (props: {brand: Brand}) => {
       <title>{brand.name} - Freemerch</title>
       <meta name="description" content={`${brand.description}`}/>
       {/* Twitter tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content={`${brand.name} - Freemerch`}/>
-      <meta name="twitter:description" 
+      <meta name="og:title" content={`${brand.name} - Freemerch`}/>
+      <meta name="og:description" 
         content={`${brand.description}`}
       />
-      <meta name="twitter:image" content={`${brand.logo.url}`} />
+      <meta name="og:image" content={`${brand.logo.url}`} />
     </Head>
 
     <div className="w-full mx-auto pt-[60px]">
@@ -86,7 +84,7 @@ const Brand = (props: {brand: Brand}) => {
 
       <div className="flex items-center justify-between mt-[10px] mb-[10px]">
         <div className="flex items-center">
-          <span className="capitalize font-semibold text-[20px] dark:text-white text-blue-900">{brand.name}</span>
+          <h1 className="capitalize inline font-semibold text-[20px] dark:text-white text-blue-900">{brand.name}</h1>
           &nbsp;
           <div className="relative">
             <span className="absolute bg-white top-1/2 left-1/2 -z-[1] -translate-x-1/2 -translate-y-1/2 inline-block h-[8px] w-[8px]"></span>
@@ -139,12 +137,10 @@ export default NewComponent;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   let brandName = context.query?.brand as string
-  const letters = brandName.toLowerCase().split("")
-  letters[0] = letters[0].toUpperCase()
-  brandName = letters.join("");
+  brandName = brandName.toLowerCase().replace(/\s+/g, "-");
 
   try {
-    const brand = (await getBrands("",  brandName))[1];
+    const brand = (await getBrands(brandName))[1];
     return {
       props: brand
     }

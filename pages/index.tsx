@@ -61,11 +61,11 @@ const Home: NextPage = () => {
     },
     {
       question: "How can I get branded merch?",
-      answer: <span><span className='text-green-100'><Link href={"/campaigns"}>Participate in any campaign and monitor</Link></span> your email or our social media platforms for winner annoucements.</span>
+      answer: <span><span className='text-green-100'><Link href={"/campaigns"}><a>Participate in any campaign and monitor</a></Link></span> your email or our social media platforms for winner annoucements.</span>
     },
     {
       question: "How do I patner with Freemerch?",
-      answer: <span>{<span className='text-green-100'><Link href="/contact-us" >Send us an email</Link></span>} page and select the company button, fill the form that pops up and submit it. We&apos;ll get back to you as soon as possible.</span>
+      answer: <span>{<span className='text-green-100'><Link href="/contact-us" ><a>Send us an email</a></Link></span>} page and select the company button, fill the form that pops up and submit it. We&apos;ll get back to you as soon as possible.</span>
     }
   ]
   const handleSetFaq = (index:number) => {
@@ -203,13 +203,11 @@ const Home: NextPage = () => {
           <meta name="description" content="Win free branded merchandise when you join campaings & 
             promote your brand when you create campaigns." />
           {/* Twitter tags */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@getFreemerch" />
-          <meta name="twitter:title" content="Freemerch Homepage" />
-          <meta name="twitter:description" content="Win free branded merchandise when you join campaings & 
+          <meta name="og:title" content="Freemerch Homepage" />
+          <meta name="og:description" content="Win free branded merchandise when you join campaings & 
             promote your brand when you create campaigns." 
           />
-          <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663858269/coverr-02-02_ciidge.png" />
+          <meta name="og:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663858269/coverr-02-02_ciidge.png" />
 
       </Head>
       <div className='flex flex-wrap justify-center sm:justify-between mx-auto pt-[51px]'>
@@ -240,9 +238,9 @@ const Home: NextPage = () => {
             </Splide>
           </div>
 
-          <p className="mt-[20px] mb-[30px]  md:my-[30px] max-w-[700px] font-normal text-[14px] md:text-[20px] leading-[20px] md:leading-[28px]">
+          <h1 className="mt-[20px] mb-[30px]  md:my-[30px] max-w-[700px] font-normal text-[14px] md:text-[20px] leading-[20px] md:leading-[28px]">
             Get merchandise from leading brands when you participate in any of our campaigns. Reward existing users and reach new audiences with loyalty campaigns for your brand.
-          </p>
+          </h1>
           
           <div className="flex w-full max-w-max justify-start flex-wrap">
             <GreenButton href="/campaigns" className="mr-6 mb-4">Get Merch</GreenButton>

@@ -4,7 +4,30 @@ import { Brand, Campaign, Question } from '../types';
 import { extractQuestions } from './extractQuestions';
 import getBrands from './getBrands';
 
-const campaignsQuery = (id: string) => gql`
+const campaignToIdMap: {[key:string]: string} = {};
+
+const createMap = async () => {
+  const campaignsData = (await client.query({query: gql`
+    query {
+      campaigns {
+        data{
+          id
+          attributes {
+            name
+          }
+        }
+      }
+    }
+  `}));
+
+  campaignsData.data.campaigns.data.map(({id, attributes: {name}}: {id: string, attributes: {name: string}}) => {
+    campaignToIdMap[name.toLowerCase().replace(/\s+/g, "-")] = id;
+  });
+}
+
+const campaignsQuery = (id: string) => {
+
+  return gql`
   query {
     campaign(id: ${id}) {
       data{
@@ -71,11 +94,16 @@ const campaignsQuery = (id: string) => gql`
       }
     }
   }
-`;
+`};
 
+setInterval(createMap, 120000);
 
 
 const getCampaign = async (id: string): Promise<Campaign & {questions :Question[]}> => {
+  if(Object.keys(campaignToIdMap).length == 0){
+    await createMap();
+  }
+  id = (campaignToIdMap[id]) ? campaignToIdMap[id] : id;
   const { data } = await client.query({query: campaignsQuery(id)});
   const brands = await getBrands();
   const {name, brand: brandId, description, active, identifier, merchandise: merchData, questions: _questions} = data?.campaign?.data?.attributes;

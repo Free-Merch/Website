@@ -41,33 +41,33 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       <title>{name} - Freemerch</title>
       <meta name="description" content={`${description}`}/>
       {/* Twitter tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content={`${name} - Freemerch`} />
-      <meta name="twitter:description" 
+      <meta name="og:title" content={`${name} - Freemerch`} />
+      <meta name="og:description" 
         content={`${description}`}
       />
-      <meta name="twitter:image" content={`${merchandise[0]?.url}`} />
+      <meta name="og:image" content={`${merchandise[0]?.url}`} />
     </Head>
       <div className="mb-[100px] max-w-[886px] mx-auto scroll-smooth">
       <div className="w-full relative flex justify-between cursor-pointer items-center h-[120px]">
-        <Link href={`/brands/${brand.name}`}>
-          <div className="flex z-[1]">
-            <div className={`cursor-pointer bg-white rounded h-[24px] w-[24px] flex items-center justify-center`}
-              >
-              <Image src={brand.logo.url} alt={brand.logo.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/brand.logo.ratio}/>
+        <Link href={`/brands/${brand.name.toLowerCase().replace(/\s+/g, "-")}`}>
+          <a>
+            <div className="flex z-[1]">
+              <div className={`cursor-pointer bg-white rounded h-[24px] w-[24px] flex items-center justify-center`}
+                >
+                <Image src={brand.logo.url} alt={brand.logo.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/brand.logo.ratio}/>
+              </div>
+              <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
+                  <>
+                    <span className="capitalize text-blue-400 dark:text-white font-medium text-[20px]">{brand.name}</span>
+                    &nbsp;
+                    <span className="relative">
+                      <span className="absolute bg-white top-1/2 left-1/2 -z-[10] -translate-x-1/2 -translate-y-1/2 inline-block h-[8px] w-[8px]"></span>
+                      <GoVerified className="fill-[#2382E1] w-[14px]"/>
+                    </span>
+                  </>
+              </p>
             </div>
-            <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
-                <>
-                  <span className="capitalize text-blue-400 dark:text-white font-medium text-[20px]">{brand.name}</span>
-                  &nbsp;
-                  <span className="relative">
-                    <span className="absolute bg-white top-1/2 left-1/2 -z-[10] -translate-x-1/2 -translate-y-1/2 inline-block h-[8px] w-[8px]"></span>
-                    <GoVerified className="fill-[#2382E1] w-[14px]"/>
-                  </span>
-                </>
-            </p>
-          </div>
+          </a>
         </Link>
           <div className="flex gap-2 ml-2 text-lg text-black-200 dark:text-white z-[1]">
             {links}
@@ -75,10 +75,10 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       </div>
       
       <div>
-        <p className="text-blue-400 dark:text-white leading-[38px] font-semibold text-[24px]">{name}</p>
-        <p className="dark:text-white leading-[24px] text-[14px]">
+        <h1 className="text-blue-400 inline-block dark:text-white leading-[38px] font-semibold text-[24px]">{name}</h1>
+        <div className="dark:text-white leading-[24px] text-[14px]">
           <MarkdownView markdown={description}></MarkdownView>
-        </p>
+        </div>
       </div>
 
       <div className="mt-[40px]" id="top" >

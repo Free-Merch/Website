@@ -16,12 +16,10 @@ const ContactUs = () => {
       <title>Contact Us - Freemerch</title>
       <meta name="description" content="Contact us to push your brand with campaigns on Freemerch" />
       {/* Twitter tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@getFreemerch" />
-      <meta name="twitter:title" content="Contact us to push your brand" />
-      <meta name="twitter:description" content="Got questions, complaints or feedback? Contact us and we'll get back to you as soon as possible." 
+      <meta name="og:title" content="Contact us to push your brand" />
+      <meta name="og:description" content="Got questions, complaints or feedback? Contact us and we'll get back to you as soon as possible." 
       />
-      <meta name="twitter:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
+      <meta name="og:image" content="https://res.cloudinary.com/freemerchcloudinary/image/upload/v1663799457/freemerch_cover_xfvymg.png" />
     </Head>
     <div className="flex gap-2 flex-wrap rounded-[10px] 
       dark:text-white text-blue-400 justify-between 
@@ -39,7 +37,7 @@ const ContactUs = () => {
         <Image alt="ribbon" className="ribbon-1" src={Ribbon2} />
       </div>
       <div className="z-[2]">
-        <h2 className="mb-[10px] font-semibold text-3xl">Need Help? Get in touch.</h2>
+        <h1 className="mb-[10px] font-semibold text-3xl">Need Help? Get in touch.</h1>
         <p>Send us an email</p>
         {/* <p className="mt-[14px] whitespace-nowrap flex items-center cursor-pointer email"> */}
           <a href="mailto:freemerchteam@gmail.com" className="mt-[14px] flex items-center cursor-pointer email"  target={'_blank'} rel='noreferrer'>
