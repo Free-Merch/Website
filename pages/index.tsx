@@ -238,9 +238,9 @@ const Home: NextPage = () => {
             </Splide>
           </div>
 
-          <p className="mt-[20px] mb-[30px]  md:my-[30px] max-w-[700px] font-normal text-[14px] md:text-[20px] leading-[20px] md:leading-[28px]">
+          <h1 className="mt-[20px] mb-[30px]  md:my-[30px] max-w-[700px] font-normal text-[14px] md:text-[20px] leading-[20px] md:leading-[28px]">
             Get merchandise from leading brands when you participate in any of our campaigns. Reward existing users and reach new audiences with loyalty campaigns for your brand.
-          </p>
+          </h1>
           
           <div className="flex w-full max-w-max justify-start flex-wrap">
             <GreenButton href="/campaigns" className="mr-6 mb-4">Get Merch</GreenButton>

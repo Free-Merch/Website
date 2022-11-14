@@ -73,10 +73,10 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       </div>
       
       <div>
-        <p className="text-blue-400 dark:text-white leading-[38px] font-semibold text-[24px]">{name}</p>
-        <p className="dark:text-white leading-[24px] text-[14px]">
+        <h1 className="text-blue-400 inline-block dark:text-white leading-[38px] font-semibold text-[24px]">{name}</h1>
+        <div className="dark:text-white leading-[24px] text-[14px]">
           <MarkdownView markdown={description}></MarkdownView>
-        </p>
+        </div>
       </div>
 
       <div className="mt-[40px]" id="top" >

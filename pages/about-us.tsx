@@ -22,7 +22,7 @@ const AboutUs = () => {
         <Image src={Diamond} alt="diamond" />
       </div>
       <div className="text-center md:text-start  md:w-1/2">
-        <h2 className="text-3xl font-semibold  md:text-start">Our Core Solution</h2>
+        <h1 className="text-3xl font-semibold  md:text-start">Our Core Solution</h1>
         &nbsp;
         <p>
           Freemerch is helping world-class Tech and Web3 products use merchandise to create awareness, adoption, and reward users.</p>

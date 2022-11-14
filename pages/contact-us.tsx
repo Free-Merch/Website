@@ -37,7 +37,7 @@ const ContactUs = () => {
         <Image alt="ribbon" className="ribbon-1" src={Ribbon2} />
       </div>
       <div className="z-[2]">
-        <h2 className="mb-[10px] font-semibold text-3xl">Need Help? Get in touch.</h2>
+        <h1 className="mb-[10px] font-semibold text-3xl">Need Help? Get in touch.</h1>
         <p>Send us an email</p>
         {/* <p className="mt-[14px] whitespace-nowrap flex items-center cursor-pointer email"> */}
           <a href="mailto:freemerchteam@gmail.com" className="mt-[14px] flex items-center cursor-pointer email"  target={'_blank'} rel='noreferrer'>

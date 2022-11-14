@@ -84,7 +84,7 @@ const Brand = (props: {brand: Brand}) => {
 
       <div className="flex items-center justify-between mt-[10px] mb-[10px]">
         <div className="flex items-center">
-          <span className="capitalize font-semibold text-[20px] dark:text-white text-blue-900">{brand.name}</span>
+          <h1 className="capitalize inline font-semibold text-[20px] dark:text-white text-blue-900">{brand.name}</h1>
           &nbsp;
           <div className="relative">
             <span className="absolute bg-white top-1/2 left-1/2 -z-[1] -translate-x-1/2 -translate-y-1/2 inline-block h-[8px] w-[8px]"></span>
