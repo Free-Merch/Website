@@ -13,10 +13,12 @@ export const Button = ({children, className, href, onClick}: IButton) => {
     <button className={classNames} onClick={onClick}>
       {children}
     </button> :
-    <Link href={href}>
+    <Link href={href} passHref>
+      <a>
       <span className={classNames}>
         {children}
       </span>
+      </a>
     </Link>
 }
 

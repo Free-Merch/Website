@@ -42,7 +42,9 @@ const FormSubmitModal = () => {
           </div>
         :
         <Link  href="/campaigns">
-          <span className={`w-[183px] cursor-pointer h-[46px] text-white px-[4px] flex justify-center items-center rounded-[5px] bg-green-100`}>See other Campaigns</span>
+          <a>
+            <span className={`w-[183px] cursor-pointer h-[46px] text-white px-[4px] flex justify-center items-center rounded-[5px] bg-green-100`}>See other Campaigns</span>
+          </a>
         </Link>) : <></>
       }
       

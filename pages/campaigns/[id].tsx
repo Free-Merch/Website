@@ -50,22 +50,24 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
       <div className="mb-[100px] max-w-[886px] mx-auto scroll-smooth">
       <div className="w-full relative flex justify-between cursor-pointer items-center h-[120px]">
         <Link href={`/brands/${brand.name.toLowerCase().replace(/\s+/g, "-")}`}>
-          <div className="flex z-[1]">
-            <div className={`cursor-pointer bg-white rounded h-[24px] w-[24px] flex items-center justify-center`}
-              >
-              <Image src={brand.logo.url} alt={brand.logo.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/brand.logo.ratio}/>
+          <a>
+            <div className="flex z-[1]">
+              <div className={`cursor-pointer bg-white rounded h-[24px] w-[24px] flex items-center justify-center`}
+                >
+                <Image src={brand.logo.url} alt={brand.logo.alternativeText} layout="fixed" width={logoWidth} height={logoWidth/brand.logo.ratio}/>
+              </div>
+              <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
+                  <>
+                    <span className="capitalize text-blue-400 dark:text-white font-medium text-[20px]">{brand.name}</span>
+                    &nbsp;
+                    <span className="relative">
+                      <span className="absolute bg-white top-1/2 left-1/2 -z-[10] -translate-x-1/2 -translate-y-1/2 inline-block h-[8px] w-[8px]"></span>
+                      <GoVerified className="fill-[#2382E1] w-[14px]"/>
+                    </span>
+                  </>
+              </p>
             </div>
-            <p className={`text-left ${width1 <= 200 ? "text-[14px]" : "text-xl"} ml-[10px] text-blue-400 flex items-center`}>
-                <>
-                  <span className="capitalize text-blue-400 dark:text-white font-medium text-[20px]">{brand.name}</span>
-                  &nbsp;
-                  <span className="relative">
-                    <span className="absolute bg-white top-1/2 left-1/2 -z-[10] -translate-x-1/2 -translate-y-1/2 inline-block h-[8px] w-[8px]"></span>
-                    <GoVerified className="fill-[#2382E1] w-[14px]"/>
-                  </span>
-                </>
-            </p>
-          </div>
+          </a>
         </Link>
           <div className="flex gap-2 ml-2 text-lg text-black-200 dark:text-white z-[1]">
             {links}

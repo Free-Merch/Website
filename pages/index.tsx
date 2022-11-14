@@ -61,11 +61,11 @@ const Home: NextPage = () => {
     },
     {
       question: "How can I get branded merch?",
-      answer: <span><span className='text-green-100'><Link href={"/campaigns"}>Participate in any campaign and monitor</Link></span> your email or our social media platforms for winner annoucements.</span>
+      answer: <span><span className='text-green-100'><Link href={"/campaigns"}><a>Participate in any campaign and monitor</a></Link></span> your email or our social media platforms for winner annoucements.</span>
     },
     {
       question: "How do I patner with Freemerch?",
-      answer: <span>{<span className='text-green-100'><Link href="/contact-us" >Send us an email</Link></span>} page and select the company button, fill the form that pops up and submit it. We&apos;ll get back to you as soon as possible.</span>
+      answer: <span>{<span className='text-green-100'><Link href="/contact-us" ><a>Send us an email</a></Link></span>} page and select the company button, fill the form that pops up and submit it. We&apos;ll get back to you as soon as possible.</span>
     }
   ]
   const handleSetFaq = (index:number) => {
