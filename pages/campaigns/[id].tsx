@@ -49,7 +49,7 @@ const Campaign = (props: {campaign: Campaign_Q}) => {
     </Head>
       <div className="mb-[100px] max-w-[886px] mx-auto scroll-smooth">
       <div className="w-full relative flex justify-between cursor-pointer items-center h-[120px]">
-        <Link href={`/brands/${brand.name}`}>
+        <Link href={`/brands/${brand.name.toLowerCase().replace(/\s+/g, "-")}`}>
           <div className="flex z-[1]">
             <div className={`cursor-pointer bg-white rounded h-[24px] w-[24px] flex items-center justify-center`}
               >

@@ -137,12 +137,10 @@ export default NewComponent;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   let brandName = context.query?.brand as string
-  const letters = brandName.toLowerCase().split("")
-  letters[0] = letters[0].toUpperCase()
-  brandName = letters.join("");
+  brandName = brandName.toLowerCase().replace(/\s+/g, "-");
 
   try {
-    const brand = (await getBrands("",  brandName))[1];
+    const brand = (await getBrands(brandName))[1];
     return {
       props: brand
     }

@@ -20,7 +20,7 @@ export function BrandCard (this: any, {brand}: {brand: Brand}){
   const shadow = "shadow-[0px_0px_7px_4px_rgba(46,200,102,0.04)]";
 
   return <div className={`cursor-pointer inline-block bg-grey-200 rounded-lg min-w-[163px] w-[399px] max-w-[399px]" }`} ref={ref1} >
-    <Link href={`/brands/${name}`}>
+    <Link href={`/brands/${name.toLowerCase().replace(/\s+/g, "-")}`}>
       <div className={`m-[20px]`}>
         <div className="w-full mx-auto">
           <div className={`

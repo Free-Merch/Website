@@ -40,10 +40,10 @@ export function CampaignCard (this: any, { image, bgColor, about, brand, merchan
   })
 
   return <div className={`cursor-pointer inline-block bg-grey-200 rounded-lg min-w-[163px] w-[399px] max-w-[399px]" }`} ref={ref1} >
-    <Link href={`/campaigns/${id}`}>
+    <Link href={`/campaigns/${name.toLowerCase().replace(/\s+/g, "-")}`}>
       <div className={`m-[20px]`}>
         <div className="flex mb-[4px] justify-between items-center" onClick={(e) => e.stopPropagation()}>
-          <Link href={`/brands/${brand}`} >
+          <Link href={`/brands/${brand.toLowerCase().replace(/\s+/g, "-")}`} >
             <div className="flex bg-grey-100 max-w-max py-[8px] px-[8px] rounded-[15px] items-center" >
               <div className={`cursor-pointer bg-[${bgColor}] ${shadow} rounded h-[24px] w-[24px] flex items-center justify-center`}
                 style={{backgroundColor: `${bgColor}`}}
