@@ -32,6 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <title>FreeMerch</title>
       <meta name="description" content="Win a free branded merchandise" />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+      <meta name="ahrefs-site-verification" content="c60b73b7f887bed7a8a463280ebc6b08ab88ca9a23045ee096e4dea6873d7338"></meta>
       <link rel="icon" href="favicon.ico" />
     </Head>
   <Component {...pageProps} />
