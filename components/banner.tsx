@@ -3,11 +3,11 @@ import Link from "next/link";
 import Splash from "../assets/pictures/splash.png"
 
 const Banner = () => <Link href="/campaigns" passHref> 
-  <a>
-  <div className="text-white cursor-pointer bg-blue-400 dark:bg-green-100 flex justify-center items-center h-10 w-full">
-    <Image src={Splash} alt="logo" layout="fixed" width={19} height={19}/> 
+  <a className="w-full block py-1 bg-blue-400 dark:bg-green-100 text-center">
+  <span className="text-white cursor-pointer h-10 w-full">
+    <Image className="self-center translate-y-px inline-block" src={Splash} alt="logo" layout="fixed" /> 
     &nbsp; Free merch giveaway is ongoing, get Access 
-  </div>
+  </span>
   </a>
 </Link>
 
