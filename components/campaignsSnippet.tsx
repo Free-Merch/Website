@@ -4,8 +4,7 @@ import { CampaignCard, CampaignCardSkeleton } from "./cards/campaign-card";
 const CampaignsSnippet = ({exclude}: {exclude?: number}) => {
   let campaigns = useCampaigns()
 
-  campaigns = campaigns?.slice(0, 3);
-  const CampaignCards = campaigns?.filter((c) => c.active && exclude !== c.id)?.map((campaign, index) => {
+  const CampaignCards = campaigns?.filter((c) => c.active && exclude !== c.id)?.slice(0, 3)?.map((campaign, index) => {
     const { description, merchandise, active, brand, id, name } = campaign;
       return <CampaignCard  
           brand={brand.name}
