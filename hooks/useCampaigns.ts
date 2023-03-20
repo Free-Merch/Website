@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
 import { Brand, Campaign } from '../types';
 import useBrands from './useBrands';
+import useBrand from './useBrands';
 
 const campaignsQuery = (brand: string) => gql`
   query {
@@ -31,10 +32,12 @@ const campaignsQuery = (brand: string) => gql`
   }
 `; 
 
-const useCampaigns = (brand?: string): Campaign[] => {
+const useCampaigns = (id: string): Campaign[] => {
 
-  const { data } = useQuery(campaignsQuery(brand ?? ""), {client});
+  const { data } = useQuery(campaignsQuery(id ?? ""), {client});
   const brands = useBrands();
+
+
 
   const campaigns = data?.campaigns?.data.map((campaign:any) => {
     const {id} = campaign

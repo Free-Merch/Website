@@ -9,7 +9,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { GoVerified } from "react-icons/go";
 import { GetServerSideProps } from "next";
-import getBrands from "../../helpers/getBrands";
+import { getBrand } from "../../helpers/getBrands";
 import useCampaigns from "../../hooks/useCampaigns";
 import { linkImages } from "../../hooks/images";
 
@@ -140,7 +140,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   brandName = brandName.toLowerCase().replace(/\s+/g, "-");
 
   try {
-    const brand = (await getBrands(brandName))[1];
+    const brand = (await getBrand(brandName));
     return {
       props: brand
     }

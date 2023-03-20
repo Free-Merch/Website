@@ -2,7 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
 import { Brand, Campaign, Question } from '../types';
 import { extractQuestions } from './extractQuestions';
-import getBrands from './getBrands';
+import { getBrand } from './getBrands';
 
 const campaignToIdMap: {[key:string]: string} = {};
 
@@ -105,9 +105,9 @@ const getCampaign = async (id: string): Promise<Campaign & {questions :Question[
   }
   id = (campaignToIdMap[id]) ? campaignToIdMap[id] : id;
   const { data } = await client.query({query: campaignsQuery(id)});
-  const brands = await getBrands();
   const {name, brand: brandId, description, active, identifier, merchandise: merchData, questions: _questions} = data?.campaign?.data?.attributes;
-  const brand: Brand = brands[brandId] ?? {
+  const _brand = await getBrand(brandId);
+  const brand: Brand = _brand ?? {
     logo: {width:20, height:20, alternativeText: "...", url: "", name: "...", ratio: 1}, 
     logoBgColor: "#ffffff", description: "", links: {}, id: 0
   };

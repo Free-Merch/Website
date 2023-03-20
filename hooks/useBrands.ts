@@ -1,6 +1,9 @@
 import { gql, useQuery } from '@apollo/client';
 import { client } from '../context/apolloContext';
 import { Brand } from '../types';
+import { useEffect, useState } from 'react';
+import getBrands, { BrandMap, getBrand } from '../helpers/getBrands';
+import { EmptyBrand } from '../utils/constants';
 
 const brandsQuery = (id: string, name: string) => gql`
     query {
@@ -34,24 +37,28 @@ const brandsQuery = (id: string, name: string) => gql`
   }
 `; 
 
-const useBrands = (id?: string, name?: string):  Brand[] => {
-  const { data } = useQuery(brandsQuery(id ?? "", name ?? ""), {client});
-  let brands: Brand[] = [];
-  // @ts-ignore
-  brands.push({});
-  data?.brands?.data.forEach((brand:any) => {
-    const {id} = brand;
-    let {logo, name, description, links, logoBgColor } = brand.attributes
-    logo = {...logo.data.attributes};
-    logo.ratio = logo.width/logo.height;
-    brands.push({
-      name, links,
-      description, 
-      logo,
-      logoBgColor,
-      id
-    })
-  });
+export const useBrand = (id: string):  Brand => {
+  const [brand, setBrand] = useState<Brand>(EmptyBrand)
+
+  useEffect(() => {
+    (async () => {
+      const brand = await getBrand(id)
+      setBrand(brand)
+    })()
+  }, [id])
+
+  return brand;
+}
+
+const useBrands = ():  BrandMap => {
+  const [brands, setBrands] = useState<BrandMap>({})
+
+  useEffect(() => {
+    (async () => {
+      const brands = await getBrands()
+      setBrands(brands)
+    })()
+  }, [])
 
   return brands;
 }

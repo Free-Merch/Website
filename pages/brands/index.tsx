@@ -28,9 +28,8 @@ const Campaigns = () => {
   ];
 
   const [query, enterQuery] = useState("");
-  let brands = useBrands();
-  brands = brands.slice(1)
-  brands = brands.filter(brand => brand.name.toLowerCase().includes(query.toLowerCase()));
+  const brands = useBrands();
+  const brandsArr = Object.values(brands).filter(brand => brand.name.toLowerCase().includes(query.toLowerCase()));
   
 
 
@@ -39,7 +38,7 @@ const Campaigns = () => {
   const handleSetOrder = (value: Option) => setOrder(value)
 
 
-  const BrandCards = orderFunctions[order.value as keyof typeof orderFunctions](brands)?.map((brand, index) => {
+  const BrandCards = orderFunctions[order.value as keyof typeof orderFunctions](brandsArr)?.map((brand, index) => {
     return <BrandCard 
         brand={brand}
         key={index}
@@ -73,7 +72,7 @@ const Campaigns = () => {
     </div>
 
     <div className="mb-10 flex flex-wrap justify-center gap-4">
-      {query && brands.length === 0 ? <div className="mt-20">No Brands match your search.</div> : BrandCards || BrandCardSkeletons}
+      {query && Object.keys(brands).length === 0 ? <div className="mt-20">No Brands match your search.</div> : BrandCards || BrandCardSkeletons}
     </div>
 
   </div>
