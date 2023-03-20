@@ -32,7 +32,7 @@ const campaignsQuery = (brand: string) => gql`
   }
 `; 
 
-const useCampaigns = (id: string): Campaign[] => {
+const useCampaigns = (id?: string): Campaign[] => {
 
   const { data } = useQuery(campaignsQuery(id ?? ""), {client});
   const brands = useBrands();
