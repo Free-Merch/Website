@@ -55,21 +55,17 @@ const brandsQuery = (id?: string) => gql`
 
 setInterval(createMap, 120000);
 
-const getBrands = async (id?: string): Promise<Brand[]> => {
-  if(Object.keys(brandsToIdMap).length == 0){
-    await createMap();
-  }
-  id = (id && brandsToIdMap[id]) ? brandsToIdMap[id] : id;
-  const { data } = await client.query({query: brandsQuery(id)})
-  let brands: Brand[] =[];
-  // @ts-ignore
-  brands.push({});
+export type BrandMap = {[key: string]: Brand};
+
+const getBrands = async (): Promise<BrandMap> => {
+  const { data } = await client.query({query: brandsQuery()})
+  let brands: BrandMap = {};
   data?.brands?.data.forEach((brand:any) => {
     const {id} = brand;
     let {logo, name, description, links, logoBgColor } = brand.attributes
     logo = {...logo.data.attributes};
     logo.ratio = logo.width/logo.height;
-    brands.push({
+    brands[id] = ({
       name, links: links,
       id,
       description, 
@@ -79,6 +75,16 @@ const getBrands = async (id?: string): Promise<Brand[]> => {
   });
 
   return brands;
+}
+
+export const getBrand = async (id: string) => {
+  if(Object.keys(brandsToIdMap).length == 0){
+    await createMap();
+  }
+  // Todo: Dev assumes its a number if its not in the createMap array
+  id = (id && brandsToIdMap[id]) ? brandsToIdMap[id] : id;
+  const brands = await getBrands();
+  return brands[id]
 }
 
 export default getBrands;
